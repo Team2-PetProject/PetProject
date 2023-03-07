@@ -36,7 +36,7 @@ main {
 
 	<main>
 		<hr>
-		우리 아이가 좋아하는 인기상품 (배너?)
+		<jsp:include page="common/banner.jsp"></jsp:include>
 		<hr>
 		<jsp:include page="goods/new.jsp"></jsp:include>
 		<hr>
