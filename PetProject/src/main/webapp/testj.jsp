@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-testj.jsp
+testj.jsp  연습 
 </body>
 </html>
