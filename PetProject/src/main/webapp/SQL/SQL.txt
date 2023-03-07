@@ -1,0 +1,138 @@
+----------------------------
+MEMBER(회원정보)
+-----------------------------
+CREATE TABLE MEMBER
+(
+  userid varchar2(10) primary key,
+  passwd varchar2(10) not null,
+  username varchar2(10) not null,
+  post varchar2(6) not null,
+  addr1 varchar2(500) not null,
+  addr2 varchar2(500) not null,
+  phone1 varchar2(3) not null,
+  phone2 varchar2(4) not null,
+  phone3 varchar2(4) not null,
+  email1 varchar2(20) not null,
+  email2 varchar2(20) not null
+);
+---------------------------------------
+GOODS
+---------------------------------------
+CREATE TABLE GOODS
+(
+ GCODE varchar2(20) PRIMARY KEY,
+ GCATEGORY varchar2(20) not null,
+ GNAME varchar2(50) not null,
+GINFO varchar2(4000) not null, --상품요약정보
+ GPRICE number(7) not null,
+ GIMAGE varchar2(50) not null);
+----------------------------
+ORDERINFO(주문자정보)
+-----------------------------
+
+     create table orderInfo
+  (  num NUMBER(6) PRIMARY KEY,
+     userid VARCHAR2(20),
+     gCode varchar2(20) not null,
+     gName varchar2(50) not null,
+     gPrice number(7) not null,
+     gSpec CHAR(10) not null, --크기, 무게
+     gTaste VARCHAR2(10) not null, --색, 음식 맛
+     gAmount NUMBER(2) not null,
+     gImage varchar2(20) not null,
+     orderName VARCHAR2(10) NOT NULL,
+     post VARCHAR2(5) NOT NULL,
+     addr1 VARCHAR2(500) NOT NULL,
+     addr2 VARCHAR2(500) NOT NULL,
+     phone VARCHAR2(11) NOT NULL,
+     payMethod VARCHAR2(30) NOT NULL,
+     orderDay DATE  DEFAULT SYSDATE
+  );     
+  alter table orderInfo
+  add CONSTRAINT orderInfo_userid_fk FOREIGN KEY(userid)
+   REFERENCES member(userid) ON DELETE CASCADE;
+   
+   
+  alter table orderInfo
+  add CONSTRAINT orderInfo_gCode_fk FOREIGN KEY(gCode)
+   REFERENCES goods(gCode) ON DELETE CASCADE;    
+
+create sequence orderInfo_seq; 
+----------------------------
+CART
+-----------------------------
+CREATE TABLE CART
+(
+    NUM NUMBER(6) PRIMARY KEY,
+    USERID VARCHAR2(20),
+    GCODE VARCHAR2(20) not null,
+    gName VARCHAR2(50) not null,
+    gPrice number(7) not null,
+    GIMAGE varchar2(50) not null,
+    gAmount NUMBER(2) not null,
+    gSpec char(10) not null, -- 크기, 무게
+    gTaste varchar2(20) not null --색, 음식 맛
+);
+  alter table CART
+  add CONSTRAINT CART_USERID_FK FOREIGN KEY (USERID) REFERENCES member(userid) ON DELETE CASCADE;
+   
+  alter table cart
+  add CONSTRAINT cart_gCode_fk FOREIGN KEY(gCode)
+   REFERENCES goods(gCode) ON DELETE CASCADE; 
+   
+    create sequence cart_seq;
+    
+    
+----------------------------
+G_FAVORIT
+-----------------------------
+CREATE TABLE G_FAVORIT
+(
+   num NUMBER(6) PRIMARY KEY,
+    userid VARCHAR2(20),
+    GCODE VARCHAR2(20) not null,
+    gName VARCHAR2(50) not null,
+    gPrice number(7) not null,
+    GIMAGE varchar2(50) not null
+);
+ALTER TABLE G_FAVORIT
+  add CONSTRAINT G_FAVORIT_NUM_fk FOREIGN KEY(NUM)
+   REFERENCES CART(NUM) ON DELETE CASCADE; 
+----------------------------
+TOUR
+-----------------------------
+CREATE TABLE TOUR
+(
+T_NUM NUMBER(6,0) PRIMARY KEY,
+T_NAME VARCHAR2(100) NOT NULL,
+T_IMAGE VARCHAR2(100) NOT NULL,
+T_INFO VARCHAR2(2000) NOT NULL,
+T_FNUM NUMBER(2,0) NOT NULL,
+T_DAY DATE DEFAULT SYSDATE
+);	
+----------------------------
+T_FAVORITE
+-----------------------------
+CREATE TABLE T_FAVORITE
+(
+T_NUM NUMBER(6,0) PRIMARY KEY,
+T_NAME VARCHAR2(100) NOT NULL,
+T_IMAGE VARCHAR2(100) NOT NULL,
+T_FNUM NUMBER(2,0) NOT NULL
+);
+ALTER TABLE T_FAVORITE
+ADD CONSTRAINT T_FAVORITE_NUM_FK FOREIGN KEY(T_NUM) REFERENCES TOUR(T_NUM) ON DELETE CASCADE;
+
+----------------------------
+GOODSBILL
+-----------------------------
+CREATE TABLE GOODSBILL
+(
+GNUM NUMBER(6) NOT NULL,
+GNAME VARCHAR2(50) NOT NULL,
+GIMAGE VARCHAR2(50) NOT NULL,
+ORDERDAY DATE  DEFAULT SYSDATE
+);
+ALTER TABLE GOODSBILL
+ADD CONSTRAINT GOODSBILL_GNUM_FK FOREIGN KEY(GNUM) REFERENCES CART(GNUM) ON DELETE CASCADE;
+
