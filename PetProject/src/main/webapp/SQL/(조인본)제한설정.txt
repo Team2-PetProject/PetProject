@@ -42,7 +42,7 @@ ALTER TABLE orderInfo
   add CONSTRAINT orderInfo_userid_fk FOREIGN KEY(userid)
    REFERENCES member(userid) 
 ----------------------------
-상품기본키 유저인포 외래키
+상품기본키 유저인포 외래키!!
 ----------------------------
 ALTER TABLE orderInfo
   add CONSTRAINT orderInfo_gcode_fk FOREIGN KEY(gcode)

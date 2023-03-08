@@ -83,7 +83,7 @@ T_FNUM NUMBER(2,0) NOT NULL,
 T_DAY DATE DEFAULT SYSDATE
 );	
 ----------------------------
-T_FAVORITE
+T_FAVORITE-!!
 -----------------------------
 CREATE TABLE T_FAVORITE
 (
