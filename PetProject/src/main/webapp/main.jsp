@@ -36,7 +36,6 @@ main {
 		<hr>
 		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
 	</header>
-		
 
 	<main>
 		<hr>
@@ -48,7 +47,6 @@ main {
 		<hr>
 		<jsp:include page="goods/best.jsp" flush="true"></jsp:include>
 	</main>
-
 
 	<footer>
 		상호: Kkosunnae(주) | 대표자 : 홍길동 | 고객센터 : 1688-0000 |
