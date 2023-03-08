@@ -78,11 +78,11 @@
 
 <b>아이디</b>&nbsp;<input type="text" name="userid" id="userid"><span id="idresult"></span><br> 
 <b>비밀번호</b>&nbsp;<input type="text" name="passwd" id="passwd"><br>
-<b>비밀번호 재확인</b>&nbsp;<input type="text" name="passwd2" id="passwd2">
+<b>비밀번호 확인</b>&nbsp;<input type="text" name="passwd2" id="passwd2">
 <span id="result"></span>
 <br> 
 <b>이름</b>&nbsp;<input type="text" name="username" id="username"><br> 
-<input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
+<b>주소</b><input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
