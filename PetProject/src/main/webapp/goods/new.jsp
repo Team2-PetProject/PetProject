@@ -5,14 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	table {
+		text-align : center;
+	}
+</style>
 </head>
 <body>
 <span>최신 상품.</span><span> 따끈따끈한 신상품 보기.</span><br>
 <table>
 	<tr>
-<%-- <% for(){ %>	 --%>	
+	<%
+		for(int i=0;i<4;i++){
+	%>
 		<td>
-			<table style='padding:15px'>
+			<table style='padding:15px;'>
+					<tr class="new" style ="text-align : left;">
+						<td>New</td>
+					</tr>
 					<tr>
 						<td class= "" align ="center">
 							<a  href="GoodsRetrieveServlet?gCode=">
@@ -37,10 +47,6 @@
 					<tr>
 						<td height="10">
 					</tr>
-					
-					<tr>
-						<td height="10">
-					</tr>
 					<tr>
 						<td class="" align ="center">
 						33000원</td>
@@ -48,7 +54,7 @@
 				</table>
 			</td>
 			
-<%-- <%} %>		 --%>	
+<%} %>
 	</tr>
 </table>
 

@@ -29,7 +29,7 @@
 	<div class="inner">
 		<div class="hearder-container">
 			  <!-- <div class="title"> -->
-				<a href="#"><img><b>Kkosunnae</b></a>
+				<a href="#"><img><b class= "title">Kkosunnae</b></a>
 			 <!-- </div>  -->
 			<!-- title -->
 			

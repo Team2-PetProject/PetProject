@@ -25,6 +25,10 @@ main {
 }
 
 </style>
+
+<!-- font-awesome-icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 	<header>
@@ -36,7 +40,7 @@ main {
 
 	<main>
 		<hr>
-		우리 아이가 좋아하는 인기상품 (배너?)
+		<jsp:include page="common/banner.jsp"></jsp:include>
 		<hr>
 		<jsp:include page="goods/new.jsp"></jsp:include>
 		<hr>
