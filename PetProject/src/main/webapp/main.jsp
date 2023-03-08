@@ -32,21 +32,21 @@ main {
 </head>
 <body>
 	<header>
-		<jsp:include page="common/top.jsp"></jsp:include>
+		<jsp:include page="common/top.jsp" flush="true"></jsp:include>
 		<hr>
-		<jsp:include page="common/menu.jsp"></jsp:include>
+		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
 	</header>
 		
 
 	<main>
 		<hr>
-		<jsp:include page="common/banner.jsp"></jsp:include>
+		<jsp:include page="common/banner.jsp" flush="true"></jsp:include>
 		<hr>
-		<jsp:include page="goods/new.jsp"></jsp:include>
+		<jsp:include page="goods/new.jsp" flush="true"></jsp:include>
 		<hr>
-		<jsp:include page="event/event.jsp"></jsp:include>
+		<jsp:include page="event/event.jsp" flush="true"></jsp:include>
 		<hr>
-		<jsp:include page="goods/best.jsp"></jsp:include>
+		<jsp:include page="goods/best.jsp" flush="true"></jsp:include>
 	</main>
 
 

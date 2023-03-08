@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style type="text/css">
 	.right-box{
 		float: right;
 	}
 </style>
-</head>
-<body>
+
 
 <a href="#">구매하기</a>&nbsp;&nbsp;
 <a href="#">서비스</a>&nbsp;&nbsp;
@@ -28,5 +23,3 @@
 <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
 </div>
 
-</body>
-</html>
