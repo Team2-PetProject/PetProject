@@ -1,4 +1,4 @@
-카트 기본키 찜목록 외래키
+카트 기본키 찜목록 외래키11
 ---------------
 ALTER TABLE G_FAVORIT
   add CONSTRAINT G_FAVORIT_GCODE_fk FOREIGN KEY(GCODE)
