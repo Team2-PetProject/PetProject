@@ -10,7 +10,7 @@ GINFO varchar2(4000) not null, --상품요약정보
  GPRICE number(7) not null, --상품가격
  GIMAGE varchar2(50) not null); --상품이미지
 ----------------------------
---CART(장바구니또는 상세보기)
+--CART(장바구니또는 상세보기)!
 -----------------------------
 CREATE TABLE CART
 (
