@@ -25,7 +25,7 @@
 <a href="#">
 	<img alt="" src="images/common/search.png" width = "15px" height = "15px">
 </a>
-<img alt="" src="">장바구니
+<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
 </div>
 
 </body>
