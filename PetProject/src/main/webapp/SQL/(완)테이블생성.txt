@@ -1,0 +1,92 @@
+---------------------------------------
+--GOODS (중심) (상품리스트)
+---------------------------------------
+CREATE TABLE GOODS
+(
+ GCODE varchar2(20) PRIMARY KEY, --상품코드
+ GCATEGORY varchar2(20) not null, --상품카테고리
+ GNAME varchar2(50) not null, --상품이름
+GINFO varchar2(4000) not null, --상품요약정보
+ GPRICE number(7) not null, --상품가격
+ GIMAGE varchar2(50) not null); --상품이미지
+----------------------------
+--CART(장바구니또는 상세보기)
+-----------------------------
+CREATE TABLE CART
+(
+    NUM NUMBER(6) PRIMARY KEY, ---상품삭제넘버
+    USERID VARCHAR2(20), --- 유저아이디
+    GCODE VARCHAR2(20) not null,  --상품코드
+    gAmount NUMBER(2) not null, ---상품수량
+    gSpec varchar2(50) not null, -- 크기, 무게
+    gTaste varchar2(50) not null --색, 음식 맛
+);
+----------------------------
+--G_FAVORIT (찜목록)
+-----------------------------
+CREATE TABLE G_FAVORIT
+(
+    userid VARCHAR2(20) not null,  
+    GCODE VARCHAR2(20) not null --굿즈 외래키 삼자 -삭제기능할것
+ 
+);
+
+----------------------------
+--ORDERINFO(주문자정보) ---주문내역 WHERE USERID=1
+-----------------------------
+
+     create table orderInfo
+  (  num NUMBER(6) PRIMARY KEY,
+     userid VARCHAR2(20),
+     gCode varchar2(20) not null,
+     gName varchar2(50) not null,
+     gPrice number(7) not null,
+     gSpec CHAR(10) not null, --크기, 무게
+     gTaste VARCHAR2(10) not null, --색, 음식 맛
+     gAmount NUMBER(2) not null,
+     gImage varchar2(20) not null,
+     orderName VARCHAR2(10) NOT NULL,
+     post VARCHAR2(5) NOT NULL,
+     addr1 VARCHAR2(500) NOT NULL,
+     addr2 VARCHAR2(500) NOT NULL,
+     phone VARCHAR2(11) NOT NULL,
+     payMethod VARCHAR2(30) NOT NULL,
+     orderDay DATE  DEFAULT SYSDATE
+  );     
+-----------------------
+--MEMBER(회원정보
+-----------------------------
+CREATE TABLE MEMBER
+(
+  userid varchar2(10) primary key,
+  passwd varchar2(10) not null,
+  username varchar2(10) not null,
+  post varchar2(6) not null,
+  addr1 varchar2(500) not null,
+  addr2 varchar2(500) not null,
+  phone1 varchar2(3) not null,
+  phone2 varchar2(4) not null,
+  phone3 varchar2(4) not null,
+  email1 varchar2(20) not null,
+  email2 varchar2(20) not null
+);
+----------------------------
+--TOUR
+-----------------------------
+CREATE TABLE TOUR
+(
+T_NUM NUMBER(6,0) PRIMARY KEY,
+T_NAME VARCHAR2(100) NOT NULL,
+T_IMAGE VARCHAR2(100) NOT NULL,
+T_INFO VARCHAR2(2000) NOT NULL,
+T_FNUM NUMBER(2,0) NOT NULL,
+T_DAY DATE DEFAULT SYSDATE
+);	
+----------------------------
+--T_FAVORITE
+-----------------------------
+CREATE TABLE T_FAVORITE
+(
+T_NUM NUMBER(6,0) NOT NULL
+);
+-----
