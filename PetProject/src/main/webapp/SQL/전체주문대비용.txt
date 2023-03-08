@@ -1,0 +1,10 @@
+CREATE TABLE ORDERGOODS
+(
+ GCODE varchar2(20) NOT NULL,
+ORDERCODE VARCHAR2(20) NOT NULL,
+ GCATEGORY varchar2(20) not null,
+ GNAME varchar2(50) not null,
+GINFO varchar2(4000) PRIMARY KEY, --상품요약정보
+GAMOUNT  NUMBER(2) NOT NULL,
+ GPRICE number(7) not null,
+ GIMAGE varchar2(50) not null);
