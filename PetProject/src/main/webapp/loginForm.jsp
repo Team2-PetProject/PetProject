@@ -5,7 +5,7 @@
 <head>
 <style type="text/css">
     fieldset {
-        width : 100px; height : 100px;
+        width : 130px; height : 130px;    
     }
 </style>
 <meta charset="UTF-8">
