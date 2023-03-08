@@ -46,6 +46,7 @@
  				 $("#sample4_jibunAddress").focus();
  				return false;
  			}
+ 			
  			if(phone2.length==0){
  				 alert("전화번호를 입력하세요");
  				 $("#phone2").focus();
