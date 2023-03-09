@@ -33,9 +33,9 @@ main {
 </head>
 <body>
 	<header>
-		<jsp:include page="common/top.jsp"></jsp:include>
+		<jsp:include page="common/top.jsp" flush="true"></jsp:include>
 		<br>
-		<jsp:include page="common/menu.jsp"></jsp:include>
+		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
 	</header>
 		
 <h1>회원가입</h1>
