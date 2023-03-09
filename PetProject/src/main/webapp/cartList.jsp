@@ -40,7 +40,7 @@ main {
 
 	<main>
 		<hr>
-		
+		<jsp:include page="goods/cart.jsp"></jsp:include>
 	</main>
 
 
