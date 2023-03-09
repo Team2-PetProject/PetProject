@@ -40,6 +40,7 @@ main {
 
 	<main>
 		<hr>
+		<jsp:include page="goods/goodsRetrieve2.jsp" flush="true"></jsp:include>
 		
 	</main>
 
