@@ -8,27 +8,32 @@ CREATE TABLE GOODS
  GNAME varchar2(50) not null, --상품이름
 GINFO varchar2(4000) not null, --상품요약정보
  GPRICE number(7) not null, --상품가격
- GIMAGE varchar2(50) not null); --상품이미지
+ GIMAGE varchar2(50) not null, --상품이미지
+ GSPEC varchar2(50) NULL, -- 크기, 무게
+ gTaste varchar2(50) NULL --색, 음식 맛
+);
 ----------------------------
 --CART(장바구니또는 상세보기)
 -----------------------------
 CREATE TABLE CART
 (
-    NUM NUMBER(6) PRIMARY KEY, ---상품삭제넘버
+    GNUM NUMBER(6) PRIMARY KEY, ---상품삭제넘버
     USERID VARCHAR2(20), --- 유저아이디
     GCODE VARCHAR2(20) not null,  --상품코드
     gAmount NUMBER(2) not null, ---상품수량
-    gSpec varchar2(50) not null, -- 크기, 무게
-    gTaste varchar2(50) not null --색, 음식 맛
+    gSpec varchar2(50) , -- 크기, 무게
+    gTaste varchar2(50)  --색, 음식 맛
 );
 ----------------------------
 --G_FAVORIT (찜목록)
 -----------------------------
 CREATE TABLE G_FAVORIT
 (
-    userid VARCHAR2(20) not null,  
-    GCODE VARCHAR2(20) not null --굿즈 외래키 삼자 -삭제기능할것
- 
+    userid VARCHAR2(20) not null,  --유저 아이디
+    GCODE VARCHAR2(20) not null, --굿즈 외래키 삼자 -삭제기능할것
+   GWISH VARCHAR2(5) NOT NULL, --상품찜
+constraint G_FAVORIT primary KEY
+(GCODE,USERID)
 );
 
 ----------------------------
@@ -36,7 +41,7 @@ CREATE TABLE G_FAVORIT
 -----------------------------
 
      create table orderInfo
-  (  num NUMBER(6) PRIMARY KEY,
+  (  Gnum NUMBER(6) PRIMARY KEY,
      userid VARCHAR2(20),
      gCode varchar2(20) not null,
      gName varchar2(50) not null,
@@ -75,18 +80,35 @@ CREATE TABLE MEMBER
 -----------------------------
 CREATE TABLE TOUR
 (
-T_NUM NUMBER(6,0) PRIMARY KEY,
-T_NAME VARCHAR2(100) NOT NULL,
-T_IMAGE VARCHAR2(100) NOT NULL,
-T_INFO VARCHAR2(2000) NOT NULL,
-T_FNUM NUMBER(2,0) NOT NULL,
-T_DAY DATE DEFAULT SYSDATE
+TNUM NUMBER(6,0) PRIMARY KEY,
+TNAME VARCHAR2(100) NOT NULL,
+TIMAGE VARCHAR2(100) NOT NULL,
+TINFO VARCHAR2(2000) NOT NULL,
+TWISH VARCHAR2(5) NOT NULL,
+TDAY DATE DEFAULT SYSDATE
 );	
 ----------------------------
 --T_FAVORITE
------------------------------
+----------------------------
 CREATE TABLE T_FAVORITE
 (
-T_NUM NUMBER(6,0) NOT NULL
+TNUM NUMBER(6,0) NOT NULL,
+USERID VARCHAR2(20) NOT NULL,
+constraint T_FAVORITE primary KEY
+(TNUM,USERID)
 );
------
+----------------------------------------
+----------------------------------------
+CREATE TABLE ORDERGOODS
+(
+ GCODE varchar2(20) NOT NULL,
+OCODE VARCHAR2(20) NOT NULL,
+ GCATEGORY varchar2(20) not null,
+ GNAME varchar2(50) not null,
+GINFO varchar2(4000) PRIMARY KEY, --상품요약정보
+GAMOUNT  NUMBER(2) NOT NULL,
+ GPRICE number(7) not null,
+ GIMAGE varchar2(50) not null,
+FOREIGN KEY (USERID) REFERENCES CART(USERID),
+FOREIGN KEY (GCODE) REFERENCES CART(GCODE),
+);

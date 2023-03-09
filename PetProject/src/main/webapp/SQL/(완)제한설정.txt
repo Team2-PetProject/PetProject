@@ -29,11 +29,12 @@ ALTER TABLE G_FAVORIT
   add CONSTRAINT CART_GCODE_FK FOREIGN KEY (GCODE) REFERENCES GOODS(GCODE) ON DELETE CASCADE;
    
     create sequence cart_seq;
+create sequence orderInfo_seq;   
 -----------------------------
 --투어 기본키 투어찜 외래키
 ---------------------------
 ALTER TABLE T_FAVORITE
-ADD CONSTRAINT T_FAVORITE_NUM_FK FOREIGN KEY(T_NUM) REFERENCES TOUR(T_NUM) ON DELETE CASCADE;
+ADD CONSTRAINT T_FAVORITE_NUM_FK FOREIGN KEY(TNUM) REFERENCES TOUR(TNUM) ON DELETE CASCADE;
 
 --------------------------------
 
@@ -42,4 +43,4 @@ ADD CONSTRAINT T_FAVORITE_NUM_FK FOREIGN KEY(T_NUM) REFERENCES TOUR(T_NUM) ON DE
 ----------------------------
 ALTER TABLE orderInfo
   add CONSTRAINT orderInfo_gcode_fk FOREIGN KEY(gcode)
-   REFERENCES goods(gcode)
+   REFERENCES goods(gcode);
