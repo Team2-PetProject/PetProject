@@ -1,13 +1,13 @@
 package com.service;
 
-import com.dao.tFavoriteDAO;
+import com.dao.tour_FavoriteDAO;
 
 public class tFavoriteService {
-	tFavoriteDAO dao;
+	tour_FavoriteDAO dao;
 
 	public tFavoriteService() {
 		super();
-		dao = new tFavoriteDAO();
+		dao = new tour_FavoriteDAO();
 	}
 	
 }

@@ -1,13 +1,13 @@
 package com.service;
 
-import com.dao.gFavoriteDAO;
+import com.dao.item_FavoriteDAO;
 
 public class gFavoriteService {
-	gFavoriteDAO dao;
+	item_FavoriteDAO dao;
 
 	public gFavoriteService() {
 		super();
-		dao = new gFavoriteDAO();
+		dao = new item_FavoriteDAO();
 	}
 	
 }
