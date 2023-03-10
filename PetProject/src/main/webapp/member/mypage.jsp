@@ -32,7 +32,7 @@
 //이메일 선택
  $("#emailSelect").on("change",function(){
 		var email = $(this).val();
-		  $("#email2").val(email);
+		  $("#member_email2").val(email);
 	});
 	
  $("#member_code").on("keyup",function(event){	
@@ -59,13 +59,13 @@
    String member_code = dto.getMember_code();
    String member_name = dto.getMember_name();
    String member_post = dto.getMember_post();
-   String addr1 = dto.getAddr1();
-   String addr2 = dto.getAddr2();
-   String phone1 = dto.getPhone1();
-   String phone2 = dto.getPhone2();
-   String phone3 = dto.getPhone3();
-   String email1 = dto.getEmail1();
-   String email2 = dto.getEmail2();
+   String member_addr1 = dto.getMember_addr1();
+   String member_addr2 = dto.getMember_addr2();
+   String member_phone1 = dto.getMember_phone1();
+   String member_phone2 = dto.getMember_phone2();
+   String member_phone3 = dto.getMember_phone3();
+   String member_email1 = dto.getMember_email1();
+   String member_email2 = dto.getMember_email2();
 %>
 <form action="MemberUpdateServlet" method="post">
 <input type="hidden" value="<%= member_code %>" name="member_code" >
@@ -75,21 +75,21 @@
 <br> 
 <input type="text" value="<%= member_post %>" name="member_post" id="sample4_postcode"  placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" value="<%= addr1 %>" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
-<input type="text" value="<%= addr2 %>" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
+<input type="text" value="<%= member_addr1 %>" name="member_addr1" id="sample4_roadAddress" placeholder="도로명주소">
+<input type="text" value="<%= member_addr2 %>" name="member_addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
 <br>
 전화번호:<select name="phone1">
-  <option value="017"<% if("017".equals(phone1)){ %> selected<%} %>>017</option>
-  <option value="011"<% if("011".equals(phone1)){ %> selected<%} %>>011</option>
-  <option value="010"<% if("010".equals(phone1)){ %> selected<%} %>>010</option>
+  <option value="017"<% if("017".equals(member_phone1)){ %> selected<%} %>>017</option>
+  <option value="011"<% if("011".equals(member_phone1)){ %> selected<%} %>>011</option>
+  <option value="010"<% if("010".equals(member_phone1)){ %> selected<%} %>>010</option>
 
 </select>-
-<input type="text" value="<%= phone2 %>" name="phone2" >
--<input type="text" value="<%= phone3 %>" name="phone3" >
+<input type="text" value="<%= member_phone2 %>" name="member_phone2" >
+-<input type="text" value="<%= member_phone3 %>" name="member_phone3" >
 <br>
-이메일:<input type="text" value="<%= email1 %>" name="email1" id="email1">@
-       <input type="text" value="<%= email2 %>" name="email2" id="email2" placeholder="직접입력">
+이메일:<input type="text" value="<%= member_email1 %>" name="member_email1" id="member_email1">@
+       <input type="text" value="<%= member_email2 %>" name="member_email2" id="member_email2" placeholder="직접입력">
        <select  id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>

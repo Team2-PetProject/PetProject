@@ -9,13 +9,13 @@
  			var member_passwd = $("#member_passwd").val();
  			var member_name = $("#member_name").val();
  			var member_post = $("#member_post").val();
- 			var addr1 = $("#sample4_roadAddress").val();
- 			var addr2 = $("#sample4_jibunAddress").val();
- 			var phone1 = $("#phone1").val();
- 			var phone2 = $("#phone2").val();
- 			var phone3 = $("#phone3").val();
- 			var email1 = $("#email1").val();
- 			var email2 = $("#email2").val();
+ 			var member_addr1 = $("#sample4_roadAddress").val();
+ 			var member_addr2 = $("#sample4_jibunAddress").val();
+ 			var member_phone1 = $("#member_phone1").val();
+ 			var member_phone2 = $("#member_phone2").val();
+ 			var member_phone3 = $("#member_phone3").val();
+ 			var member_email1 = $("#member_email1").val();
+ 			var member_email2 = $("#member_email2").val();
  			
  			if(member_code.length==0){
  				alert("아이디를 입력하세요");
@@ -37,35 +37,35 @@
  				 $("#sample4_postcode").focus();
  				return false;
  			}
- 			if(addr1.length==0){
+ 			if(member_addr1.length==0){
  				 alert("주소를 입력하세요");
  				 $("#sample4_roadAddress").focus();
  				return false;
  			}
- 			if(addr2.length==0){
+ 			if(member_addr2.length==0){
  				 alert("주소를 입력하세요");
  				 $("#sample4_jibunAddress").focus();
  				return false;
  			}
  			
- 			if(phone2.length==0){
+ 			if(member_phone2.length==0){
  				 alert("전화번호를 입력하세요");
- 				 $("#phone2").focus();
+ 				 $("#member_phone2").focus();
  				return false;
  			}
- 			if(phone3.length==0){
+ 			if(member_phone3.length==0){
  				 alert("전화번호를 입력하세요");
- 				 $("#phone3").focus();
+ 				 $("#member_phone3").focus();
  				 return false;
  			}
- 			if(email1.length==0){
+ 			if(member_email1.length==0){
  				 alert("이메일을 입력하세요");
- 				 $("#email1").focus();
+ 				 $("#member_email1").focus();
  				return false;
  			}
- 			if(email2.length==0){
+ 			if(member_email2.length==0){
 				 alert("이메일을 입력하세요");
-				 $("#email2").focus();
+				 $("#member_email2").focus();
 				return false;
 			}
  			
@@ -85,18 +85,18 @@
 <b>이름</b>&nbsp;<input type="text" name="member_name" id="member_name"><br> 
 <b>주소</b><input type="text" name="member_post" id="member_post" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
-<input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
+<input type="text" name="member_addr1" id="sample4_roadAddress" placeholder="도로명주소">
+<input type="text" name="member_addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
 <br>
-<b>전화번호</b>&nbsp;<select name="phone1">
+<b>전화번호</b>&nbsp;<select name="member_phone1">
   <option value="010">010</option>
   <option value="011">011</option>
 </select>-
-<input type="text" name="phone2" id="phone2">-<input type="text" name="phone3" id="phone3">
+<input type="text" name="member_phone2" id="member_phone2">-<input type="text" name="member_phone3" id="member_phone3">
 <br>
-<b>이메일</b>&nbsp;<input type="text" name="email1" id="email1">@
-       <input type="text" name="email2" id="email2" placeholder="직접입력">
+<b>이메일</b>&nbsp;<input type="text" name="member_email1" id="member_email1">@
+       <input type="text" name="member_email2" id="member_email2" placeholder="직접입력">
        <select id="email">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
