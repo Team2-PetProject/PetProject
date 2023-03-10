@@ -1,4 +1,4 @@
-<%@page import="com.dto.MemberDTO"%>
+<%-- <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -59,10 +59,10 @@
    String member_code = dto.getMember_code();
    String member_name = dto.getMember_name();
    String member_post = dto.getMember_post();
-   String addr1 = dto.getAddr1();
-   String addr2 = dto.getAddr2();
-   String phone1 = dto.getPhone1();
-   String phone2 = dto.getPhone2();
+   String addr1 = dto.getMember_addr1();
+   String addr2 = dto.getMember_addr2();
+   String phone1 = dto.getMember_phone1();
+   String phone2 = dto.getMember_phone2();
    String phone3 = dto.getPhone3();
    String email1 = dto.getEmail1();
    String email2 = dto.getEmail2();
@@ -150,4 +150,4 @@
             }
         }).open();
     }
-</script>
+</script> --%>
