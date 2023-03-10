@@ -15,7 +15,7 @@ import com.dto.MemberDTO;
 import com.dto.item_FavoriteDTO;
 import com.service.item_FavoriteService;
 import com.service.tour_FavoriteService;
-import com.dto.;
+import com.dto.tour;
 
 
 @WebServlet("/FavoritUIServlet")
