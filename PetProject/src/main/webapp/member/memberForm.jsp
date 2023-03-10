@@ -5,33 +5,34 @@
  <script type="text/javascript">
  	$(document).ready(function(){
  		$("form").on("submit",function(){
- 			var userid = $("#userid").val();
- 			var passwd = $("#passwd").val();
- 			var username = $("#username").val();
- 			var post = $("#sample4_postcode").val();
+ 			var member_code = $("#member_code").val();
+ 			var member_passwd = $("#member_passwd").val();
+ 			var member_name = $("#member_name").val();
+ 			var member_post = $("#member_post").val();
  			var addr1 = $("#sample4_roadAddress").val();
  			var addr2 = $("#sample4_jibunAddress").val();
+ 			var phone1 = $("#phone1").val();
  			var phone2 = $("#phone2").val();
  			var phone3 = $("#phone3").val();
  			var email1 = $("#email1").val();
  			var email2 = $("#email2").val();
  			
- 			if(userid.length==0){
+ 			if(member_code.length==0){
  				alert("아이디를 입력하세요");
- 				$("#userid").focus();
+ 				$("#member_code").focus();
  				return false;
  			}
- 			if(passwd.length==0){
+ 			if(member_passwd.length==0){
  				alert("비밀번호를 입력하세요");
- 				$("#passwd").focus();
+ 				$("#member_passwd").focus();
  				return false;
  			}
- 			if(username.length==0){
+ 			if(member_name.length==0){
  				 alert("이름을 입력하세요");
- 				 $("#username").focus();
+ 				 $("#member_name").focus();
  				 return false;
  			}
- 			if(post.length==0){
+ 			if(member_post.length==0){
  				 alert("우편번호를 입력하세요");
  				 $("#sample4_postcode").focus();
  				return false;
@@ -76,13 +77,13 @@
     
 <form action="MemberAddServlet" method="post">
 
-<b>아이디</b>&nbsp;<input type="text" name="userid" id="userid"><span id="idresult"></span><br> 
-<b>비밀번호</b>&nbsp;<input type="text" name="passwd" id="passwd"><br>
-<b>비밀번호 확인</b>&nbsp;<input type="text" name="passwd2" id="passwd2">
+<b>아이디</b>&nbsp;<input type="text" name="member_code" id="member_code"><span id="idresult"></span><br> 
+<b>비밀번호</b>&nbsp;<input type="text" name="member_passwd" id="member_passwd"><br>
+<b>비밀번호 확인</b>&nbsp;<input type="text" name="member_passwd2" id="member_passwd2">
 <span id="result"></span>
 <br> 
-<b>이름</b>&nbsp;<input type="text" name="username" id="username"><br> 
-<b>주소</b><input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
+<b>이름</b>&nbsp;<input type="text" name="member_name" id="member_name"><br> 
+<b>주소</b><input type="text" name="member_post" id="member_post" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
