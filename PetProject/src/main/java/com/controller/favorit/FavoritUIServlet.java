@@ -1,7 +1,6 @@
 package com.controller.favorit;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,9 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
 import com.dto.item_FavoriteDTO;
+import com.dto.tour_FavoritDTO;
 import com.service.item_FavoriteService;
 import com.service.tour_FavoriteService;
-import com.dto.tour;
 
 
 @WebServlet("/FavoritUIServlet")
@@ -34,9 +33,9 @@ tour_FavoriteService tour_service;
 		
 		if (memberdto!=null) {
 			List<item_FavoriteDTO> item_list=null;
-			List<tour_FavoriteDTO> tour_list=null;
+			List<tour_FavoritDTO> tour_list=null;
 			item_list=item_service.getList();
-			
+			tour_list=tour_service.getList();
 			
 		}else {
 			session.setAttribute("mesg", "로그인을 부탁드립니다.");

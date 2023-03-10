@@ -1,10 +1,8 @@
 package com.dto;
 
-class tour_FavoritDTO {
-	
+public class tour_FavoritDTO {
 	private String tour_code;
 	private String member_code;
-
 	public String getTour_code() {
 		return tour_code;
 	}
@@ -31,6 +29,7 @@ class tour_FavoritDTO {
 		this.tour_code = tour_code;
 		this.member_code = member_code;
 	}
-	
+
+
 	
 }
