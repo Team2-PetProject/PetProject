@@ -13,7 +13,7 @@ ITEM_SPEC VARCHAR2(50) NULL, -- 크기, 무게
 ITEM_TASTE VARCHAR2(50) NULL --색, 음식 맛
 );
 ----------------------------
---CART(장바구니 테이블)
+--CART(상품테이블)
 -----------------------------
 CREATE TABLE CART
 (
@@ -31,19 +31,17 @@ CREATE TABLE ITEM_FAVORIT
 MEMBER_CODE VARCHAR2(20) NOT NULL,  --유저 아이디
 ITEM_CODE VARCHAR2(10) NOT NULL, -- 상품 코드
 CONSTRAINT G_FAVORIT PRIMARY KEY
-(CART_CODE,MEMBER_CODE)
+(ITEM_CODE,MEMBER_CODE)
 );
 
 ----------------------------
---ORDERINFO(주문자정보) ---주문내역 WHERE USERID=1
+--ORDERINFO(주문테이블) ---결제하는 곳 금액만 있으면 되니깐 주문상품에 있는 것(상품금액*금액 다더해서 주문금액 총테이블 넣으면 될듯 결제로직 자바에 있음.)주문내역 WHERE USERID=1
 -----------------------------
 
      CREATE TABLE ORDERINFO
   (  
 ORDERINFO_CODE NUMBER(10,0) PRIMARY KEY, --주문테이블번호고 이번호로 삭제 기능 기본키고 
-ORDERITEM_CODE NUMBER(10,0) NOT NULL, --여기 있는거 뽑아와서 전부 주문해야함 멤버코드랑 카트코드 끌고와서
 MEMBER_CODE VARCHAR2(20)NOT NULL, --아이디
-ITEM_CODE VARCHAR2(10) NOT NULL, --상품번호
 ORDERINFO_ORDERNAME VARCHAR2(10) NOT NULL, --주문자이름
 ORDERINFO_POST VARCHAR2(5) NOT NULL, --배송지우편번호
 ORDERINFO_ADDR1 VARCHAR2(500) NOT NULL, --배송지주소
@@ -92,7 +90,7 @@ CONSTRAINT TOUR_FAVORITE PRIMARY KEY
 );
 ----------------------------------------
 ----------------------------------------
-CREATE TABLE ORDERITEM --(주문테이블)
+CREATE TABLE ORDERITEM --(주문상품테이블) (여기서 금액만 넘어감)
 (
 ORDERITEM_CODE NUMBER(10,0) PRIMARY KEY, --이걸로 오더인포에서 주문할꺼임
 CART_CODE NUMBER(10,0) NOT NULL, --카트코드에 있는걸로 스펙(크기,무게,색 설정한거랑) 테이스트(맛) 정한거 끌고와야함
