@@ -18,8 +18,10 @@ public class CartDelServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로그인 여부 확인
-		String num = (String) request.getAttribute("num");
+		String num = (String) request.getParameter("num");
 		System.out.println(Integer.parseInt(num));
+		
+		response.sendRedirect("CartListServlet");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
