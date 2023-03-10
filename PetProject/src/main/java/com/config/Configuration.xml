@@ -7,11 +7,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <properties resource="com/config/jdbc.properties" />   
   	<typeAliases>
   		<typeAlias type="com.dto.CartDTO" alias="CartDTO"/>
-  		<typeAlias type="com.dto.GoodsDTO" alias="GoodsDTO"/>
-  		<typeAlias type="com.dto.gFavoriteDTO" alias="gFavoriteDTO"/>
+  		<typeAlias type="com.dto.ItemDTO" alias="ItemDTO"/>
+  		<typeAlias type="com.dto.ItemFavoritDTO" alias="ItemFavoritDTO"/>
   		<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.dto.OrderInfoDTO" alias="OrderInfoDTO"/>
-  		<typeAlias type="com.dto.tFavoriteDTO" alias="tFavoriteDTO"/>
+  		<typeAlias type="com.dto.OrderItemDTO" alias="OrderItemDTO"/>
+  		<typeAlias type="com.dto.TourFavoriteDTO" alias="TourFavoriteDTO"/>
   		<typeAlias type="com.dto.TourDTO" alias="TourDTO"/>
   	</typeAliases>
    

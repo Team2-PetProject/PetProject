@@ -1,0 +1,118 @@
+package com.dto;
+
+public class OrderItemDTO {
+	private int OrderItem_Code;
+	private int Cart_Code;
+	private String Item_Code;
+	private int OrderInfo_Code;
+	private String Item_Category;
+	private String Member_Code;
+	private String Order_Name;
+	private int Cart_Amount;
+	private int Item_Price;
+	private String Item_Image;
+	private String Item_Spec;
+	private String Item_Taste;
+	public OrderItemDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public OrderItemDTO(int orderItem_Code, int cart_Code, String item_Code, int orderInfo_Code, String item_Category,
+			String member_Code, String order_Name, int cart_Amount, int item_Price, String item_Image, String item_Spec,
+			String item_Taste) {
+		super();
+		OrderItem_Code = orderItem_Code;
+		Cart_Code = cart_Code;
+		Item_Code = item_Code;
+		OrderInfo_Code = orderInfo_Code;
+		Item_Category = item_Category;
+		Member_Code = member_Code;
+		Order_Name = order_Name;
+		Cart_Amount = cart_Amount;
+		Item_Price = item_Price;
+		Item_Image = item_Image;
+		Item_Spec = item_Spec;
+		Item_Taste = item_Taste;
+	}
+	public int getOrderItem_Code() {
+		return OrderItem_Code;
+	}
+	public void setOrderItem_Code(int orderItem_Code) {
+		OrderItem_Code = orderItem_Code;
+	}
+	public int getCart_Code() {
+		return Cart_Code;
+	}
+	public void setCart_Code(int cart_Code) {
+		Cart_Code = cart_Code;
+	}
+	public String getItem_Code() {
+		return Item_Code;
+	}
+	public void setItem_Code(String item_Code) {
+		Item_Code = item_Code;
+	}
+	public int getOrderInfo_Code() {
+		return OrderInfo_Code;
+	}
+	public void setOrderInfo_Code(int orderInfo_Code) {
+		OrderInfo_Code = orderInfo_Code;
+	}
+	public String getItem_Category() {
+		return Item_Category;
+	}
+	public void setItem_Category(String item_Category) {
+		Item_Category = item_Category;
+	}
+	public String getMember_Code() {
+		return Member_Code;
+	}
+	public void setMember_Code(String member_Code) {
+		Member_Code = member_Code;
+	}
+	public String getOrder_Name() {
+		return Order_Name;
+	}
+	public void setOrder_Name(String order_Name) {
+		Order_Name = order_Name;
+	}
+	public int getCart_Amount() {
+		return Cart_Amount;
+	}
+	public void setCart_Amount(int cart_Amount) {
+		Cart_Amount = cart_Amount;
+	}
+	public int getItem_Price() {
+		return Item_Price;
+	}
+	public void setItem_Price(int item_Price) {
+		Item_Price = item_Price;
+	}
+	public String getItem_Image() {
+		return Item_Image;
+	}
+	public void setItem_Image(String item_Image) {
+		Item_Image = item_Image;
+	}
+	public String getItem_Spec() {
+		return Item_Spec;
+	}
+	public void setItem_Spec(String item_Spec) {
+		Item_Spec = item_Spec;
+	}
+	public String getItem_Taste() {
+		return Item_Taste;
+	}
+	public void setItem_Taste(String item_Taste) {
+		Item_Taste = item_Taste;
+	}
+	@Override
+	public String toString() {
+		return "OrderItemDTO [OrderItem_Code=" + OrderItem_Code + ", Cart_Code=" + Cart_Code + ", Item_Code="
+				+ Item_Code + ", OrderInfo_Code=" + OrderInfo_Code + ", Item_Category=" + Item_Category
+				+ ", Member_Code=" + Member_Code + ", Order_Name=" + Order_Name + ", Cart_Amount=" + Cart_Amount
+				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Spec=" + Item_Spec
+				+ ", Item_Taste=" + Item_Taste + "]";
+	}
+	
+}
