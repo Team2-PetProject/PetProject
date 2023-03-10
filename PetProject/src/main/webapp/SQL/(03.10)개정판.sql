@@ -1,100 +1,100 @@
 ---------------------------------------
---ITEM (Áß½É) (»óÇ°¸®½ºÆ®)
+--ITEM (ï¿½ß½ï¿½) (ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Æ®)!!
 ---------------------------------------
 CREATE TABLE ITEM
 (
-ITEM_CODE VARCHAR2(10) PRIMARY KEY, --»óÇ°ÄÚµå
-ITEM_CATEGORY VARCHAR2(20) NOT NULL, --»óÇ°Ä«Å×°í¸®
-ITEM_NAME VARCHAR2(50) NOT NULL, --»óÇ°ÀÌ¸§
-ITEM_INFO VARCHAR2(4000) NOT NULL, --»óÇ°¿ä¾àÁ¤º¸
-ITEM_PRICE NUMBER(7,0) NOT NULL, --»óÇ°°¡°Ý
-ITEM_IMAGE VARCHAR2(50) NOT NULL, --»óÇ°ÀÌ¹ÌÁö
-ITEM_SPEC VARCHAR2(50) NULL, -- Å©±â, ¹«°Ô
-ITEM_TASTE VARCHAR2(50) NULL --»ö, À½½Ä ¸À
+ITEM_CODE VARCHAR2(10) PRIMARY KEY, --ï¿½ï¿½Ç°ï¿½Úµï¿½
+ITEM_CATEGORY VARCHAR2(20) NOT NULL, --ï¿½ï¿½Ç°Ä«ï¿½×°ï¿½
+ITEM_NAME VARCHAR2(50) NOT NULL, --ï¿½ï¿½Ç°ï¿½Ì¸ï¿½
+ITEM_INFO VARCHAR2(4000) NOT NULL, --ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ITEM_PRICE NUMBER(7,0) NOT NULL, --ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+ITEM_IMAGE VARCHAR2(50) NOT NULL, --ï¿½ï¿½Ç°ï¿½Ì¹ï¿½ï¿½ï¿½
+ITEM_SPEC VARCHAR2(50) NULL, -- Å©ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
+ITEM_TASTE VARCHAR2(50) NULL --ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 );
 ----------------------------
---CART(»óÇ°Å×ÀÌºí)
+--CART(ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ìºï¿½)
 -----------------------------
 CREATE TABLE CART
 (
-CART_CODE NUMBER(10,0) PRIMARY KEY, ---»óÇ°»èÁ¦³Ñ¹ö
-MEMBER_CODE VARCHAR2(20) NOT NULL, --- À¯Àú¾ÆÀÌµð
-CART_AMOUNT NUMBER(2,0) NOT NULL, ---»óÇ°¼ö·®
-ITEM_SPEC VARCHAR2(50) NULL, -- Å©±â, ¹«°Ô,»ö
-ITEM_TASTE VARCHAR2(50) NULL  --À½½Ä ¸À
+CART_CODE NUMBER(10,0) PRIMARY KEY, ---ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½
+MEMBER_CODE VARCHAR2(20) NOT NULL, --- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
+CART_AMOUNT NUMBER(2,0) NOT NULL, ---ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+ITEM_SPEC VARCHAR2(50) NULL, -- Å©ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½
+ITEM_TASTE VARCHAR2(50) NULL  --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 );
 ----------------------------
---ITEM_FAVORIT (»óÇ° Âò¸ñ·Ï)
+--ITEM_FAVORIT (ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½)
 -----------------------------
 CREATE TABLE ITEM_FAVORIT
 (
-MEMBER_CODE VARCHAR2(20) NOT NULL,  --À¯Àú ¾ÆÀÌµð
-ITEM_CODE VARCHAR2(10) NOT NULL, -- »óÇ° ÄÚµå
+MEMBER_CODE VARCHAR2(20) NOT NULL,  --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+ITEM_CODE VARCHAR2(10) NOT NULL, -- ï¿½ï¿½Ç° ï¿½Úµï¿½
 CONSTRAINT G_FAVORIT PRIMARY KEY
 (ITEM_CODE,MEMBER_CODE)
 );
 
 ----------------------------
---ORDERINFO(ÁÖ¹®Å×ÀÌºí) ---°áÁ¦ÇÏ´Â °÷ ±Ý¾×¸¸ ÀÖÀ¸¸é µÇ´Ï±ñ ÁÖ¹®»óÇ°¿¡ ÀÖ´Â °Í(»óÇ°±Ý¾×*±Ý¾× ´Ù´õÇØ¼­ ÁÖ¹®±Ý¾× ÃÑÅ×ÀÌºí ³ÖÀ¸¸é µÉµí °áÁ¦·ÎÁ÷ ÀÚ¹Ù¿¡ ÀÖÀ½.)ÁÖ¹®³»¿ª WHERE USERID=1
+--ORDERINFO(ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ìºï¿½) ---ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½Ý¾×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´Ï±ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½(ï¿½ï¿½Ç°ï¿½Ý¾ï¿½*ï¿½Ý¾ï¿½ ï¿½Ù´ï¿½ï¿½Ø¼ï¿½ ï¿½Ö¹ï¿½ï¿½Ý¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Éµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¹Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½.)ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ WHERE USERID=1
 -----------------------------
 
      CREATE TABLE ORDERINFO
   (  
-ORDERINFO_CODE NUMBER(10,0) PRIMARY KEY, --ÁÖ¹®Å×ÀÌºí¹øÈ£°í ÀÌ¹øÈ£·Î »èÁ¦ ±â´É ±âº»Å°°í 
-MEMBER_CODE VARCHAR2(20)NOT NULL, --¾ÆÀÌµð
-ORDERINFO_ORDERNAME VARCHAR2(10) NOT NULL, --ÁÖ¹®ÀÚÀÌ¸§
-ORDERINFO_POST VARCHAR2(5) NOT NULL, --¹è¼ÛÁö¿ìÆí¹øÈ£
-ORDERINFO_ADDR1 VARCHAR2(500) NOT NULL, --¹è¼ÛÁöÁÖ¼Ò
-ORDERINFO_ADDR2 VARCHAR2(500) NOT NULL, --¹è¼ÛÁö»ó¼¼ÁÖ¼Ò
-ORDERINFO_PHONE VARCHAR2(11) NOT NULL, --¹è¼ÛÀÚÀüÈ­¹øÈ£
-ORDERINFO_PAYMETHOD VARCHAR2(30) NOT NULL, --°áÁ¦¹æ¹ý
-ORDERINFO_ORDERDAY DATE  DEFAULT SYSDATE --°áÁ¦³¯
+ORDERINFO_CODE NUMBER(10,0) PRIMARY KEY, --ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ìºï¿½ï¿½È£ï¿½ï¿½ ï¿½Ì¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½âº»Å°ï¿½ï¿½ 
+MEMBER_CODE VARCHAR2(20)NOT NULL, --ï¿½ï¿½ï¿½Ìµï¿½
+ORDERINFO_ORDERNAME VARCHAR2(10) NOT NULL, --ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+ORDERINFO_POST VARCHAR2(5) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+ORDERINFO_ADDR1 VARCHAR2(500) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+ORDERINFO_ADDR2 VARCHAR2(500) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+ORDERINFO_PHONE VARCHAR2(11) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½È£
+ORDERINFO_PAYMETHOD VARCHAR2(30) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ORDERINFO_ORDERDAY DATE  DEFAULT SYSDATE --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   );     
 -----------------------
---MEMBER(È¸¿øÁ¤º¸
+--MEMBER(È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------
 CREATE TABLE MEMBER
 (
-MEMBER_CODE VARCHAR2(10) PRIMARY KEY, --È¸¿ø ¾ÆÀÌµð
-MEMBER_PASSWD VARCHAR2(10) NOT NULL, --È¸¿ø ºñ¹Ð¹øÈ£
-MEMBER_NAME VARCHAR2(10) NOT NULL, --È¸¿øÀÌ¸§
-MEMBER_POST VARCHAR2(6) NOT NULL, --È¸¿ø¿ìÆí¹øÈ£
-MEMBER_ADDR1 VARCHAR2(500) NOT NULL, --È¸¿øÁÖ¼Ò
-MEMBER_ADDR2 VARCHAR2(500) NOT NULL, --È¸¿ø»ó¼¼ÁÖ¼Ò
-MEMBER_PHONE1 VARCHAR2(3) NOT NULL, --È¸¿ø ÀüÈ­¹øÈ£
-MEMBER_PHONE2 VARCHAR2(4) NOT NULL, --È¸¿ø ÀüÈ­¹øÈ£
-MEMBER_PHONE3 VARCHAR2(4) NOT NULL, --È¸¿ø ÀüÈ­¹øÈ£
-MEMBER_EMAIL1 VARCHAR2(20) NOT NULL, --È¸¿ø ÀÌ¸ÞÀÏ
-MEMBER_EMAIL2 VARCHAR2(20) NOT NULL --È¸¿ø ÀÌ¸ÞÀÏ
+MEMBER_CODE VARCHAR2(10) PRIMARY KEY, --È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+MEMBER_PASSWD VARCHAR2(10) NOT NULL, --È¸ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
+MEMBER_NAME VARCHAR2(10) NOT NULL, --È¸ï¿½ï¿½ï¿½Ì¸ï¿½
+MEMBER_POST VARCHAR2(6) NOT NULL, --È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+MEMBER_ADDR1 VARCHAR2(500) NOT NULL, --È¸ï¿½ï¿½ï¿½Ö¼ï¿½
+MEMBER_ADDR2 VARCHAR2(500) NOT NULL, --È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+MEMBER_PHONE1 VARCHAR2(3) NOT NULL, --È¸ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£
+MEMBER_PHONE2 VARCHAR2(4) NOT NULL, --È¸ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£
+MEMBER_PHONE3 VARCHAR2(4) NOT NULL, --È¸ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£
+MEMBER_EMAIL1 VARCHAR2(20) NOT NULL, --È¸ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½
+MEMBER_EMAIL2 VARCHAR2(20) NOT NULL --È¸ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½
 );
 ----------------------------
 --TOUR
 -----------------------------
 CREATE TABLE TOUR
 (
-TOUR_CODE NUMBER(10,0) PRIMARY KEY, --ÃàÁ¦¹øÈ£
-TOUR_NAME VARCHAR2(100) NOT NULL, --ÃàÁ¦ÀÌ¸§
-TOUR_IMAGE VARCHAR2(100) NOT NULL, --ÃàÁ¦ ÀÌ¹ÌÁö
-TOUR_INFO VARCHAR2(2000) NOT NULL, --ÃàÁ¦¼³¸í
-TOUR_DAY DATE DEFAULT SYSDATE --ÃàÁ¦ÀÏ
+TOUR_CODE NUMBER(10,0) PRIMARY KEY, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+TOUR_NAME VARCHAR2(100) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+TOUR_IMAGE VARCHAR2(100) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
+TOUR_INFO VARCHAR2(2000) NOT NULL, --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+TOUR_DAY DATE DEFAULT SYSDATE --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 );	
 ----------------------------
 --T_FAVORITE
 ----------------------------
 CREATE TABLE TOUR_FAVORITE
 (
-TOUR_CODE NUMBER(10,0) NOT NULL,  --ÃàÁ¦¹øÈ£
-MEMBER_CODE VARCHAR2(20) NOT NULL, --È¸¿ø¾ÆÀÌµð
+TOUR_CODE NUMBER(10,0) NOT NULL,  --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+MEMBER_CODE VARCHAR2(20) NOT NULL, --È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
 CONSTRAINT TOUR_FAVORITE PRIMARY KEY
 (TOUR_CODE,MEMBER_CODE)
 );
 ----------------------------------------
 ----------------------------------------
-CREATE TABLE ORDERITEM --(ÁÖ¹®»óÇ°Å×ÀÌºí) (¿©±â¼­ ±Ý¾×¸¸ ³Ñ¾î°¨)
+CREATE TABLE ORDERITEM --(ï¿½Ö¹ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ìºï¿½) (ï¿½ï¿½ï¿½â¼­ ï¿½Ý¾×¸ï¿½ ï¿½Ñ¾î°¨)
 (
-ORDERITEM_CODE NUMBER(10,0) PRIMARY KEY, --ÀÌ°É·Î ¿À´õÀÎÆ÷¿¡¼­ ÁÖ¹®ÇÒ²¨ÀÓ
-CART_CODE NUMBER(10,0) NOT NULL, --Ä«Æ®ÄÚµå¿¡ ÀÖ´Â°É·Î ½ºÆå(Å©±â,¹«°Ô,»ö ¼³Á¤ÇÑ°Å¶û) Å×ÀÌ½ºÆ®(¸À) Á¤ÇÑ°Å ²ø°í¿Í¾ßÇÔ
-ITEM_CODE VARCHAR2(10) NOT NULL, --Ä«Æ®ÄÚµå¿¡ ¾ÆÀÌÅÛÄÚµå¿Í ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎÇØ¾ßÇÔ
+ORDERITEM_CODE NUMBER(10,0) PRIMARY KEY, --ï¿½Ì°É·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½Ò²ï¿½ï¿½ï¿½
+CART_CODE NUMBER(10,0) NOT NULL, --Ä«Æ®ï¿½Úµå¿¡ ï¿½Ö´Â°É·ï¿½ ï¿½ï¿½ï¿½ï¿½(Å©ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°Å¶ï¿½) ï¿½ï¿½ï¿½Ì½ï¿½Æ®(ï¿½ï¿½) ï¿½ï¿½ï¿½Ñ°ï¿½ ï¿½ï¿½ï¿½ï¿½Í¾ï¿½ï¿½ï¿½
+ITEM_CODE VARCHAR2(10) NOT NULL, --Ä«Æ®ï¿½Úµå¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 ORDERINFO_CODE NUMBER(10,0) NOT NULL,
 ITEM_CATEGORY VARCHAR2(20) NOT NULL,
 MEMBER_CODE VARCHAR2(20) NOT NULL,
@@ -102,6 +102,6 @@ ORDER_NAME VARCHAR2(50) NOT NULL,
 CART_AMOUNT  NUMBER(2,0) NOT NULL,
 ITEM_PRICE NUMBER(7,0) NOT NULL,
 ITEM_IMAGE VARCHAR2(50) NOT NULL,
-ITEM_SPEC CHAR(10) NOT NULL, --Å©±â, ¹«°Ô,»ö
-ITEM_TASTE VARCHAR2(10) NOT NULL --À½½Ä ¸À
+ITEM_SPEC CHAR(10) NOT NULL, --Å©ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½
+ITEM_TASTE VARCHAR2(10) NOT NULL --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 );
