@@ -7,13 +7,13 @@
     $(document).ready(function(){
     	//form 서브밋
  $("form").on("submit",function(event){		
-	 var userid = $("#member_code").val();
-	 var passwd = $("#member_passwd").val();
-    		if(userid.length==0){
+	 var member_code = $("#member_code").val();
+	 var member_passwd = $("#member_passwd").val();
+    		if(member_code.length==0){
     			alert("userid 필수")
     			$("#member_code").focus();
     			event.preventDefault();
-    		}else if(passwd.length==0){
+    		}else if(member_passwd.length==0){
     			alert("passwd 필수")
     			$("#member_passwd").focus();
     			event.preventDefault();
