@@ -23,11 +23,26 @@
 		});
 		$(".del").click(function() {
 			var num = $(this).attr("data-num");
-			location.href="CartDelServlet?num="+num;
 			$.ajax({
 				type:"get",
 				url : "CartDelServlet",
 				data : {num : num},
+				dataType : "text",
+				success : function(data, status, xhr) {
+					
+				},
+				error : function(xhr, status, error) {
+					console.log(error)
+				}
+			});
+		});
+		$(".update").click(function() {
+			var num = $(this).attr("data-num");
+			var amount = $("#Amount" + num).val();
+			$.ajax({
+				type:"post",
+				url : "CartUpdateServlet",
+				data : {num : num, amount : amount},
 				dataType : "text",
 				success : function(data, status, xhr) {
 					
@@ -79,8 +94,9 @@
 			<h2>상품 제목</h2>
 			<p>상품 설명 및 가격
 			수량 <button class="up" data-num="<%=i%>">+</button> 
-			<input type="text" class="Amount" id="Amount<%=i%>" name = "Amount" value = "1" > 
+			<input type="text" class="Amount" id="Amount<%=i%>" name = "Amount" value = "<%=(i+1)%>"> 
 			<button class="down" data-num="<%=i%>">-</button>
+			<input type="button" value="변경" data-num="<%=i%>" class="update"/>
 			<input type="button" value="삭제" data-num="<%=i%>" class="del"/>
 		</div>
 	</fieldset>
