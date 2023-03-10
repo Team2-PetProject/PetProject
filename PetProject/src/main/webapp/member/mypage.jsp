@@ -5,7 +5,7 @@
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-    	//form 서브밋
+    	
  $("form").on("submit",function(event){		
 	 var member_code = $("#member_code").val();
 	 var member_passwd = $("#member_passwd").val();
