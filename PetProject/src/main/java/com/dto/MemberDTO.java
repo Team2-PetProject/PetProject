@@ -1,10 +1,10 @@
 package com.dto;
 
 public class MemberDTO {
-	private String userid;
-	private String passwd;
-	private String username;
-	private String post;
+	private String member_code;
+	private String member_passwd;
+	private String member_name;
+	private String member_post;
 	private String addr1;
 	private String addr2;
 	private String phone1;
@@ -16,13 +16,13 @@ public class MemberDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberDTO(String userid, String passwd, String username, String post, String addr1, String addr2,
-			String phone1, String phone2, String phone3, String email1, String email2) {
+	public MemberDTO(String member_code, String member_passwd, String member_name, String member_post, String addr1,
+			String addr2, String phone1, String phone2, String phone3, String email1, String email2) {
 		super();
-		this.userid = userid;
-		this.passwd = passwd;
-		this.username = username;
-		this.post = post;
+		this.member_code = member_code;
+		this.member_passwd = member_passwd;
+		this.member_name = member_name;
+		this.member_post = member_post;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 		this.phone1 = phone1;
@@ -31,29 +31,29 @@ public class MemberDTO {
 		this.email1 = email1;
 		this.email2 = email2;
 	}
-	public String getUserid() {
-		return userid;
+	public String getMember_code() {
+		return member_code;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setMember_code(String member_code) {
+		this.member_code = member_code;
 	}
-	public String getPasswd() {
-		return passwd;
+	public String getMember_passwd() {
+		return member_passwd;
 	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setMember_passwd(String member_passwd) {
+		this.member_passwd = member_passwd;
 	}
-	public String getUsername() {
-		return username;
+	public String getMember_name() {
+		return member_name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
-	public String getPost() {
-		return post;
+	public String getMember_post() {
+		return member_post;
 	}
-	public void setPost(String post) {
-		this.post = post;
+	public void setMember_post(String member_post) {
+		this.member_post = member_post;
 	}
 	public String getAddr1() {
 		return addr1;
@@ -99,9 +99,12 @@ public class MemberDTO {
 	}
 	@Override
 	public String toString() {
-		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", post=" + post
-				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
-				+ phone3 + ", email1=" + email1 + ", email2=" + email2 + "]";
+		return "MemberDTO [member_code=" + member_code + ", member_passwd=" + member_passwd + ", member_name="
+				+ member_name + ", member_post=" + member_post + ", addr1=" + addr1 + ", addr2=" + addr2 + ", phone1="
+				+ phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", email1=" + email1 + ", email2=" + email2
+				+ "]";
 	}
+	
+	
 	
 }
