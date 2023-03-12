@@ -1,13 +1,13 @@
 package com.service;
 
-import com.dao.CartDAO;
+import com.dao.OrderItemDAO;
 
 public class OrderItemService {
-	CartDAO dao;
+	OrderItemDAO dao;
 
 	public OrderItemService() {
 		super();
-		dao = new CartDAO();
+		dao = new OrderItemDAO();
 	}
 	
 }
