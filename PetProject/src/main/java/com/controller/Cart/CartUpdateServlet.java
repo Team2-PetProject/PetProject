@@ -1,11 +1,18 @@
 package com.controller.Cart;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.dto.MemberDTO;
+import com.service.CartService;
 
 @WebServlet("/CartUpdateServlet")
 public class CartUpdateServlet extends HttpServlet {
@@ -18,12 +25,26 @@ public class CartUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로그인 여부 확인
-		int num = Integer.parseInt(request.getParameter("num"));
-		System.out.println("Update_num : " + num);
-		int amount = Integer.parseInt(request.getParameter("amount"));
-		System.out.println("Update_amount : " + amount);
+//		HttpSession session = request.getSession();
+//		MemberDTO login = (MemberDTO) session.getAttribute("login");
+//		if(login != null) {
+//			String memberCode = login.getMember_code();
+			int cartCode = Integer.parseInt(request.getParameter("num"));
+			int cartAmount = Integer.parseInt(request.getParameter("amount"));
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("memberCode", 1);
+			map.put("cartCode", cartCode);
+			map.put("cartAmount", cartAmount);
+			
+			CartService service = new CartService();
+			int n = service.updateAmount(map);
+			System.out.println("update 된 레코드 갯수 : " + n);
+			response.sendRedirect("CartListServlet");
+//		}else {
+//			
+//		}
 		
-		response.sendRedirect("CartListServlet");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -22,27 +22,17 @@
 			
 		});
 		$(".del").click(function() {
-			var num = $(this).attr("data-num");
-			$.ajax({
-				type:"get",
-				url : "CartDelServlet",
-				data : {num : num},
-				dataType : "text",
-				success : function(data, status, xhr) {
-					
-				},
-				error : function(xhr, status, error) {
-					console.log(error)
-				}
-			});
+			var num = $(this).attr("data-code");
+			location.href="CartDelServlet?num="+num;
 		});
 		$(".update").click(function() {
 			var num = $(this).attr("data-num");
 			var amount = $("#Amount" + num).val();
+			var itemCode = $(this).attr("data-code");
 			$.ajax({
 				type:"post",
 				url : "CartUpdateServlet",
-				data : {num : num, amount : amount},
+				data : {num : itemCode, amount : amount},
 				dataType : "text",
 				success : function(data, status, xhr) {
 					
@@ -77,27 +67,45 @@
 				amount_box.attr("value", --amount);
 			}
 		});
+		$("#order").click(function() {
+			$("#myForm").attr("action", "#");
+			$("#myForm").submit();
+		});
 	});
 </script>
 <form action="#" id="myForm">
 <input type="checkbox" id="allCheck"> 전체 선택
 <input type="button" value="선택삭제" id="allDel"/>
 	<%
-		for(int i=0;i<4;i++){
+		List<CartDTO> list = (List<CartDTO>) request.getAttribute("cartList");
+		System.out.println(list.size());
+		for(int i=0;i<list.size();i++){
+			CartDTO dto = list.get(i);
+			int cartCode = dto.getCart_Code();
+			String memberCode = dto.getMember_Code();
+			String cartAmount = dto.getCart_Amount();
+			String itemSpec = dto.getItem_Spec();
+			String itemTaste = dto.getItem_Taste();
+			String itemCode = dto.getItem_Code();
+			String itemCategory = dto.getItem_Category();
+			String itemName = dto.getItem_Name();
+			String itemInfo = dto.getItem_Info();
+			int itemPrice = dto.getItem_Price();
+			String itemImage = dto.getItem_Image();
 	%>
 	<fieldset>
 		<div class="img" style = "float : left;">
-			<input type="checkbox" class="check" id="check<%=i%>" name = "check" value="<%=i%>">
+			<input type="checkbox" class="check" id="check<%=memberCode%>" name = "check" value="<%=cartCode%>">
 			<img src="images/items/dish1.png" alt="" width=100px height = 100px>
 		</div>
 		<div style = "float : left;">
-			<h2>상품 제목</h2>
-			<p>상품 설명 및 가격
-			수량 <button class="up" data-num="<%=i%>">+</button> 
-			<input type="text" class="Amount" id="Amount<%=i%>" name = "Amount" value = "<%=(i+1)%>"> 
-			<button class="down" data-num="<%=i%>">-</button>
-			<input type="button" value="변경" data-num="<%=i%>" class="update"/>
-			<input type="button" value="삭제" data-num="<%=i%>" class="del"/>
+			<h2><%=itemName%></h2>
+			<p><%=itemInfo%>
+			수량 <button class="up" data-num="<%=memberCode%>">+</button> 
+			<input type="text" class="Amount" id="Amount<%=memberCode%>" name = "Amount" value = "<%=cartAmount%>"> 
+			<button class="down" data-num="<%=memberCode%>">-</button>
+			<input type="button" value="변경" data-num="<%=memberCode%>" data-code = <%=cartCode%> class="update"/>
+			<input type="button" value="삭제" data-code="<%=cartCode%>" class="del"/>
 		</div>
 	</fieldset>
 	<%

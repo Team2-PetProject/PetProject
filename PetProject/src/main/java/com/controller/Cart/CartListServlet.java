@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.config.MySqlSessionFactory;
 import com.dto.CartDTO;
+import com.dto.ItemDTO;
+import com.dto.MemberDTO;
 import com.service.CartService;
+import com.service.ItemService;
 
 @WebServlet("/CartListServlet")
 public class CartListServlet extends HttpServlet {
@@ -25,13 +31,19 @@ public class CartListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로그인 인증 절차 필요
-		HttpSession session = request.getSession();
-		CartService service = new CartService();
-//		List<CartDTO> list = service.cartList(1);
+//		HttpSession session = request.getSession();
+//		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+//		String nextPage = null;
+//		if(dto != null) {
+			CartService cService = new CartService();
+			List<CartDTO> cartList = cService.cartList(1);
+			request.setAttribute("cartList", cartList);
+			RequestDispatcher dis = request.getRequestDispatcher("cartList.jsp");
+			dis.forward(request, response);
+//		}else {
+//			nextPage = "";
+//		}
 		
-//		request.setAttribute("cartList", list);
-		RequestDispatcher dis = request.getRequestDispatcher("cartList.jsp");
-		dis.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

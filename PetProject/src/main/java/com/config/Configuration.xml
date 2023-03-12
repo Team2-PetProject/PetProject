@@ -30,12 +30,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
 		<mapper resource="com/config/CartMapper.xml"/>
-		<mapper resource="com/config/GoodsMapper.xml"/>
-		<mapper resource="com/config/gFavoriteMapper.xml"/>
+		<mapper resource="com/config/ItemFavoritMapper.xml"/>
+		<mapper resource="com/config/ItemMapper.xml"/>
 		<mapper resource="com/config/MemberMapper.xml"/>
 		<mapper resource="com/config/OrderInfoMapper.xml"/>
-		<mapper resource="com/config/tFavoriteMapper.xml"/>
+		<mapper resource="com/config/OrderItemMapper.xml"/>
 		<mapper resource="com/config/TourMapper.xml"/>
+		<mapper resource="com/config/TourFavoriteMapper.xml"/>
 	</mappers>
 
 </configuration>

@@ -3,4 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CartMapper">
+	<select id="cartList" resultType="CartDTO" parameterType="int">
+		select cart_code, member_code, cart_amount, item_spec, item_taste, c.item_code, 
+		item_category, item_name, item_info, item_price, item_image 
+		from cart c, item i where c.item_code = i.item_code and member_code = #{member_code}
+	</select>
+	<update  id="updateAmount" parameterType="Hashmap">
+		update cart set cart_amount = #{cartAmount} where cart_code = #{cartCode}
+	</update>
+	<delete id="delByCode" parameterType="int">
+		delete from cart where cart_code=#{cartCode}
+	</delete>
+	<delete id="delAll" parameterType="list">
+		delete from cart where cart_code in
+		<foreach collection="list" separator="," open="(" close=")" item="item">
+			#{item}
+		</foreach>
+	</delete>
 </mapper>
