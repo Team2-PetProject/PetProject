@@ -45,7 +45,6 @@ public class CartService {
 		int n =0;
 		try {
 			n = dao.delByCode(session, cartCode);
-			System.out.println("dd");
 			session.commit();
 		} catch (Exception e) {
 			System.out.println("rollback()-------");

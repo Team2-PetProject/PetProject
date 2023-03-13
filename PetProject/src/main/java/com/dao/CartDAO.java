@@ -18,7 +18,6 @@ public class CartDAO {
 	}
 
 	public int delByCode(SqlSession session, int cartCode) {
-		System.out.println("");
 		return session.delete("delByCode", cartCode);
 	}
 
