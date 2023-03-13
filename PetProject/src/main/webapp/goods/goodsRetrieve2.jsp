@@ -59,16 +59,16 @@ $(document).ready(function(){
 			<span style="font-size:23px; font-weight:bold;">원</span>
 		</td>
 	</tr>
-	<tr height="20" />
-	<tr rowspan="2">
-		<td> <!-- 택배박스 모양 이미지 -->
+<!-- 	<tr height="20" />
+	<tr rowspan="2"> 
+		<td> --> <!-- 택배박스 모양 이미지 -->
 			<!-- <img src="images/icon/package_icon.png" width="40" height="40">  -->
-		</td>
+<!-- 		</td>
 		<td colspan="3">
 			<span style="font-size:13px">배송안내</span><br>
 			<span style="font-size:10px">마이페이지-배송 정보 확인에서 배송정보 확인 가능</span>
 		</td>
-	</tr>
+	</tr> -->
 	<tr height="20" />
 	<tr>
 		<td>옵션1</td>
