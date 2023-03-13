@@ -43,8 +43,14 @@
 			});
 		});
 		$("#allDel").click(function() {
-			$("#myForm").attr("action", "CartDelAllServlet");
-			$("#myForm").submit();
+			var n = $("input:checkbox:checked").length;
+			if(n==0){
+				alert('삭제할 상품을 선택하세요');
+			}else{
+				$("#myForm").attr("action", "CartDelAllServlet");
+				$("#myForm").submit();
+			}
+			
 		});
 		$("#order").click(function() {
 			$("#myForm").attr("action", "#");	//구매화면
@@ -71,6 +77,24 @@
 			$("#myForm").attr("action", "#");
 			$("#myForm").submit();
 		});
+		$(".option").change(function() {
+			var cartCode = $(this).attr("data-code");
+			var key = this.id;
+			var value = this.value;
+			location.href="CartUpdateOptServlet?cartCode="+cartCode + "&key="+key+"&value="+value;
+			/* $.ajax({
+				type:"post",
+				url : "CartUpdateOptServlet",
+				data : {cartCode : cartCode,key :key, value : value},
+				dataType : "text",
+				success : function(data, status, xhr) {
+					
+				},
+				error : function(xhr, status, error) {
+					console.log(error)
+				}
+			}); */
+		});
 	});
 </script>
 <form action="#" id="myForm">
@@ -78,7 +102,6 @@
 <input type="button" value="선택삭제" id="allDel"/>
 	<%
 	List<CartInfoDTO> list = (List<CartInfoDTO>) request.getAttribute("cartList");
-			System.out.println(list.size());
 			for(int i=0;i<list.size();i++){
 		CartInfoDTO dto = list.get(i);
 		int cartCode = dto.getCart_Code();
@@ -106,19 +129,56 @@
 			<h2><%=itemName%></h2>
 			<p><%=itemInfo%></p>
 			옵션			
-			<select name="optionSize">
+			<%if(cartSize != null){ %>
+			<select name="optionSize" class="option" id="size" data-code=<%=cartCode%>>
 			<%
-				if(cartSize != null){
+				
 					String[] arr = itemSize.split("/");
+				
 					for(int j=0;j<arr.length;j++){
 			%>
 							<option value="<%=arr[j]%>" <%if(cartSize.equals(arr[j])){%>selected<%} %>><%=arr[j]%></option>
 						
 			<%
 					}
-				}
 			%>
 			</select>
+			<%
+				}
+			%>
+			<%if(cartColor != null){ %>
+			<select name="optionColor" class="option" id="color" data-code=<%=cartCode%>>
+			<%
+				
+					String[] arr = itemColor.split("/");
+					for(int j=0;j<arr.length;j++){
+			%>
+							<option value="<%=arr[j]%>" <%if(cartColor.equals(arr[j])){%>selected<%} %>><%=arr[j]%></option>
+						
+			<%
+					}
+			%>
+			</select>
+			<%
+				}
+			%>
+			<%if(cartTaste != null){ %>
+			<select name="optionTaste" class="option" id="taste" data-code=<%=cartCode%>>
+			<%
+				
+					String[] arr = itemTaste.split("/");
+					for(int j=0;j<arr.length;j++){
+			%>
+							<option value="<%=arr[j]%>" <%if(cartTaste.equals(arr[j])){%>selected<%} %>><%=arr[j]%></option>
+						
+			<%
+					}
+			%>
+			</select>
+			<%
+				}
+			%>
+			
 			수량 <button class="up" data-num="<%=cartCode%>">+</button> 
 			<input type="text" class="Amount" id="Amount<%=cartCode%>" name = "Amount" value = "<%=cartAmount%>"> 
 			<button class="down" data-num="<%=cartCode%>">-</button>

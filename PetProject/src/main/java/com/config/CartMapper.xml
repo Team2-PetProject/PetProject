@@ -20,4 +20,17 @@
 			#{item}
 		</foreach>
 	</delete>
+	<update id="updateOption" parameterType="HashMap">
+		update cart set
+		<if test="key.equals('size')">
+			cart_size=#{value}
+		</if>
+		<if test="key.equals('color')">
+			cart_color=#{value}
+		</if>
+		<if test="key.equals('taste')">
+			cart_taste=#{value}
+		</if>
+		where cart_code = #{cartCode}
+	</update>
 </mapper>

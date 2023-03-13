@@ -18,11 +18,16 @@ public class CartDAO {
 	}
 
 	public int delByCode(SqlSession session, int cartCode) {
+		System.out.println("");
 		return session.delete("delByCode", cartCode);
 	}
 
 	public int delAll(SqlSession session, List<String> list) {
 		return session.delete("delAll", list);
+	}
+
+	public int updateOption(SqlSession session, Map<String, Object> map) {
+		return session.update("updateOption", map);
 	}
 
 }

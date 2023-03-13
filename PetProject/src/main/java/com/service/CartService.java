@@ -45,7 +45,11 @@ public class CartService {
 		int n =0;
 		try {
 			n = dao.delByCode(session, cartCode);
+			System.out.println("dd");
 			session.commit();
+		} catch (Exception e) {
+			System.out.println("rollback()-------");
+			session.rollback();
 		} finally {
 			session.close();
 		}
@@ -57,6 +61,18 @@ public class CartService {
 		int n = 0;
 		try {
 			n = dao.delAll(session, list);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return n;
+	}
+
+	public int updateOption(Map<String, Object> map) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		int n =0;
+		try {
+			n = dao.updateOption(session, map);
 			session.commit();
 		} finally {
 			session.close();
