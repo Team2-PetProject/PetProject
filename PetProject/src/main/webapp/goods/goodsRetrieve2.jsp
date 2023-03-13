@@ -41,6 +41,32 @@
 	}
 </style>
 
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var price = $("#item_price").text();
+	console.log(price);
+	var rs = $("#cart_amount").val();
+
+	$("#up").on("click", function(){
+		rs = parseInt(rs)+1;
+		$("#cart_amount").val(rs);
+	});//end 수량up
+	
+	$("#down").on("click", function(){
+		if(rs > 1){
+			rs = parseInt(rs)-1;
+		}
+		$("#cart_amount").val(rs);
+	});//end 수량down
+	
+	
+});//end doc
+
+</script>
+
 <div style="height: 50px"></div>
 
 <div class="goods_top"> <!-- 가운데 정렬 위함 -->
@@ -50,13 +76,13 @@
 
 <div class="goods_option">
 
-<table>
+<table border="1">
 	<tr height="30px">
 	<tr>
 		<td width="45"><a href="#"><span style="font-size:12px">사료</span></a></td>
 		<td width="45"><a href="#"><span style="font-size:12px">건식</span></a></td>
 		<td width="150">
-		<td width="50">
+		<td width="70">
 	</tr>
 	<tr height="15px">
 	<tr>
@@ -64,7 +90,10 @@
 	</tr>
 	<tr height="5px">
 	<tr>
-		<td colspan="4"><span style="font-size:25px; font-weight:bold;">40000원</span></td>
+		<td colspan="4">
+			<span id="item_price" style="font-size:25px; font-weight:bold;">40000</span>
+			<span style="font-size:23px; font-weight:bold;">원</span>
+		</td>
 	</tr>
 	<tr height="20" />
 	<tr rowspan="2">
@@ -78,19 +107,21 @@
 	</tr>
 	<tr height="20" />
 	<tr>
-		<td colspan="3">수량선택</td>
-		<td><input type="text" value="1"></td>
+		<td colspan="3">수량</td>
+		<td><img src="images/icon/minus.png" id="down" width="10" height="10">
+			<input type="text" id="cart_amount" name="cart_amount" value="1" style="width:25px; text-align:center;">
+			<img src="images/icon/plus.png" id="up" width="10"></td>
 	</tr>
 	<tr height="10" />
 	<tr>
 		<td colspan="3">총 금액</td>
-		<td> 가격 * 수량</td>
+		<td><span id="totalPrice"></span></td>
 	</tr>
 	
 	
 </table>
 <br>
-
+<button>찜 하기</button>
 <button>장바구니</button>
 <button>바로구매</button>
 <button>상품문의</button>
