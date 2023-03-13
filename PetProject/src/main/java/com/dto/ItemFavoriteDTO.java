@@ -1,13 +1,13 @@
 package com.dto;
 
-public class ItemFavoritDTO {
+public class ItemFavoriteDTO {
 	private String Member_Code;
 	private String Item_Code;
-	public ItemFavoritDTO() {
+	public ItemFavoriteDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ItemFavoritDTO(String member_Code, String item_Code) {
+	public ItemFavoriteDTO(String member_Code, String item_Code) {
 		super();
 		Member_Code = member_Code;
 		Item_Code = item_Code;
@@ -26,7 +26,7 @@ public class ItemFavoritDTO {
 	}
 	@Override
 	public String toString() {
-		return "ItemFavoritDTO [Member_Code=" + Member_Code + ", Item_Code=" + Item_Code + "]";
+		return "ItemFavoriteDTO [Member_Code=" + Member_Code + ", Item_Code=" + Item_Code + "]";
 	}
 	
 }
