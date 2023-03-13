@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   		<typeAlias type="com.dto.item_FavoritDTO" alias="item_FavoritDTO"/>
   		<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.dto.OrderInfoDTO" alias="OrderInfoDTO"/>
-  		<typeAlias type="com.dto.tour_FavoritDTO" alias="tour_FavoritDTO"/>
+  		<typeAlias type="com.dto.tour_FavoritDAO" alias="tour_FavoritDAO"/>
   		<typeAlias type="com.dto.TourDTO" alias="TourDTO"/>
   	</typeAliases>
    

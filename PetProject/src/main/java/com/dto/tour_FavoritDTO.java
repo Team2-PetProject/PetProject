@@ -3,6 +3,7 @@ package com.dto;
 public class tour_FavoritDTO {
 	private String tour_code;
 	private String member_code;
+	
 	public String getTour_code() {
 		return tour_code;
 	}

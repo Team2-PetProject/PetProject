@@ -27,10 +27,7 @@ item_FavoritDAO dao;
 		return list;
 	}
 
-	public item_FavoritService() {
-		SqlSession session=MySqlSessionFactory.getSqlSession();
-		System.out.println(session);
-	}
+
 	
 	
 }

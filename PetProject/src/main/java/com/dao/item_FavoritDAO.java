@@ -10,7 +10,7 @@ public class item_FavoritDAO {
 
 	public List<item_FavoritDTO> getList(SqlSession session, String member_code) {
 		
-		List<item_FavoritDTO> list=session.selectList("FavoriteMapper.tourList",member_code);
+		List<item_FavoritDTO> list=session.selectList("FavoritMapper.itemList",member_code);
 		System.out.println("dao");
 		return list;
 	}

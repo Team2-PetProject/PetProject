@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.item_FavoritDTO;
-import com.dto.tour_FavoritDTO;
 import com.service.item_FavoritService;
 import com.service.tour_FavoritService;
 
 @WebServlet("/FavoritUIServlet")
 public class FavoritUIServlet extends HttpServlet {
-	item_FavoritService item_Service;
-	tour_FavoritService tour_Service;
+//	item_FavoritService itemService;
+//	tour_FavoritService tour_Service;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,10 +24,13 @@ public class FavoritUIServlet extends HttpServlet {
 //		MemberDTO memberdto=(MemberDTO)session.getAttribute("login");
 //		String member_code=memberdto.getMember_code();
 //		String nextPage="main";
+
 //		if (memberdto==null) {
-//			List<item_FavoriteDTO> item_list=item_service.getList(member_code);
-		List<item_FavoritDTO> itemList = item_Service.getList("111");
+		item_FavoritService service = new item_FavoritService();
+		List<item_FavoritDTO> itemList = service.getList("111");
 		System.out.println(itemList);
+		
+	
 //		List<tour_FavoritDTO> tour_list=tour_Service.getList(member_code);
 //		List<tour_FavoritDTO> tourList=tour_Service.getList("111");
 //		System.out.println(tourList);
