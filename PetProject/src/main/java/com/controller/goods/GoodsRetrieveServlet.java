@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.GoodsDTO;
-import com.service.GoodsService;
+import com.dto.ItemDTO;
+import com.service.ItemService;
 
 @WebServlet("/GoodsRetrieveServlet")
 public class GoodsRetrieveServlet extends HttpServlet {
@@ -19,11 +19,11 @@ public class GoodsRetrieveServlet extends HttpServlet {
 		String item_code = request.getParameter("item_code");
 		System.out.println("상품 코드 : " + item_code);
 		
-		GoodsService service = new GoodsService();
-		GoodsDTO gdto= service.goodsRetrieve(item_code);
-		System.out.println(gdto);
+		ItemService service = new ItemService();
+		ItemDTO dto= service.goodsRetrieve(item_code);
+		System.out.println(dto);
 		
-		request.setAttribute("goodsRetrieve", gdto);
+		request.setAttribute("goodsRetrieve", dto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("goodsRetrieve.jsp");
 		dis.forward(request, response);

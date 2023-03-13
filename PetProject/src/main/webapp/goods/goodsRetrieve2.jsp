@@ -26,15 +26,16 @@ $(document).ready(function(){
 		$("#totalPrice").text(price*rs);
 	});//end 수량-
 	
-	//바로가기 버튼
+	//바로구매
 	$("#order").on("click", function(){
 		//유효성 검사
-		
 		
 		//데이터 넘기기
 		//$("#form").attr("action", "GoodsCartServlet");
 		
 	});//end order
+	
+	//
 	
 });//end doc
 
