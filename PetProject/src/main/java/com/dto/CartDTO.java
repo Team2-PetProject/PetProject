@@ -6,6 +6,7 @@ public class CartDTO {
 	private String Cart_Amount;
 	private String Item_Spec;
 	private String Item_Taste;
+	private String Item_Color;
 	public CartDTO() {
 		super();
 		// TODO Auto-generated constructor stub
