@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
-import com.dto.CartDTO;
+import com.dto.CartInfoDTO;
 import com.dto.ItemDTO;
 import com.dto.MemberDTO;
 import com.service.CartService;
@@ -36,7 +36,7 @@ public class CartListServlet extends HttpServlet {
 //		String nextPage = null;
 //		if(dto != null) {
 			CartService cService = new CartService();
-			List<CartDTO> cartList = cService.cartList(1);
+			List<CartInfoDTO> cartList = cService.cartList(1);
 			request.setAttribute("cartList", cartList);
 			RequestDispatcher dis = request.getRequestDispatcher("cartList.jsp");
 			dis.forward(request, response);

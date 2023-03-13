@@ -5,11 +5,11 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.dto.CartDTO;
+import com.dto.CartInfoDTO;
 
 public class CartDAO {
 
-	public List<CartDTO> cartList(SqlSession session, int member_code) {
+	public List<CartInfoDTO> cartList(SqlSession session, int member_code) {
 		return session.selectList("cartList", member_code);
 	}
 

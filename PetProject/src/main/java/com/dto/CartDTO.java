@@ -4,33 +4,24 @@ public class CartDTO {
 	private int Cart_Code;
 	private String Member_Code;
 	private String Cart_Amount;
-	private String Item_Spec;
-	private String Item_Taste;
 	private String Item_Code;
-	private String Item_Category;
-	private String Item_Name;
-	private String Item_Info;
-	private int Item_Price;
-	private String Item_Image;
+	private String Cart_Size;
+	private String Cart_Color;
+	private String Cart_Taste;
 	public CartDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CartDTO(int cart_Code, String member_Code, String cart_Amount, String item_Spec, String item_Taste,
-			String item_Code, String item_Category, String item_Name, String item_Info, int item_Price,
-			String item_Image) {
+	public CartDTO(int cart_Code, String member_Code, String cart_Amount, String item_Code, String cart_Size,
+			String cart_Color, String cart_Taste) {
 		super();
 		Cart_Code = cart_Code;
 		Member_Code = member_Code;
 		Cart_Amount = cart_Amount;
-		Item_Spec = item_Spec;
-		Item_Taste = item_Taste;
 		Item_Code = item_Code;
-		Item_Category = item_Category;
-		Item_Name = item_Name;
-		Item_Info = item_Info;
-		Item_Price = item_Price;
-		Item_Image = item_Image;
+		Cart_Size = cart_Size;
+		Cart_Color = cart_Color;
+		Cart_Taste = cart_Taste;
 	}
 	public int getCart_Code() {
 		return Cart_Code;
@@ -50,60 +41,35 @@ public class CartDTO {
 	public void setCart_Amount(String cart_Amount) {
 		Cart_Amount = cart_Amount;
 	}
-	public String getItem_Spec() {
-		return Item_Spec;
-	}
-	public void setItem_Spec(String item_Spec) {
-		Item_Spec = item_Spec;
-	}
-	public String getItem_Taste() {
-		return Item_Taste;
-	}
-	public void setItem_Taste(String item_Taste) {
-		Item_Taste = item_Taste;
-	}
 	public String getItem_Code() {
 		return Item_Code;
 	}
 	public void setItem_Code(String item_Code) {
 		Item_Code = item_Code;
 	}
-	public String getItem_Category() {
-		return Item_Category;
+	public String getCart_Size() {
+		return Cart_Size;
 	}
-	public void setItem_Category(String item_Category) {
-		Item_Category = item_Category;
+	public void setCart_Size(String cart_Size) {
+		Cart_Size = cart_Size;
 	}
-	public String getItem_Name() {
-		return Item_Name;
+	public String getCart_Color() {
+		return Cart_Color;
 	}
-	public void setItem_Name(String item_Name) {
-		Item_Name = item_Name;
+	public void setCart_Color(String cart_Color) {
+		Cart_Color = cart_Color;
 	}
-	public String getItem_Info() {
-		return Item_Info;
+	public String getCart_Taste() {
+		return Cart_Taste;
 	}
-	public void setItem_Info(String item_Info) {
-		Item_Info = item_Info;
-	}
-	public int getItem_Price() {
-		return Item_Price;
-	}
-	public void setItem_Price(int item_Price) {
-		Item_Price = item_Price;
-	}
-	public String getItem_Image() {
-		return Item_Image;
-	}
-	public void setItem_Image(String item_Image) {
-		Item_Image = item_Image;
+	public void setCart_Taste(String cart_Taste) {
+		Cart_Taste = cart_Taste;
 	}
 	@Override
 	public String toString() {
 		return "CartDTO [Cart_Code=" + Cart_Code + ", Member_Code=" + Member_Code + ", Cart_Amount=" + Cart_Amount
-				+ ", Item_Spec=" + Item_Spec + ", Item_Taste=" + Item_Taste + ", Item_Code=" + Item_Code
-				+ ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name + ", Item_Info=" + Item_Info
-				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + "]";
+				+ ", Item_Code=" + Item_Code + ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color
+				+ ", Cart_Taste=" + Cart_Taste + "]";
 	}
 	
 }

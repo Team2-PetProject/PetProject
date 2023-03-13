@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.dto.CartDTO" %>
+<%@ page import="com.dto.CartInfoDTO" %>
 <%@ page import="java.util.List" %>
 <style type="text/css">
 	.card {
@@ -77,21 +77,25 @@
 <input type="checkbox" id="allCheck"> 전체 선택
 <input type="button" value="선택삭제" id="allDel"/>
 	<%
-		List<CartDTO> list = (List<CartDTO>) request.getAttribute("cartList");
-		System.out.println(list.size());
-		for(int i=0;i<list.size();i++){
-			CartDTO dto = list.get(i);
-			int cartCode = dto.getCart_Code();
-			String memberCode = dto.getMember_Code();
-			String cartAmount = dto.getCart_Amount();
-			String itemSpec = dto.getItem_Spec();
-			String itemTaste = dto.getItem_Taste();
-			String itemCode = dto.getItem_Code();
-			String itemCategory = dto.getItem_Category();
-			String itemName = dto.getItem_Name();
-			String itemInfo = dto.getItem_Info();
-			int itemPrice = dto.getItem_Price();
-			String itemImage = dto.getItem_Image();
+	List<CartInfoDTO> list = (List<CartInfoDTO>) request.getAttribute("cartList");
+			System.out.println(list.size());
+			for(int i=0;i<list.size();i++){
+		CartInfoDTO dto = list.get(i);
+		int cartCode = dto.getCart_Code();
+		String memberCode = dto.getMember_Code();
+		String cartAmount = dto.getCart_Amount();
+		String itemSize = dto.getItem_Size();
+		String itemColor = dto.getItem_Color();
+		String itemTaste = dto.getItem_Taste();
+		String itemCode = dto.getItem_Code();
+		String itemCategory = dto.getItem_Category();
+		String itemName = dto.getItem_Name();
+		String itemInfo = dto.getItem_Info();
+		int itemPrice = dto.getItem_Price();
+		String cartSize = dto.getCart_Size();
+		String cartColor = dto.getCart_Color();
+		String cartTaste = dto.getCart_Taste();
+		String itemImage = dto.getItem_Image();
 	%>
 	<fieldset>
 		<div class="img" style = "float : left;">
@@ -100,10 +104,24 @@
 		</div>
 		<div style = "float : left;">
 			<h2><%=itemName%></h2>
-			<p><%=itemInfo%>
-			수량 <button class="up" data-num="<%=memberCode%>">+</button> 
-			<input type="text" class="Amount" id="Amount<%=memberCode%>" name = "Amount" value = "<%=cartAmount%>"> 
-			<button class="down" data-num="<%=memberCode%>">-</button>
+			<p><%=itemInfo%></p>
+			옵션			
+			<select name="optionSize">
+			<%
+				if(cartSize != null){
+					String[] arr = itemSize.split("/");
+					for(int j=0;j<arr.length;j++){
+			%>
+							<option value="<%=arr[j]%>" <%if(cartSize.equals(arr[j])){%>selected<%} %>><%=arr[j]%></option>
+						
+			<%
+					}
+				}
+			%>
+			</select>
+			수량 <button class="up" data-num="<%=cartCode%>">+</button> 
+			<input type="text" class="Amount" id="Amount<%=cartCode%>" name = "Amount" value = "<%=cartAmount%>"> 
+			<button class="down" data-num="<%=cartCode%>">-</button>
 			<input type="button" value="변경" data-num="<%=memberCode%>" data-code = <%=cartCode%> class="update"/>
 			<input type="button" value="삭제" data-code="<%=cartCode%>" class="del"/>
 		</div>

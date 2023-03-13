@@ -11,15 +11,16 @@ public class OrderItemDTO {
 	private int Cart_Amount;
 	private int Item_Price;
 	private String Item_Image;
-	private String Item_Spec;
-	private String Item_Taste;
+	private String Cart_Size;
+	private String Cart_Color;
+	private String Cart_Taste;
 	public OrderItemDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public OrderItemDTO(int orderItem_Code, int cart_Code, String item_Code, int orderInfo_Code, String item_Category,
-			String member_Code, String order_Name, int cart_Amount, int item_Price, String item_Image, String item_Spec,
-			String item_Taste) {
+			String member_Code, String order_Name, int cart_Amount, int item_Price, String item_Image, String cart_Size,
+			String cart_Color, String cart_Taste) {
 		super();
 		OrderItem_Code = orderItem_Code;
 		Cart_Code = cart_Code;
@@ -31,8 +32,9 @@ public class OrderItemDTO {
 		Cart_Amount = cart_Amount;
 		Item_Price = item_Price;
 		Item_Image = item_Image;
-		Item_Spec = item_Spec;
-		Item_Taste = item_Taste;
+		Cart_Size = cart_Size;
+		Cart_Color = cart_Color;
+		Cart_Taste = cart_Taste;
 	}
 	public int getOrderItem_Code() {
 		return OrderItem_Code;
@@ -94,25 +96,32 @@ public class OrderItemDTO {
 	public void setItem_Image(String item_Image) {
 		Item_Image = item_Image;
 	}
-	public String getItem_Spec() {
-		return Item_Spec;
+	public String getCart_Size() {
+		return Cart_Size;
 	}
-	public void setItem_Spec(String item_Spec) {
-		Item_Spec = item_Spec;
+	public void setCart_Size(String cart_Size) {
+		Cart_Size = cart_Size;
 	}
-	public String getItem_Taste() {
-		return Item_Taste;
+	public String getCart_Color() {
+		return Cart_Color;
 	}
-	public void setItem_Taste(String item_Taste) {
-		Item_Taste = item_Taste;
+	public void setCart_Color(String cart_Color) {
+		Cart_Color = cart_Color;
+	}
+	public String getCart_Taste() {
+		return Cart_Taste;
+	}
+	public void setCart_Taste(String cart_Taste) {
+		Cart_Taste = cart_Taste;
 	}
 	@Override
 	public String toString() {
 		return "OrderItemDTO [OrderItem_Code=" + OrderItem_Code + ", Cart_Code=" + Cart_Code + ", Item_Code="
 				+ Item_Code + ", OrderInfo_Code=" + OrderInfo_Code + ", Item_Category=" + Item_Category
 				+ ", Member_Code=" + Member_Code + ", Order_Name=" + Order_Name + ", Cart_Amount=" + Cart_Amount
-				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Spec=" + Item_Spec
-				+ ", Item_Taste=" + Item_Taste + "]";
+				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Cart_Size=" + Cart_Size
+				+ ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste + "]";
 	}
+	
 	
 }

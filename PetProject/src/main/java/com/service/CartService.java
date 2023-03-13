@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
 import com.dao.CartDAO;
-import com.dto.CartDTO;
+import com.dto.CartInfoDTO;
 
 public class CartService {
 	CartDAO dao;
@@ -17,9 +17,9 @@ public class CartService {
 		dao = new CartDAO();
 	}
 
-	public List<CartDTO> cartList(int member_code) {
+	public List<CartInfoDTO> cartList(int member_code) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
-		List<CartDTO> list = null;
+		List<CartInfoDTO> list = null;
 		try {
 			list = dao.cartList(session, member_code);
 		} finally {
