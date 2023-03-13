@@ -1,6 +1,6 @@
 package com.dto;
 
-public class item_FavoritDTO {
+public class item_FavoriteDTO {
 	
 	private String member_code;
 	private String item_Code;
@@ -22,11 +22,11 @@ public class item_FavoritDTO {
 		return "item_FavoriteDTO [member_code=" + member_code + ", item_Code=" + item_Code + "]";
 	}
 
-	public item_FavoritDTO() {
+	public item_FavoriteDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public item_FavoritDTO(String member_code, String item_Code) {
+	public item_FavoriteDTO(String member_code, String item_Code) {
 		super();
 		this.member_code = member_code;
 		this.item_Code = item_Code;

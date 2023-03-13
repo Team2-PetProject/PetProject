@@ -1,4 +1,4 @@
-package com.controller.favorit;
+package com.controller.favorite;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.item_FavoritDTO;
-import com.service.item_FavoritService;
-import com.service.tour_FavoritService;
+import com.dto.item_FavoriteDTO;
+import com.service.item_FavoriteService;
+import com.service.tour_FavoriteService;
 
-@WebServlet("/FavoritUIServlet")
-public class FavoritUIServlet extends HttpServlet {
-//	item_FavoritService itemService;
+@WebServlet("/FavoriteUIServlet")
+public class FavoriteUIServlet extends HttpServlet {
+	item_FavoriteService itemService;
 //	tour_FavoritService tour_Service;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,9 +26,10 @@ public class FavoritUIServlet extends HttpServlet {
 //		String nextPage="main";
 
 //		if (memberdto==null) {
-		item_FavoritService service = new item_FavoritService();
-		List<item_FavoritDTO> itemList = service.getList("111");
+		item_FavoriteService service = new item_FavoriteService();
+		List<item_FavoriteDTO> itemList = service.getList("111");
 		System.out.println(itemList);
+//		System.out.println(service);
 		
 	
 //		List<tour_FavoritDTO> tour_list=tour_Service.getList(member_code);

@@ -8,10 +8,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   	<typeAliases>
   		<typeAlias type="com.dto.CartDTO" alias="CartDTO"/>
   		<typeAlias type="com.dto.GoodsDTO" alias="GoodsDTO"/>
-  		<typeAlias type="com.dto.item_FavoritDTO" alias="item_FavoritDTO"/>
+  		<typeAlias type="com.dto.item_FavoriteDTO" alias="item_FavoriteDTO"/>
   		<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.dto.OrderInfoDTO" alias="OrderInfoDTO"/>
-  		<typeAlias type="com.dto.tour_FavoritDAO" alias="tour_FavoritDAO"/>
+  		<typeAlias type="com.dto.tour_FavoriteDTO" alias="tour_FavoriteDTO"/>
   		<typeAlias type="com.dto.TourDTO" alias="TourDTO"/>
   	</typeAliases>
    
@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/GoodsMapper.xml"/>
 		<mapper resource="com/config/MemberMapper.xml"/>
 		<mapper resource="com/config/OrderInfoMapper.xml"/>
-		<mapper resource="com/config/FavoritMapper.xml"/>
+		<mapper resource="com/config/FavoriteMapper.xml"/>
 		<mapper resource="com/config/TourMapper.xml"/>
 	</mappers>
 
