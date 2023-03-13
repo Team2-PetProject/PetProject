@@ -10,4 +10,12 @@ from
 item_favorite
 where member_code=#{member_code}
 </select>
+
+<select id="tourList" parameterType="String" resultType="tour_FavoriteDTO" >
+select
+*
+from
+tour_favorite
+where member_code=#{member_code}
+</select>
 </mapper>

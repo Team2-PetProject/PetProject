@@ -1,7 +1,10 @@
 package com.controller.favorite;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.item_FavoriteDTO;
+import com.dto.tour_FavoriteDTO;
 import com.service.item_FavoriteService;
 import com.service.tour_FavoriteService;
 
 @WebServlet("/FavoriteUIServlet")
 public class FavoriteUIServlet extends HttpServlet {
-	item_FavoriteService itemService;
-//	tour_FavoritService tour_Service;
+	item_FavoriteService item_Service;
+	tour_FavoriteService tour_Service;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -26,26 +30,28 @@ public class FavoriteUIServlet extends HttpServlet {
 //		String nextPage="main";
 
 //		if (memberdto==null) {
-		item_FavoriteService service = new item_FavoriteService();
-		List<item_FavoriteDTO> itemList = service.getList("111");
-		System.out.println(itemList);
-//		System.out.println(service);
-		
-	
-//		List<tour_FavoritDTO> tour_list=tour_Service.getList(member_code);
-//		List<tour_FavoritDTO> tourList=tour_Service.getList("111");
-//		System.out.println(tourList);
-//			ArrayList<FavoritDTO> list= new ArrayList<FavoritDTO>();
-//			list.add((FavoritDTO) tour_list);
-//			list.add((FavoritDTO) item_list);
-//			HashMap<Integer, List<FavoritDTO>> favorit=new HashMap<Integer, List<FavoritDTO>>();
-//			for (int i = 0; i < item_list.size(); i++) {
-//				favorit.put(i, item_list);
-//			}
-//			for (int i =item_list.size()+1; i < tour_list.size(); i++) {
-//				favorit.put(i, tour_list);
-//			}
-//			
+//		item_FavoriteService itemService = new item_FavoriteService();
+//		tour_FavoriteService tourService = new tour_FavoriteService();
+		item_Service = new item_FavoriteService();
+		tour_Service = new tour_FavoriteService();
+//		List<item_FavoriteDTO> itemList = itemService.getList("111");
+//		List<tour_FavoriteDTO> tourList = tourService.getList("111");
+		List<item_FavoriteDTO> itemList = item_Service.getList("111");
+		List<tour_FavoriteDTO> tourList = tour_Service.getList("111");
+		HashMap<Integer, Object> map= new HashMap<Integer, Object>();
+		System.out.println(itemList.size());
+			for (int i = 0; i < itemList.size(); i++) {
+				map.put(i,itemList);
+				for (int j = itemList.size()+1; j < itemList.size()+tourList.size(); j++) {
+					map.put(j, tourList);
+				}
+			}
+			Set set=map.keySet();
+			Iterator<Integer> keys=map.keySet().iterator();
+			while (keys.hasNext()){
+				int key=keys.next();
+				System.out.println(key);
+			}
 //			
 //		}else {
 //			session.setAttribute("mesg", "로그인을 부탁드립니다.");

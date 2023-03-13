@@ -4,15 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.dto.item_FavoriteDTO;
 import com.dto.tour_FavoriteDTO;
 
 public class tour_FavoriteDAO {
 
-	public List<tour_FavoriteDAO> getList(SqlSession session, String member_code) {
-
-		List<tour_FavoriteDAO> list=session.selectList("FavoriteMapper.tourList",member_code);
+	public List<tour_FavoriteDTO> getList(SqlSession session, String member_code) {
 		System.out.println("dao");
+		List<tour_FavoriteDTO> list=session.selectList("FavoriteMapper.tourList",member_code);
 		return list;
 	}
 
