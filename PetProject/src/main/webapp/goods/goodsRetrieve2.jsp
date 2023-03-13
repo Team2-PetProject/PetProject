@@ -26,6 +26,15 @@ $(document).ready(function(){
 		$("#totalPrice").text(price*rs);
 	});//end 수량-
 	
+	//바로가기 버튼
+	$("#order").on("click", function(){
+		//유효성 검사
+		
+		
+		//데이터 넘기기
+		//$("#form").attr("action", "GoodsCartServlet");
+		
+	});//end order
 	
 });//end doc
 
@@ -43,9 +52,9 @@ $(document).ready(function(){
 <table border="1">
 	<tr height="40px">
 	<tr>
-		<td width="45"><a href="#"><span style="font-size:12px">사료</span></a></td>
+		<td width="100"><a href="#"><span style="font-size:12px">사료</span></a></td>
 <!-- 		<td width="45"><a href="#"><span style="font-size:12px">건식</span></a></td> -->
-		<td width="150">
+		<td width="100">
 		<td width="50">
 	</tr>
 	<tr height="15px">
@@ -72,10 +81,19 @@ $(document).ready(function(){
 	<tr height="20" />
 	<tr>
 		<td>옵션1</td>
-	</tr>
-	<tr height="10">
-	<tr>
 		<td>옵션2</td>
+	</tr>
+	<tr>
+		<td>
+			<select id="item_size" name="item_size">
+				<option selected >선택하세요</option>
+			</select>
+		</td>
+		<td>
+			<select>
+				<option selected >선택하세요</option>
+			</select>
+		</td>
 	</tr>
 	<tr height="20" />
 	<tr>
@@ -93,9 +111,10 @@ $(document).ready(function(){
 	
 </table>
 <br>
-<button>찜 하기</button>
-<button>장바구니</button>
-<button>바로구매</button>
+<button id="order">바로구매</button>
+<button id="cart">장바구니</button>
+<button id="like">찜 하기</button>
+
 <button>상품문의</button>
 
  </div> <!-- end goods_option -->
