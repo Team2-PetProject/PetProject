@@ -9,32 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.item_FavoriteDTO;
-import com.service.item_FavoriteService;
-
-
-
+import com.dto.item_FavoritDTO;
+import com.dto.tour_FavoritDTO;
+import com.service.item_FavoritService;
+import com.service.tour_FavoritService;
 
 @WebServlet("/FavoritUIServlet")
 public class FavoritUIServlet extends HttpServlet {
+	item_FavoritService item_Service;
+	tour_FavoritService tour_Service;
 
-
-	
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 //		HttpSession session=request.getSession();
 //		MemberDTO memberdto=(MemberDTO)session.getAttribute("login");
 //		String member_code=memberdto.getMember_code();
 //		String nextPage="main";
 //		if (memberdto==null) {
 //			List<item_FavoriteDTO> item_list=item_service.getList(member_code);
-			item_FavoriteService item_service1 = new item_FavoriteService();
-			System.out.println(item_service1);
-		List<item_FavoriteDTO> item_list=item_service1.getList("111");
-//			List<tour_FavoritDTO> tour_list=tour_service.getList(member_code);
-			System.out.println(item_list);
-//			List<tour_FavoritDTO> tour_list=tour_service.getList("111");
+		List<item_FavoritDTO> itemList = item_Service.getList("111");
+		System.out.println(itemList);
+//		List<tour_FavoritDTO> tour_list=tour_Service.getList(member_code);
+//		List<tour_FavoritDTO> tourList=tour_Service.getList("111");
+//		System.out.println(tourList);
 //			ArrayList<FavoritDTO> list= new ArrayList<FavoritDTO>();
 //			list.add((FavoritDTO) tour_list);
 //			list.add((FavoritDTO) item_list);
@@ -52,10 +49,11 @@ public class FavoritUIServlet extends HttpServlet {
 //			nextPage="LoginUIServlet";
 //		}
 //		response.sendRedirect(nextPage);
-		
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

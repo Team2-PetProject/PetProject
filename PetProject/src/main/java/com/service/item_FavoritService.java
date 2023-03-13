@@ -5,19 +5,18 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
-import com.dao.item_FavoriteDAO;
-import com.dto.item_FavoriteDTO;
+import com.dao.item_FavoritDAO;
+import com.dto.item_FavoritDTO;
 
-public class item_FavoriteService {
+public class item_FavoritService {
+item_FavoritDAO dao;
 
 
-
-	public List<item_FavoriteDTO> getList(String member_code) {
-		System.out.println("서비스");
+	public List<item_FavoritDTO> getList(String member_code) {
+		System.out.println("서비스접속");
 		SqlSession session=MySqlSessionFactory.getSqlSession();
 		System.out.println(session);
-		item_FavoriteDAO dao=new item_FavoriteDAO();
-		List<item_FavoriteDTO> list=null;
+		List<item_FavoritDTO> list=null;
 		try {
 			list=dao.getList(session,member_code);
 		} catch(Exception e) {
@@ -28,7 +27,7 @@ public class item_FavoriteService {
 		return list;
 	}
 
-	public item_FavoriteService() {
+	public item_FavoritService() {
 		SqlSession session=MySqlSessionFactory.getSqlSession();
 		System.out.println(session);
 	}
