@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kkosunnae</title>
+<title>itemRe</title>
 <!-- 메타 태그 설정, 키워드, 설명  -->
 <meta name="description" content="애견용품 전문 쇼핑몰, 애견과 함께하는 행사 소개">
 <meta name="keywords" content="애견용품,애견간식,애견식품,목줄,애견집,애견축제">
@@ -40,7 +40,7 @@ main {
 
 	<main>
 		<hr>
-		<jsp:include page="goods/itemRetrieve2.jsp" flush="true"></jsp:include>
+		<jsp:include page="goods/itemRetrieve3.jsp" flush="true"></jsp:include>
 		
 	</main>
 

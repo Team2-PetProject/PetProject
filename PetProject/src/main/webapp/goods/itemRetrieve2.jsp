@@ -71,11 +71,13 @@ $(document).ready(function(){
 
 <table border="1">
 	<tr height="40px">
+	<!-- 
 	<tr>
 		<td><a href="#"><span name="Item_Category" style="font-size:12px"><%=itemCategory %></span></a></td>
 		<td>
 		<td>
 	</tr>
+	 -->
 	<tr height="15px">
 	<tr>
 		<td colspan="3"><span name="Item_Name" style="font-size:25px; font-weight:bold;"><%=itemName %></span></td>
@@ -110,22 +112,26 @@ $(document).ready(function(){
 	 -->
 	
 		<% System.out.println(itemSize);
-		if( itemSize != null) { %>
+		//if( itemSize == null || itemColor == null || itemTaste == null) { %>
+<!-- 		<td>상품 옵션</td>
+			<td colspan="2">상품 옵션</td>
+		<%// }else{ %>
+		 -->	
 			<td>상품 옵션</td>
-		<% }else{ %>
-			<td width="0"></td> <%} %>
-		<td>상품 옵션</td>
-		<td>상품 옵션</td>
+			<td>상품 옵션</td>
+			<td>상품 옵션</td>
+			<%//} %>
 	</tr>
+	<!-- 
 	<tr>
-		<% if( itemSize != null) { %>
+		
 			<td>
 			<select id="itemSize" name="Cart_Size">
 				<option selected >선택하세요</option>
 			</select>
 		</td>
-		<% }else{ %>
-			<td width="0"></td> <%} %>
+		
+			<td width="0"></td>
 		<td>
 			<select id="itemSize" name="Cart_Size">
 				<option selected >선택하세요</option>
@@ -142,6 +148,7 @@ $(document).ready(function(){
 			</select>
 		</td>
 	</tr>
+	 -->
 	<tr height="20" />
 	<tr>
 		<td colspan="3">수량</td>
