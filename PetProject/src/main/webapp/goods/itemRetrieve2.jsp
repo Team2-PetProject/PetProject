@@ -31,11 +31,17 @@ $(document).ready(function(){
 		//유효성 검사
 		
 		//데이터 넘기기
-		//$("#form").attr("action", "GoodsCartServlet");
+		//$("#form").attr("action", "CartOrderConfirmServlet");
 		
 	});//end order
 	
-	//
+	//장바구니
+	
+	//찜하기
+	$("#like").on("click", function() {
+		$("")
+		//
+	});//end like
 	
 });//end doc
 
@@ -100,7 +106,7 @@ $(document).ready(function(){
 	<tr>
 		<td colspan="3">수량</td>
 		<td><img src="images/icon/minus.png" id="down" width="10" height="10">
-			<input type="text" id="cart_amount" name="cart_amount" value="1" style="width:25px; text-align:center;">
+			<input type="text" id="item_amount" name="item_amount" value="1" style="width:25px; text-align:center;">
 			<img src="images/icon/plus.png" id="up" width="10"></td>
 	</tr>
 	<tr height="10" />
