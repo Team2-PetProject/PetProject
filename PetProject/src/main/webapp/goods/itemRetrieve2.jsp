@@ -11,6 +11,8 @@
 	int itemPrice = dto.getItem_Price();
 	String itemImage = dto.getItem_Image();
 	String itemSize = dto.getItem_Size();
+	String itemColor = dto.getItem_Color();
+	String itemTaste = dto.getItem_Taste();
 
 %>
 
@@ -62,7 +64,7 @@ $(document).ready(function(){
 
 <div class="goods_top"> <!-- 가운데 정렬 위함 -->
 <div class="goods_img"> <!-- 상품 이미지 -->
-	<img name="Item_Image" src="images/items/food02.png" width="400px" height="400px">
+	<img name="Item_Image" src="images/items/<%=itemImage %>.png" width="400px" height="400px">
 </div>
 
 <div class="goods_option">
@@ -70,14 +72,13 @@ $(document).ready(function(){
 <table border="1">
 	<tr height="40px">
 	<tr>
-		<td width="100"><a href="#"><span style="font-size:12px">사료</span></a></td>
-<!-- 		<td width="45"><a href="#"><span style="font-size:12px">건식</span></a></td> -->
-		<td width="100">
-		<td width="50">
+		<td width="150"><a href="#"><span name="Item_Category" style="font-size:12px"><%=itemCategory %></span></a></td>
+		<td width="150">
+		<td width="150">
 	</tr>
 	<tr height="15px">
 	<tr>
-		<td colspan="4"><span style="font-size:25px; font-weight:bold;">ANF 램 전견용 7.2kg</span></td>
+		<td colspan="3"><span name="Item_Name" style="font-size:25px; font-weight:bold;"><%=itemName %></span></td>
 	</tr>
 	<tr height="5px">
 	<tr>
@@ -176,7 +177,7 @@ $(document).ready(function(){
 		float: left;
 		width: 450px;
 		height: 450px;
-	/*	background: pink;*/
+		background: pink;
 	}
 	
 	.goods_detail{
