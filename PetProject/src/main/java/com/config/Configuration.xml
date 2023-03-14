@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   		<typeAlias type="com.dto.OrderInfoDTO" alias="OrderInfoDTO"/>
   		<typeAlias type="com.dto.tFavoriteDTO" alias="tFavoriteDTO"/>
   		<typeAlias type="com.dto.TourDTO" alias="TourDTO"/>
+  		<typeAlias type="com.dto.CartInfoDTO" alias="CartInfoDTO"/>
   	</typeAliases>
    
 	<environments default="development">
