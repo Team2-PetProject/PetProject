@@ -21,7 +21,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var price = $("#item_price").text();
+	var price = $("#itemPrice").text();
 	var rs = $("#cart_amount").val();
 
 	//수량 +/-, 총 금액 뿌리기
@@ -72,9 +72,9 @@ $(document).ready(function(){
 <table border="1">
 	<tr height="40px">
 	<tr>
-		<td width="150px"><a href="#"><span name="Item_Category" style="font-size:12px"><%=itemCategory %></span></a></td>
-		<td width="150px">
-		<td width="150px">
+		<td><a href="#"><span name="Item_Category" style="font-size:12px"><%=itemCategory %></span></a></td>
+		<td>
+		<td>
 	</tr>
 	<tr height="15px">
 	<tr>
@@ -83,7 +83,7 @@ $(document).ready(function(){
 	<tr height="5px">
 	<tr>
 		<td colspan="4">
-			<span id="item_price" style="font-size:25px; font-weight:bold;">40000</span>
+			<span id="itemPrice" style="font-size:25px; font-weight:bold;"><%=itemPrice %></span>
 			<span style="font-size:23px; font-weight:bold;">원</span>
 		</td>
 	</tr>
@@ -99,17 +99,37 @@ $(document).ready(function(){
 	</tr> -->
 	<tr height="20" />
 	<tr>
-		<td>옵션1</td>
-		<td>옵션2</td>
+	
+	<!-- 
+		if(itemSize == null) {
+			<td width = "0px">
+		} else{
+			<td>
+		}
+	
+	 -->
+	
+		<% if(itemSize == null) { %>
+			<td style="width:0px;">
+		<% }else{ %>
+			<td> <%} %>	상품 옵션</td>
+		<td>상품 옵션</td>
+		<td>상품 옵션</td>
 	</tr>
 	<tr>
+	
 		<td>
-			<select id="item_size" name="item_size">
+			<select id="itemSize" name="Cart_Size">
+				<option <% if(itemSize == null){ %> selected <%} %> >선택하세요</option>
+			</select>
+		</td>
+		<td>
+			<select id="itemColor" name="Cart_Color">
 				<option selected >선택하세요</option>
 			</select>
 		</td>
 		<td>
-			<select>
+			<select id="itemTaste" name="Cart_Taste">
 				<option selected >선택하세요</option>
 			</select>
 		</td>
