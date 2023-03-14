@@ -111,9 +111,9 @@ $(document).ready(function(){
 	
 		<% System.out.println(itemSize);
 		if( itemSize != null) { %>
-			<td>
+			<td>상품 옵션</td>
 		<% }else{ %>
-			<td width="5"> <%} %>상품 옵션</td>
+			<td width="0"><td> <%} %>
 		<td>상품 옵션</td>
 		<td>상품 옵션</td>
 	</tr>
