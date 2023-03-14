@@ -109,10 +109,10 @@ $(document).ready(function(){
 	
 	 -->
 	
-		<% if(itemSize == null) { %>
-			<td style="width:0px;">
+		<% if(itemSize != null) { %>
+			<td>
 		<% }else{ %>
-			<td> <%} %>상품 옵션</td>
+			<td width="0"> <%} %>상품 옵션</td>
 		<td>상품 옵션</td>
 		<td>상품 옵션</td>
 	</tr>
