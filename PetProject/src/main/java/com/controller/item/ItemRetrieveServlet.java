@@ -22,7 +22,7 @@ public class ItemRetrieveServlet extends HttpServlet {
 		
 		ItemService service = new ItemService();
 		ItemDTO dto= service.itemRetrieve(item_code);
-		System.out.println(dto);
+		//System.out.println(dto);
 		
 		request.setAttribute("itemRetrieve", dto);
 		

@@ -4,7 +4,7 @@
 <%@ page import="com.dto.ItemDTO" %>
 <%
 	ItemDTO dto = (ItemDTO)request.getAttribute("itemRetrieve");
-	System.out.println("goods/itemRetrieve2.jsp " + dto);
+	System.out.println("goods/itemRetrieve2.jsp에서 " + dto);
 	String itemCode = dto.getItem_Code();
 	String itemCategory = dto.getItem_Category();
 	String itemName = dto.getItem_Name();
