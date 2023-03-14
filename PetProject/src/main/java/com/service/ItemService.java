@@ -14,12 +14,12 @@ public class ItemService {
 		dao = new ItemDAO();
 	}
 	
-	public ItemDTO goodsRetrieve(String item_code) {
+	public ItemDTO itemRetrieve(String item_code) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		ItemDTO dto = null;
 		try {
 			ItemDAO dao = new ItemDAO();
-			dto = dao.goodsRetrieve(session, item_code);
+			dto = dao.itemRetrieve(session, item_code);
 		} finally {
 			session.close();
 		}

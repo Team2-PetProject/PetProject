@@ -40,7 +40,7 @@ main {
 
 	<main>
 		<hr>
-		<jsp:include page="goods/cartList.jsp" flush="true"></jsp:include>
+
 	</main>
 
 

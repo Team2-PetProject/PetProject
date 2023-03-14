@@ -12,20 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.ItemDTO;
 import com.service.ItemService;
 
-@WebServlet("/GoodsRetrieveServlet")
-public class GoodsRetrieveServlet extends HttpServlet {
+@WebServlet("/ItemRetrieveServlet")
+public class ItemRetrieveServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String item_code = request.getParameter("item_code");
+		//String item_code = request.getParameter("item_code");
+		String item_code = "food01";
 		System.out.println("상품 코드 : " + item_code);
 		
 		ItemService service = new ItemService();
-		ItemDTO dto= service.goodsRetrieve(item_code);
+		ItemDTO dto= service.itemRetrieve(item_code);
 		System.out.println(dto);
 		
-		request.setAttribute("goodsRetrieve", dto);
+		request.setAttribute("itemRetrieve", dto);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("goodsRetrieve.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("itemRetrieve.jsp");
 		dis.forward(request, response);
 		
 	}//end doGet

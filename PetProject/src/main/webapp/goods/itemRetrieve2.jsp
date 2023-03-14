@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="com.dto.ItemDTO" %>
+<%
+	ItemDTO dto = (ItemDTO)request.getAttribute("itemRetrieve");
+	System.out.println("goods/itemRetrieve2.jsp " + dto);
 
+%>
 
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -51,7 +56,7 @@ $(document).ready(function(){
 
 <div class="goods_top"> <!-- 가운데 정렬 위함 -->
 <div class="goods_img"> <!-- 상품 이미지 -->
-	<img src="images/items/food02.png" width="400px" height="400px">
+	<img name="Item_Image" src="images/items/food02.png" width="400px" height="400px">
 </div>
 
 <div class="goods_option">
@@ -134,6 +139,8 @@ $(document).ready(function(){
 </div>
 
 
+
+<!-- 스타일 -->
 <style type="text/css">
 
 	.goods_top{

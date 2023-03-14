@@ -6,8 +6,8 @@ import com.dto.ItemDTO;
 
 public class ItemDAO {
 
-	public ItemDTO goodsRetrieve(SqlSession session, String item_code) {
-		ItemDTO dto = session.selectOne("ItemMapper.goodsRetrieve", item_code);
+	public ItemDTO itemRetrieve(SqlSession session, String item_code) {
+		ItemDTO dto = session.selectOne("ItemMapper.itemRetrieve", item_code);
 		return dto;
 	}
 	
