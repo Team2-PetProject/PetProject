@@ -5,6 +5,12 @@
 <%
 	ItemDTO dto = (ItemDTO)request.getAttribute("itemRetrieve");
 	System.out.println("goods/itemRetrieve2.jsp " + dto);
+	String itemCode = dto.getItem_Code();
+	String itemCategory = dto.getItem_Category();
+	String itemName = dto.getItem_Name();
+	int itemPrice = dto.getItem_Price();
+	String itemImage = dto.getItem_Image();
+	String itemSize = dto.getItem_Size();
 
 %>
 

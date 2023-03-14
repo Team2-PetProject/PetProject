@@ -5,7 +5,7 @@ public class ItemDTO {
 	private String Item_Category;
 	private String Item_Name;
 	private String Item_Info;
-	private String Item_Price;
+	private int Item_Price;
 	private String Item_Image;
 	private String Item_Size;
 	private String Item_Color;
@@ -14,7 +14,7 @@ public class ItemDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ItemDTO(String item_Code, String item_Category, String item_Name, String item_Info, String item_Price,
+	public ItemDTO(String item_Code, String item_Category, String item_Name, String item_Info, int item_Price,
 			String item_Image, String item_Size, String item_Color, String item_Taste) {
 		super();
 		Item_Code = item_Code;
@@ -51,10 +51,10 @@ public class ItemDTO {
 	public void setItem_Info(String item_Info) {
 		Item_Info = item_Info;
 	}
-	public String getItem_Price() {
+	public int getItem_Price() {
 		return Item_Price;
 	}
-	public void setItem_Price(String item_Price) {
+	public void setItem_Price(int item_Price) {
 		Item_Price = item_Price;
 	}
 	public String getItem_Image() {
