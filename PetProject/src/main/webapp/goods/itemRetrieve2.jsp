@@ -112,7 +112,7 @@ $(document).ready(function(){
 		<% if(itemSize == null) { %>
 			<td style="width:0px;">
 		<% }else{ %>
-			<td> <%} %>	상품 옵션</td>
+			<td> <%} %>상품 옵션</td>
 		<td>상품 옵션</td>
 		<td>상품 옵션</td>
 	</tr>
