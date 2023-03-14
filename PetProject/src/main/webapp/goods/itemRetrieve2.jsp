@@ -72,9 +72,9 @@ $(document).ready(function(){
 <table border="1">
 	<tr height="40px">
 	<tr>
-		<td width="150"><a href="#"><span name="Item_Category" style="font-size:12px"><%=itemCategory %></span></a></td>
-		<td width="150">
-		<td width="150">
+		<td width="150px"><a href="#"><span name="Item_Category" style="font-size:12px"><%=itemCategory %></span></a></td>
+		<td width="150px">
+		<td width="150px">
 	</tr>
 	<tr height="15px">
 	<tr>
