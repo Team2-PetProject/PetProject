@@ -144,7 +144,7 @@
 </script>
 
 <%
-	CartInfoDTO cDTO = (CartInfoDTO)request.getAttribute("cDTO");
+	CartInfoDTO cDTO = (CartInfoDTO)request.getAttribute("cinfoDTO");
 	
 
 
