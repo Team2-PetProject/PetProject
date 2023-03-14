@@ -29,6 +29,7 @@ public class ItemRetrieveServlet extends HttpServlet {
 		RequestDispatcher dis = request.getRequestDispatcher("itemRetrieve.jsp");
 		dis.forward(request, response);
 		
+		
 	}//end doGet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

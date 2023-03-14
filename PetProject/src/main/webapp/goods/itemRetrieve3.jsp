@@ -63,27 +63,109 @@ $(document).ready(function(){
 
 <div style="height: 50px"></div>
 
-<div id="itemView"> <!-- 제일 밖, 가운데 정렬 위함 -->
-<div id="itemImg"> <!-- 상품 이미지 -->
-	<img name="Item_Image" src="images/items/<%=itemImage %>.png" width="400px" height="400px">
+<div id="wrapper_outer"> <!-- 제일 밖, 가운데 정렬 위함 -->
+<div id="wrapper_inner_left"> <!-- 상품 카테고리 & 이미지 -->
+	<div id="group">
+		<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
+		<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
+<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
+	</div>
+	<img id="img" name="Item_Image" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
 </div>
 
-<div id="itemContents">
+<div id="wrapper_inner_right"> <!-- 상품 컨텐츠 -->
+	
+	<div class="forBlank"></div>
+	
+	<div class="itemBasicInfo"><%=itemName %></div>
+	<div class="itemBasicInfo"><%=itemPrice %>원</div>
+	
+	<div class="itemOptionList">
+		<%
+		if(itemSize==null && itemColor!=null && itemTaste!=null
+				|| itemSize!=null && itemColor==null && itemTaste!=null
+				|| itemSize!=null && itemColor!=null && itemTaste==null){
+		%>
+			<div class="itemOption">옵션</div>
+			<div class="itemOption">옵션</div>
+		<%}else if(itemSize==null && itemColor==null && itemTaste!=null 
+				|| itemSize==null && itemColor!=null && itemTaste==null
+				|| itemSize!=null && itemColor==null && itemTaste==null){ %>	
+			<div class="itemOption">옵션</div>
+		<%}else{ %>	
+			<div class="itemOption">옵션</div>
+			<div class="itemOption">옵션</div>
+			<div class="itemOption">옵션</div>
+		<%} %>
+	</div>
+	
+	
+	
+	<div class="itemOptionList2">
+		<%
+		String[] opt = {itemSize, itemColor, itemTaste};
+		//System.out.println(opt[1]);
+		int num=0;
+		for(int i=0; i<opt.length; i++){
+			if(opt[i] != null){
+				num += 1;
+			}
+		}
+		if(num==1){
+		%>
+			<div class="itemOption2">option</div>
+		<%}else if(num==2){ %>
+			<div class="itemOption2">option</div>
+			<div class="itemOption2">option</div>
+		<%}else{ %>
+			<div class="itemOption2">option</div>
+			<div class="itemOption2">option</div>
+			<div class="itemOption2">option</div>
+		<%} %>
+	</div>
+	
+	<div class="itemOptionList2">
+		<%
+		String[] size= opt[0].split("/");
+		%>
+	
+	</div>
+	
+	
+	
+	
+	<div class="itemOptionList">
+		
+			<div>
+				<select class="itemOption">
+					<option selected>선택해주세요</option>
+					<%
+					if(itemSize != null){
+						String[] sizeOpt = itemSize.split("/");
+						for(int i=0; i<sizeOpt.length; i++){%>
+							<option><%=sizeOpt[i] %></option>
+						<%} %>
+					<%} %>
+				</select>
+			</div>
+	</div>
 
 
 
-<button id="order">바로구매</button>
+
+<!-- <button id="order">바로구매</button>
 <button id="cart">장바구니</button>
 <button id="like">찜 하기</button>
 
 <button>상품문의</button>
+ -->
+ 
+</div><!-- end itemContents -->
+</div><!-- end wrapper -->
 
- </div> <!-- end itemContents -->
-</div><!-- end itemView -->
 
-
-<!-- 상세보기 -->
-<div class="goods_detail">
+<!-- 상품상세 이미지 -->
+<div id="itemDetail">
 	<img src="images/items_detail/food01.png">
 </div>
 
@@ -92,41 +174,81 @@ $(document).ready(function(){
 <!-- 스타일 -->
 <style type="text/css">
 
-	#itemView{
+	#wrapper_outer{
 		border: 1px solid #6182D6;
 		border-radius:2em;
-		margin: auto;
+		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
 		width: 1300px;
-		height: 500px;
-		/*background: #6182D6;*/
-		display: flex;
-		align-items:center;
-		padding-left: 40px;
+		height: 530px;
+		background: #6182D6;
+		display: flex; /*자식인 #itemImg와 itemContents 가운데정렬 위해 부모에 설정*/
+		align-items:center; /*flex와 이것까지가 세로기준 가운데 정렬 */
+		justify-content: center; /*flex와 이게 가로기준 가운데 정렬*/
+		flex-direction:row;
 	}
 	
-	#itemImg{
+	#wrapper_inner_left{
 		float: left;
 		width: 450px;
-		height: 450px;
-	/*	background: blue;*/
+		height: 480px;
+		background: #FF843A;
 		margin-right: 40px;
-		display: flex; /*수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
+		display: flex; /* 자식인 진짜 이미지 수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
 		justify-content: center; /*가로 중앙 정렬*/
 		align-items:center; /*세로 중앙 정렬*/
+		flex-direction: column; /*자식들인 group과 img를 세로로 쌓기위함*/
 	}
 	
-	.goods_option{
+	#group{
 		float: left;
-		width: 450px;
-		height: 450px;
-		background: pink;
+		background: #B0981B;
+		width: 400px;
+		height: 30px;
+		margin-bottom: 10px;
 	}
 	
-	.goods_detail{
+	#wrapper_inner_right{
+		float: left;
+		width: 700px;
+		height: 480px;
+		background: #69D8AD;
+	}
+	
+	.forBlank{
+		height: 30px;
+	}
+	
+	.itemOptionList{
+		background-color:#3BA9AE;
+		display:flex;
+		justify-content: flex-start; <!-- itemOption 가로 정렬위해?? -->
+	}
+	
+	.itemOption{
+		background-color:#BFBFBF;
+		width:150px;
+		height: 20px;
+		margin-right:30px;
+	}
+	
+	.itemOptionList2{
+		background-color:red;
+		display:flex;
+		justify-content: flex-start; <!-- itemOption 가로 정렬위해?? -->
+	}
+	
+	.itemOption2{
+		background-color:pink;
+		width:150px;
+		height: 20px;
+		margin-right:30px;
+	}
+	
+	#itemDetail{
 		width: 700px;
 		margin: auto;
 		margin-top:100px;
-		
 	}
+	
 </style>
 
