@@ -109,10 +109,11 @@ $(document).ready(function(){
 	
 	 -->
 	
-		<% if(itemSize != null) { %>
+		<% System.out.println(itemSize);
+		if( itemSize != null) { %>
 			<td>
 		<% }else{ %>
-			<td width="0"> <%} %>상품 옵션</td>
+			<td width="5"> <%} %>상품 옵션</td>
 		<td>상품 옵션</td>
 		<td>상품 옵션</td>
 	</tr>
@@ -120,7 +121,7 @@ $(document).ready(function(){
 	
 		<td>
 			<select id="itemSize" name="Cart_Size">
-				<option <% if(itemSize == null){ %> selected <%} %> >선택하세요</option>
+				<option selected >선택하세요</option>
 			</select>
 		</td>
 		<td>
