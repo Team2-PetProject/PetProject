@@ -20,6 +20,7 @@ public class OrderHistoryDAO {
 	}
 
 	public List<OrderHistoryDTO> getOredrMonth(SqlSession session, int num) {
+		System.out.println("dao접속"+num);
 		List<OrderHistoryDTO>list=session.selectList("OrderInfoMapper.OredrMonth",num);
 		return list;
 	}

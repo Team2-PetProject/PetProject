@@ -20,23 +20,23 @@ public class OrderHistoryServlet extends HttpServlet {
 	OrderHistoryService service;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		MemberDTO memberdto=(MemberDTO)session.getAttribute("login");
-		String member_code=memberdto.getMember_code();
-		String nextPage="LoginUIServlet";
-
-		if (memberdto!=null) {
+//		HttpSession session=request.getSession();
+//		MemberDTO memberdto=(MemberDTO)session.getAttribute("login");
+//		String member_code=memberdto.getMember_code();
+//		String nextPage="LoginUIServlet";
+//
+//		if (memberdto!=null) {
 			service=new OrderHistoryService();
 			List<OrderHistoryDTO>list=service.getList("111");
 			System.out.println(list);
 //			List<OrderHistoryDTO>list=service.getList(member_code);
-			request.setAttribute("OrderHistory", list);
-			RequestDispatcher dis=request.getRequestDispatcher(nextPage);
-			dis.forward(request, response);
-		}else {
-			session.setAttribute("mesg", "로그인을 부탁드립니다.");
-			response.sendRedirect(nextPage);
-		}
+//			request.setAttribute("OrderHistory", list);
+//			RequestDispatcher dis=request.getRequestDispatcher(nextPage);
+//			dis.forward(request, response);
+//		}else {
+//			session.setAttribute("mesg", "로그인을 부탁드립니다.");
+//			response.sendRedirect(nextPage);
+//		}
 
 	}
 

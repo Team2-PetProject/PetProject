@@ -31,6 +31,7 @@ public class OrderSearchServlet extends HttpServlet {
 //		} else if (num == 1 || 6) {
 //		List<OrderHistoryDTO> list2 = service.getOredrMonth(num);
 		List<OrderHistoryDTO> list2 = service.getOredrMonth(6);
+		System.out.println(list2);
 //		} else {
 //		List<OrderHistoryDTO> list3 = service.getOredrTerm(num);
 //		List<OrderHistoryDTO> list3 = service.getOredrTerm("20200101","20200101");

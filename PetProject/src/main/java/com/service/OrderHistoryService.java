@@ -50,6 +50,7 @@ public class OrderHistoryService {
 		System.out.println(session);
 		List<OrderHistoryDTO> list = null;
 		try {
+			System.out.println("service에서"+num);
 			list = dao.getOredrMonth(session, num);
 		} catch (Exception e) {
 			e.printStackTrace();
