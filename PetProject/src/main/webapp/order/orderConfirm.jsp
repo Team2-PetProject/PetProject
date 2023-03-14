@@ -1,3 +1,8 @@
+<%@page import="com.dto.CartInfoDTO"%>
+<%@page import="org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation"%>
+
+<%@page import="com.dto.MemberDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -8,14 +13,14 @@
 		
 		//유효성 검사
 		$("form").on("submit",function(){
-			var oname = $("#oname").val();
-			var opost = $("#opost").val();
-			var oaddress1 = $("#oaddress1").val();
-			var oaddress2 = $("#oaddress2").val();
-			var ophone1 = $("#ophone1").val();
-			var ophone2 = $("#ophone2").val();
-			var ophone3 = $("#ophone3").val();
-			var oemail = $("#oemail").val();
+			var mname = $("#mname").val();
+			var mpost = $("#mpost").val();
+			var maddress1 = $("#maddress1").val();
+			var maddress2 = $("#maddress2").val();
+			var mphone1 = $("#mphone1").val();
+			var mphone2 = $("#mphone2").val();
+			var mphone3 = $("#mphone3").val();
+			var memail = $("#memail").val();
 			var orderName = $("#orderName").val();
 			var sample4_postcode = $("#sample4_postcode").val();
 			var sample4_roadAddress = $("#sample4_roadAddress").val();
@@ -25,44 +30,44 @@
 			var phone3 = $("#phone3").val();
 			
 			
-			if(oname.length==0){
+			if(mname.length==0){
 				alert("필수 입력 항목");
-				$("#oname").focus();
+				$("#mname").focus();
 				return false;
 			}
-			if(opost.length==0){
+			if(mpost.length==0){
 				alert("필수 입력 항목");
-				$("#opost").focus();
+				$("#mpost").focus();
 				return false;
 			}
-			if(oaddress1.length==0){
+			if(maddress1.length==0){
 				alert("필수 입력 항목");
-				$("#oaddress1").focus();
+				$("#maddress1").focus();
 				return false;
 			}
-			if(oaddress2.length==0){
+			if(maddress2.length==0){
 				alert("필수 입력 항목");
-				$("#oaddress2").focus();
+				$("#maddress2").focus();
 				return false;
 			}
-			if(ophone1.length==0){
+			if(mphone1.length==0){
 				alert("필수 입력 항목");
-				$("#ophone1").focus();
+				$("#mphone1").focus();
 				return false;
 			}
-			if(ophone2.length==0){
+			if(mphone2.length==0){
 				alert("필수 입력 항목");
-				$("#ophone2").focus();
+				$("#mphone2").focus();
 				return false;
 			}
-			if(ophone3.length==0){
+			if(mphone3.length==0){
 				alert("필수 입력 항목");
-				$("#ophone3").focus();
+				$("#mphone3").focus();
 				return false;
 			}
-			if(oemail.length==0){
+			if(memail.length==0){
 				alert("필수 입력 항목");
-				$("#oemail").focus();
+				$("#memail").focus();
 				return false;
 			}
 			if(orderName.length==0){
@@ -102,6 +107,9 @@
 			}
 			
 			
+			$("#phone").val($("#phone1").val()+$("#phone2").val()+$("#phone3").val());
+			console.log($("#phone").val());
+			
 		});//end form
 		
 		
@@ -109,43 +117,80 @@
 		//주문정보와 동일 여부
 		$("#same").on("click",function(){
 			if(this.checked){
-				$("#orderName").val($("#oname").val());
-				$("#sample4_postcode").val($("#opost").val());
-				$("#sample4_roadAddress").val($("#oaddress1").val());
-				$("#sample4_jibunAddress").val($("#oaddress2").val());
-				$("#phone1").val($("#ophone1").val());
-				$("#phone2").val($("#ophone2").val());
-				$("#phone3").val($("#ophone3").val());
+				$("#orderName").val($("#mname").val());
+				$("#sample4_postcode").val($("#mpost").val());
+				$("#sample4_roadAddress").val($("#maddress1").val());
+				$("#sample4_jibunAddress").val($("#maddress2").val());
+				$("#phone1").val($("#mphone1").val());
+				$("#phone2").val($("#mphone2").val());
+				$("#phone3").val($("#mphone3").val());
 			}else{
 				$("#orderName").val("");
 				$("#sample4_postcode").val("");
 				$("#sample4_roadAddress").val("");
 				$("#sample4_jibunAddress").val("");
-				$("#ophone1").val("");
-				$("#ophone2").val("");
-				$("#ophone3").val("");
+				$("#phone1").val("");
+				$("#phone2").val("");
+				$("#phone3").val("");
 			}
 			
 		});//end same
 		
 		
 		
+		
+		
 	});//end ready
 </script>
+
+<%
+	CartInfoDTO cDTO = (CartInfoDTO)request.getAttribute("cinfoDTO");
+	
+
+
+	int Cart_Code = cDTO.getCart_Code();
+	String Member_Code = cDTO.getMember_Code();
+	int Cart_Amount =  Integer.parseInt(cDTO.getCart_Amount()) ;
+	String Cart_Size = cDTO.getCart_Size();
+	String Cart_Color = cDTO.getCart_Color();
+	String Cart_Taste = cDTO.getCart_Taste();
+	String Item_Code = cDTO.getItem_Code();
+	String Item_Name = cDTO.getItem_Name();
+	String Item_Info = cDTO.getItem_Info();
+	int Item_Price = cDTO.getItem_Price();
+	String Item_Image = cDTO.getItem_Image();
+	
+	MemberDTO mDTO = (MemberDTO)request.getAttribute("mDTO");
+	String m_code = mDTO.getMember_code();
+	String m_name = mDTO.getMember_name();
+	String m_post = mDTO.getMember_post();
+	String m_addr1= mDTO.getMember_addr1();
+	String m_addr2= mDTO.getMember_addr2();
+	String m_phone1= mDTO.getMember_phone1();
+	String m_phone2= mDTO.getMember_phone2();
+	String m_phone3= mDTO.getMember_phone3();
+	String m_email1= mDTO.getMember_email1();
+	String m_email2= mDTO.getMember_email2();
+	
+	
+
+%>
 
 
 <h1>주문결제</h1>
 
 <form name="myForm" method="post" action="CartOrderDoneServlet">
-<input type="hidden" name="gCode" value="">
-<input type="hidden" name="gName" value="">
-<input type="hidden" name="gPrice" value="">
-<input type="hidden" name="gSpec" value="">
-<input type="hidden" name="gTaste" value="">
-<input type="hidden" name="gAmount" value="">
-<input type="hidden" name="gImage" value="">
-<input type="hidden" name="phone" value=""><!-- phone1,2,3 합치기 -->
-<input type="hidden" name="orderNum" value=""><!-- cart 번호 : cart에서 삭제 시 사용 -->
+<input type="hidden" name="Member_Code" value="<%= Member_Code%>"><!-- 테스트용 -->
+<input type="hidden" name="Item_Code" value="<%= Item_Code%>">
+<input type="hidden" name="Item_Name" value="<%= Item_Name%>">
+<input type="hidden" name="Item_Price" value="<%= Item_Price%>"> 
+<input type="hidden" name="Cart_Size" value="<%= Cart_Size%>">
+<input type="hidden" name="Cart_Color" value="<%= Cart_Color%>">
+<input type="hidden" name="Cart_Taste" value="<%= Cart_Taste%>">
+<input type="hidden" name="Cart_Amount" value="<%= Cart_Amount%>">
+<input type="hidden" name="Item_Image" value="<%= Item_Image%>">
+<input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
+<input type="hidden" name="orderNum" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
 
 	<h3>주문상품 정보</h3>
 
@@ -170,14 +215,14 @@
 		</tr>
 
 		<tr>
-			<td class="td_default" width="80"></td>
+			<td class="td_default" width="80"><%= Cart_Code %></td>
 			<td class="td_default" width="80"><img
-				src="images/items/dish1.png" border="0" align="center" width="80" /></td>
-			<td class="td_default" width="300" style='padding-left: 30px'>식기
-				<br> <font size="2" color="#665b5f">[옵션 : 옵션1() , 옵션2()] </font>
+				src="images/items/<%= Item_Image %>.png" border="0" align="center" width="80" /></td>
+			<td class="td_default" width="300" style='padding-left: 30px'><%= Item_Name %>
+				<br> <font size="2" color="#665b5f">[옵션 : 옵션1(<%= Cart_Size %>) , 옵션2(<%=Cart_Color %>), 옵션3(<%=Cart_Taste %>)] </font>
 			</td>
-			<td class="td_default" align="center" width="110">12000</td>
-			<td class="td_default" align="center" width="90">1</td>
+			<td class="td_default" align="center" width="110"><%= Item_Price %></td>
+			<td class="td_default" align="center" width="90"><%= Cart_Amount %></td>
 
 		</tr>
 
@@ -185,7 +230,7 @@
 		<tr>
 			<td height="30" colspan="3"></td>
 			<td class="td_default" align="center">총 결제 금액 :</td>
-			<td class="td_default" align="center">12000원</td>
+			<td class="td_default" align="center"><%= Item_Price * Cart_Amount %>원</td>
 		</tr>
 		<tr>
 			<td colspan="6">
@@ -207,36 +252,36 @@
 		<tr>
 			<td width="125" height="35" class="td_default">주문하시는 분</td>
 			<td height="35" class="td_default"><input class="input_default"
-				type="text" id="oname" size="20" maxlength="20" value=""></input></td>
+				type="text" id="mname" size="20" maxlength="20" value="<%= m_name %>"></input></td>
 		</tr>
 		<tr>
 			<td height="35" class="td_default">우편번호</td>
 			<td height="35" class="td_default"><input class="input_default"
-				type="text" id="opost" size="6" maxlength="6" value="" >
+				type="text" id="mpost" size="6" maxlength="6" value="<%= m_post %>" >
 
 			</td>
 		</tr>
 		<tr>
 			<td height="35" class="td_default">주 소</td>
 			<td height="35" class="td_default"><input class="input_default"
-				type="text" id="oaddress1" size="35" maxlength="200" value=""
+				type="text" id="maddress1" size="35" maxlength="200" value="<%= m_addr1 %>"
 				></input><br> <input class="input_default" type="text"
-				id="oaddress2" size="35" maxlength="200" value="" ></input>
+				id="maddress2" size="35" maxlength="200" value="<%= m_addr2 %>" ></input>
 			</td>
 		</tr>
 
 		<tr>
 			<td height="35" class="td_default">휴대전화</td>
 			<td height="35" class="td_default"><input class="input_default"
-				type="text" id="ophone1" size="5" maxlength="5" value=""></input>-<input
-				class="input_default" type="text" id="ophone2" size="5" maxlength="5"
-				value=""></input>-<input class="input_default" type="text"
-				id="ophone3" size="5" maxlength="5" value=""></input></td>
+				type="text" id="mphone1" size="5" maxlength="5" value="<%= m_phone1 %>"></input>-<input
+				class="input_default" type="text" id="mphone2" size="5" maxlength="5"
+				value="<%= m_phone2 %>"></input>-<input class="input_default" type="text"
+				id="mphone3" size="5" maxlength="5" value="<%= m_phone3 %>"></input></td>
 		</tr>
 		<tr>
 			<td height="35" class="td_default">이메일</td>
 			<td height="35" class="td_default"><input class="input_default"
-				type="text" id="oemail" size="35" maxlength="35" value=""></td>
+				type="text" id="memail" size="35" maxlength="35" value="<%= m_email1%>@<%= m_email2%>"></td>
 		</tr>
 		<tr>
 			<td colspan="3">
