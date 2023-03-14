@@ -65,7 +65,6 @@
 		});
 		$("#order").click(function() {
 			$("#myForm").attr("action", "#");
-@@ -82,31 +84,38 @@
 			var key = this.id;
 			var value = this.value;
 			location.href="CartUpdateOptServlet?cartCode="+cartCode + "&key="+key+"&value="+value;
