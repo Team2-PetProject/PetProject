@@ -7,11 +7,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <properties resource="com/config/jdbc.properties" />   
   	<typeAliases>
   		<typeAlias type="com.dto.CartDTO" alias="CartDTO"/>
-  		<typeAlias type="com.dto.GoodsDTO" alias="GoodsDTO"/>
-  		<typeAlias type="com.dto.gFavoriteDTO" alias="gFavoriteDTO"/>
+  		<typeAlias type="com.dto.CartInfoDTO" alias="CartInfoDTO"/>
+  		<typeAlias type="com.dto.ItemDTO" alias="ItemDTO"/>
+  		<typeAlias type="com.dto.ItemFavoriteDTO" alias="ItemFavoriteDTO"/>
   		<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.dto.OrderInfoDTO" alias="OrderInfoDTO"/>
-  		<typeAlias type="com.dto.tFavoriteDTO" alias="tFavoriteDTO"/>
+  		<typeAlias type="com.dto.OrderItemDTO" alias="OrderItemDTO"/>
+  		<typeAlias type="com.dto.TourFavoriteDTO" alias="TourFavoriteDTO"/>
   		<typeAlias type="com.dto.TourDTO" alias="TourDTO"/>
   	</typeAliases>
    
@@ -29,11 +31,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
 		<mapper resource="com/config/CartMapper.xml"/>
-		<mapper resource="com/config/GoodsMapper.xml"/>
-		<mapper resource="com/config/gFavoriteMapper.xml"/>
+		<mapper resource="com/config/ItemMapper.xml"/>
+		<mapper resource="com/config/ItemFavoriteMapper.xml"/>
 		<mapper resource="com/config/MemberMapper.xml"/>
 		<mapper resource="com/config/OrderInfoMapper.xml"/>
-		<mapper resource="com/config/tFavoriteMapper.xml"/>
+		<mapper resource="com/config/OrderItemMapper.xml"/>
+		<mapper resource="com/config/TourFavoriteMapper.xml"/>
 		<mapper resource="com/config/TourMapper.xml"/>
 	</mappers>
 
