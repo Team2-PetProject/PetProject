@@ -118,7 +118,15 @@ $(document).ready(function(){
 		<td>상품 옵션</td>
 	</tr>
 	<tr>
-	
+		<% System.out.println(itemSize);
+		if( itemSize != null) { %>
+			<td>
+			<select id="itemSize" name="Cart_Size">
+				<option selected >선택하세요</option>
+			</select>
+		</td>
+		<% }else{ %>
+			<td width="0"><td> <%} %>
 		<td>
 			<select id="itemSize" name="Cart_Size">
 				<option selected >선택하세요</option>
