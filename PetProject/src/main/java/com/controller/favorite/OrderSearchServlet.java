@@ -24,8 +24,11 @@ public class OrderSearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 //		int num=request.getParameter("orderDay");
 		service = new OrderHistoryService();
+		String curPage = request.getParameter("curPage");
+		if (curPage == null) {
+			curPage="1";
+		}
 //		if (num == 0 || 7) {
-		
 //		List<OrderHistoryDTO> list1 = service.getOredrDay(num);
 //		List<OrderHistoryDTO> list1 = service.getOredrDay(7);
 //		} else if (num == 1 || 6) {
