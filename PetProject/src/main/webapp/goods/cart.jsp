@@ -25,24 +25,23 @@
 			var num = $(this).attr("data-code");
 			location.href="CartDelServlet?num="+num;
 		});
-		/* $(".update").click(function() {
-			var itemCode = $(this).attr("data-code");
-			var amount = $("#Amount" + itemCode).val();
-			var price = $("#price" + itemCode).text();
-			console.log(amount + "/" + price);
-			$.ajax({
-				type:"post",
-				url : "CartUpdateServlet",
-				data : {num : itemCode, amount : amount},
-				dataType : "text",
-				success : function(data, status, xhr) {
-					$("#total" + itemCode).text(amount*price);
-				},
-				error : function(xhr, status, error) {
-					console.log(error)
-				}
+		$("input:checkbox").click(function() {
+			var arr = $("input:checkbox[class='check']:checked");
+			var sum = 0;
+			var sum_deliver = 0;
+			arr.each(function(idx, data) {
+				var cartCode = $(this).val();
+				var amount = $("#Amount" + cartCode).val();
+				var price = $("#price" + cartCode).text();
+				sum += amount*price;
 			});
-		}); */
+			$("#OrderPrice").text(sum);
+			if(sum < 50000){
+				sum_deliver = 3000;
+			}
+			$("#DeliverPrice").text(sum_deliver);
+			$("#Price").text(sum+sum_deliver);
+		});
 		$("#allDel").click(function() {
 			var n = $("input:checkbox:checked").length;
 			if(n==0){
@@ -54,8 +53,14 @@
 			
 		});
 		$("#order").click(function() {
-			$("#myForm").attr("action", "#");	//구매화면
-			$("#myForm").submit();
+			var n = $("input:checkbox:checked").length;
+			if(n==0){
+				alert('주문할 상품을 선택하세요');
+			}else{
+				$("#myForm").attr("action", "OrderAllServlet");
+				$("#myForm").submit();
+			}
+			
 		});
 		$(".up").click(function() {
 			event.preventDefault();
@@ -75,15 +80,22 @@
 			}
 			updateAmount(num);
 		});
-		$("#order").click(function() {
-			$("#myForm").attr("action", "#");
-			$("#myForm").submit();
-		});
 		$(".option").change(function() {
 			var cartCode = $(this).attr("data-code");
 			var key = this.id;
 			var value = this.value;
-			location.href="CartUpdateOptServlet?cartCode="+cartCode + "&key="+key+"&value="+value;
+			$.ajax({
+				type:"post",
+				url : "CartUpdateOptServlet",
+				data : {cartCode : cartCode, key : key, value : value},
+				dataType : "text",
+				success : function(data, status, xhr) {
+					
+				},
+				error : function(xhr, status, error) {
+					console.log(error)
+				}
+			});
 		});
 	});
 	function updateAmount(itemCode) {
@@ -105,14 +117,13 @@
 	}
 </script>
 <h1>장바구니</h1>
-<form action="#" id="myForm">
+<form id="myForm">
 <input type="checkbox" id="allCheck"> 전체 선택
 <input type="button" value="선택삭제" id="allDel"/>
 	<%
 	List<CartInfoDTO> list = (List<CartInfoDTO>) request.getAttribute("cartList");
 	//String[] arr = {"cartSize", "cartColor", "cartTaste"};
 	int sum =0;
-	int sum_delivery = 0;
 			for(int i=0;i<list.size();i++){
 		CartInfoDTO dto = list.get(i);
 		int cartCode = dto.getCart_Code();
@@ -130,10 +141,8 @@
 		String cartColor = dto.getCart_Color();
 		String cartTaste = dto.getCart_Taste();
 		String itemImage = dto.getItem_Image();
-		int itemDelivery = dto.getItem_Delivery();
 		int totalPrice = itemPrice * cartAmount;
 		sum += totalPrice;
-		sum_delivery += itemDelivery;
 		
 	%>
 	<fieldset>
@@ -204,7 +213,6 @@
 			<input type="button" value="삭제" data-code="<%=cartCode%>" class="del"/>
 			가격 <span id="price<%=cartCode%>"><%=itemPrice%></span>
 			총가격 <span id="total<%=cartCode%>"><%=totalPrice%></span>
-			배달비 <span id="delivery<%=itemDelivery%>"><%=itemDelivery%></span>
 		</div>
 	</fieldset>
 	<%
@@ -213,11 +221,11 @@
 	<b>결제정보</b>
 	<table border ='1'>
 		<tr>
-			<td>주문금액 <%=sum%></td> 
-			<td rowspan='2'>결제금액 <%=sum+sum_delivery%></td>
+			<td>주문금액 <span id="OrderPrice">0</span>원</td> 
+			<td rowspan='2'>결제금액 <span id="Price">0</span>원</td>
 		</tr>
 		<tr>
-			<td>배달비 <%=sum_delivery%></td>
+			<td>배달비 <span id="DeliverPrice">0</span>원</td>
 		</tr>
 	</table>
 	<input type="button" value="주문하기" id="order"/>

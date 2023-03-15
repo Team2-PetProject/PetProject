@@ -78,5 +78,17 @@ public class CartService {
 		}
 		return n;
 	}
+
+	public List<CartInfoDTO> OrderAll(List<String> list) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		List<CartInfoDTO> cList = null;
+		try {
+			cList = dao.OrderAll(session, list);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return cList;
+	}
 	
 }

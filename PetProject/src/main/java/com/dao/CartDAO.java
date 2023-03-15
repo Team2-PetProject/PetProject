@@ -29,4 +29,8 @@ public class CartDAO {
 		return session.update("updateOption", map);
 	}
 
+	public List<CartInfoDTO> OrderAll(SqlSession session, List<String> list) {
+		return session.selectList("OrderAll", list);
+	}
+
 }

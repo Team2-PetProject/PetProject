@@ -42,7 +42,6 @@ public class CartUpdateOptServlet extends HttpServlet {
 			CartService service = new CartService();
 			int n = service.updateOption(map);
 			System.out.println("update 된 레코드 갯수 : " + n);
-			response.sendRedirect("CartListServlet");
 //		}else {
 //			
 //		}

@@ -37,4 +37,8 @@ public class MemberDAO {
 	   MemberDTO n = session.selectOne("MemberMapper.mypage", member_code);
 	   return n;
    }
+
+public MemberDTO selectOne(SqlSession session, String memberCode) {
+	return session.selectOne("selectOne", memberCode);
+}
 }
