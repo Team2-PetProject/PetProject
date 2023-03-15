@@ -63,8 +63,8 @@ $(document).ready(function(){
 
 <div style="height: 50px"></div>
 
-<div id="wrapper_outer"> <!-- 제일 밖, 가운데 정렬 위함 -->
-<div id="wrapper_inner_left"> <!-- 상품 카테고리 & 이미지 -->
+<div id="wrapper_top"> <!-- 제일 밖, 가운데 정렬 위함 -->
+<div id="wrapper_image"> <!-- 상품 카테고리 & 이미지 -->
 	<div id="group">
 		<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
 		<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
@@ -80,75 +80,44 @@ $(document).ready(function(){
 	<div class="itemBasicInfo"><%=itemName %></div>
 	<div class="itemBasicInfo"><%=itemPrice %>원</div>
 	
-	<div class="itemOptionList">
-		<%
-		if(itemSize==null && itemColor!=null && itemTaste!=null
-				|| itemSize!=null && itemColor==null && itemTaste!=null
-				|| itemSize!=null && itemColor!=null && itemTaste==null){
-		%>
-			<div class="itemOption">옵션</div>
-			<div class="itemOption">옵션</div>
-		<%}else if(itemSize==null && itemColor==null && itemTaste!=null 
-				|| itemSize==null && itemColor!=null && itemTaste==null
-				|| itemSize!=null && itemColor==null && itemTaste==null){ %>	
-			<div class="itemOption">옵션</div>
-		<%}else{ %>	
-			<div class="itemOption">옵션</div>
-			<div class="itemOption">옵션</div>
-			<div class="itemOption">옵션</div>
-		<%} %>
-	</div>
-	
-	
-	
-	<div class="itemOptionList2">
-		<%
-		String[] opt = {itemSize, itemColor, itemTaste};
-		//System.out.println(opt[1]);
-		int num=0;
-		for(int i=0; i<opt.length; i++){
-			if(opt[i] != null){
-				num += 1;
-			}
-		}
-		if(num==1){
-		%>
-			<div class="itemOption2">option</div>
-		<%}else if(num==2){ %>
-			<div class="itemOption2">option</div>
-			<div class="itemOption2">option</div>
-		<%}else{ %>
-			<div class="itemOption2">option</div>
-			<div class="itemOption2">option</div>
-			<div class="itemOption2">option</div>
-		<%} %>
-	</div>
-	
-	<div class="itemOptionList2">
-		<%
-		String[] size= opt[0].split("/");
-		%>
-	
-	</div>
-	
-	
-	
-	
-	<div class="itemOptionList">
+	<div class="option_outer">
 		
-			<div>
-				<select class="itemOption">
-					<option selected>선택해주세요</option>
-					<%
-					if(itemSize != null){
-						String[] sizeOpt = itemSize.split("/");
-						for(int i=0; i<sizeOpt.length; i++){%>
-							<option><%=sizeOpt[i] %></option>
-						<%} %>
-					<%} %>
-				</select>
-			</div>
+		<%
+			//System.out.println(itemSize);
+		String[] opt = {itemSize, itemColor, itemTaste};
+		String[] key = {"Cart_Size", "Cart_Color", "Cart_Taste"};
+		for(int i=0; i<opt.length; i++){
+				//System.out.println("opt[i] = "+opt[i]);
+			if(opt[i] != null){
+				String[] value = opt[i].split("/");
+		%>		<div class="option_inner">
+					<div>옵션</div>
+					<div>
+						<select class="option" name=<%=key[i]%>>
+							<option selected>
+							선택하세요</option>
+							<% for(int j=0; j<value.length; j++){ %>
+								<option><%= value[j] %></option>
+							<%} //end 안for %>	
+						</select>
+					</div>
+				</div>
+			<%} //end if%>
+		<%} //end 밖for %>
+	
+	</div> <!-- end option_outer -->
+	
+	<div class></div>
+	<div>주문 수량</div>
+	<div class="amount">
+		<img src="images/icon/minus.png" id="down" width="10" height="10">
+		<div id="amount" name="Item_Amount" style="width:35px; height:10px; text-align:center;">1</div>
+		<img src="images/icon/plus.png" id="up" width="10" height="10">
 	</div>
+	
+	
+	<div>총 상품 금액</div>
+	<div id="totalPrice" name="totalPrice"></div>
 
 
 
@@ -161,7 +130,7 @@ $(document).ready(function(){
  -->
  
 </div><!-- end itemContents -->
-</div><!-- end wrapper -->
+</div><!-- end wrapper_top -->
 
 
 <!-- 상품상세 이미지 -->
@@ -174,7 +143,7 @@ $(document).ready(function(){
 <!-- 스타일 -->
 <style type="text/css">
 
-	#wrapper_outer{
+	#wrapper_top{
 		border: 1px solid #6182D6;
 		border-radius:2em;
 		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
@@ -187,7 +156,7 @@ $(document).ready(function(){
 		flex-direction:row;
 	}
 	
-	#wrapper_inner_left{
+	#wrapper_image{
 		float: left;
 		width: 450px;
 		height: 480px;
@@ -215,8 +184,29 @@ $(document).ready(function(){
 	}
 	
 	.forBlank{
+		width: 30px;
 		height: 30px;
+		background: white;
 	}
+	
+	.option_outer{
+		width: 650px;
+		height: 200px;
+		background: #3BA9AE;
+	}
+	
+	.option_inner{
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	.itemOptionList{
 		background-color:#3BA9AE;
