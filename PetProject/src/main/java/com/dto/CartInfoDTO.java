@@ -16,13 +16,24 @@ public class CartInfoDTO {
 	private String Item_Size;
 	private String Item_Color;
 	private String Item_Taste;
+	private int Item_Delivery;
 	public CartInfoDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "CartInfoDTO [Cart_Code=" + Cart_Code + ", Member_Code=" + Member_Code + ", Cart_Amount=" + Cart_Amount
+				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste
+				+ ", Item_Code=" + Item_Code + ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name
+				+ ", Item_Info=" + Item_Info + ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image
+				+ ", Item_Size=" + Item_Size + ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste
+				+ ", Item_Delivery=" + Item_Delivery + "]";
+	}
 	public CartInfoDTO(int cart_Code, String member_Code, String cart_Amount, String cart_Size, String cart_Color,
 			String cart_Taste, String item_Code, String item_Category, String item_Name, String item_Info,
-			int item_Price, String item_Image, String item_Size, String item_Color, String item_Taste) {
+			int item_Price, String item_Image, String item_Size, String item_Color, String item_Taste,
+			int item_Delivery) {
 		super();
 		Cart_Code = cart_Code;
 		Member_Code = member_Code;
@@ -39,6 +50,7 @@ public class CartInfoDTO {
 		Item_Size = item_Size;
 		Item_Color = item_Color;
 		Item_Taste = item_Taste;
+		Item_Delivery = item_Delivery;
 	}
 	public int getCart_Code() {
 		return Cart_Code;
@@ -130,13 +142,12 @@ public class CartInfoDTO {
 	public void setItem_Taste(String item_Taste) {
 		Item_Taste = item_Taste;
 	}
-	@Override
-	public String toString() {
-		return "CartDTO [Cart_Code=" + Cart_Code + ", Member_Code=" + Member_Code + ", Cart_Amount=" + Cart_Amount
-				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste
-				+ ", Item_Code=" + Item_Code + ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name
-				+ ", Item_Info=" + Item_Info + ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image
-				+ ", Item_Size=" + Item_Size + ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
+	public int getItem_Delivery() {
+		return Item_Delivery;
 	}
+	public void setItem_Delivery(int item_Delivery) {
+		Item_Delivery = item_Delivery;
+	}
+	
 	
 }

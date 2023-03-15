@@ -110,7 +110,9 @@
 <input type="button" value="선택삭제" id="allDel"/>
 	<%
 	List<CartInfoDTO> list = (List<CartInfoDTO>) request.getAttribute("cartList");
+	//String[] arr = {"cartSize", "cartColor", "cartTaste"};
 	int sum =0;
+	int sum_delivery = 0;
 			for(int i=0;i<list.size();i++){
 		CartInfoDTO dto = list.get(i);
 		int cartCode = dto.getCart_Code();
@@ -128,18 +130,23 @@
 		String cartColor = dto.getCart_Color();
 		String cartTaste = dto.getCart_Taste();
 		String itemImage = dto.getItem_Image();
+		int itemDelivery = dto.getItem_Delivery();
 		int totalPrice = itemPrice * cartAmount;
 		sum += totalPrice;
+		sum_delivery += itemDelivery;
+		
 	%>
 	<fieldset>
 		<div class="img" style = "float : left;">
 			<input type="checkbox" class="check" id="check<%=memberCode%>" name = "check" value="<%=cartCode%>">
-			<img src="images/items/dish1.png" alt="" width=100px height = 100px>
+			<img src="images/items/<%=itemImage%>.png" alt="" width=100px height = 100px>
 		</div>
 		<div style = "float : left;">
 			<h2><%=itemName%></h2>
 			<p><%=itemInfo%></p>
-			옵션			
+			<%if(cartSize!=null||cartColor!=null||cartTaste!=null){ %>
+			옵션	
+			<%} %>		
 			<%if(cartSize != null){ %>
 			<select name="optionSize" class="option" id="size" data-code=<%=cartCode%>>
 			<%
@@ -197,6 +204,7 @@
 			<input type="button" value="삭제" data-code="<%=cartCode%>" class="del"/>
 			가격 <span id="price<%=cartCode%>"><%=itemPrice%></span>
 			총가격 <span id="total<%=cartCode%>"><%=totalPrice%></span>
+			배달비 <span id="delivery<%=itemDelivery%>"><%=itemDelivery%></span>
 		</div>
 	</fieldset>
 	<%
@@ -206,7 +214,10 @@
 	<table border ='1'>
 		<tr>
 			<td>주문금액 <%=sum%></td> 
-			<td>결제금액 <%=sum%></td>
+			<td rowspan='2'>결제금액 <%=sum+sum_delivery%></td>
+		</tr>
+		<tr>
+			<td>배달비 <%=sum_delivery%></td>
 		</tr>
 	</table>
 	<input type="button" value="주문하기" id="order"/>
