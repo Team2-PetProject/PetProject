@@ -19,4 +19,11 @@
 	 where Cart_Code=#{Cart_Code};
 	
 	</select>
+	
+	<select id="selectBymaxCart" resultType="CartDTO" parameterType="string">
+		select Cart_Code, Member_Code, Cart_Amount, Item_Code, Cart_Size, Cart_Color, Cart_Taste
+		from cart 
+		where Cart_Code = (select MAX(Cart_Code) from cart where Member_Code=#{Member_Code}) ;
+	
+	</select>
 </mapper>
