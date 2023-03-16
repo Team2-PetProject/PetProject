@@ -158,7 +158,7 @@ String m_phone3= mDTO.getMember_phone3();
 String m_email1= mDTO.getMember_email1();
 String m_email2= mDTO.getMember_email2();
 %>
-<form name="myForm" method="post" action="CartOrderDoneServlet">
+<form name="myForm" method="post" action="OrderAllDoneServlet">
 
 	<h3>주문상품 정보</h3>
 
@@ -227,7 +227,7 @@ String m_email2= mDTO.getMember_email2();
 	<input type="hidden" name="Cart_Taste" value="<%= Cart_Taste%>">
 	<input type="hidden" name="Cart_Amount" value="<%= Cart_Amount%>">
 	<input type="hidden" name="Item_Image" value="<%= Item_Image%>">
-	<input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
+	<input type="hidden" name="phone" id="phone" value="<%=m_phone1+m_phone2+m_phone3%>"><!-- phone1,2,3 합치기 -->
 	<input type="hidden" name="orderNum" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
 <%}
 	int delivery = 0;
@@ -235,6 +235,7 @@ String m_email2= mDTO.getMember_email2();
 		delivery = 3000;
 	}
 	%>
+	<input type="hidden" name="delivery" value="<%=delivery%>">
 	
 
 		<tr>
