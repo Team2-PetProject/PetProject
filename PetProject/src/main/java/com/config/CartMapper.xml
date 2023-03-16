@@ -26,4 +26,9 @@
 		where Cart_Code = (select MAX(Cart_Code) from cart where Member_Code=#{Member_Code}) ;
 	
 	</select>
+	
+	<delete id="delByCode" parameterType="int">
+		delete from cart where Cart_Code=#{Cart_Code}
+	
+	</delete>
 </mapper>

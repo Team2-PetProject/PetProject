@@ -1,7 +1,7 @@
 package com.dto;
 
 public class OrderInfoDTO {
-	private int OrderInfo_Code;
+	private String OrderInfo_Code;
 	private String Member_Code;
 	private String OrderInfo_OrderName;
 	private String OrderInfo_Post;
@@ -14,7 +14,7 @@ public class OrderInfoDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderInfoDTO(int orderInfo_Code, String member_Code, String orderInfo_OrderName, String orderInfo_Post,
+	public OrderInfoDTO(String orderInfo_Code, String member_Code, String orderInfo_OrderName, String orderInfo_Post,
 			String orderInfo_Addr1, String orderInfo_Addr2, String orderInfo_Phone, String orderInfo_PayMethod,
 			String orderInfo_OrderDay) {
 		super();
@@ -28,10 +28,10 @@ public class OrderInfoDTO {
 		OrderInfo_PayMethod = orderInfo_PayMethod;
 		OrderInfo_OrderDay = orderInfo_OrderDay;
 	}
-	public int getOrderInfo_Code() {
+	public String getOrderInfo_Code() {
 		return OrderInfo_Code;
 	}
-	public void setOrderInfo_Code(int orderInfo_Code) {
+	public void setOrderInfo_Code(String orderInfo_Code) {
 		OrderInfo_Code = orderInfo_Code;
 	}
 	public String getMember_Code() {
@@ -90,6 +90,8 @@ public class OrderInfoDTO {
 				+ OrderInfo_Phone + ", OrderInfo_PayMethod=" + OrderInfo_PayMethod + ", OrderInfo_OrderDay="
 				+ OrderInfo_OrderDay + "]";
 	}
+	
+	
 	
 	
 }

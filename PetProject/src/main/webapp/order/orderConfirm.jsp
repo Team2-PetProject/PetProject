@@ -190,7 +190,7 @@
 <input type="hidden" name="Cart_Amount" value="<%= Cart_Amount%>">
 <input type="hidden" name="Item_Image" value="<%= Item_Image%>">
 <input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
-<input type="hidden" name="orderNum" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
+<input type="hidden" name="Cart_Code" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
 
 	<h3>주문상품 정보</h3>
 
