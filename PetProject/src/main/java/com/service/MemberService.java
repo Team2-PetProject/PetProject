@@ -94,4 +94,15 @@ public class MemberService {
 			}
 			return dto;
 		}//end idCheck
+	  public MemberDTO selectOne(String memberCode) {
+			SqlSession session = MySqlSessionFactory.getSqlSession();
+			MemberDTO dto = null;
+			try {
+				 MemberDAO dao = new MemberDAO();
+				dto = dao.selectOne(session, memberCode);
+			} finally {
+				session.close();
+			}
+			return dto;
+		}
 }//end class

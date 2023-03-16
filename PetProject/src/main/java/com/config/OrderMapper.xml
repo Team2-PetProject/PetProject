@@ -3,4 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderMapper">
+	<insert id="orderAllDone" parameterType="OrderInfoDTO">
+		insert into orderinfo values (#{OrderInfo_Code}, #{Member_Code},#{OrderInfo_OrderName},
+		#{OrderInfo_Post}, #{OrderInfo_Addr1}, #{OrderInfo_Addr2}, #{OrderInfo_Phone},
+		#{OrderInfo_PayMethod}, sysdate, #{OrderInfo_Delivery} )
+	</insert>
+	<insert id="orderItemAllDone" parameterType="HashMap">
+		insert into orderitem(orderitem_code,  item_code,  member_code, order_name,    
+			cart_amount, item_price, item_image, cart_size, cart_color, cart_taste, orderinfo_code, item_name)
+			select orderitem_seq.nextval, A.* from (
+			<foreach collection="list" item="item" separator="UNION ALL ">
+			 select  #{item.Item_Code}, #{item.Member_Code}, #{orderName},
+			 #{item.Cart_Amount}, #{item.Item_Price}, #{item.Item_Image},
+			#{item.Cart_Size, jdbcType=VARCHAR}, #{item.Cart_Color, jdbcType=VARCHAR}, #{item.Cart_Taste, jdbcType=VARCHAR},
+			#{orderInfoCode}, #{item.Item_Name} from dual
+		</foreach>) A
+		
+	</insert>
 </mapper>
