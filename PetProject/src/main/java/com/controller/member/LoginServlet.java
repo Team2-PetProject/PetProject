@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 			nextPage = "main.jsp";
 			HttpSession session = request.getSession();
 			session.setAttribute("login", dto);
+			session.setAttribute("mesg", dto.getMember_name()+"님 환영합니다.");
 		}else {
 			nextPage = "LoginUIServlet";			
 		}

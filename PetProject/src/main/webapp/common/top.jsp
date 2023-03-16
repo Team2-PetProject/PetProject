@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="com.dto.MemberDTO" %>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 장치의 크기에 따라 viewport 설정 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">  
 <style type="text/css">
 	  .title{
 		float: left;
@@ -31,14 +33,36 @@
 			<div class="right-box">
 				<button>채팅</button>&nbsp;
 				<button>알림</button>&nbsp;
-				<select>
-					<option selected="selected"><a href="#">로그인</a></option>
-					<option><a href="#">로그아웃</a></option>
-					<option><a href="#">회원가입</a></option>
-				</select>
+				<%
+					MemberDTO dto = (MemberDTO) session.getAttribute("login");
+					if(dto == null){
+				%>
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-primary dropdown-toggle"
+						data-bs-toggle="dropdown" aria-expanded="false">회원</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="LoginUIServlet">로그인</a></li>
+						<li><a class="dropdown-item" href="MemberUIServlet">회원가입</a></li>
+					</ul>
+				</div>
+				<%
+					} else{
+				%>
+					<div class="btn-group" role="group">
+					<button type="button" class="btn btn-primary dropdown-toggle"
+						data-bs-toggle="dropdown" aria-expanded="false">회원</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="LogoutServlet">로그아웃</a></li>
+						<li><a class="dropdown-item" href="CartListServlet">장바구니</a></li>
+					</ul>
+				</div>	
+				<% 
+					}
+				%>
 			</div>
+			
 		</div>
 		<!-- header-container -->
 	</div>
-
+   
 

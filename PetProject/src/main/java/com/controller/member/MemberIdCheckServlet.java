@@ -18,8 +18,8 @@ import com.service.MemberService;
 public class MemberIdCheckServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String member_code = request.getParameter("member_code");
-		
+		String member_code = request.getParameter("member_code");
+		System.out.println(member_code);
 		MemberService service = new MemberService();
 		int count = service.idCheck(member_code);
 		String mesg = "아이디 사용 가능";
