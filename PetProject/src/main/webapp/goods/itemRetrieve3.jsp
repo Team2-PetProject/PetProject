@@ -2,9 +2,12 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="com.dto.ItemDTO" %>
+<%@ page import="java.text.DecimalFormat" %>
+
+
 <%
 	ItemDTO dto = (ItemDTO)request.getAttribute("itemRetrieve");
-	System.out.println("goods/itemRetrieve2.jsp에서 " + dto);
+	System.out.println("goods/itemRetrieve3.jsp에서 " + dto);
 	String itemCode = dto.getItem_Code();
 	String itemCategory = dto.getItem_Category();
 	String itemName = dto.getItem_Name();
@@ -15,46 +18,69 @@
 	String itemTaste = dto.getItem_Taste();
 
 %>
-
+<%
+	
+	
+%>
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var price = $("#itemPrice").text();
-	var rs = $("#cart_amount").val();
+	
+	var price = parseInt($("#itemPrice").text());
+	var amount = parseInt($("#itemAmount").text());
+	
+	//금액 천단위 콤마, 화폐단위 표시
+	var kPrice = price.toLocaleString();
+	$("#itemPrice").text(kPrice+"원");
+	$("#totalPrice").text(kPrice+"원");
 
 	//수량 +/-, 총 금액 뿌리기
 	$("#up").on("click", function(){
-		rs = parseInt(rs)+1;
-		$("#cart_amount").val(rs);
-		$("#totalPrice").text(price*rs);
-	});//end 수량+
+		amount += 1;
+		$("#itemAmount").text(amount);
+		$("#totalPrice").text(price*amount);
+	}); //end 수량+
 	
 	$("#down").on("click", function(){
-		if(rs > 1){
-			rs = parseInt(rs)-1;
+		if(amount > 1){
+			amount -= 1;
 		}
-		$("#cart_amount").val(rs);
-		$("#totalPrice").text(price*rs);
+		$("#itemAmount").text(amount);
+		$("#totalPrice").text(price*amount);
 	});//end 수량-
 	
+	
 	//바로구매
-	$("#order").on("click", function(){
+	$("#orderNow").on("click", function(){
 		//유효성 검사
+		console.log("orderNow 클릭");
+		console.log($(".option").val());
+		//if($(".option").val() == null)
+		
 		
 		//데이터 넘기기
 		//$("#form").attr("action", "CartOrderConfirmServlet");
 		
-	});//end order
+	});//end orderNow
+	
 	
 	//장바구니
+	$("#cartAdd").on("click", function(){
+		
+	});//end cartAdd
 	
-	//찜하기
-	$("#like").on("click", function() {
-		$("")
-		//
-	});//end like
+	
+
+	
+	
+	//상품문의
+	$("#QA").on("click", function() {
+		location.href="QAServlet";
+		
+	});//end QA
+	
 	
 });//end doc
 
@@ -63,8 +89,8 @@ $(document).ready(function(){
 
 <div style="height: 50px"></div>
 
-<div id="wrapper_top"> <!-- 제일 밖, 가운데 정렬 위함 -->
-<div id="wrapper_image"> <!-- 상품 카테고리 & 이미지 -->
+<div id="wrap_top"> <!-- 제일 밖, 가운데 정렬 위함 -->
+<div id="wrap_image"> <!-- 상품 카테고리 & 이미지 -->
 	<div id="group">
 		<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
 		<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
@@ -73,15 +99,18 @@ $(document).ready(function(){
 	<img id="img" name="Item_Image" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
 </div>
 
-<div id="wrapper_inner_right"> <!-- 상품 컨텐츠 -->
+<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
 	
 	<div class="forBlank"></div>
 	
-	<div class="itemBasicInfo"><%=itemName %></div>
-	<div class="itemBasicInfo"><%=itemPrice %>원</div>
+	<div class="itemBasicInfo" name="Item_Name"><%=itemName %></div>
+	<div class="itemBasicInfo" id="itemPrice"><%=itemPrice %></div>
 	
-	<div class="option_outer">
-		
+	
+	<input type="hidden" name="Item_Price" value="<%=itemPrice%>">
+	
+	
+	<div class="wrap_options">
 		<%
 			//System.out.println(itemSize);
 		String[] opt = {itemSize, itemColor, itemTaste};
@@ -94,8 +123,7 @@ $(document).ready(function(){
 					<div>옵션</div>
 					<div>
 						<select class="option" name=<%=key[i]%>>
-							<option selected>
-							선택하세요</option>
+							<option selected value="null">선택하세요</option>
 							<% for(int j=0; j<value.length; j++){ %>
 								<option><%= value[j] %></option>
 							<%} //end 안for %>	
@@ -109,25 +137,26 @@ $(document).ready(function(){
 	
 	<div class></div>
 	<div>주문 수량</div>
-	<div class="amount">
+	<div class="itemAmount">
 		<img src="images/icon/minus.png" id="down" width="10" height="10">
-		<div id="amount" name="Item_Amount" style="width:35px; height:10px; text-align:center;">1</div>
+		<div id="itemAmount" name="Item_Amount" style="width:35px; height:10px; text-align:center;">1</div>
 		<img src="images/icon/plus.png" id="up" width="10" height="10">
 	</div>
 	
 	
 	<div>총 상품 금액</div>
-	<div id="totalPrice" name="totalPrice"></div>
+	<div id="totalPrice" name="totalPrice"><%= itemPrice %></div>
 
 
 
 
-<!-- <button id="order">바로구매</button>
-<button id="cart">장바구니</button>
+<button id="orderNow">바로구매</button>
+<button id="cartAdd">장바구니</button>
 <button id="like">찜 하기</button>
+<button id="QA">상품문의</button>
 
 <button>상품문의</button>
- -->
+
  
 </div><!-- end itemContents -->
 </div><!-- end wrapper_top -->
@@ -135,7 +164,7 @@ $(document).ready(function(){
 
 <!-- 상품상세 이미지 -->
 <div id="itemDetail">
-	<img src="images/items_detail/food01.png">
+	<img src="images/items_detail/<%=itemImage %>.png">
 </div>
 
 
@@ -143,7 +172,7 @@ $(document).ready(function(){
 <!-- 스타일 -->
 <style type="text/css">
 
-	#wrapper_top{
+	#wrap_top{
 		border: 1px solid #6182D6;
 		border-radius:2em;
 		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
@@ -156,7 +185,7 @@ $(document).ready(function(){
 		flex-direction:row;
 	}
 	
-	#wrapper_image{
+	#wrap_image{
 		float: left;
 		width: 450px;
 		height: 480px;
@@ -176,7 +205,7 @@ $(document).ready(function(){
 		margin-bottom: 10px;
 	}
 	
-	#wrapper_inner_right{
+	#wrap_conts{
 		float: left;
 		width: 700px;
 		height: 480px;
@@ -189,7 +218,12 @@ $(document).ready(function(){
 		background: white;
 	}
 	
-	.option_outer{
+	.itemBasicInfo{
+		font-size: 40px;
+		font-weight: 600; /*100~900. 400이 normal, 700이 bold*/
+	}
+	
+	.wrap_options{
 		width: 650px;
 		height: 200px;
 		background: #3BA9AE;

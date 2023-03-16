@@ -32,16 +32,15 @@ main {
 </head>
 <body>
 	<header>
-		<jsp:include page="common/top.jsp" flush="true"></jsp:include>
+		<jsp:include page="common/top.jsp"></jsp:include>
 		<hr>
-		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
+		<jsp:include page="common/menu.jsp"></jsp:include>
 	</header>
 		
 
 	<main>
 		<hr>
-<!-- 	<jsp:include page="goods/cart.jsp" flush="true"></jsp:include>  -->	
-
+		
 	</main>
 
 

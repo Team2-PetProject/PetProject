@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ItemMapper">
-	
+
 	<select id="itemRetrieve" resultType="ItemDTO" parameterType="String">
 		select item_code, item_category, item_name, item_info,
 			item_price, item_image, item_size, item_color, item_taste

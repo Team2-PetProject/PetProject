@@ -195,7 +195,7 @@ System.out.println(itemTaste);
 
 <!-- 상세보기 -->
 <div class="goods_detail">
-	<img src="images/items_detail/food01.png">
+	<img src="images/items_detail/food02.png">
 </div>
 
 

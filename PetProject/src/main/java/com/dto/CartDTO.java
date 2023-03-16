@@ -1,64 +1,75 @@
 package com.dto;
 
 public class CartDTO {
-	private int num;
-	private String userid;
-	private String gCode;
-	private int gAmount;
-	private String gSpec;
-	private String gTaste;
+	private int Cart_Code;
+	private String Member_Code;
+	private String Cart_Amount;
+	private String Item_Code;
+	private String Cart_Size;
+	private String Cart_Color;
+	private String Cart_Taste;
 	public CartDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CartDTO(int num, String userid, String gCode, int gAmount, String gSpec, String gTaste) {
+	public CartDTO(int cart_Code, String member_Code, String cart_Amount, String item_Code, String cart_Size,
+			String cart_Color, String cart_Taste) {
 		super();
-		this.num = num;
-		this.userid = userid;
-		this.gCode = gCode;
-		this.gAmount = gAmount;
-		this.gSpec = gSpec;
-		this.gTaste = gTaste;
+		Cart_Code = cart_Code;
+		Member_Code = member_Code;
+		Cart_Amount = cart_Amount;
+		Item_Code = item_Code;
+		Cart_Size = cart_Size;
+		Cart_Color = cart_Color;
+		Cart_Taste = cart_Taste;
 	}
-	public int getNum() {
-		return num;
+	public int getCart_Code() {
+		return Cart_Code;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setCart_Code(int cart_Code) {
+		Cart_Code = cart_Code;
 	}
-	public String getUserid() {
-		return userid;
+	public String getMember_Code() {
+		return Member_Code;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setMember_Code(String member_Code) {
+		Member_Code = member_Code;
 	}
-	public String getgCode() {
-		return gCode;
+	public String getCart_Amount() {
+		return Cart_Amount;
 	}
-	public void setgCode(String gCode) {
-		this.gCode = gCode;
+	public void setCart_Amount(String cart_Amount) {
+		Cart_Amount = cart_Amount;
 	}
-	public int getgAmount() {
-		return gAmount;
+	public String getItem_Code() {
+		return Item_Code;
 	}
-	public void setgAmount(int gAmount) {
-		this.gAmount = gAmount;
+	public void setItem_Code(String item_Code) {
+		Item_Code = item_Code;
 	}
-	public String getgSpec() {
-		return gSpec;
+	public String getCart_Size() {
+		return Cart_Size;
 	}
-	public void setgSpec(String gSpec) {
-		this.gSpec = gSpec;
+	public void setCart_Size(String cart_Size) {
+		Cart_Size = cart_Size;
 	}
-	public String getgTaste() {
-		return gTaste;
+	public String getCart_Color() {
+		return Cart_Color;
 	}
-	public void setgTaste(String gTaste) {
-		this.gTaste = gTaste;
+	public void setCart_Color(String cart_Color) {
+		Cart_Color = cart_Color;
+	}
+	public String getCart_Taste() {
+		return Cart_Taste;
+	}
+	public void setCart_Taste(String cart_Taste) {
+		Cart_Taste = cart_Taste;
 	}
 	@Override
 	public String toString() {
-		return "CartDTO [num=" + num + ", userid=" + userid + ", gCode=" + gCode + ", gAmount=" + gAmount + ", gSpec="
-				+ gSpec + ", gTaste=" + gTaste + "]";
+		return "CartDTO [Cart_Code=" + Cart_Code + ", Member_Code=" + Member_Code + ", Cart_Amount=" + Cart_Amount
+				+ ", Item_Code=" + Item_Code + ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color
+				+ ", Cart_Taste=" + Cart_Taste + "]";
 	}
+	
 }

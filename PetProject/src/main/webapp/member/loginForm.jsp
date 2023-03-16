@@ -15,23 +15,23 @@
     $(document).ready(function(){
    
     	 $("form").on("submit",function(event){		
-    		 var userid = $("#userid").val();
-    		 var passwd = $("#passwd").val();
-    	    		if(userid.length==0){
+    		 var member_code = $("#member_code").val();
+    		 var member_passwd = $("#member_passwd").val();
+    	    		if(member_code.length==0){
     	    			alert("userid 필수")
-    	    			$("#userid").focus();
+    	    			$("#member_code").focus();
     	    			event.preventDefault();
-    	    		}else if(passwd.length==0){
+    	    		}else if(member_passwd.length==0){
     	    			alert("passwd 필수")
-    	    			$("#passwd").focus();
+    	    			$("#member_passwd").focus();
     	    			event.preventDefault();
     	    		}
     	    	});
    });
 </script>    
 <form action="LoginServlet" method="get">
-아이디<input type="text" name="userid" id="userid"><br>
-비밀번호<input type="text" name="passwd" id="passwd"><br> 
+아이디<input type="text" name="member_code" id="member_code"><br>
+비밀번호<input type="text" name="member_passwd" id="member_passwd"><br> 
 <input type="submit" value="로그인">
 <input type="button" value="아이디찾기" onClick="location.href='MemberIdSearchUIServlet'">
 </form>
