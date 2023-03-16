@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 		MemberDTO dto = service.login(map);
 		String nextPage=null;
 		if(dto!=null) {
-			nextPage = "main";
+			nextPage = "main.jsp";
 			HttpSession session = request.getSession();
 			session.setAttribute("login", dto);
 		}else {
