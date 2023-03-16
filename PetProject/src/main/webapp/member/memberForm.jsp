@@ -7,6 +7,7 @@
  		$("form").on("submit",function(){
  			var member_code = $("#member_code").val();
  			var member_passwd = $("#member_passwd").val();
+ 			var member_passwd2 = $("#member_passwd2").val();
  			var member_name = $("#member_name").val();
  			var member_post = $("#member_post").val();
  			var member_addr1 = $("#sample4_roadAddress").val();
@@ -17,6 +18,11 @@
  			var member_email1 = $("#member_email1").val();
  			var member_email2 = $("#member_email2").val();
  			
+ 			if(member_passwd!= member_passwd2){
+ 				alert("비밀번호가 다릅니다.");
+ 				$("#member_passwd2").focus();
+ 				return false;
+ 			}
  			if(member_code.length==0){
  				alert("아이디를 입력하세요");
  				$("#member_code").focus();
@@ -75,7 +81,27 @@
 			console.log(email);
 			$("#member_email2").val(email);
 		});
- 	})
+ 		$("#member_code").keyup(function() {
+			var id = $(this).val();
+			if(id.length != 0){
+				$.ajax({
+					url : "MemberIdCheckServlet",
+					dataType : "text",
+					type : "post",
+					data : {"member_code" : id},
+					success : function(data, status, xhr) {
+						$("#idresult").text(data);
+					},
+					error : function(xhr, status, error) {
+						console.log(error);
+					}
+				});
+			}else{
+				$("#idresult").text("");
+			}
+			
+		});
+ 	});
  
  </script>   
     

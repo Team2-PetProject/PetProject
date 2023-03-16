@@ -35,8 +35,7 @@ main {
 
 </style>
 
-<!-- font-awesome-icon -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- font-awesome-icon -->   
 
 </head>
 <body>
@@ -46,10 +45,12 @@ main {
 		<jsp:include page="common/menu.jsp"></jsp:include>
 	</header>
 <hr>
-<div class="login_page center" >
+<!-- <div class="login_page center" > -->
 <fieldset>
 <jsp:include page="member/loginForm.jsp" flush="true" />
 </fieldset>
-</div>
+<!-- </div> -->
+<hr>
+<jsp:include page="common/footer.jsp" flush="true"></jsp:include>
 </body>
 </html>
