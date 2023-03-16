@@ -34,8 +34,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/ItemMapper.xml"/>
 		<mapper resource="com/config/ItemFavoriteMapper.xml"/>
 		<mapper resource="com/config/MemberMapper.xml"/>
-		<mapper resource="com/config/OrderInfoMapper.xml"/>
-		<mapper resource="com/config/OrderItemMapper.xml"/>
+		<mapper resource="com/config/OrderMapper.xml"/>
 		<mapper resource="com/config/TourFavoriteMapper.xml"/>
 		<mapper resource="com/config/TourMapper.xml"/>
 	</mappers>
