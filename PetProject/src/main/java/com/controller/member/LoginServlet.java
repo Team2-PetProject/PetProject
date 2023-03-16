@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("login", dto);
 			session.setAttribute("mesg", dto.getMember_name()+"님 환영합니다.");
 		}else {
-			nextPage = "LoginUIServlet";			
+			nextPage = "LoginUIServlet"; 			
 		}
 
 		response.sendRedirect(nextPage);
