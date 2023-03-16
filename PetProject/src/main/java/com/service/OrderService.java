@@ -33,6 +33,7 @@ public class OrderService {
 			session.commit();
 			System.out.println("commit 됨 ==========================");
 		} catch (Exception e) {
+			e.printStackTrace();
 			session.rollback();
 			System.out.println("rollback 됨 =========================");
 		}finally {

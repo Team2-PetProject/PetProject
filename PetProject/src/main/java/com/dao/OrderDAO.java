@@ -13,13 +13,14 @@ public class OrderDAO {
 	}
 
 	public int itemOrderDone(SqlSession session, OrderItemDTO oitemDTO) {
+		System.out.println("dao : " + oitemDTO);
 		int n = session.insert("OrderMapper.itemOrderDone",oitemDTO);
 		return n;
 	}
 
 	public int delByCode(SqlSession session, int cart_Code) {
 		int n = session.delete("CartMapper.delByCode",cart_Code);
-		return 0;
+		return n;
 	}
 
 }

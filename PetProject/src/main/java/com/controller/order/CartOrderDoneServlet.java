@@ -92,12 +92,11 @@ public class CartOrderDoneServlet extends HttpServlet {
 			
 			//Cart delete
 			int Cart_Code = Integer.parseInt(request.getParameter("Cart_Code")) ;
-			System.out.println("CartOrderDoneSevlte " +Cart_Code);
-			
 			
 			OrderService oService = new OrderService();
 			
 			int n = oService.orderDone(oinfoDTO,oitemDTO,Cart_Code);  //트랜잭션 처리
+			System.out.println("CartOrderDoneServlet commit 된 갯수: "+n);
 			
 //			nextPage = "orderDone.jsp";
 //		
