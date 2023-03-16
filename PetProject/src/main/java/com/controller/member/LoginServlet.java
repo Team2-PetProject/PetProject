@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.dto.MemberDTO;
 import com.service.MemberService;
@@ -29,14 +30,15 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberService service = new MemberService();
 		MemberDTO dto = service.login(map);
+		HttpSession session = request.getSession();
 		String nextPage=null;
 		if(dto!=null) {
 			nextPage = "main.jsp";
-			HttpSession session = request.getSession();
 			session.setAttribute("login", dto);
 			session.setAttribute("mesg", dto.getMember_name()+"님 환영합니다.");
 		}else {
-			nextPage = "LoginUIServlet"; 			
+			nextPage = "LoginUIServlet"; 
+			session.setAttribute("mesg", "아이디 또는 비밀번호가 잘못 입력되었습니다." );
 		}
 
 		response.sendRedirect(nextPage);

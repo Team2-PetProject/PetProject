@@ -36,7 +36,16 @@ main {
 </style>
 
 <!-- font-awesome-icon -->   
-
+<%
+	String mesg = (String) session.getAttribute("mesg");
+	if(mesg != null){
+%>
+	<script type="text/javascript">
+		alert("<%=mesg%>");
+	</script>
+<%
+	session.removeAttribute("mesg");
+	} %>
 </head>
 <body>
 	<header>  
