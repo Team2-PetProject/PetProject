@@ -18,7 +18,7 @@ import com.service.MemberService;
 public class MemberAddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
 		String member_code = request.getParameter("member_code");
 		String member_passwd = request.getParameter("member_passwd");
 		String member_name = request.getParameter("member_name");
@@ -30,7 +30,7 @@ public class MemberAddServlet extends HttpServlet {
 		String member_phone3 = request.getParameter("member_phone3");
 		String member_email1 = request.getParameter("member_email1");
 		String member_email2 = request.getParameter("member_email2");
-		
+		System.out.println(member_post);
 		MemberDTO dto =
 				new MemberDTO(member_code, member_passwd, member_name, member_post, 
 						member_addr1, member_addr2, member_phone1, member_phone2, member_phone3, member_email1, member_email2);
@@ -41,7 +41,7 @@ public class MemberAddServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("memberAdd", "회원가입성공");
 		session.setMaxInactiveInterval(3600);
-		response.sendRedirect("main");
+		response.sendRedirect("main.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

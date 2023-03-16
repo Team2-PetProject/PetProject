@@ -69,7 +69,12 @@
 				return false;
 			}
  			
- 		})
+ 		});
+ 		$("#email").click(function() {
+			var email = $(this).val();
+			console.log(email);
+			$("#member_email2").val(email);
+		});
  	})
  
  </script>   
@@ -83,7 +88,8 @@
 <span id="result"></span>
 <br> 
 <b>이름</b>&nbsp;<input type="text" name="member_name" id="member_name"><br> 
-<b>주소</b><input type="text" name="member_post" id="member_post" placeholder="우편번호">
+<b>주소</b>
+<input type="text" name="member_post" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="member_addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="member_addr2" id="sample4_jibunAddress" placeholder="지번주소">
@@ -136,7 +142,7 @@
                 if(fullRoadAddr !== ''){
                     fullRoadAddr += extraRoadAddr;
                 }
-
+				
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('sample4_roadAddress').value = fullRoadAddr;

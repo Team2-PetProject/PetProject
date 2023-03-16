@@ -5,8 +5,12 @@
 <head>
 <style type="text/css">
     fieldset {
-        width : 130px; height : 130px;    
-    }
+        width : 130px; height : 130px;  }      
+
+    .center{
+	width: 100px; 
+	margin: 0 auto;
+}    
 </style>
 <meta charset="UTF-8">
 <title>Kkosunnae</title>
@@ -36,14 +40,16 @@ main {
 
 </head>
 <body>
-	<header>
+	<header>  
 		<jsp:include page="common/top.jsp"></jsp:include>
 		<hr>
 		<jsp:include page="common/menu.jsp"></jsp:include>
 	</header>
 <hr>
+<div class="login_page center" >
 <fieldset>
 <jsp:include page="member/loginForm.jsp" flush="true" />
 </fieldset>
+</div>
 </body>
 </html>
