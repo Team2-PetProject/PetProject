@@ -32,7 +32,7 @@
 				<button>채팅</button>&nbsp;
 				<button>알림</button>&nbsp;
 				<select>
-					<option selected="selected"><a href="#">로그인</a></option>
+					<option selected="selected"><a href="LoginUIServlet">로그인</a></option>
 					<option><a href="#">로그아웃</a></option>
 					<option><a href="#">회원가입</a></option>
 				</select>

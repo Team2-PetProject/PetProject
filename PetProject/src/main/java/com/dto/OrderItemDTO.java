@@ -2,8 +2,10 @@ package com.dto;
 
 public class OrderItemDTO {
 	private int OrderItem_Code;
+	private int Cart_Code;
 	private String Item_Code;
 	private int OrderInfo_Code;
+	private String Item_Category;
 	private String Member_Code;
 	private String Order_Name;
 	private int Cart_Amount;
@@ -40,6 +42,12 @@ public class OrderItemDTO {
 	public void setOrderItem_Code(int orderItem_Code) {
 		OrderItem_Code = orderItem_Code;
 	}
+	public int getCart_Code() {
+		return Cart_Code;
+	}
+	public void setCart_Code(int cart_Code) {
+		Cart_Code = cart_Code;
+	}
 	public String getItem_Code() {
 		return Item_Code;
 	}
@@ -51,6 +59,12 @@ public class OrderItemDTO {
 	}
 	public void setOrderInfo_Code(int orderInfo_Code) {
 		OrderInfo_Code = orderInfo_Code;
+	}
+	public String getItem_Category() {
+		return Item_Category;
+	}
+	public void setItem_Category(String item_Category) {
+		Item_Category = item_Category;
 	}
 	public String getMember_Code() {
 		return Member_Code;
@@ -113,7 +127,4 @@ public class OrderItemDTO {
 				+ Cart_Amount + ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Name=" + Item_Name
 				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste + "]";
 	}
-	
-	
-	
 }

@@ -1,30 +1,29 @@
 package com.service;
 
-import java.util.HashMap;
-
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionException;
 
 import com.config.MySqlSessionFactory;
 import com.dao.MemberDAO;
 import com.dto.MemberDTO;
 
 public class MemberService {
-	
-	public String idSearch(MemberDTO dto) {
+	MemberDAO dao;
+
+	public MemberService() {
+		super();
+		dao = new MemberDAO();
+	}
+
+	public MemberDTO selectOne(String memberCode) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
-		String member_code = null;
+		MemberDTO dto = null;
 		try {
-			MemberDAO dao = new MemberDAO();
-			member_code = dao.idSearch(session, dto);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
+			dto = dao.selectOne(session, memberCode);
+		} finally {
 			session.close();
 		}
-		return member_code;
+		return dto;
 	}
-	
 	
   public int memberUpdate(MemberDTO dto) {
 		  

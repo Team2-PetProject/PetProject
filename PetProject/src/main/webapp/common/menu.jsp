@@ -21,6 +21,6 @@
 <a href="#">
 	<img alt="" src="images/common/search.png" width = "15px" height = "15px">
 </a>
-<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+<a href="CartListServlet"><i class="fa-solid fa-cart-shopping"></i></a>
 </div>
 
