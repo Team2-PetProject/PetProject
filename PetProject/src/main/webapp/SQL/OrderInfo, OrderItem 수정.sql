@@ -1,5 +1,7 @@
 ALTER TABLE orderitem DROP COLUMN orderinfo_code;
 
+--orderinfo_seq 삭제
+
 ALTER TABLE orderinfo MODIFY orderinfo_code VARCHAR2(20);
 
 ALTER TABLE orderitem ADD ORDERINFO_CODE VARCHAR2(20) NOT NUll;

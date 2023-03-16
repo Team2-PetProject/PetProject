@@ -191,6 +191,13 @@
 <input type="hidden" name="Item_Image" value="<%= Item_Image%>">
 <input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
 <input type="hidden" name="Cart_Code" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
+<%
+	int delivery = 0;
+	if( (Item_Price * Cart_Amount) < 50000){
+	delivery = 3000;
+}%>		
+<input type="hidden" name="delivery" value="<%= delivery %>">	
+
 
 	<h3>주문상품 정보</h3>
 
@@ -225,12 +232,29 @@
 			<td class="td_default" align="center" width="90"><%= Cart_Amount %></td>
 
 		</tr>
+		<tr>
+			<td colspan="6">
+				<hr size="1" color="CCCCCC">
+			</td>
+		</tr>
 
 
 		<tr>
 			<td height="30" colspan="3"></td>
-			<td class="td_default" align="center">총 결제 금액 :</td>
+			<td class="td_default" align="center">총 상품 금액 :</td>
 			<td class="td_default" align="center"><%= Item_Price * Cart_Amount %>원</td>
+		</tr>
+		<tr>
+			<td height="30" colspan="3"></td>
+			<td class="td_default" align="center">배송비 :</td>
+
+			<td class="td_default" align="center"><%= delivery %>원</td>
+		
+		</tr>
+		<tr>
+			<td height="30" colspan="3"></td>
+			<td class="td_default" align="center">총 결제 금액 :</td>
+			<td class="td_default" align="center"><%= (Item_Price * Cart_Amount) + delivery %>원</td>
 		</tr>
 		<tr>
 			<td colspan="6">

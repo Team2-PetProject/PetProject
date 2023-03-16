@@ -5,20 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.dto.MemberDTO;
 import com.dto.OrderInfoDTO;
 import com.dto.OrderItemDTO;
-import com.service.CartService;
-import com.service.OrderInfoService;
-import com.service.OrderItemService;
 import com.service.OrderService;
 
 /**
@@ -42,6 +36,7 @@ public class CartOrderDoneServlet extends HttpServlet {
 			String addr2 = request.getParameter("addr2");
 			String phone = request.getParameter("phone");
 			String payMethod = request.getParameter("payMethod");
+			int OrderInfo_Delivery = Integer.parseInt(request.getParameter("delivery")) ;
 			
 			
 			//주문번호 생성
@@ -69,7 +64,7 @@ public class CartOrderDoneServlet extends HttpServlet {
 			
 			
 			//OrderInfo insert
-			OrderInfoDTO oinfoDTO = new OrderInfoDTO(OrderInfo_Code, Member_Code, orderName, post, addr1, addr2, phone, payMethod, null); 
+			OrderInfoDTO oinfoDTO = new OrderInfoDTO(OrderInfo_Code, Member_Code, orderName, post, addr1, addr2, phone, payMethod, null,OrderInfo_Delivery); 
 			
 			System.out.println("CartOrderDoneservlet: infoDTO "+oinfoDTO);
 

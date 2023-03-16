@@ -6,7 +6,7 @@
 	<insert id="orderDone" parameterType="OrderInfoDTO">
 		insert into orderinfo(orderinfo_code,member_code,orderinfo_ordername,orderinfo_post,orderinfo_addr1,
 		orderinfo_addr2,orderinfo_phone,orderinfo_paymethod)
-		values(orderInfo_seq.nextval, #{Member_Code}, #{OrderInfo_OrderName},#{OrderInfo_Post},
+		values(#{OrderInfo_Code}, #{Member_Code}, #{OrderInfo_OrderName},#{OrderInfo_Post},
 		#{OrderInfo_Addr1},#{OrderInfo_Addr2},#{OrderInfo_Phone},#{OrderInfo_PayMethod})
 	</insert>
 	
