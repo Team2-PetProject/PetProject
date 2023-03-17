@@ -52,6 +52,8 @@
 		$(".mySlide").not(".active").hide();
 	}
 </script>
+
+		
 <div class="slideshow-container">
 	<div class = "mySlide active">
 		<img alt="" src="images/banner/banner1.png">

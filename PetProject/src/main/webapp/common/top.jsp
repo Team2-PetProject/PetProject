@@ -22,8 +22,6 @@
 		 height: 10rem; 
 	}  */
 </style>
-
-
 	<div class="inner">
 		<div class="hearder-container">
 			  <!-- <div class="title"> -->
@@ -49,6 +47,7 @@
 				<%
 					} else{
 				%>
+			
 					<div class="btn-group" role="group">
 					<button type="button" class="btn btn-primary dropdown-toggle"
 						data-bs-toggle="dropdown" aria-expanded="false">회원</button>
