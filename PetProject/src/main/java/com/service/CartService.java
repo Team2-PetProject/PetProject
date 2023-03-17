@@ -1,5 +1,16 @@
 package com.service;
 
+<<<<<<< HEAD
+import com.dao.CartDAO;
+
+public class CartService {
+	CartDAO dao;
+
+	public CartService() {
+		super();
+		dao = new CartDAO();
+	}
+=======
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -50,5 +61,6 @@ public class CartService {
 	}
 
 
+>>>>>>> refs/remotes/origin/Gu
 	
 }

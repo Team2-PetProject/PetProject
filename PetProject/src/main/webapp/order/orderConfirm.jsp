@@ -190,6 +190,49 @@
 <input type="hidden" name="Cart_Amount" value="<%= Cart_Amount%>">
 <input type="hidden" name="Item_Image" value="<%= Item_Image%>">
 <input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
+<<<<<<< HEAD
+<input type="hidden" name="orderNum" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
+
+	<h3>주문상품 정보</h3>
+
+	<table width="90%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="6">
+				<hr size="1" color="CCCCCC">
+			</td>
+		</tr>
+		<tr>
+			<td class="td_default" align="center"><strong>주문번호</strong></td>
+			<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
+			<td class="td_default" align="center"><strong>판매가</strong></td>
+			<td class="td_default" align="center" colspan="2"><strong>수량</strong></td>
+
+		</tr>
+
+		<tr>
+			<td colspan="6">
+				<hr size="1" color="CCCCCC">
+			</td>
+		</tr>
+
+		<tr>
+			<td class="td_default" width="80"><%= Cart_Code %></td>
+			<td class="td_default" width="80"><img
+				src="images/items/<%= Item_Image %>.png" border="0" align="center" width="80" /></td>
+			<td class="td_default" width="300" style='padding-left: 30px'><%= Item_Name %>
+				<br> <font size="2" color="#665b5f">[옵션 : 옵션1(<%= Cart_Size %>) , 옵션2(<%=Cart_Color %>), 옵션3(<%=Cart_Taste %>)] </font>
+			</td>
+			<td class="td_default" align="center" width="110"><%= Item_Price %></td>
+			<td class="td_default" align="center" width="90"><%= Cart_Amount %></td>
+
+		</tr>
+
+
+		<tr>
+			<td height="30" colspan="3"></td>
+			<td class="td_default" align="center">총 결제 금액 :</td>
+			<td class="td_default" align="center"><%= Item_Price * Cart_Amount %>원</td>
+=======
 <input type="hidden" name="Cart_Code" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
 <%
 	int delivery = 0;
@@ -255,6 +298,7 @@
 			<td height="30" colspan="3"></td>
 			<td class="td_default" align="center">총 결제 금액 :</td>
 			<td class="td_default" align="center"><%= (Item_Price * Cart_Amount) + delivery %>원</td>
+>>>>>>> refs/remotes/origin/Gu
 		</tr>
 		<tr>
 			<td colspan="6">
