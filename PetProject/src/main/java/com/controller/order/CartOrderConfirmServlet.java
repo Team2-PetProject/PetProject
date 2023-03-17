@@ -21,24 +21,18 @@ public class CartOrderConfirmServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
+/*		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		String nextPage = null;
-		if(dto!=null) {
-			String Member_Code = dto.getMember_code();
+		*/
+//		if(dto!=null) {
+//			String Member_Code = dto.getMember_code();
+			String Member_Code = "1";
 			String Cart_Amount = request.getParameter("Cart_Amount");
 			String Item_Code = request.getParameter("Item_Code");
 			String Cart_Size = request.getParameter("Cart_Size");
 			String Cart_Color = request.getParameter("Cart_Color");
 			String Cart_Taste = request.getParameter("Cart_Taste");
-			
-			System.out.println(Member_Code);
-			System.out.println(Cart_Amount);
-			System.out.println(Item_Code);
-			System.out.println(Cart_Size);
-			System.out.println(Cart_Color);
-			System.out.println(Cart_Taste);
-			
 			
 			CartDTO cDTO = new CartDTO();
 			cDTO.setMember_Code(Member_Code);
@@ -49,8 +43,8 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			cDTO.setCart_Taste(Cart_Taste);
 			
 			System.out.println("cDTO "+cDTO);
+
 			
-		
 			CartService cService = new CartService();
 			int n = cService.cartAdd(cDTO);  //상세페이지 주문 =>  카트 저장
 			System.out.println("insert 갯수 :" + n);
@@ -65,14 +59,14 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			request.setAttribute("cinfoDTO", cinfoDTO);  //상품 주문 정보
 			request.setAttribute("mDTO", mDTO);  //고객 정보
 			
-			nextPage = "orderConfirm.jsp";
+			String nextPage = "orderConfirm.jsp";
 			
-		
+		/*
 			}else {
 			nextPage = "LoginUIServlet";
 			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
-		
+		*/
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
 		
