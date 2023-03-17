@@ -124,71 +124,77 @@ $(document).ready(function(){
 	<input type="hidden" name="Item_Image" value="<%=itemImage%>">
 	
 <div id="wrap_top"> <!-- 제일 밖, 가운데 정렬 위함 -->
-<div id="wrap_image"> <!-- 상품 카테고리 & 이미지 -->
-	<div id="group">
-		<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
-		<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
-<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
-	</div>
-	<img id="img" name="Item_Image" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
-</div>
-
-<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
-	<div class="forBlank"></div>
-	<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
-	<div class="itemBasicInfo" id="itemPrice"><%=itemPrice %></div>
-	
-	<div style="float:left; font-size:20px">옵션</div>
-	<div class="wrap_all_options">
-	
-	
-		<%
-			//System.out.println(itemSize);
-		String[] opt = {itemSize, itemColor, itemTaste};
-		String[] key = {"Cart_Size", "Cart_Color", "Cart_Taste"};
-		for(int i=0; i<opt.length; i++){
-				//System.out.println("opt[i] = "+opt[i]);
-			if(opt[i] != null){
-				String[] value = opt[i].split("/");
-		%>		<div class="wrap_each_option">
-					
-					<div>
-						<select class="option" name=<%=key[i]%> style="font-size:20px;">
-							<option selected value="0">선택하세요</option>
-							<% for(int j=0; j<value.length; j++){ %>
-								<option><%= value[j] %></option>
-							<%} //end 안for %>	
-						</select>
-					</div>
-				</div> <!-- end wrap_each_option -->
-			<%} //end if%>
-		<%} //end 밖for %>
-	
-	</div> <!-- end wrap_all_options -->
-	
-	<div></div>
-	<div>주문 수량</div>
-	<div class="itemAmount">
-		<img src="images/icon/minus.png" id="down" width="10" height="10">
-		<div id="itemAmount" name="Item_Amount" style="width:35px; height:10px; text-align:center;">1</div>
-		<img src="images/icon/plus.png" id="up" width="10" height="10">
+	<div id="wrap_image"> <!-- 상품 카테고리 & 이미지 -->
+		<div id="group">
+			<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
+			<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
+	<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
+		</div>
+		<img id="img" name="Item_Image" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
 	</div>
 	
+	<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
+		<div class="forBlank"></div>
+		<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
+		<div class="itemBasicInfo" id="itemPrice"><%=itemPrice %></div>
+		
+		<div class="wrap_itemOption">
+		
+		<div style="float:left; font-size:20px">상품 옵션</div>
+		<div class="wrap_all_options">
+		
+			<%
+				//System.out.println(itemSize);
+			String[] opt = {itemSize, itemColor, itemTaste};
+			String[] key = {"Cart_Size", "Cart_Color", "Cart_Taste"};
+			for(int i=0; i<opt.length; i++){
+					//System.out.println("opt[i] = "+opt[i]);
+				if(opt[i] != null){
+					String[] value = opt[i].split("/");
+			%>		<div class="wrap_each_option">
+						
+						<div>
+							<select class="option" name=<%=key[i]%> style="font-size:20px;">
+								<option selected value="0">선택하세요</option>
+								<% for(int j=0; j<value.length; j++){ %>
+									<option><%= value[j] %></option>
+								<%} //end 안for %>	
+							</select>
+						</div>
+					</div> <!-- end wrap_each_option -->
+				<%} //end if%>
+			<%} //end 밖for %>
+		
+		</div> <!-- end wrap_all_options -->
+		
+		</div><!-- end wrap_itemOption -->
+		
+	<!-- 	<div class="wrap_total"></div> -->
+		<div class="wrap_amount">
+			<div>주문 수량</div>
+			<div id="down">-</div>
+			<div id="itemAmount" name="Item_Amount" style="width:35px; height:10px; text-align:center;">1</div>
+			<div id="up" width="10" height="10">+</div>
+		</div>
+		
+		<div>
+			<hr>
+		</div>
+		
+		<div class="wrap_totalPrice">
+			<div>총 상품 금액</div>
+			<div id="totalPrice"><%= itemPrice %></div>
+		</div>
 	
-	<div>총 상품 금액</div>
-	<div id="totalPrice"><%= itemPrice %></div>
-
-
-
-
-<button id="orderNow">바로구매</button>
-<button id="cartAdd">장바구니</button>
-<button id="like">찜 하기</button>
-<button id="QA">상품문의</button>
-
-
- 
-</div><!-- end itemContents -->
+		<div class="forBlank"></div>
+	
+		<button id="orderNow">바로구매</button>
+		<button id="cartAdd">장바구니</button>
+		<button id="like">찜 하기</button>
+		<button id="QA">상품문의</button>
+	
+	 
+	</div><!-- end itemContents -->
 </div><!-- end wrapper_top -->
 
 </form>
@@ -254,9 +260,13 @@ $(document).ready(function(){
 		font-weight: 600; /*100~900. 400이 normal, 700이 bold*/
 	}
 	
+	.wrap_itemOption{
+		display: flex;
+	}
+	
 	.wrap_all_options{
 		float: left;
-		width: 640px; /*auto 설정...*/
+		width: auto;
 		height: 200px;
 		background: red;
 		display: flex;
@@ -265,11 +275,18 @@ $(document).ready(function(){
 	.wrap_each_option{
 		background: grey;
 		margin-left: 40px;
-		
+	}
+	
+	.wrap_amount{
+		font-size: 20px;
+		display: flex;
 	}
 	
 	
-	
+	.wrap_totalPrice{
+		font-size: 20px;
+		display: flex;
+	}
 	
 	
 	
