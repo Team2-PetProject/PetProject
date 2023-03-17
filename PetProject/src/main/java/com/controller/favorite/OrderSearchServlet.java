@@ -1,6 +1,7 @@
 package com.controller.favorite;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,10 @@ public class OrderSearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 //		int num=request.getParameter("orderDay");
 		service = new OrderHistoryService();
+		String startDay=request.getParameter("startDay");
+		String endDay=request.getParameter("endDay");
+		System.out.println(startDay);
+		System.out.println(endDay);
 		String curPage = request.getParameter("curPage");
 		if (curPage == null) {
 			curPage="1";
@@ -39,7 +44,7 @@ public class OrderSearchServlet extends HttpServlet {
 //		List<OrderHistoryDTO> list3 = service.getOredrTerm(num);
 //		List<OrderHistoryDTO> list3 = service.getOredrTerm("20200101","20200101");
 //		}
-
+		System.out.println("ddd");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
