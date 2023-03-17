@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-<%@page import="com.dto.MemberDTO"%>
-<%@page import="com.dto.CartDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
->>>>>>> refs/remotes/origin/Gu
+
 <!DOCTYPE html>
 <html>
 <head>

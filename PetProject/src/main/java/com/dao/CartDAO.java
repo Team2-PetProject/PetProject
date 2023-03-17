@@ -1,8 +1,8 @@
 package com.dao;
 
-<<<<<<< HEAD
-public class CartDAO {
-=======
+
+
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.CartDTO;
@@ -26,6 +26,5 @@ public class CartDAO {
 	}
 
 	
->>>>>>> refs/remotes/origin/Gu
 
 }

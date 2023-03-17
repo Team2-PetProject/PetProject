@@ -6,8 +6,8 @@
 
 	<insert id="cartAdd" parameterType="CartDTO">
 	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
-	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size},
-	 #{Cart_Color},#{Cart_Taste})
+	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size, jdbcType=VARCHAR},
+	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
 	</insert>
 	
 	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">

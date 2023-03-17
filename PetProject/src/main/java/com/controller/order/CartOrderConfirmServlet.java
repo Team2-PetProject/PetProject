@@ -36,13 +36,16 @@ public class CartOrderConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO)session.getAttribute("login");
+//		HttpSession session = request.getSession();
+//		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		String nextPage = null;
-		if(dto!=null) {
-			String Member_Code = dto.getMember_code();
-			String Cart_Amount = request.getParameter("Cart_Amount");
+//		if(dto!=null) {
+			String Member_Code = "1";
+//			String Member_Code = dto.getMember_code();
+			String Cart_Amount = request.getParameter("Item_Amount");
+			System.out.println("CartOrderConfirmSevlet  Cart_Amount: " + Cart_Amount);
 			String Item_Code = request.getParameter("Item_Code");
+			System.out.println("CartOrderConfirmSevlet Item_Code : "+Item_Code);
 			String Cart_Size = request.getParameter("Cart_Size");
 			String Cart_Color = request.getParameter("Cart_Color");
 			String Cart_Taste = request.getParameter("Cart_Taste");
@@ -74,10 +77,10 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			
 			nextPage = "orderConfirm.jsp";
 			
-		}else {
-			nextPage = "LoginUIServlet";
-			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
-		}
+//		}else {
+//			nextPage = "LoginUIServlet";
+//			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
+//		}
 		
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);

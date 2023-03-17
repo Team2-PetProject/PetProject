@@ -1,6 +1,6 @@
 package com.service;
 
-<<<<<<< HEAD
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -28,16 +28,4 @@ public class ItemService {
 	}//end goodsRetrieve
 	
 }//end class
-=======
-import com.dao.ItemDAO;
 
-public class ItemService {
-	ItemDAO dao;
-
-	public ItemService() {
-		super();
-		dao = new ItemDAO();
-	}
-	
-}
->>>>>>> refs/remotes/origin/Gu

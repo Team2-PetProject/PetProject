@@ -17,6 +17,9 @@ public class ItemRetrieveServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//String item_code = request.getParameter("item_code");
+//		ItemDTO iDTO = new ItemDTO("food02", "food", "연어어쩌고", null, 40000, "food02", "S/M/L", null, "mild/spicy");
+		
+		
 		String item_code = "food02";
 		System.out.println("상품 코드 : " + item_code);
 		
