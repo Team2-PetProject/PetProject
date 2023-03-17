@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -93,6 +94,20 @@ public class CartOrderDoneServlet extends HttpServlet {
 			int n = oService.orderDone(oinfoDTO,oitemDTO,Cart_Code);  //트랜잭션 처리
 			System.out.println("CartOrderDoneServlet commit 된 갯수: "+n);
 			
+			
+			oinfoDTO = oService.selByinfoCode(OrderInfo_Code);
+			System.out.println("jsp로 넘어갈 oinfoDTO "+ oinfoDTO);
+			
+			
+			oitemDTO = oService.selByCode(OrderInfo_Code);
+			System.out.println("jsp로 넘어갈 oitemDTO "+ oitemDTO);
+			
+			
+			request.setAttribute("oinfoDTO", oinfoDTO);
+			request.setAttribute("oitemDTO", oitemDTO);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("orderDone.jsp");
+			dis.forward(request, response);
 //			nextPage = "orderDone.jsp";
 //		
 //		}else {

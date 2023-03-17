@@ -1,15 +1,32 @@
+<%@page import="com.dto.OrderItemDTO"%>
+<%@page import="com.dto.OrderInfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+ OrderInfoDTO oinfoDTO = (OrderInfoDTO)request.getAttribute("oinfoDTO");
+ System.out.println("orderDone.jsp oinfoDTO " + oinfoDTO);
+ 
+ OrderItemDTO oitemDTO = (OrderItemDTO)request.getAttribute("oitemDTO");
+ System.out.println("orderDone.jsp oitemDTO " +oitemDTO);
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.container{
+	margin: 0  auto;
+}
+
+
+</style>
 </head>
 <body>
-<h1>결제 화면 입니다.</h1>
-
-<table  width="100%">
+<h1>결제완료 화면 입니다.</h1>
+<div class="container">
+<table  width="80%">
 	<tr>
 		<td height="30">
 	</tr>
@@ -26,7 +43,7 @@
 </table>
 
 <h3>상품정보</h3>
-<table  width="100%">
+<table  width="80%">
 	<tr>
 		<td colspan="4">
 			<hr size="1" color="CCCCCC">
@@ -88,8 +105,74 @@
 
 </table>
 
-<h3>배송정보</h3>
+<h3>결제정보</h3>
+<table width="80%">
+	<tr>
+		<td colspan="2">
+			<hr size="1" color="CCCCCC">
+		</td>
+	</tr>
+	<tr>
+		<td>총 상품금액</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>총 배송비</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>최종 결제금액</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>결제수단</td>
+		<td>카카오페이(결제일시)</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<hr size="1" color="CCCCCC">
+		</td>
+	</tr>
 
+</table>
+
+
+
+<h3>배송정보</h3>
+<table width="80%">
+	<tr>
+		<td colspan="2">
+			<hr size="1" color="CCCCCC">
+		</td>
+	</tr>
+	<tr>
+		<td>받는분</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>연락처</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>주소</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<hr size="1" color="CCCCCC">
+		</td>
+	</tr>
+
+</table>
+</div>
+
+<br>
+<br>
+
+<div>
+<a>구매 내역</a> &nbsp;&nbsp;
+<a>쇼핑 계속하기</a>
+</div>
 
 
 

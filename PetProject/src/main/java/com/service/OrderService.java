@@ -41,6 +41,28 @@ public class OrderService {
 		}
 		return n+n2+n3;
 	}//end orderDone
+
+	public OrderInfoDTO selByinfoCode(String orderInfo_Code) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		OrderInfoDTO dto = null;
+		try {
+			dto = dao.selByinfoCode(session,orderInfo_Code);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	public OrderItemDTO selByCode(String orderInfo_Code) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		OrderItemDTO dto = null;
+		try {
+			dto = dao.selByCode(session,orderInfo_Code);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 	
 	
 }

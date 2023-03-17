@@ -23,4 +23,14 @@ public class OrderDAO {
 		return n;
 	}
 
+	public OrderInfoDTO selByinfoCode(SqlSession session, String orderInfo_Code) {
+		OrderInfoDTO dto = session.selectOne("selByinfoCode",orderInfo_Code);
+		return dto;
+	}
+
+	public OrderItemDTO selByCode(SqlSession session, String orderInfo_Code) {
+		OrderItemDTO dto = session.selectOne("selByCode",orderInfo_Code);
+		return dto;
+	}
+
 }
