@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Kkosunnae</title>
 <!-- 메타 태그 설정, 키워드, 설명  -->
@@ -32,25 +33,13 @@ main {
 </head>
 <body>
 	<header>
-		<jsp:include page="common/top.jsp" flush="true"></jsp:include>
+		<jsp:include page="common/top.jsp"></jsp:include>
 		<hr>
-		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
+		<jsp:include page="common/menu.jsp"></jsp:include>
 	</header>
+<hr>
 
-	<main>
-		<hr>
-		<jsp:include page="common/banner.jsp" flush="true"></jsp:include>
-		<hr>
-		<jsp:include page="goods/new.jsp" flush="true"></jsp:include>
-		<hr>
-		<jsp:include page="event/event.jsp" flush="true"></jsp:include>
-		<hr>
-		<jsp:include page="goods/best.jsp" flush="true"></jsp:include>
-	</main>
+<jsp:include page="member/idSearch.jsp" flush="true" />
 
-	<footer>
-		상호: Kkosunnae(주) | 대표자 : 홍길동 | 고객센터 : 1688-0000 |
-		주소: 서울시 강남구 테헤란로  | 이메일: xyz@gmail.com
-	</footer>
 </body>
 </html>

@@ -1,109 +1,101 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script type="text/javascript">
- 	$(document).ready(function(){
- 		$("form").on("submit",function(){
- 			var member_code = $("#member_code").val();
- 			var member_passwd = $("#member_passwd").val();
- 			var member_name = $("#member_name").val();
- 			var member_post = $("#member_post").val();
- 			var member_addr1 = $("#sample4_roadAddress").val();
- 			var member_addr2 = $("#sample4_jibunAddress").val();
- 			var member_phone1 = $("#member_phone1").val();
- 			var member_phone2 = $("#member_phone2").val();
- 			var member_phone3 = $("#member_phone3").val();
- 			var member_email1 = $("#member_email1").val();
- 			var member_email2 = $("#member_email2").val();
- 			
- 			if(member_code.length==0){
- 				alert("아이디를 입력하세요");
- 				$("#member_code").focus();
- 				return false;
- 			}
- 			if(member_passwd.length==0){
- 				alert("비밀번호를 입력하세요");
- 				$("#member_passwd").focus();
- 				return false;
- 			}
- 			if(member_name.length==0){
- 				 alert("이름을 입력하세요");
- 				 $("#member_name").focus();
- 				 return false;
- 			}
- 			if(member_post.length==0){
- 				 alert("우편번호를 입력하세요");
- 				 $("#sample4_postcode").focus();
- 				return false;
- 			}
- 			if(member_addr1.length==0){
- 				 alert("주소를 입력하세요");
- 				 $("#sample4_roadAddress").focus();
- 				return false;
- 			}
- 			if(member_addr2.length==0){
- 				 alert("주소를 입력하세요");
- 				 $("#sample4_jibunAddress").focus();
- 				return false;
- 			}
- 			
- 			if(member_phone2.length==0){
- 				 alert("전화번호를 입력하세요");
- 				 $("#member_phone2").focus();
- 				return false;
- 			}
- 			if(member_phone3.length==0){
- 				 alert("전화번호를 입력하세요");
- 				 $("#member_phone3").focus();
- 				 return false;
- 			}
- 			if(member_email1.length==0){
- 				 alert("이메일을 입력하세요");
- 				 $("#member_email1").focus();
- 				return false;
- 			}
- 			if(member_email2.length==0){
-				 alert("이메일을 입력하세요");
-				 $("#member_email2").focus();
-				return false;
+    
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	
+ $("form").on("submit",function(event){		
+	 var member_code = $("#member_code").val();
+	 var member_passwd = $("#member_passwd").val();
+    		if(member_code.length==0){
+    			alert("userid 필수")
+    			$("#member_code").focus();
+    			event.preventDefault();
+    		}else if(member_passwd.length==0){
+    			alert("passwd 필수")
+    			$("#member_passwd").focus();
+    			event.preventDefault();
+    		}
+    	});
+//비번확인
+ $("#passwd2").on("keyup",function(){
+		var member_passwd = $("#member_passwd").val();
+		var mesg = "비번 불일치";
+		if(member_passwd == $(this).val()){
+			mesg = "비번 일치";
+		}
+		$("#result2").text(mesg);
+	});
+	
+//이메일 선택
+ $("#emailSelect").on("change",function(){
+		var email = $(this).val();
+		  $("#member_email2").val(email);
+	});
+	
+ $("#member_code").on("keyup",function(event){	
+	 $.ajax({
+			type : "GET",
+			url : "MemberIdCheckServlet",
+			dataType : "text",
+			data : {
+				userid : $("#member_code").val()
+			},
+			success : function(responseData, status, xhr) {
+			    $("#result").text(responseData);
+			},
+			error : function(xhr, status, error) {
+				console.log("error");
 			}
- 			
- 		})
- 	})
+		});
+});
  
- </script>   
-    
-    
-<form action="MemberAddServlet" method="post">
-
-<b>아이디</b>&nbsp;<input type="text" name="member_code" id="member_code"><span id="idresult"></span><br> 
-<b>비밀번호</b>&nbsp;<input type="text" name="member_passwd" id="member_passwd"><br>
-<b>비밀번호 확인</b>&nbsp;<input type="text" name="member_passwd2" id="member_passwd2">
-<span id="result"></span>
+ });
+</script>    
+<%
+   MemberDTO dto =(MemberDTO)session.getAttribute("login");
+   String member_code = dto.getMember_code();
+   String member_name = dto.getMember_name();
+   String member_post = dto.getMember_post();
+   String member_addr1 = dto.getMember_addr1();
+   String member_addr2 = dto.getMember_addr2();
+   String member_phone1 = dto.getMember_phone1();
+   String member_phone2 = dto.getMember_phone2();
+   String member_phone3 = dto.getMember_phone3();
+   String member_email1 = dto.getMember_email1();
+   String member_email2 = dto.getMember_email2();
+%>
+<form action="MemberUpdateServlet" method="post">
+<input type="hidden" value="<%= member_code %>" name="member_code" >
+*아이디: <%= member_code %><br>
 <br> 
-<b>이름</b>&nbsp;<input type="text" name="member_name" id="member_name"><br> 
-<b>주소</b><input type="text" name="member_post" id="member_post" placeholder="우편번호">
+*이름:<%= member_name %>
+<br> 
+<input type="text" value="<%= member_post %>" name="member_post" id="sample4_postcode"  placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" name="member_addr1" id="sample4_roadAddress" placeholder="도로명주소">
-<input type="text" name="member_addr2" id="sample4_jibunAddress" placeholder="지번주소">
+<input type="text" value="<%= member_addr1 %>" name="member_addr1" id="sample4_roadAddress" placeholder="도로명주소">
+<input type="text" value="<%= member_addr2 %>" name="member_addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
 <br>
-<b>전화번호</b>&nbsp;<select name="member_phone1">
-  <option value="010">010</option>
-  <option value="011">011</option>
+전화번호:<select name="phone1">
+  <option value="017"<% if("017".equals(member_phone1)){ %> selected<%} %>>017</option>
+  <option value="011"<% if("011".equals(member_phone1)){ %> selected<%} %>>011</option>
+  <option value="010"<% if("010".equals(member_phone1)){ %> selected<%} %>>010</option>
+
 </select>-
-<input type="text" name="member_phone2" id="member_phone2">-<input type="text" name="member_phone3" id="member_phone3">
+<input type="text" value="<%= member_phone2 %>" name="member_phone2" >
+-<input type="text" value="<%= member_phone3 %>" name="member_phone3" >
 <br>
-<b>이메일</b>&nbsp;<input type="text" name="member_email1" id="member_email1">@
-       <input type="text" name="member_email2" id="member_email2" placeholder="직접입력">
-       <select id="email">
+이메일:<input type="text" value="<%= member_email1 %>" name="member_email1" id="member_email1">@
+       <input type="text" value="<%= member_email2 %>" name="member_email2" id="member_email2" placeholder="직접입력">
+       <select  id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
-        <option value="gmail.com">gmail.com</option>
        </select>
 <br>
-<input type="submit" value="회원가입">
+<input type="submit" value="수정">
 <input type="reset" value="취소">
 </form>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

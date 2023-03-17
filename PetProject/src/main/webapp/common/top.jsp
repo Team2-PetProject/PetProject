@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style type="text/css">
 	  .title{
 		float: left;
@@ -23,8 +19,7 @@
 		 height: 10rem; 
 	}  */
 </style>
-</head>
-<body>
+
 
 	<div class="inner">
 		<div class="hearder-container">
@@ -47,11 +42,3 @@
 	</div>
 
 
-
-
-
-
-
-
-</body>
-</html>

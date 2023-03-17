@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+    fieldset {
+        width : 350px; height : 300px;    
+    }
+</style>    
 <meta charset="UTF-8">
 <title>Kkosunnae</title>
 <!-- 메타 태그 설정, 키워드, 설명  -->
@@ -33,9 +38,11 @@ main {
 		<jsp:include page="common/menu.jsp"></jsp:include>
 	</header>
 		
-
+<h1>회원가입</h1>
 	<main>
+	<fieldset>
 		<jsp:include page="member/memberForm.jsp"></jsp:include>
+	</fieldset>	
 	</main>
 
 
