@@ -42,7 +42,7 @@ public class CartOrderConfirmServlet extends HttpServlet {
 //		if(dto!=null) {
 			String Member_Code = "1";
 //			String Member_Code = dto.getMember_code();
-			String Cart_Amount = request.getParameter("Item_Amount");
+			String Cart_Amount = request.getParameter("Cart_Amount");
 			System.out.println("CartOrderConfirmSevlet  Cart_Amount: " + Cart_Amount);
 			String Item_Code = request.getParameter("Item_Code");
 			System.out.println("CartOrderConfirmSevlet Item_Code : "+Item_Code);
@@ -65,6 +65,7 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			int n = cService.cartAdd(cDTO);  //상세페이지 주문 =>  카트 저장
 			System.out.println("insert 갯수 :" + n);
 			cDTO = cService.selectBymaxCart(Member_Code);/////////////////////////////////////////
+			System.out.println("db에서 꺼내온 cartcode들어있는 cDTO: "+cDTO);
 			
 			CartInfoDTO cinfoDTO = cService.selectByCode(cDTO.getCart_Code());
 			System.out.println("CartInfoDTO  : "+cinfoDTO);
