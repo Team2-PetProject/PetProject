@@ -143,7 +143,6 @@
 		String itemImage = dto.getItem_Image();
 		int totalPrice = itemPrice * cartAmount;
 		sum += totalPrice;
-		System.out.println(itemImage);
 	%>
 	<fieldset>
 		<div class="img" style = "float : left;">
