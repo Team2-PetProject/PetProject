@@ -38,7 +38,7 @@ public class MemberDAO {
 	   return n;
    }
 
-public MemberDTO selectOne(SqlSession session, String memberCode) {
-	return session.selectOne("selectOne", memberCode);
-}
+	public MemberDTO selectOne(SqlSession session, String memberCode) {
+		return session.selectOne("selectOne", memberCode);
+	}
 }

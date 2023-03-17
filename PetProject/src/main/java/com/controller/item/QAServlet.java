@@ -1,33 +1,23 @@
-package com.controller.member;
+package com.controller.item;
 
 import java.io.IOException;
-import java.util.HashMap;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.dto.MemberDTO;
-import com.service.MemberService;
-
-/**
- * Servlet implementation class MemberUIServlet
- */
-@WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/QAServlet")
+public class QAServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	    HttpSession session = request.getSession();
-	    session.invalidate();
-		response.sendRedirect("main.jsp");
+		
+		String itemCode = request.getParameter("Item_Code");
+		String itemName = request.getParameter("Item_Name");
+		System.out.println(itemCode + "\t" + itemName);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

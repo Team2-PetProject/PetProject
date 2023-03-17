@@ -3,7 +3,6 @@ package com.service;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionException;
 
 import com.config.MySqlSessionFactory;
 import com.dao.MemberDAO;
