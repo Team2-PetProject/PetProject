@@ -69,7 +69,7 @@ public class OrderAllDoneServlet extends HttpServlet {
 			CartService cService = new CartService();
 			List<CartInfoDTO> list = cService.OrderAll(cList);
 			OrderService oService = new OrderService();
-			int n = oService.orderDone(cList, list, OrderInfoDTO);
+			int n = oService.orderAllDone(cList, list, OrderInfoDTO);
 			System.out.println(n);
 			
 //		}

@@ -11,10 +11,6 @@ public class OrderInfoDTO {
 	private String OrderInfo_PayMethod;
 	private String OrderInfo_OrderDay;
 	private int OrderInfo_Delivery;
-	public OrderInfoDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public OrderInfoDTO(String orderInfo_Code, String member_Code, String orderInfo_OrderName, String orderInfo_Post,
 			String orderInfo_Addr1, String orderInfo_Addr2, String orderInfo_Phone, String orderInfo_PayMethod,
 			String orderInfo_OrderDay, int orderInfo_Delivery) {
@@ -29,6 +25,10 @@ public class OrderInfoDTO {
 		OrderInfo_PayMethod = orderInfo_PayMethod;
 		OrderInfo_OrderDay = orderInfo_OrderDay;
 		OrderInfo_Delivery = orderInfo_Delivery;
+	}
+	public OrderInfoDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getOrderInfo_Code() {
 		return OrderInfo_Code;
