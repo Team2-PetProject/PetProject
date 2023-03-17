@@ -1,16 +1,5 @@
 package com.service;
 
-<<<<<<< HEAD
-import com.dao.CartDAO;
-
-public class CartService {
-	CartDAO dao;
-
-	public CartService() {
-		super();
-		dao = new CartDAO();
-	}
-=======
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -30,20 +19,20 @@ public class CartService {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-			n= dao.cartAdd(session,cDTO);
+			n = dao.cartAdd(session, cDTO);
 			session.commit();
 		} finally {
 			session.close();
 		}
 		return n;
-	}//end CartAdd
+	}// end CartAdd
 
 	public CartInfoDTO selectByCode(int cart_code) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		CartInfoDTO dto = null;
 		try {
-			dto = dao.selectByCode(session,cart_code);
-		}finally {
+			dto = dao.selectByCode(session, cart_code);
+		} finally {
 			session.close();
 		}
 		return dto;
@@ -53,14 +42,11 @@ public class CartService {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		CartDTO dto = null;
 		try {
-			dto = dao.selectBymaxCart(session,member_Code);
-		}finally {
+			dto = dao.selectBymaxCart(session, member_Code);
+		} finally {
 			session.close();
 		}
 		return dto;
 	}
 
-
->>>>>>> refs/remotes/origin/Gu
-	
-}
+}// end class

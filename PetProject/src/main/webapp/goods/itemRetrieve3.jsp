@@ -68,7 +68,7 @@ $(document).ready(function(){
 		});//end each
 		
 		//데이터 넘기기
-		$("#myForm").attr("action", "orderConfirmServlet");
+		$("#myForm").attr("action", "CartOrderConfirmServlet");
 		
 	});//end orderNow
 	
