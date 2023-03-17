@@ -3,4 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CartMapper">
+
+	<insert id="cartAdd" parameterType="CartDTO">
+	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
+	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size},
+	 #{Cart_Color},#{Cart_Taste})
+	</insert>
+	
+	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">
+	 select Cart_Code, Member_Code,
+	 Cart_Amount,Cart_Size,Cart_Color,Cart_Taste,Item_Code,Item_Category,
+	 Item_Name,Item_Info, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste
+	 from cart join item
+	 using(Item_Code)
+	 where Cart_Code=#{Cart_Code};
+	
+	</select>
+	
+	<select id="selectBymaxCart" resultType="CartDTO" parameterType="string">
+		select Cart_Code, Member_Code, Cart_Amount, Item_Code, Cart_Size, Cart_Color, Cart_Taste
+		from cart 
+		where Cart_Code = (select MAX(Cart_Code) from cart where Member_Code=#{Member_Code}) ;
+	
+	</select>
+	
+	<delete id="delByCode" parameterType="int">
+		delete from cart where Cart_Code=#{Cart_Code}
+	
+	</delete>
 </mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+	<insert id="orderDone" parameterType="OrderInfoDTO">
+		insert into orderinfo(orderinfo_code,member_code,orderinfo_ordername,orderinfo_post,orderinfo_addr1,
+		orderinfo_addr2,orderinfo_phone,orderinfo_paymethod)
+		values(#{OrderInfo_Code}, #{Member_Code}, #{OrderInfo_OrderName},#{OrderInfo_Post},
+		#{OrderInfo_Addr1},#{OrderInfo_Addr2},#{OrderInfo_Phone},#{OrderInfo_PayMethod})
+	</insert>
+	
+	<insert id="itemOrderDone" parameterType="OrderItemDTO">
+	
+		insert into orderitem (OrderItem_Code,Item_Code,OrderInfo_Code,Member_Code,Order_Name,Cart_Amount,
+		Item_Price,Item_Image,Item_Name,Cart_Size,Cart_Color,Cart_Taste)
+		values (orderItem_seq.nextval,#{Item_Code},#{OrderInfo_Code},#{Member_Code},#{Order_Name},
+		#{Cart_Amount},#{Item_Price},#{Item_Image},#{Item_Name},#{Cart_Size},#{Cart_Color},#{Cart_Taste})
+	</insert>
+	
+	<select id="selByinfoCode" resultType="OrderInfoDTO" parameterType="string">
+		select OrderInfo_Code,Member_Code,OrderInfo_OrderName,OrderInfo_Post,OrderInfo_Addr1,OrderInfo_Addr2,
+		OrderInfo_Phone,OrderInfo_PayMethod,OrderInfo_OrderDay,OrderInfo_Delivery
+		from orderinfo
+		where OrderInfo_Code=#{OrderInfo_Code}
+	
+	</select>
+	
+	<select id="selByCode" resultType="OrderItemDTO" parameterType="string">
+		select OrderItem_Code,Item_Code,OrderInfo_Code,Member_Code,Order_Name,Cart_Amount,Item_Price,
+		Item_Image,Item_Name,Cart_Size,Cart_Color,Cart_Taste
+		from orderitem
+		where OrderInfo_Code=#{OrderInfo_Code}
+	
+	</select>
+</mapper>
