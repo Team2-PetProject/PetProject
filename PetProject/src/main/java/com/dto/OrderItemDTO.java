@@ -3,7 +3,7 @@ package com.dto;
 public class OrderItemDTO {
 	private int OrderItem_Code;
 	private String Item_Code;
-	private int OrderInfo_Code;
+	private String OrderInfo_Code;
 	private String Member_Code;
 	private String Order_Name;
 	private int Cart_Amount;
@@ -17,7 +17,7 @@ public class OrderItemDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderItemDTO(int orderItem_Code, String item_Code, int orderInfo_Code, String member_Code, String order_Name,
+	public OrderItemDTO(int orderItem_Code, String item_Code, String orderInfo_Code, String member_Code, String order_Name,
 			int cart_Amount, int item_Price, String item_Image, String item_Name, String cart_Size, String cart_Color,
 			String cart_Taste) {
 		super();
@@ -46,10 +46,10 @@ public class OrderItemDTO {
 	public void setItem_Code(String item_Code) {
 		Item_Code = item_Code;
 	}
-	public int getOrderInfo_Code() {
+	public String getOrderInfo_Code() {
 		return OrderInfo_Code;
 	}
-	public void setOrderInfo_Code(int orderInfo_Code) {
+	public void setOrderInfo_Code(String orderInfo_Code) {
 		OrderInfo_Code = orderInfo_Code;
 	}
 	public String getMember_Code() {
