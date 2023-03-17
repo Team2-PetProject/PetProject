@@ -2,15 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.CartInfoDTO" %>
 <%@ page import="java.util.List" %>
-<style type="text/css">
-	.card {
-		width : 100px; height : 400px;
-
-	}
-	input {
-		display : inline-block;
-	}
-</style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -26,21 +17,28 @@
 			location.href="CartDelServlet?num="+num;
 		});
 		$("input:checkbox").click(function() {
-			var arr = $("input:checkbox[class='check']:checked");
-			var sum = 0;
-			var sum_deliver = 0;
-			arr.each(function(idx, data) {
-				var cartCode = $(this).val();
-				var amount = $("#Amount" + cartCode).val();
-				var price = $("#price" + cartCode).text();
-				sum += amount*price;
-			});
-			$("#OrderPrice").text(sum);
-			if(sum < 50000){
-				sum_deliver = 3000;
+			var arr = $(".check:checked");
+			if(arr.length ==0){
+				$("#OrderPrice").text(0);
+				$("#DeliverPrice").text(0);
+				$("#Price").text(0);
+			}else{
+				var sum = 0;
+				var sum_deliver = 0;
+				arr.each(function(idx, data) {
+					var cartCode = $(this).val();
+					var amount = $("#Amount" + cartCode).val();
+					var price = $("#price" + cartCode).text();
+					sum += amount*price;
+				});
+				$("#OrderPrice").text(sum);
+				if(sum < 50000){
+					sum_deliver = 3000;
+				}
+				$("#DeliverPrice").text(sum_deliver);
+				$("#Price").text(sum+sum_deliver);
 			}
-			$("#DeliverPrice").text(sum_deliver);
-			$("#Price").text(sum+sum_deliver);
+			
 		});
 		$("#allDel").click(function() {
 			var n = $("input:checkbox:checked").length;
@@ -120,6 +118,7 @@
 <form id="myForm">
 <input type="checkbox" id="allCheck"> 전체 선택
 <input type="button" value="선택삭제" id="allDel"/>
+	
 	<%
 	List<CartInfoDTO> list = (List<CartInfoDTO>) request.getAttribute("cartList");
 	//String[] arr = {"cartSize", "cartColor", "cartTaste"};
@@ -143,15 +142,15 @@
 		String itemImage = dto.getItem_Image();
 		int totalPrice = itemPrice * cartAmount;
 		sum += totalPrice;
-		
 	%>
-	<fieldset>
-		<div class="img" style = "float : left;">
-			<input type="checkbox" class="check" id="check<%=memberCode%>" name = "check" value="<%=cartCode%>">
-			<img src="images/items/<%=itemImage%>.png" alt="" width=100px height = 100px>
+	<div class="row shadow p-3 mb-5 bg-body rounded m-5 ">
+		<div class="col-md-1 form-check">
+			<input class="form-check-input check" type="checkbox" 
+			id="check<%=memberCode%>" name = "check" value="<%=cartCode%>" style="vertical-align: middle"> 
+			<img src="images/common/search.png" class="rounded float-start" alt="..." width = "100px" height="100px">
 		</div>
-		<div style = "float : left;">
-			<h2><%=itemName%></h2>
+		<div class="col-md-5">
+			<h5><%=itemName%></h5>
 			<p><%=itemInfo%></p>
 			<%if(cartSize!=null||cartColor!=null||cartTaste!=null){ %>
 			옵션	
@@ -205,28 +204,42 @@
 			<%
 				}
 			%>
-			
-			수량 <button class="up" data-num="<%=cartCode%>">+</button> 
-			<input type="text" class="Amount" id="Amount<%=cartCode%>" name = "Amount" value = "<%=cartAmount%>"> 
-			<button class="down" data-num="<%=cartCode%>">-</button>
-			<%-- <input type="button" value="변경" data-code = <%=cartCode%> class="update"/> --%>
-			<input type="button" value="삭제" data-code="<%=cartCode%>" class="del"/>
-			가격 <span id="price<%=cartCode%>"><%=itemPrice%></span>
+		</div>
+		<div class="col-md-1 align-self-center align-top">
+			<%=itemCategory%>
+		</div>
+		<div class="col-md-2 align-self-center">
+			<div class="input-group input-group-sm mb-3">
+				<button class="btn btn-outline-secondary up" data-num="<%=cartCode%>" type="button">+</button>
+				<input type="text" class="form-control Amount" placeholder=""
+					aria-label="Example text with two button addons"
+					id="Amount<%=cartCode%>" name = "Amount" value = "<%=cartAmount%>">
+				<button class="btn btn-outline-secondary down" data-num="<%=cartCode%>" type="button">-</button>
+			</div>
+		</div>
+		<div class="col-md-2 align-self-center d-flex justify-content-center">
+			가격<span id="price<%=cartCode%>"><%=itemPrice%></span>&nbsp;
 			총가격 <span id="total<%=cartCode%>"><%=totalPrice%></span>
 		</div>
-	</fieldset>
+		<div class="col-md-1 align-self-center d-flex justify-content-end">
+			<button type="button" class="btn-close del" aria-label="Close" data-code="<%=cartCode%>" ></button>
+		</div>
+	</div>
 	<%
 		}
 	%>
 	<b>결제정보</b>
-	<table border ='1'>
+	<div class="m-5 ">
+		<table class="table table-bordered shadow p-3 mb-5 bg-body rounded" >
 		<tr>
 			<td>주문금액 <span id="OrderPrice">0</span>원</td> 
-			<td rowspan='2'>결제금액 <span id="Price">0</span>원</td>
+			<td rowspan='2' class="align-middle">결제금액 <span id="Price">0</span>원</td>
 		</tr>
 		<tr>
 			<td>배달비 <span id="DeliverPrice">0</span>원</td>
 		</tr>
 	</table>
+	</div>
+	
 	<input type="button" value="주문하기" id="order"/>
 </form>

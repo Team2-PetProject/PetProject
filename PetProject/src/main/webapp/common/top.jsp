@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.MemberDTO" %>
-<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 장치의 크기에 따라 viewport 설정 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+ 
 <style type="text/css">
 	  .title{
 		float: left;
@@ -21,8 +22,6 @@
 		 height: 10rem; 
 	}  */
 </style>
-
-
 	<div class="inner">
 		<div class="hearder-container">
 			  <!-- <div class="title"> -->
@@ -48,6 +47,7 @@
 				<%
 					} else{
 				%>
+			
 					<div class="btn-group" role="group">
 					<button type="button" class="btn btn-primary dropdown-toggle"
 						data-bs-toggle="dropdown" aria-expanded="false">회원</button>

@@ -56,7 +56,6 @@ main {
 		<hr>
 		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
 	</header>
-
 	<main>
 		<hr>
 		<jsp:include page="common/banner.jsp" flush="true"></jsp:include>

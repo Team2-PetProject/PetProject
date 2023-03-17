@@ -32,21 +32,18 @@ main {
 </head>
 <body>
 	<header>
-		<jsp:include page="common/top.jsp"></jsp:include>
+		<jsp:include page="common/top.jsp" flush='true'></jsp:include>
 		<hr>
-		<jsp:include page="common/menu.jsp"></jsp:include>
+		<jsp:include page="common/menu.jsp" flush="true"></jsp:include>
 	</header>
 		
 
 	<main>
 		<hr>
-		<jsp:include page="goods/cart.jsp"></jsp:include>
+		<jsp:include page="goods/cart.jsp" flush="true"></jsp:include>
 	</main>
 
 
-	<footer>
-		상호: Kkosunnae(주) | 대표자 : 홍길동 | 고객센터 : 1688-0000 |
-		주소: 서울시 강남구 테헤란로  | 이메일: xyz@gmail.com
-	</footer>
+	<jsp:include page="common/footer.jsp" flush="true"></jsp:include>
 </body>
 </html>

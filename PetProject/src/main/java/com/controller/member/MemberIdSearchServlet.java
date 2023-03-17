@@ -1,8 +1,8 @@
 package com.controller.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,12 +20,10 @@ public class MemberIdSearchServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		 String member_name = request.getParameter("member_name").trim();
-		 String member_phone1 = request.getParameter("member_phone1").trim();
-		 String member_phone2 = request.getParameter("member_phone2").trim();
-		 String member_phone3 = request.getParameter("member_phone3").trim();
-		 String member_email1 = request.getParameter("member_email1").trim();
-		 String member_email2 = request.getParameter("member_email2").trim();
+		 String member_name = request.getParameter("name").trim();
+		 String member_phone1 = request.getParameter("phone1").trim();
+		 String member_phone2 = request.getParameter("phone2").trim();
+		 String member_phone3 = request.getParameter("phone3").trim();
 		 
 		 MemberDTO dto = new MemberDTO();
 		 dto.setMember_name(member_name);
@@ -35,18 +33,16 @@ public class MemberIdSearchServlet extends HttpServlet {
 		 
 		 MemberService service = new MemberService();
 		 String member_code = service.idSearch(dto);
-		 String nextPage = null;
+		 String mesg = "";
 		 if(member_code==null) {
-			 nextPage="MemberIdSearchUIServlet";
-			 request.setAttribute("mesg", "이름 또는 핸드폰이 등록되지 않은 정보");
+			 mesg = "가입되어 있지 않습니다.";
 		 }else {
-			 nextPage="SendMailServlet";
-			 request.setAttribute("mailTo", member_email1+"@"+member_email2);
-			 request.setAttribute("member_code", member_code);
+			 mesg = "아이디는 " + member_code + "입니다.";
 		 }
-		 RequestDispatcher dis =
-				 request.getRequestDispatcher(nextPage);
-		 dis.forward(request, response);
+		 response.setContentType("text/html;charset=UTF-8");
+		 PrintWriter out = response.getWriter();
+		 out.print(mesg);
+		 
 		 
 	}
 
