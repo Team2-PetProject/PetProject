@@ -32,6 +32,14 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			String Cart_Color = request.getParameter("Cart_Color");
 			String Cart_Taste = request.getParameter("Cart_Taste");
 			
+			System.out.println(Member_Code);
+			System.out.println(Cart_Amount);
+			System.out.println(Item_Code);
+			System.out.println(Cart_Size);
+			System.out.println(Cart_Color);
+			System.out.println(Cart_Taste);
+			
+			
 			CartDTO cDTO = new CartDTO();
 			cDTO.setMember_Code(Member_Code);
 			cDTO.setCart_Amount(Cart_Amount);
@@ -59,7 +67,8 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			
 			nextPage = "orderConfirm.jsp";
 			
-		}else {
+		
+			}else {
 			nextPage = "LoginUIServlet";
 			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}

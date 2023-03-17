@@ -173,7 +173,7 @@ $(document).ready(function(){
 		<div class="wrap_amount">
 			<div>주문 수량</div>
 			<div id="down">-</div>
-			<div id="itemAmount" name="Item_Amount" style="width:35px; height:10px; text-align:center;">1</div>
+			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div>
 			<div id="up" width="10" height="10">+</div>
 		</div>
 		
