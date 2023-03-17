@@ -29,7 +29,7 @@ public class GoodsListServlet extends HttpServlet {
 		}
 		
 		GoodsService service = new GoodsService();
-		List<GoodsDTO> list = service.goodsList(gCategory);
+		List<GoodsDTO> list = service.goodsList(gCategory); 
 		
 		request.setAttribute("goodsList", list);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
