@@ -11,7 +11,7 @@
 <span>행사 안내.</span><span> 우리 아이와 함께.</span><br>
 <table>
 	<tr>
-		<td><img src="images/event/펫페어.png"></td>
+		<td><img src="images/event/PetFair2.png" alt=""></td>
 		<td></td>
 		<td></td>
 		<td></td>

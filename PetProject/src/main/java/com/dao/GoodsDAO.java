@@ -1,10 +1,10 @@
-package java.com.dao;
+package com.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import java.com.dto.GoodsDTO;
+import com.dto.GoodsDTO;
 
 public class GoodsDAO {
 

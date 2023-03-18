@@ -1,17 +1,17 @@
-package java.com.service;
+package com.service;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import java.com.config.MySqlSessionFactory;
-import java.com.dao.GoodsDAO;
-import java.com.dto.GoodsDTO;
+import com.config.MySqlSessionFactory;
+import com.dao.GoodsDAO;
+import com.dto.GoodsDTO;
 
 public class GoodsService {
 
 	public List<GoodsDTO> goodsList(String gCategory) {
-		SqlSession session = MySqlSessionFactory.getSession();
+		SqlSession session = MySqlSessionFactory.getSqlSession();
 		 List<GoodsDTO> list = null;
 		 try {
 			 GoodsDAO dao = new GoodsDAO();

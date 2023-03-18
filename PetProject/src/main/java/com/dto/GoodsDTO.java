@@ -1,4 +1,4 @@
-package java.com.dto;
+package com.dto;
 
 public class GoodsDTO {
 
