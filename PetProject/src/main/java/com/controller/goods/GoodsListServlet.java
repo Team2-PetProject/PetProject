@@ -25,7 +25,7 @@ public class GoodsListServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String gCategory = request.getParameter("gCategory");
 		if(gCategory==null) {
-			gCategory="";
+			gCategory=""; 
 		}
 		
 		GoodsService service = new GoodsService();
