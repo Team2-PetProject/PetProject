@@ -41,7 +41,7 @@ $(document).ready(function(){
 		amount += 1;
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
-		$("#Cart_Amount").val()+=1;
+		$("#Cart_Amount").val(amount);
 	}); //end 수량+
 	
 	$("#down").on("click", function(){
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		}
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
-		$("#Cart_Amount").val()-=1;
+		$("#Cart_Amount").val(amount);
 
 
 	});//end 수량-
