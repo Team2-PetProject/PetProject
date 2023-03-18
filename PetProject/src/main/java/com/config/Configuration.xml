@@ -16,6 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   		<typeAlias type="com.dto.TourFavoriteDTO" alias="TourFavoriteDTO"/>
   		<typeAlias type="com.dto.TourDTO" alias="TourDTO"/>
   		<typeAlias type="com.dto.OrderHistoryDTO" alias="OrderHistoryDTO"/>
+  		<typeAlias type="com.dto.tour_FavoriteDTO" alias="tour_FavoriteDTO"/>
+  		<typeAlias type="com.dto.item_FavoriteDTO" alias="item_FavoriteDTO"/>
   	</typeAliases>
    
 	<environments default="development">
@@ -39,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/OrderItemMapper.xml"/>
 		<mapper resource="com/config/TourFavoriteMapper.xml"/>
 		<mapper resource="com/config/TourMapper.xml"/>
+		<mapper resource="com/config/FavoriteMapper.xml"/>
 	</mappers>
 
 </configuration>

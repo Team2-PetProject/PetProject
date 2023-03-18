@@ -24,7 +24,6 @@ public class tour_FavoriteService {
 		try {
 			list=dao.getList(session,member_code);
 		} catch(Exception e) {
-			
 			e.printStackTrace();
 		}finally {
 			session.close();

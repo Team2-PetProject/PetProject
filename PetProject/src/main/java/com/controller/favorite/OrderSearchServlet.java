@@ -20,6 +20,7 @@ public class OrderSearchServlet extends HttpServlet {
 	public OrderSearchServlet() {
 		super();
 	}
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -27,8 +28,8 @@ public class OrderSearchServlet extends HttpServlet {
 		service = new OrderHistoryService();
 		String startDay=request.getParameter("startDay");
 		String endDay=request.getParameter("endDay");
-		System.out.println(startDay);
-		System.out.println(endDay);
+		System.out.println("orderSearch"+startDay);
+		System.out.println("orderSearch"+endDay);
 		String curPage = request.getParameter("curPage");
 		if (curPage == null) {
 			curPage="1";

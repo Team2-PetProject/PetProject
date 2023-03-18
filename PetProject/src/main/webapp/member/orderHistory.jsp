@@ -91,9 +91,12 @@ function setDate(fromDate, toDate) {
 		/* 	console.log(startDay);
 			console.log(endDay); */
 		}
-			$("#orderInfo").append("<input type='hidden' name='startDay' value='"+startDay+"'/>");
-			$("#orderInfo").append("<input type='hidden' name='endDay' value='"+endDay+"'/>");
-		return false;
+			/* $("#orderInfo").append("<input type='hidden' name='startDay' value='"+startDay+"'/>");
+			$("#orderInfo").append("<input type='hidden' name='endDay' value='"+endDay+"'/>"); */
+			location.href="../OrderSearchServlet?startDay="+startDay+"&endDay="+endDay;
+			/*  $("#orderInfo").attr("action","OrderSearchServlet").submit();  */
+			  /*  $("#orderInfo").attr("action", "주소").submit(); */
+
 }
 
 </script>
@@ -101,7 +104,7 @@ function setDate(fromDate, toDate) {
 <body>
 	<h1 id="search1">주문/배송</h1>
 	<h1 id="search2">조회</h1>
-	<form action="OrderSearchServlet" id="orderInfo" method="post">
+	<form action="../OrderSearchServlet" id="orderInfo" method="get">
 		<table border="1">
 			<tr>
 				<td rowspan="3">조회기간</td>
