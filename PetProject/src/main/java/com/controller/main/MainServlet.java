@@ -16,7 +16,7 @@ import com.service.GoodsService;
 /**
  * Servlet implementation class MainServlet
  */
-@WebServlet("/")
+@WebServlet("/main")
 public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
