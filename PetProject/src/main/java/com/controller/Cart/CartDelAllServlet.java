@@ -27,6 +27,7 @@ public class CartDelAllServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO login = (MemberDTO) session.getAttribute("login");
 //		if(login != null) {
+		
 			String[] str = request.getParameterValues("check");
 			List<String> list = Arrays.asList(str);
 			

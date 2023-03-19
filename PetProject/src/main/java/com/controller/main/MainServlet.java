@@ -20,12 +20,11 @@ import com.service.GoodsService;
 public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
 		GoodsService service = new GoodsService();
 		List<GoodsDTO> list = service.goodsList("");
-			request.setAttribute("goodsList", list);  
+		request.setAttribute("goodsList", list);  
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
-		dis.forward(request, response);
+		dis.forward(request, response); 
 	}
 
 	/**
