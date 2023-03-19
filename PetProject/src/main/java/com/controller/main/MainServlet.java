@@ -23,7 +23,7 @@ public class MainServlet extends HttpServlet {
 				
 		GoodsService service = new GoodsService();
 		List<GoodsDTO> list = service.goodsList("");
-			request.setAttribute("goodsList", list);
+			request.setAttribute("goodsList", list);  
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}
