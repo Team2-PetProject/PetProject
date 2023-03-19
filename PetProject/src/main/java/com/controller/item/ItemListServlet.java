@@ -3,6 +3,7 @@ package com.controller.item;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,12 +32,17 @@ public class ItemListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String item_Category = request.getParameter("item_Category");
-		if(item_Category==null) {
-			item_Category = "먹이";
+		String Item_Category = request.getParameter("item_Category");
+		if(Item_Category==null) {
+			Item_Category = "구매하기";
 		}
 		ItemService service = new ItemService();
-		List<ItemDTO> list = service.ItemList(item_Category);
+		List<ItemDTO> list = service.ItemList(Item_Category);
+		
+		request.setAttribute("List", list);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
+		dis.forward(request, response);
 	}
 
 	/**

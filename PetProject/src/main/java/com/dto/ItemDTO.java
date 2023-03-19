@@ -7,7 +7,6 @@ public class ItemDTO {
 	private String Item_Info;
 	private int Item_Price;
 	private String Item_Image;
-	private String Item_Size;
 	private String Item_Color;
 	private String Item_Taste;
 	public ItemDTO() {
@@ -15,7 +14,7 @@ public class ItemDTO {
 		// TODO Auto-generated constructor stub
 	}
 	public ItemDTO(String item_Code, String item_Category, String item_Name, String item_Info, int item_Price,
-			String item_Image, String item_Size, String item_Color, String item_Taste) {
+			String item_Image, String item_Color, String item_Taste) {
 		super();
 		Item_Code = item_Code;
 		Item_Category = item_Category;
@@ -23,7 +22,6 @@ public class ItemDTO {
 		Item_Info = item_Info;
 		Item_Price = item_Price;
 		Item_Image = item_Image;
-		Item_Size = item_Size;
 		Item_Color = item_Color;
 		Item_Taste = item_Taste;
 	}
@@ -63,12 +61,6 @@ public class ItemDTO {
 	public void setItem_Image(String item_Image) {
 		Item_Image = item_Image;
 	}
-	public String getItem_Size() {
-		return Item_Size;
-	}
-	public void setItem_Size(String item_Size) {
-		Item_Size = item_Size;
-	}
 	public String getItem_Color() {
 		return Item_Color;
 	}
@@ -85,7 +77,7 @@ public class ItemDTO {
 	public String toString() {
 		return "ItemDTO [Item_Code=" + Item_Code + ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name
 				+ ", Item_Info=" + Item_Info + ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image
-				+ ", Item_Size=" + Item_Size + ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
+				+ ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
 	}
 	
 }
