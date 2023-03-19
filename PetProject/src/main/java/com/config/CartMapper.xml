@@ -10,7 +10,18 @@
 	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
 	</insert>
 	
+	<insert id="cartAddselByKey" parameterType="CartDTO" >
+	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
+	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size, jdbcType=VARCHAR},
+	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
+	 
+	 	<selectKey keyProperty="Cart_Code" resultType="int" order="AFTER">
+	 		select cart_seq.currval from dual
+	 	</selectKey>
+	</insert>
+	
 	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">
+	
 	 select Cart_Code, Member_Code,
 	 Cart_Amount,Cart_Size,Cart_Color,Cart_Taste,Item_Code,Item_Category,
 	 Item_Name,Item_Info, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste

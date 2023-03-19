@@ -62,12 +62,15 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			
 		
 			CartService cService = new CartService();
-			int n = cService.cartAdd(cDTO);  //상세페이지 주문 =>  카트 저장
+			int n = cService.cartAddselByKey(cDTO);  //상세페이지 주문 =>  카트 저장
+			System.out.println("등록전 Cart_Code 값: "+cDTO.getCart_Code());
 			System.out.println("insert 갯수 :" + n);
 			cDTO = cService.selectBymaxCart(Member_Code);/////////////////////////////////////////
+			System.out.println("등록 후 Cart_Code 값: "+cDTO.getCart_Code() );
 			System.out.println("db에서 꺼내온 cartcode들어있는 cDTO: "+cDTO);
 			
 			CartInfoDTO cinfoDTO = cService.selectByCode(cDTO.getCart_Code());
+//			CartInfoDTO cinfoDTO = cService.selectByCode();
 			System.out.println("CartInfoDTO  : "+cinfoDTO);
 			
 			MemberService mService = new MemberService();

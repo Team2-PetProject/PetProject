@@ -136,15 +136,15 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 		</tr>
 		<tr>
 			<td height="35">총 상품금액</td>
-			<td height="35"><%= Item_Price * Cart_Amount  %></td>
+			<td height="35"><span><%= Item_Price * Cart_Amount  %></span>원</td>
 		</tr>
 		<tr>
 			<td height="35">총 배송비</td>
-			<td height="35"><%= OrderInfo_Delivery %></td>
+			<td height="35"><span><%= OrderInfo_Delivery %></span>원</td>
 		</tr>
 		<tr>
 			<td height="35">최종 결제금액</td>
-			<td height="35"><%= (Item_Price * Cart_Amount) + OrderInfo_Delivery %></td>
+			<td height="35"><span><%= (Item_Price * Cart_Amount) + OrderInfo_Delivery %></span>원</td>
 		</tr>
 		<tr>
 			<td height="35">결제수단</td>
@@ -188,16 +188,18 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 		</tr>
 	
 	</table>
+	<br>
+	<br>
+	<div>
+	<a>구매 내역</a> &nbsp;&nbsp;
+	<a href="MainServlet">쇼핑 계속하기</a>
 	</div>
-</div>
+	</div><!--inner  -->
+</div><!-- outer  -->
 
-<br>
-<br>
 
-<div>
-<a>구매 내역</a> &nbsp;&nbsp;
-<a href="MainServlet">쇼핑 계속하기</a>
-</div>
+
+
 
 
 
