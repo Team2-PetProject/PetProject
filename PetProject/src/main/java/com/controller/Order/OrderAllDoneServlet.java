@@ -44,26 +44,10 @@ public class OrderAllDoneServlet extends HttpServlet {
 			
 			//주문번호 생성
             //1. 4자리 난수 생성
-            Random random = new Random();
-            int createNum = 0;
-            String ranNum = "";
-            int letter = 4;
-            String resultNum="";
-
-            for (int i = 0; i < letter; i++) {
-                createNum = random.nextInt(10);
-                ranNum = Integer.toString(createNum);
-                resultNum += ranNum;
-            }
-
-            //2. 주문날짜
-            Date date = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("YYMMdd");
-
-            String OrderInfo_Code = format.format(date)+resultNum;
+            
 
 			
-			OrderInfoDTO OrderInfoDTO = new OrderInfoDTO(OrderInfo_Code, "1", orderName, post, addr1, addr2, phone, payMethod, "", Integer.parseInt(delivery));
+			OrderInfoDTO OrderInfoDTO = new OrderInfoDTO(1, "1", orderName, post, addr1, addr2, phone, payMethod, "", Integer.parseInt(delivery));
 			
 			List<String> cList = Arrays.asList(cartCode);
 			CartService cService = new CartService();

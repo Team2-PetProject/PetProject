@@ -28,7 +28,7 @@ public class OrderDAO {
 		return session.insert("orderAllDone", dto);
 	}
 
-	public int orderDone2(SqlSession session, HashMap<String, Object> map) {
+	public int orderItemAllDone(SqlSession session, HashMap<String, Object> map) {
 		return session.insert("orderItemAllDone", map);
 	}
 
