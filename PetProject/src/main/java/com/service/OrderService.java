@@ -20,6 +20,27 @@ public class OrderService {
 		dao = new OrderDAO();
 	}
 
+	public OrderInfoDTO selByinfoCode(int orderInfo_Code) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		OrderInfoDTO dto = null;
+		try {
+			dto = dao.selByinfoCode(session,orderInfo_Code);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	public OrderItemDTO selByCode(int orderInfo_Code) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		OrderItemDTO dto = null;
+		try {
+			dto = dao.selByCode(session,orderInfo_Code);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 	public int orderDone(OrderInfoDTO oinfoDTO, OrderItemDTO oitemDTO, int cart_Code) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n=0;
@@ -29,12 +50,12 @@ public class OrderService {
 		System.out.println("OrderService "+oitemDTO);
 		System.out.println("OrderService "+cart_Code);
 		try {
-			n = dao.orderAllDone(session,oinfoDTO);   //orderinfo insert
-			System.out.println("OrderInfo insert " + n);
+			n = dao.orderDone(session,oinfoDTO);   //orderinfo insert
+			System.out.println("OrderInfo getOrderInfo_Code :" + n);
 			n2 = dao.itemOrderDone(session,oitemDTO);  //orderitem insert
-			System.out.println("OrderItem insert " + n2);
+//			System.out.println("OrderItem insert " + n2);
 			n3 = dao.delByCode(session,cart_Code);  //cart delete
-			System.out.println("Cart delete "+ n3);
+//			System.out.println("Cart delete "+ n3);
 			session.commit();
 			System.out.println("commit 됨 ==========================");
 		} catch (Exception e) {
@@ -44,38 +65,51 @@ public class OrderService {
 		}finally {
 			session.close();
 		}
-		return n+n2+n3;
+//		System.out.println("service commit 후 orderinfo_code"+ oinfoDTO.getOrderInfo_Code());
+		return n;
 	}//end orderDone
-public int orderAllDone(String memberCode, List<String> cList, List<CartInfoDTO> list, OrderInfoDTO orderInfoDTO) {
-	SqlSession session = MySqlSessionFactory.getSqlSession();
-	int result = 0;
-	int result2 = 0;
-	int result3 = 0;
-	try {
-		result = dao.orderAllDone(session, orderInfoDTO);
-		System.out.println("orderInfo insert : " + result);
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("orderName", orderInfoDTO.getOrderInfo_OrderName());
-		map.put("list", list);
-		result2 = dao.orderItemAllDone(session, map);
-		System.out.println("orderItem insert : " + result2);
-		
-		CartDAO cDAO = new CartDAO();
-		HashMap<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("memberCode", memberCode);
-		map2.put("list", cList);
-		result3 = cDAO.delAll(session, map2);
-		System.out.println("Cart delete : " + result3);
-		session.commit();
-	} catch (Exception e) {
-		session.rollback();
-		System.out.println(e.getMessage());
-		System.out.println("rollback됨 ------");
-	} finally {
-		session.close();
+
+	public int orderAllDone(String memberCode, List<String> cList, List<CartInfoDTO> list, OrderInfoDTO orderInfoDTO) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		int result = 0;
+		int result2 = 0;
+		int result3 = 0;
+		try {
+			result = dao.orderAllDone(session, orderInfoDTO);
+			System.out.println("orderInfo insert : " + result);
+
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("orderName", orderInfoDTO.getOrderInfo_OrderName());
+			map.put("list", list);
+			result2 = dao.orderItemAllDone(session, map);
+			System.out.println("orderItem insert : " + result2);
+
+			CartDAO cDAO = new CartDAO();
+			HashMap<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("memberCode", memberCode);
+			map2.put("list", cList);
+			result3 = cDAO.delAll(session, map2);
+			System.out.println("Cart delete : " + result3);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			System.out.println(e.getMessage());
+			System.out.println("rollback됨 ------");
+		} finally {
+			session.close();
+		}
+		return result;
 	}
-	return result + result2 + result3;
-}
+
+	public List<OrderItemDTO> selAllByinfoCode(int n) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		List<OrderItemDTO> list = null;
+		try {
+			list = dao.selAllByinfoCode(session, n);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 	
 }

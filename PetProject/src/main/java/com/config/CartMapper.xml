@@ -11,9 +11,6 @@
 	<update  id="updateAmount" parameterType="Hashmap">
 		update cart set cart_amount = #{cartAmount} where cart_code = #{cartCode}
 	</update>
-	<delete id="delByCode" parameterType="hashmap">
-		delete from cart where cart_code=#{cartCode} and member_code = #{memberCode}
-	</delete>
 	<delete id="delAll" parameterType="map">
 		delete from cart where member_code = #{memberCode} and cart_code in
 		<foreach collection="list" separator="," open="(" close=")" item="item">
@@ -44,11 +41,22 @@
 
 	<insert id="cartAdd" parameterType="CartDTO">
 	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
-	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size},
-	 #{Cart_Color},#{Cart_Taste})
+	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size, jdbcType=VARCHAR},
+	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="cartAddselKey" parameterType="CartDTO" >
+	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
+	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size, jdbcType=VARCHAR},
+	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
+	 
+	 	<selectKey keyProperty="Cart_Code" resultType="int" order="AFTER">
+	 		select cart_seq.currval from dual
+	 	</selectKey>
 	</insert>
 	
 	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">
+	
 	 select Cart_Code, Member_Code,
 	 Cart_Amount,Cart_Size,Cart_Color,Cart_Taste,Item_Code,Item_Category,
 	 Item_Name, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste
@@ -64,4 +72,10 @@
 		where Cart_Code = (select MAX(Cart_Code) from cart where Member_Code=#{Member_Code}) 
 	
 	</select>
+
+	
+	<delete id="delByCode" parameterType="int">
+		delete from cart where Cart_Code=#{Cart_Code}
+	
+	</delete>
 </mapper>

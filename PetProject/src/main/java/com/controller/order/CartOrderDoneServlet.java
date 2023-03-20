@@ -1,10 +1,11 @@
-package com.controller.Order;
+package com.controller.order;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,32 +42,32 @@ public class CartOrderDoneServlet extends HttpServlet {
 			
 			//주문번호 생성
 			//1. 4자리 난수 생성
-			Random random = new Random();
-			int createNum = 0;
-			String ranNum = "";
-			int letter = 4;
-			String resultNum="";
-			
-			for (int i = 0; i < letter; i++) {
-				createNum = random.nextInt(10);
-				ranNum = Integer.toString(createNum);
-				resultNum += ranNum;
-			}
-			
-			System.out.println(resultNum);
-			
-			//2. 주문날짜
-			Date date = new Date();
-			SimpleDateFormat format = new SimpleDateFormat("YYMMdd");
-			
-			String OrderInfo_Code = format.format(date)+resultNum;
-			System.out.println(OrderInfo_Code);
+//			Random random = new Random();
+//			int createNum = 0;
+//			String ranNum = "";
+//			int letter = 4;
+//			String resultNum="";
+//			
+//			for (int i = 0; i < letter; i++) {
+//				createNum = random.nextInt(10);
+//				ranNum = Integer.toString(createNum);
+//				resultNum += ranNum;
+//			}
+//			
+//			System.out.println(resultNum);
+//			
+//			//2. 주문날짜
+//			Date date = new Date();
+//			SimpleDateFormat format = new SimpleDateFormat("YYMMdd");
+//			
+//			String OrderInfo_Code = format.format(date)+resultNum;
+//			System.out.println(OrderInfo_Code);
 			
 			
 			//OrderInfo insert
 			OrderInfoDTO oinfoDTO = new OrderInfoDTO(0, Member_Code, orderName, post, addr1, addr2, phone, payMethod, null,OrderInfo_Delivery); 
 			
-			System.out.println("CartOrderDoneservlet: infoDTO "+oinfoDTO);
+//			System.out.println("CartOrderDoneservlet insert 전: infoDTO "+oinfoDTO);
 
 			
 
@@ -81,8 +82,8 @@ public class CartOrderDoneServlet extends HttpServlet {
 			
 			
 			//OrderItem insert
-			OrderItemDTO oitemDTO = new OrderItemDTO(0, Item_Code, 0,Member_Code, orderName, Cart_Amount, Item_Price, Item_Image,Item_Name, Cart_Size, Cart_Color, Cart_Taste);
-			System.out.println("CartOrderDoneservlet: oitemDTO "+oitemDTO);
+			OrderItemDTO oitemDTO = new OrderItemDTO(0, Item_Code, 0, Member_Code, orderName, Cart_Amount, Item_Price, Item_Image, Item_Name, Cart_Size, Cart_Color, Cart_Taste);
+//			System.out.println("CartOrderDoneservlet insert 전 : oitemDTO "+oitemDTO);
 			
 			
 			//Cart delete
@@ -91,8 +92,22 @@ public class CartOrderDoneServlet extends HttpServlet {
 			OrderService oService = new OrderService();
 			
 			int n = oService.orderDone(oinfoDTO,oitemDTO,Cart_Code);  //트랜잭션 처리
-			System.out.println("CartOrderDoneServlet commit 된 갯수: "+n);
+			System.out.println("CartOrderDoneServlet commit 후 받아온 orderinfo code : "+n);
 			
+			
+			oinfoDTO = oService.selByinfoCode(n);
+//			System.out.println("jsp로 넘어갈 oinfoDTO "+ oinfoDTO);
+			
+			
+			oitemDTO = oService.selByCode(n);
+//			System.out.println("jsp로 넘어갈 oitemDTO "+ oitemDTO);
+			
+			
+			request.setAttribute("oinfoDTO", oinfoDTO);
+			request.setAttribute("oitemDTO", oitemDTO);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("orderDone.jsp");
+			dis.forward(request, response);
 //			nextPage = "orderDone.jsp";
 //		
 //		}else {

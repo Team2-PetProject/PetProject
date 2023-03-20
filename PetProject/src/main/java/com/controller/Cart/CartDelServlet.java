@@ -31,9 +31,6 @@ public class CartDelServlet extends HttpServlet {
 			String memberCode = login.getMember_code();
 			int cartCode = Integer.parseInt(request.getParameter("num"));
 			
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("memberCode", memberCode);
-			map.put("cartCode", cartCode);
 
 			CartService service = new CartService();
 			int n = service.delByCode(cartCode);

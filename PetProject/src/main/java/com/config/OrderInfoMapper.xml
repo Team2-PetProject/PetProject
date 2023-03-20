@@ -54,4 +54,31 @@ WHERE MEMBER_CODE=111
 AND ORDERINFO_ORDERDAY >= ADD_MONTHS(SYSDATE,- #{NUM})
 ORDER BY ORDERINFO_ORDERDAY DESC
 </select>
+<select id="selByinfoCode" resultType="OrderInfoDTO" parameterType="int">
+		select OrderInfo_Code,Member_Code,OrderInfo_OrderName,OrderInfo_Post,OrderInfo_Addr1,OrderInfo_Addr2,
+		OrderInfo_Phone,OrderInfo_PayMethod,OrderInfo_OrderDay,OrderInfo_Delivery
+		from orderinfo
+		where OrderInfo_Code=#{OrderInfo_Code}
+	
+	</select>
+	<insert id="orderDone" parameterType="OrderInfoDTO">
+		insert into orderinfo(orderinfo_code,member_code,orderinfo_ordername,orderinfo_post,orderinfo_addr1,
+		orderinfo_addr2,orderinfo_phone,orderinfo_paymethod)
+		values(orderinfo_seq.nextval, #{Member_Code}, #{OrderInfo_OrderName},#{OrderInfo_Post},
+		#{OrderInfo_Addr1},#{OrderInfo_Addr2},#{OrderInfo_Phone},#{OrderInfo_PayMethod})
+		
+		<selectKey keyProperty="OrderInfo_Code" resultType="int" order="AFTER">
+			select orderinfo_seq.currval from dual
+		</selectKey>
+	</insert>
+	<insert id="orderAllDone" parameterType="OrderInfoDTO">
+		insert into orderinfo(orderinfo_code, member_code, orderinfo_ordername, orderinfo_post,
+		orderinfo_addr1, orderinfo_addr2, orderinfo_phone, orderinfo_paymethod, orderinfo_orderday, orderinfo_delivery)
+		 values (orderinfo_seq.nextval, #{Member_Code},#{OrderInfo_OrderName},
+		#{OrderInfo_Post}, #{OrderInfo_Addr1}, #{OrderInfo_Addr2}, #{OrderInfo_Phone},
+		#{OrderInfo_PayMethod}, sysdate, #{OrderInfo_Delivery} )
+		<selectKey keyProperty="OrderInfo_Code" resultType="int" order="AFTER">
+			select orderinfo_seq.currval from dual
+		</selectKey>
+	</insert>
 </mapper>

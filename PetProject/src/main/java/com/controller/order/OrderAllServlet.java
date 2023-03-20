@@ -1,4 +1,4 @@
-package com.controller.Order;
+package com.controller.order;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -43,6 +43,7 @@ public class OrderAllServlet extends HttpServlet {
 			request.setAttribute("cinfoList", cartInfoList);
 			RequestDispatcher dis = request.getRequestDispatcher("order/orderAllConfirm.jsp");
 			dis.forward(request, response);
+			
 		} else {
 			response.sendRedirect("LoginUIServlet");
 			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
