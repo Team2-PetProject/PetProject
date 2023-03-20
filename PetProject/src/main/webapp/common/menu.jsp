@@ -14,7 +14,7 @@
 <a href="EventListServlet.java">행사</a>&nbsp;&nbsp;
 <a href="#">매거진</a>&nbsp;&nbsp;
 <a href="#">행사소개</a>&nbsp;&nbsp;
-<a href="#">마이페이지</a>&nbsp;&nbsp;
+<a href="MyPageServlet">마이페이지</a>&nbsp;&nbsp;
 
 <div class="right-box">
 <input type="text" value="검색어를 입력하세요">&nbsp;

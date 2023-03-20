@@ -32,14 +32,15 @@ public class MemberUpdateServlet extends HttpServlet {
 			String member_post = request.getParameter("member_post");
 			String member_addr1 = request.getParameter("member_addr1");
 			String member_addr2 = request.getParameter("member_addr2");
-			String member_phone1 = request.getParameter("member_phone1");
+			String member_phone1 = request.getParameter("phone1");
 			String member_phone2 = request.getParameter("member_phone2");
 			String member_phone3 = request.getParameter("member_phone3");
 			String member_email1 = request.getParameter("member_email1");
 			String member_email2 = request.getParameter("member_email2");			
 			MemberDTO dto2 =
 					new MemberDTO(member_code, member_passwd, member_name, member_post, 
-							member_addr1, member_addr2, member_phone1, member_phone2, member_phone3, member_email1, member_email2);			
+							member_addr1, member_addr2, member_phone1, member_phone2, member_phone3, member_email1, member_email2);
+			System.out.println(dto2);
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
 			nextPage = "main";
