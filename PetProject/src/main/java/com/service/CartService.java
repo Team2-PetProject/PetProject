@@ -16,11 +16,11 @@ public class CartService {
 		dao = new CartDAO();
 	}
 
-	public int cartAddselByKey(CartDTO cDTO) {
+	public int cartAddselKey(CartDTO cDTO) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-			n= dao.cartAddselByKey(session,cDTO);
+			n= dao.cartAddselKey(session,cDTO);
 			session.commit();
 		} finally {
 			session.close();

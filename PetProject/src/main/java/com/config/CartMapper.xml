@@ -10,7 +10,7 @@
 	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
 	</insert>
 	
-	<insert id="cartAddselByKey" parameterType="CartDTO" >
+	<insert id="cartAddselKey" parameterType="CartDTO" >
 	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
 	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size, jdbcType=VARCHAR},
 	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})

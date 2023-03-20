@@ -10,9 +10,10 @@ import com.dto.CartInfoDTO;
 
 public class CartDAO {
 
-	public int cartAddselByKey(SqlSession session, CartDTO cDTO) {
-		int n = session.insert("CartMapper.cartAdd",cDTO);
-		return n;
+	public int cartAddselKey(SqlSession session, CartDTO cDTO) {
+		int n = session.insert("CartMapper.cartAddselKey",cDTO);
+		System.out.println("cart insert 후 cartcode dao : "+cDTO.getCart_Code());
+		return cDTO.getCart_Code();
 	}//end cartAdd
 
 	public CartInfoDTO selectByCode(SqlSession session, int cart_code) {
