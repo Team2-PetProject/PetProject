@@ -25,27 +25,36 @@ public class OrderSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		int num=request.getParameter("orderDay");
+
 		service = new OrderHistoryService();
 		String startDay=request.getParameter("startDay");
 		String endDay=request.getParameter("endDay");
-		System.out.println("orderSearch"+startDay);
-		System.out.println("orderSearch"+endDay);
+		String item_name=request.getParameter("itemName");
+		System.out.println("orderSearch" + startDay);
+		System.out.println("orderSearch" + endDay);
+		System.out.println("orderSearch" + item_name);
 		String curPage = request.getParameter("curPage");
 		if (curPage == null) {
 			curPage="1";
+			if (item_name==null) {
+				
+			}
+			
+			
+			
 		}
 //		if (num == 0 || 7) {
 //		List<OrderHistoryDTO> list1 = service.getOredrDay(num);
 //		List<OrderHistoryDTO> list1 = service.getOredrDay(7);
 //		} else if (num == 1 || 6) {
 //		List<OrderHistoryDTO> list2 = service.getOredrMonth(num);
-		List<OrderHistoryDTO> list2 = service.getOredrMonth(6);
-		System.out.println(list2);
+//		List<OrderHistoryDTO> list2 = service.getOredrMonth(6);
+//		System.out.println(list2);
 //		} else {
 //		List<OrderHistoryDTO> list3 = service.getOredrTerm(num);
 //		List<OrderHistoryDTO> list3 = service.getOredrTerm("20200101","20200101");
 //		}
-		System.out.println("ddd");
+//		System.out.println("ddd");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

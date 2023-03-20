@@ -24,12 +24,12 @@ $(document).ready(function(){
 	/* day 를 지역변수를 두면 day를 두고 두고 변경해 나간다. 그러면 계속 new Date를 해줘야한다.
 	그러면 길어 보이니 그냥 매번 new Date하자
 	*/
-	console.log(today) //20230317
+	/* console.log(today) //20230317
 	console.log(yesterday) //20230316
 	console.log(lastweek) //20230310
 	console.log(lastmonth) //20230217
 	console.log(sixagomonth) //20220917
-	console.log(lastyear); //20220317
+	console.log(lastyear); //20220317 */
 	$("form").on("submit", setDate);
 })
 function dateFormat(e) {
@@ -67,36 +67,48 @@ function sixAgoMonth() {
 	return dateFormat(sixagomonth);
 }
 function lastYear() {
-	var day=new Date();
-	var lastyear=new Date(day.setFullYear(day.getFullYear()-1));
+	var day = new Date();
+	var lastyear = new Date(day.setFullYear(day.getFullYear()-1));
 	return dateFormat(lastyear);
-}
+	}
 function setDate(fromDate, toDate) {
+	var item_name = $("#itemSearch").val();
+	console.log($("#itemSearch").val());
 	if (toDate==null) {
 		var fromYear = $("#from_year").val();
 		var fromMonth = $("#from_month").val();
 		var fromDay = $("#from_day").val();
-		var startDay=fromYear+fromMonth+fromDay
+		var startDay = fromYear + fromMonth + fromDay
 		
 		var toYear=$("#to_year").val();
 		var toMonth=$("#to_month").val();
 		var toDay=$("#to_day").val();
-		var endDay=toYear+toMonth+toDay
+		var endDay = toYear + toMonth + toDay
 		
-	/* 	console.log(startDay);
-		console.log(endDay); */
-		} else {
-			var startDay=fromDate;
-			var endDay=toDate;
-		/* 	console.log(startDay);
-			console.log(endDay); */
-		}
-			/* $("#orderInfo").append("<input type='hidden' name='startDay' value='"+startDay+"'/>");
-			$("#orderInfo").append("<input type='hidden' name='endDay' value='"+endDay+"'/>"); */
-			location.href="../OrderSearchServlet?startDay="+startDay+"&endDay="+endDay;
-			/*  $("#orderInfo").attr("action","OrderSearchServlet").submit();  */
-			  /*  $("#orderInfo").attr("action", "주소").submit(); */
-
+	/* 	console.log("item_name==null fromYear" + fromYear)
+		console.log("item_name==null fromMonth" + fromMonth)
+		console.log("item_name==null fromDay" + fromDay)
+		console.log("item_name==null toYear" + toYear)
+		console.log("item_name==null toMonth" + toMonth)
+		console.log("item_name==null toDay" + toDay)
+		console.log("item_name==null startDay" + startDay)
+		console.log("item_name==null startDay" + endDay)
+		console.log("item_name==null item_name" + item_name)  */
+		$("#orderInfo").append("<input type='hidden' name='startDay' value = " + startDay + ">");
+		
+		$("#orderInfo").append("<input type='hidden' name='endDay' value = " + endDay + ">");
+		
+		
+	
+ 	} else {
+		var startDay = fromDate;
+		var endDay = toDate;
+		console.log("startDay!=null" + startDay)
+		console.log("endDay!=null" + endDay)
+		location.href = "../OrderSearchServlet?startDay=" + startDay + "&endDay=" + endDay;
+	}
+ 	
+ 	
 }
 
 </script>
@@ -105,11 +117,13 @@ function setDate(fromDate, toDate) {
 	<h1 id="search1">주문/배송</h1>
 	<h1 id="search2">조회</h1>
 	<form action="../OrderSearchServlet" id="orderInfo" method="get">
+	<!--  -->
 		<table border="1">
 			<tr>
 				<td rowspan="3">조회기간</td>
 				<td colspan="10">
-				<input type="button" onclick="setDate(yesterday,today)" value="오늘"> 
+				
+				<input type="button" onclick="setDate(yesterday,today)" value="하루"> 
 				<input type="button" class="dayBtn" onclick="setDate(lastweek,today)"value="1주일"> 
 				<input type="button" class="dayBtn" onclick="setDate(twoagoweek,today)"value="2주일"> 
 				<input type="button" class="dayBtn" onclick="setDate(lastmonth,today)" value="1개월"> 
@@ -119,14 +133,14 @@ function setDate(fromDate, toDate) {
 			<tr>
 				<td colspan="10">
 					<!--연선택  --> 
-					<select name="year1" id="from_year">
+					<select  id="from_year">
 						<option value="2020">2020</option>
 						<option value="2021">2021</option>
 						<option value="2022">2022</option>
 						<option value="2023" selected="selected">2023</option>
 				</select>년 
 				<!--달선택  --> 
-				<select name="month1" id="from_month">
+				<select  id="from_month">
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -141,7 +155,7 @@ function setDate(fromDate, toDate) {
 						<option value="12">12</option>
 				</select>월 
 				<!--날 선택  --> 
-				<select name="day1" id="from_day">
+				<select  id="from_day">
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -176,12 +190,12 @@ function setDate(fromDate, toDate) {
 				</select>일 ~ 
 				
 				<!--연선택  --> 
-				<select name="year2" id="to_year">
+				<select  id="to_year">
 						<option value="2020">2020</option>
 						<option value="2021">2021</option>
 						<option value="2022">2022</option>
 						<option value="2023" selected="selected">2023</option>
-				</select>년 <!--달선택  --> <select name="month2" id="to_month">
+				</select>년 <!--달선택  --> <select  id="to_month">
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -194,7 +208,7 @@ function setDate(fromDate, toDate) {
 						<option value="10">10</option>
 						<option value="11">11</option>
 						<option value="12">12</option>
-				</select>월 <!--날선택  --> <select name="day2" id="to_day">
+				</select>월 <!--날선택  --> <select  id="to_day">
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -232,8 +246,8 @@ function setDate(fromDate, toDate) {
 			<!--상품조회  -->
 			<tr>
 				<td colspan="10">
-				<input type="text" id="item_name" value="주문 상품을 검색하세요."> 
-				<input type="submit" name="item_Info" value="조회하기"></td>
+				<input type="text" name="itemName" id="itemSearch" placeholder="주문 상품을 검색하세요." size="40"> 
+				<input type="submit" value="조회하기"></td>
 			</tr>
 		</table>
 	</form>
