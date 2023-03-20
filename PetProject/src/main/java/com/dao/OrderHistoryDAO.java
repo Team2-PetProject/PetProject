@@ -22,4 +22,11 @@ public class OrderHistoryDAO {
 		return list;
 	}
 
+
+
+	public List<OrderHistoryDTO> getOredrItem(SqlSession session, Map<String, String> orderDayMap) {
+		List<OrderHistoryDTO>list = session.selectList("OrderInfoMapper.getOredrItem",orderDayMap);		
+		return list;
+	}
+
 }

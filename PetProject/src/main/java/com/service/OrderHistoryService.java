@@ -29,13 +29,25 @@ public class OrderHistoryService {
 	}
 
 	public List<OrderHistoryDTO> getOredrDay(Map<String, String> orderDayMap) {
-		System.out.println("서비스접속");
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		dao = new OrderHistoryDAO();
-		System.out.println(session);
 		List<OrderHistoryDTO> list = null;
 		try {
 			list = dao.getOredrDay(session, orderDayMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	public List<OrderHistoryDTO> getOredrItem(Map<String, String> orderDayMap) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		dao = new OrderHistoryDAO();
+		List<OrderHistoryDTO> list = null;
+		try {
+			list = dao.getOredrItem(session, orderDayMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

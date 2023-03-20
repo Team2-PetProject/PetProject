@@ -35,29 +35,35 @@ public class OrderSearchServlet extends HttpServlet {
 		String startDay = request.getParameter("startDay");
 		String endDay = request.getParameter("endDay");
 		String item_name = request.getParameter("itemName");
-		System.out.println("orderSearch" + startDay);
-		System.out.println("orderSearch" + endDay);
-		System.out.println("orderSearch" + item_name);
+		System.out.println(item_name);
 		Map<String	, String> orderDayMap 	= new HashMap<String, String>();
-		orderDayMap.put("startDay", startDay);
-		orderDayMap.put("endDay", endDay);
-		orderDayMap.put("member_code", member_code);
+	
 		String curPage = request.getParameter("curPage");
 
-		if (curPage == null) {
+//		if (curPage == null) {
 			curPage = "1";
 			if (item_name == null) {
+				orderDayMap.put("startDay", startDay);
+				orderDayMap.put("endDay", endDay);
+				orderDayMap.put("member_code", member_code);
 				List<OrderHistoryDTO> list = service.getOredrDay(orderDayMap);
-				System.out.println(list);
-				for (int i = 0; i < 10; i++) {
-					System.out.println(list);
+				for (int i = 0; i < 3; i++) {
+					System.out.println("이건 그냥 버튼 클릭 조회입니다." + list);
 				}
-			}else {
+			}else if(item_name!=null) {
+				orderDayMap.put("startDay", startDay);
+				orderDayMap.put("endDay", endDay);
+				orderDayMap.put("member_code", member_code);
+				orderDayMap.put("item_name", item_name);
+				List<OrderHistoryDTO> list = service.getOredrItem(orderDayMap);
+				for (int i = 0; i < 3; i++) {
+					System.out.println("이건 이름 조회입니다." + list);
+				}
 				
 			}
 
 		}
-	}
+//	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
