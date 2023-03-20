@@ -1,0 +1,58 @@
+ALTER TABLE ITEM DROP COLUMN ITEM_INFO; --아이템 인포 컬럼 삭제
+ALTER TABLE ITEM MODIFY ITEM_NAME VARCHAR2(100); --아이템 이름 길이 지정
+ALTER TABLE ITEM MODIFY ITEM_TASTE VARCHAR2(150); --아이템 맛옵션 길이 지정
+
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('food01', 'food', '더마독 슬리밍 강아지 다이어트 건강사료 2kg', '33000', 'food01');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food02', 'food', '피니키 사료 하이포알러제닉 가수분해 2.5kg', '265000', 'food02', '연어/소고기/양고기/오리고기');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food03', 'food', '펠리쿠치나 반습식 소프트 강아지 사료 3kg', '45000', 'food03', '연어/소고기/오리고기');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food04', 'food', '펠리쿠치나 반습식 소프트 강아지 사료 3kg', '45000', 'food03', '연어/소고기/오리고기');    
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food05', 'food', '네츄럴랩 유기농 기능성 사료 2kg', '25000', 'food05', '관절'||CHR(38)||'눈 케어/장'||CHR(38)||'간 케어/피부'||CHR(38)||'알러지/다이어트'||CHR(38)||'면역');
+        
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('food06', 'food', '본아페티 강아지 소프트 반습식 사료 슬림앤조인트케어 1kg', '18800', 'food06');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food07', 'food', '뉴프로세스 강아지사료 시그니처 6kg', '42900', 'food07', '연어/소고기/양고기/오리고기');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food08', 'food', '네츄럴프로세스 소프트키블 6kg[500gx12팩]', '42000', 'food08', '연어/닭고기');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food09', 'food', 'ANF 6free 플러스 강아지 사료 5.6kg', '48000', 'food09', '소고기'||CHR(38)||'연어/연어'||CHR(38)||'흰살생선/오리'||CHR(38)||'연어/양고기'||CHR(38)||'쌀');
+
+
+
+
+
+============================================================================================================================================================================================================
+
+--0320월 사료 데이터 추가
+
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food10', 'food', '로얄코코 하이포알러지 코코넛 강아지사료 2.4kg', '32400', 'food10', '밀웜(그린)/오리(블루)/소고기(핑크)/연어(오렌지)');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('food11', 'food', '벨포아 란트굿메뉴 인섹트 습식캔 습식사료 200g x 6캔', '24900', 'food11');
+
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food12', 'food', '시저사료 최상급 쇠고기 건사료 1kg 강아지부터노령견', '8980', 'food12', '쇠고기/양고기/칠면조고기');
+
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
+    VALUES('food13', 'food', '피키니 덴탈플러스 저알러지 소프트껌 60g', '3200', 'food13', '밀웜/연어');
+
+
+
+
