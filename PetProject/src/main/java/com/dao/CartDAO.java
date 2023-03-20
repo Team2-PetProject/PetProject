@@ -23,10 +23,7 @@ public class CartDAO {
 		return dto;
 	}
 
-	public CartDTO selectBymaxCart(SqlSession session, String member_Code) {
-		CartDTO dto = session.selectOne("CartMapper.selectBymaxCart",member_Code);
-		return dto;
-	}
+
 
 	
 

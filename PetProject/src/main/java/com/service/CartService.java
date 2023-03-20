@@ -41,16 +41,7 @@ public class CartService {
 		return dto;
 	}
 
-	public CartDTO selectBymaxCart(String member_Code) {
-		SqlSession session = MySqlSessionFactory.getSqlSession();
-		CartDTO dto = null;
-		try {
-			dto = dao.selectBymaxCart(session,member_Code);
-		}finally {
-			session.close();
-		}
-		return dto;
-	}
+
 
 
 

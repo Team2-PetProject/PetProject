@@ -4,7 +4,7 @@ public class OrderItemDTO {
 	private int OrderItem_Code;
 	private String Item_Code;
 
-	private String OrderInfo_Code;
+	private int OrderInfo_Code;
 	private String Member_Code;
 	private String Order_Name;
 	private int Cart_Amount;
@@ -20,9 +20,9 @@ public class OrderItemDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderItemDTO(int orderItem_Code, String item_Code, String orderInfo_Code, String member_Code,
-			String order_Name, int cart_Amount, int item_Price, String item_Image, String item_Name, String cart_Size,
-			String cart_Color, String cart_Taste) {
+	public OrderItemDTO(int orderItem_Code, String item_Code, int orderInfo_Code, String member_Code, String order_Name,
+			int cart_Amount, int item_Price, String item_Image, String item_Name, String cart_Size, String cart_Color,
+			String cart_Taste) {
 		super();
 		OrderItem_Code = orderItem_Code;
 		Item_Code = item_Code;
@@ -54,11 +54,11 @@ public class OrderItemDTO {
 		Item_Code = item_Code;
 	}
 
-	public String getOrderInfo_Code() {
+	public int getOrderInfo_Code() {
 		return OrderInfo_Code;
 	}
 
-	public void setOrderInfo_Code(String orderInfo_Code) {
+	public void setOrderInfo_Code(int orderInfo_Code) {
 		OrderInfo_Code = orderInfo_Code;
 	}
 
@@ -141,6 +141,8 @@ public class OrderItemDTO {
 				+ Cart_Amount + ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Name=" + Item_Name
 				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste + "]";
 	}
+
+	
 	
 
 	

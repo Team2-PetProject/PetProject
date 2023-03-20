@@ -9,11 +9,13 @@ public class OrderDAO {
 
 	public int orderDone(SqlSession session, OrderInfoDTO oinfoDTO) {
 		int n = session.insert("OrderMapper.orderDone",oinfoDTO);
-		return n;
+//		System.out.println("dao n 값 "+ n);  //insert 갯수
+//		System.out.println("orderinfo insert 후 dao orderinfo_code: "+oinfoDTO.getOrderInfo_Code());
+		return oinfoDTO.getOrderInfo_Code();
 	}
 
 	public int itemOrderDone(SqlSession session, OrderItemDTO oitemDTO) {
-		System.out.println("dao : " + oitemDTO);
+//		System.out.println("dao : " + oitemDTO);
 		int n = session.insert("OrderMapper.itemOrderDone",oitemDTO);
 		return n;
 	}
@@ -23,12 +25,12 @@ public class OrderDAO {
 		return n;
 	}
 
-	public OrderInfoDTO selByinfoCode(SqlSession session, String orderInfo_Code) {
+	public OrderInfoDTO selByinfoCode(SqlSession session, int orderInfo_Code) {
 		OrderInfoDTO dto = session.selectOne("selByinfoCode",orderInfo_Code);
 		return dto;
 	}
 
-	public OrderItemDTO selByCode(SqlSession session, String orderInfo_Code) {
+	public OrderItemDTO selByCode(SqlSession session, int orderInfo_Code) {
 		OrderItemDTO dto = session.selectOne("selByCode",orderInfo_Code);
 		return dto;
 	}

@@ -25,11 +25,11 @@ public class OrderService {
 		System.out.println("OrderService "+cart_Code);
 		try {
 			n = dao.orderDone(session,oinfoDTO);   //orderinfo insert
-			System.out.println("OrderInfo insert " + n);
+			System.out.println("OrderInfo getOrderInfo_Code :" + n);
 			n2 = dao.itemOrderDone(session,oitemDTO);  //orderitem insert
-			System.out.println("OrderItem insert " + n2);
+//			System.out.println("OrderItem insert " + n2);
 			n3 = dao.delByCode(session,cart_Code);  //cart delete
-			System.out.println("Cart delete "+ n3);
+//			System.out.println("Cart delete "+ n3);
 			session.commit();
 			System.out.println("commit 됨 ==========================");
 		} catch (Exception e) {
@@ -39,10 +39,11 @@ public class OrderService {
 		}finally {
 			session.close();
 		}
-		return n+n2+n3;
+//		System.out.println("service commit 후 orderinfo_code"+ oinfoDTO.getOrderInfo_Code());
+		return n;
 	}//end orderDone
 
-	public OrderInfoDTO selByinfoCode(String orderInfo_Code) {
+	public OrderInfoDTO selByinfoCode(int orderInfo_Code) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		OrderInfoDTO dto = null;
 		try {
@@ -53,7 +54,7 @@ public class OrderService {
 		return dto;
 	}
 
-	public OrderItemDTO selByCode(String orderInfo_Code) {
+	public OrderItemDTO selByCode(int orderInfo_Code) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		OrderItemDTO dto = null;
 		try {

@@ -5,7 +5,7 @@
 <%
  OrderInfoDTO oinfoDTO = (OrderInfoDTO)request.getAttribute("oinfoDTO");
 // System.out.println("orderDone.jsp oinfoDTO " + oinfoDTO);
- String OrderInfo_Code = oinfoDTO.getOrderInfo_Code();
+ int OrderInfo_Code = oinfoDTO.getOrderInfo_Code();
  String Order_Name = oinfoDTO.getOrderInfo_OrderName();
  String OrderInfo_Post = oinfoDTO.getOrderInfo_Post();
  String OrderInfo_Addr1 = oinfoDTO.getOrderInfo_Addr1();
