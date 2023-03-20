@@ -204,7 +204,7 @@ String m_email2= mDTO.getMember_email2();
 		<tr>
 			<td class="td_default" width="80"><%= Cart_Code %></td>
 			<td class="td_default" width="80"><img
-				src="images/items/<%= Item_Image %>.png" border="0" align="center" width="80" height = "100"/></td>
+				src="images/기존items/<%= Item_Image %>.png" border="0" align="center" width="80" height = "100"/></td>
 			<td class="td_default" width="300" style='padding-left: 30px'><%= Item_Name %>
 				<br> <font size="2" color="#665b5f">[옵션 : 옵션1(<%= Cart_Size %>) , 옵션2(<%=Cart_Color %>), 옵션3(<%=Cart_Taste %>)] </font>
 			</td>

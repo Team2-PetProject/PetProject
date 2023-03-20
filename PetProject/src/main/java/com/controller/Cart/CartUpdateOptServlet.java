@@ -25,15 +25,15 @@ public class CartUpdateOptServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로그인 여부 확인
-//		HttpSession session = request.getSession();
-//		MemberDTO login = (MemberDTO) session.getAttribute("login");
-//		if(login != null) {
-//			String memberCode = login.getMember_code();
+		HttpSession session = request.getSession();
+		MemberDTO login = (MemberDTO) session.getAttribute("login");
+		if(login != null) {
+			String memberCode = login.getMember_code();
 			int cartCode = Integer.parseInt(request.getParameter("cartCode"));
 			String key = (String) request.getParameter("key");
 			String value = (String) request.getParameter("value");
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("memberCode", 1);
+			map.put("memberCode", memberCode);
 			map.put("cartCode", cartCode);
 			map.put("key", key);
 			map.put("value", value);
@@ -42,9 +42,10 @@ public class CartUpdateOptServlet extends HttpServlet {
 			CartService service = new CartService();
 			int n = service.updateOption(map);
 			System.out.println("update 된 레코드 갯수 : " + n);
-//		}else {
-//			
-//		}
+		}else {
+			response.sendRedirect("LoginUIServlet");
+			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
+		}
 		
 		
 	}

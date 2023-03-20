@@ -31,18 +31,19 @@ public class CartListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로그인 인증 절차 필요
-//		HttpSession session = request.getSession();
-//		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-//		String nextPage = null;
-//		if(dto != null) {
+		HttpSession session = request.getSession();
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		String nextPage = "";
+		if(dto != null) {
 			CartService cService = new CartService();
 			List<CartInfoDTO> cartList = cService.cartList(1);
 			request.setAttribute("cartList", cartList);
 			RequestDispatcher dis = request.getRequestDispatcher("cartList.jsp");
 			dis.forward(request, response);
-//		}else {
-//			nextPage = "";
-//		}
+		}else {
+			nextPage = "LoginUIServlet";
+			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
+		}
 		
 	}
 

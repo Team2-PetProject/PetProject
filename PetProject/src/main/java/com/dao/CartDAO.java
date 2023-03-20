@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,8 +23,8 @@ public class CartDAO {
 		return session.delete("delByCode", cartCode);
 	}
 
-	public int delAll(SqlSession session, List<String> list) {
-		return session.delete("delAll", list);
+	public int delAll(SqlSession session, HashMap<String, Object> map) {
+		return session.delete("delAll", map);
 	}
 
 	public int updateOption(SqlSession session, Map<String, Object> map) {
