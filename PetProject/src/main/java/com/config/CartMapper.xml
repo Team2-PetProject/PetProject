@@ -5,7 +5,7 @@
 <mapper namespace="CartMapper">
 	<select id="cartList" resultType="CartInfoDTO" parameterType="int">
 		select cart_code, member_code, cart_amount, cart_size, cart_color, cart_taste, c.item_code, 
-		item_category, item_name, item_info, item_price, item_image, i.item_size, i.item_color, i.item_taste
+		item_category, item_name,  item_price, item_image, i.item_size, i.item_color, i.item_taste
 		from cart c, item i where c.item_code = i.item_code and member_code = #{member_code}
 	</select>
 	<update  id="updateAmount" parameterType="Hashmap">
@@ -35,7 +35,7 @@
 	</update>
 	<select id="OrderAll" resultType="CartInfoDTO" parameterType="list">
 		select cart_code, member_code, cart_amount, cart_size, cart_color, cart_taste, c.item_code, 
-		item_category, item_name, item_info, item_price, item_image, i.item_size, i.item_color, i.item_taste
+		item_category, item_name,  item_price, item_image, i.item_size, i.item_color, i.item_taste
 		from cart c, item i where c.item_code = i.item_code and cart_code in
 		<foreach collection="list" separator="," open="(" close=")" item="item">
 			#{item}
@@ -51,7 +51,7 @@
 	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">
 	 select Cart_Code, Member_Code,
 	 Cart_Amount,Cart_Size,Cart_Color,Cart_Taste,Item_Code,Item_Category,
-	 Item_Name,Item_Info, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste
+	 Item_Name, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste
 	 from cart join item
 	 using(Item_Code)
 	 where Cart_Code=#{Cart_Code}
