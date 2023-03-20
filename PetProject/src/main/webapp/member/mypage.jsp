@@ -7,27 +7,15 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-	$("form").on("submit", function(event) {
-			var member_code = $("#member_code").val();
+	$("#myForm").on("submit", function(event) {
 			var member_passwd = $("#member_passwd").val();
-			if (member_code.length == 0) {
-				alert("userid 필수")
-				$("#member_code").focus();
-				event.preventDefault();
-			} else if (member_passwd.length == 0) {
-				alert("passwd 필수")
-				$("#member_passwd").focus();
-				event.preventDefault();
+			var member_passwd2 = $("#member_passwd2").val();
+			console.log(member_passwd);
+			if(member_passwd!= member_passwd2){
+				alert("비밀번호가 다릅니다.");
+				$("#member_passwd2").focus();
+				return false;
 			}
-		});
-		//비번확인
-		$("#passwd2").on("keyup", function() {
-			var member_passwd = $("#member_passwd").val();
-			var mesg = "비번 불일치";
-			if (member_passwd == $(this).val()) {
-				mesg = "비번 일치";
-			}
-			$("#result2").text(mesg);
 		});
 
 		//이메일 선택
@@ -52,15 +40,13 @@
 				}
 			});
 		});
-		$("#emailSelect").click(function() {
-			var email = $(this).val();
-			$("#member_email2").val(email);
-		});
+		
 	});
 </script>    
 <%
    MemberDTO dto =(MemberDTO)session.getAttribute("login");
    String member_code = dto.getMember_code();
+   String member_passwd = dto.getMember_passwd();
    String member_name = dto.getMember_name();
    String member_post = dto.getMember_post();
    String member_addr1 = dto.getMember_addr1();
@@ -71,11 +57,13 @@
    String member_email1 = dto.getMember_email1();
    String member_email2 = dto.getMember_email2();
 %>
-<form action="MemberUpdateServlet" method="post">
+<form action="MemberUpdateServlet" method="post" id="myForm">
 <input type="hidden" value="<%= member_code %>" name="member_code" >
 *아이디: <%= member_code %><br>
 <br> 
-*이름:<%= member_name %>
+*이름:<%= member_name %><br>
+<b>비밀번호</b>&nbsp;<input type="text" name="member_passwd" id="member_passwd" value="<%=member_passwd%>"><br>
+<b>비밀번호 확인</b>&nbsp;<input type="text" name="member_passwd2" id="member_passwd2" value="<%=member_passwd%>">
 <br> 
 <input type="text" value="<%= member_post %>" name="member_post" id="sample4_postcode"  placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>

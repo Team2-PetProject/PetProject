@@ -43,7 +43,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			System.out.println(dto2);
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
-			nextPage = "main";
+			nextPage = "MyPageServlet";
 		}else {
 			nextPage = "LoginUIServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");

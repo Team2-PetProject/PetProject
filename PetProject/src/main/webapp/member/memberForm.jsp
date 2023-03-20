@@ -114,7 +114,6 @@
 <span id="result"></span>
 <br> 
 <b>이름</b>&nbsp;<input type="text" name="member_name" id="member_name"><br> 
-<<<<<<< HEAD
 <b>주소</b>
 <input type="text" name="member_post" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
