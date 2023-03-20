@@ -64,7 +64,7 @@ public class CartOrderDoneServlet extends HttpServlet {
 			
 			
 			//OrderInfo insert
-			OrderInfoDTO oinfoDTO = new OrderInfoDTO(OrderInfo_Code, Member_Code, orderName, post, addr1, addr2, phone, payMethod, null,OrderInfo_Delivery); 
+			OrderInfoDTO oinfoDTO = new OrderInfoDTO(0, Member_Code, orderName, post, addr1, addr2, phone, payMethod, null,OrderInfo_Delivery); 
 			
 			System.out.println("CartOrderDoneservlet: infoDTO "+oinfoDTO);
 
@@ -81,7 +81,7 @@ public class CartOrderDoneServlet extends HttpServlet {
 			
 			
 			//OrderItem insert
-			OrderItemDTO oitemDTO = new OrderItemDTO(0, Item_Code, OrderInfo_Code,Member_Code, orderName, Cart_Amount, Item_Price, Item_Image,Item_Name, Cart_Size, Cart_Color, Cart_Taste);
+			OrderItemDTO oitemDTO = new OrderItemDTO(0, Item_Code, 0,Member_Code, orderName, Cart_Amount, Item_Price, Item_Image,Item_Name, Cart_Size, Cart_Color, Cart_Taste);
 			System.out.println("CartOrderDoneservlet: oitemDTO "+oitemDTO);
 			
 			
