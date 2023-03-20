@@ -62,10 +62,8 @@
 		String Item_Code = dto.getItem_Code();
 		String Item_Category = dto.getItem_Category();
 		String Item_Name = dto.getItem_Name();
-		String Item_Info = dto.getItem_Info();
 		int Item_Price = dto.getItem_Price();
 		String Item_Image = dto.getItem_Image();
-		String Item_Color = dto.getItem_Color();
 		String Item_Taste = dto.getItem_Taste();
 %>
 	<table style='padding:15px'>
@@ -77,7 +75,7 @@
 		</td>
 	<tr>
 		<td class="" align ="left">
-			<%= Item_Info%>
+			<%= %>
 		</td>
 	</tr>
 	<tr>
