@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -14,14 +15,10 @@ public class OrderHistoryDAO {
 		return list;
 	}
 
-	public List<OrderHistoryDTO> getOredrDay(SqlSession session, int num) {
-		List<OrderHistoryDTO>list=session.selectList("OrderInfoMapper.OredrDay",num);
-		return list;
-	}
 
-	public List<OrderHistoryDTO> getOredrMonth(SqlSession session, int num) {
-		System.out.println("dao접속"+num);
-		List<OrderHistoryDTO>list=session.selectList("OrderInfoMapper.OredrMonth",num);
+
+	public List<OrderHistoryDTO> getOredrDay(SqlSession session, Map<String, String> orderDayMap) {
+		List<OrderHistoryDTO>list = session.selectList("OrderInfoMapper.getOredrDay",orderDayMap);		
 		return list;
 	}
 

@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -27,14 +28,14 @@ public class OrderHistoryService {
 		return list;
 	}
 
-	public List<OrderHistoryDTO> getOredrDay(int num) {
+	public List<OrderHistoryDTO> getOredrDay(Map<String, String> orderDayMap) {
 		System.out.println("서비스접속");
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		dao = new OrderHistoryDAO();
 		System.out.println(session);
 		List<OrderHistoryDTO> list = null;
 		try {
-			list = dao.getOredrDay(session, num);
+			list = dao.getOredrDay(session, orderDayMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -43,25 +44,5 @@ public class OrderHistoryService {
 		return list;
 	}
 
-	public List<OrderHistoryDTO> getOredrMonth(int num) {
-		System.out.println("서비스접속");
-		SqlSession session = MySqlSessionFactory.getSqlSession();
-		dao = new OrderHistoryDAO();
-		System.out.println(session);
-		List<OrderHistoryDTO> list = null;
-		try {
-			System.out.println("service에서"+num);
-			list = dao.getOredrMonth(session, num);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return list;
-	}
 
-	public List<OrderHistoryDTO> getOredrTerm(String string, String string2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

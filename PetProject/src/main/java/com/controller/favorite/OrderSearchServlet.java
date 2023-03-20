@@ -1,15 +1,19 @@
 package com.controller.favorite;
 
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.dto.MemberDTO;
 import com.dto.OrderHistoryDTO;
 import com.service.OrderHistoryService;
 
@@ -20,41 +24,39 @@ public class OrderSearchServlet extends HttpServlet {
 	public OrderSearchServlet() {
 		super();
 	}
-	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		int num=request.getParameter("orderDay");
-
+		HttpSession session=request.getSession();
+//		MemberDTO memberdto=(MemberDTO)session.getAttribute("login");
+//		String member_code=memberdto.getMember_code();
+		String member_code="111";
 		service = new OrderHistoryService();
-		String startDay=request.getParameter("startDay");
-		String endDay=request.getParameter("endDay");
-		String item_name=request.getParameter("itemName");
+		String startDay = request.getParameter("startDay");
+		String endDay = request.getParameter("endDay");
+		String item_name = request.getParameter("itemName");
 		System.out.println("orderSearch" + startDay);
 		System.out.println("orderSearch" + endDay);
 		System.out.println("orderSearch" + item_name);
+		Map<String	, String> orderDayMap 	= new HashMap<String, String>();
+		orderDayMap.put("startDay", startDay);
+		orderDayMap.put("endDay", endDay);
+		orderDayMap.put("member_code", member_code);
 		String curPage = request.getParameter("curPage");
+
 		if (curPage == null) {
-			curPage="1";
-			if (item_name==null) {
+			curPage = "1";
+			if (item_name == null) {
+				List<OrderHistoryDTO> list = service.getOredrDay(orderDayMap);
+				System.out.println(list);
+				for (int i = 0; i < 10; i++) {
+					System.out.println(list);
+				}
+			}else {
 				
 			}
-			
-			
-			
+
 		}
-//		if (num == 0 || 7) {
-//		List<OrderHistoryDTO> list1 = service.getOredrDay(num);
-//		List<OrderHistoryDTO> list1 = service.getOredrDay(7);
-//		} else if (num == 1 || 6) {
-//		List<OrderHistoryDTO> list2 = service.getOredrMonth(num);
-//		List<OrderHistoryDTO> list2 = service.getOredrMonth(6);
-//		System.out.println(list2);
-//		} else {
-//		List<OrderHistoryDTO> list3 = service.getOredrTerm(num);
-//		List<OrderHistoryDTO> list3 = service.getOredrTerm("20200101","20200101");
-//		}
-//		System.out.println("ddd");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
