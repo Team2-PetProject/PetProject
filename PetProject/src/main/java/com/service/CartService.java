@@ -1,6 +1,7 @@
 package com.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,11 +91,11 @@ public class CartService {
 		return n;
 	}
 
-	public int delAll(List<String> list) {
+	public int delAll(HashMap<String, Object> map) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-			n = dao.delAll(session, list);
+			n = dao.delAll(session, map);
 			session.commit();
 		} finally {
 			session.close();

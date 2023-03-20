@@ -40,6 +40,6 @@ main {
 <hr>
 
 <jsp:include page="member/mypage.jsp" flush="true" />
-
+<jsp:include page="common/footer.jsp" flush="True"></jsp:include>
 </body>
 </html>

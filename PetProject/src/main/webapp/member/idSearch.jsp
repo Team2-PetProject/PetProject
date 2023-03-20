@@ -32,6 +32,10 @@
 			});
 			return false;
 		});
+		$("#login").click(function() {
+			location.href="LoginUIServlet";
+			return false;
+		});
 	});
 </script>
 <form action="#" method="get">
@@ -45,5 +49,6 @@
       <input type="text" name="member_phone3" id="phone3"><br>
       <span id="result"></span><br>
    <input type="submit" value="확인" id="submit">  
+   <input type="button" value="로그인" id="login">
 </form>
 

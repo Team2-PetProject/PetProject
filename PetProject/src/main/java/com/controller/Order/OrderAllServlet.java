@@ -29,10 +29,10 @@ public class OrderAllServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO login = (MemberDTO) session.getAttribute("login");
-//		if(login != null) {
+		if(login != null) {
 			MemberService mService = new MemberService();
-			//String memberCode = login.getMember_code();
-			MemberDTO dto = mService.selectOne("1");
+			String memberCode = login.getMember_code();
+			MemberDTO dto = mService.selectOne(memberCode);
 			request.setAttribute("mDTO", dto);
 			
 			String[] arr = request.getParameterValues("check");
@@ -43,8 +43,10 @@ public class OrderAllServlet extends HttpServlet {
 			request.setAttribute("cinfoList", cartInfoList);
 			RequestDispatcher dis = request.getRequestDispatcher("order/orderAllConfirm.jsp");
 			dis.forward(request, response);
-//		} else {
-//		}
+		} else {
+			response.sendRedirect("LoginUIServlet");
+			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
+		}
 		
 	}
 

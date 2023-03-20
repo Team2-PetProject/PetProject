@@ -46,24 +46,26 @@ public class OrderService {
 		}
 		return n+n2+n3;
 	}//end orderDone
-public int orderAllDone(List<String> cList, List<CartInfoDTO> list, OrderInfoDTO orderInfoDTO) {
+public int orderAllDone(String memberCode, List<String> cList, List<CartInfoDTO> list, OrderInfoDTO orderInfoDTO) {
 	SqlSession session = MySqlSessionFactory.getSqlSession();
 	int result = 0;
 	int result2 = 0;
 	int result3 = 0;
 	try {
-		result = dao.orderDone(session, orderInfoDTO);
+		result = dao.orderAllDone(session, orderInfoDTO);
 		System.out.println("orderInfo insert : " + result);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("orderInfoCode", orderInfoDTO.getOrderInfo_Code());
 		map.put("orderName", orderInfoDTO.getOrderInfo_OrderName());
 		map.put("list", list);
-		result2 = dao.orderDone2(session, map);
+		result2 = dao.orderItemAllDone(session, map);
 		System.out.println("orderItem insert : " + result2);
 		
 		CartDAO cDAO = new CartDAO();
-		result3 = cDAO.delAll(session, cList);
+		HashMap<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("memberCode", memberCode);
+		map2.put("list", cList);
+		result3 = cDAO.delAll(session, map2);
 		System.out.println("Cart delete : " + result3);
 		session.commit();
 	} catch (Exception e) {

@@ -1,59 +1,62 @@
 
-<%-- <%@page import="com.dto.MemberDTO"%>
+<%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-    	
- $("form").on("submit",function(event){		
-	 var member_code = $("#member_code").val();
-	 var member_passwd = $("#member_passwd").val();
-    		if(member_code.length==0){
-    			alert("userid 필수")
-    			$("#member_code").focus();
-    			event.preventDefault();
-    		}else if(member_passwd.length==0){
-    			alert("passwd 필수")
-    			$("#member_passwd").focus();
-    			event.preventDefault();
-    		}
-    	});
-//비번확인
- $("#passwd2").on("keyup",function(){
-		var member_passwd = $("#member_passwd").val();
-		var mesg = "비번 불일치";
-		if(member_passwd == $(this).val()){
-			mesg = "비번 일치";
-		}
-		$("#result2").text(mesg);
-	});
-	
-//이메일 선택
- $("#emailSelect").on("change",function(){
-		var email = $(this).val();
-		  $("#member_email2").val(email);
-	});
-	
- $("#member_code").on("keyup",function(event){	
-	 $.ajax({
-			type : "GET",
-			url : "MemberIdCheckServlet",
-			dataType : "text",
-			data : {
-				userid : $("#member_code").val()
-			},
-			success : function(responseData, status, xhr) {
-			    $("#result").text(responseData);
-			},
-			error : function(xhr, status, error) {
-				console.log("error");
+
+	$("form").on("submit", function(event) {
+			var member_code = $("#member_code").val();
+			var member_passwd = $("#member_passwd").val();
+			if (member_code.length == 0) {
+				alert("userid 필수")
+				$("#member_code").focus();
+				event.preventDefault();
+			} else if (member_passwd.length == 0) {
+				alert("passwd 필수")
+				$("#member_passwd").focus();
+				event.preventDefault();
 			}
 		});
-});
- 
- });
+		//비번확인
+		$("#passwd2").on("keyup", function() {
+			var member_passwd = $("#member_passwd").val();
+			var mesg = "비번 불일치";
+			if (member_passwd == $(this).val()) {
+				mesg = "비번 일치";
+			}
+			$("#result2").text(mesg);
+		});
+
+		//이메일 선택
+		$("#emailSelect").on("change", function() {
+			var email = $(this).val();
+			$("#member_email2").val(email);
+		});
+
+		$("#member_code").on("keyup", function(event) {
+			$.ajax({
+				type : "GET",
+				url : "MemberIdCheckServlet",
+				dataType : "text",
+				data : {
+					userid : $("#member_code").val()
+				},
+				success : function(responseData, status, xhr) {
+					$("#result").text(responseData);
+				},
+				error : function(xhr, status, error) {
+					console.log("error");
+				}
+			});
+		});
+		$("#emailSelect").click(function() {
+			var email = $(this).val();
+			$("#member_email2").val(email);
+		});
+	});
 </script>    
 <%
    MemberDTO dto =(MemberDTO)session.getAttribute("login");
@@ -92,8 +95,8 @@
 이메일:<input type="text" value="<%= member_email1 %>" name="member_email1" id="member_email1">@
        <input type="text" value="<%= member_email2 %>" name="member_email2" id="member_email2" placeholder="직접입력">
        <select  id="emailSelect">
-        <option value="daum.net">daum.net</option>
-        <option value="naver.com">naver.com</option>
+        <option value="daum.net" <% if("daum.net".equals(member_email2)){ %> selected<%} %>>daum.net</option>
+        <option value="naver.com" <% if("naver.com".equals(member_email2)){ %> selected<%} %>>naver.com</option>
        </select>
 <br>
 <input type="submit" value="수정">
@@ -151,4 +154,4 @@
             }
         }).open();
     }
-</script> --%>
+</script> 
