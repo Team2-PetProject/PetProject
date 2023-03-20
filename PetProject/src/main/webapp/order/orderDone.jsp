@@ -192,7 +192,7 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 	<br>
 	<div>
 	<a>구매 내역</a> &nbsp;&nbsp;
-	<a href="MainServlet">쇼핑 계속하기</a>
+	<a href="main">쇼핑 계속하기</a>
 	</div>
 	</div><!--inner  -->
 </div><!-- outer  -->
