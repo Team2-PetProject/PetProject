@@ -13,7 +13,7 @@
 	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">
 	 select Cart_Code, Member_Code,
 	 Cart_Amount,Cart_Size,Cart_Color,Cart_Taste,Item_Code,Item_Category,
-	 Item_Name,Item_Info, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste
+	 Item_Name, Item_Price, Item_Image, Item_Size, Item_Color, Item_Taste
 	 from cart join item
 	 using(Item_Code)
 	 where Cart_Code=#{Cart_Code}

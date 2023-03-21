@@ -18,10 +18,6 @@
 	String itemTaste = dto.getItem_Taste();
 
 %>
-<%
-	
-	
-%>
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -178,9 +174,9 @@ $(document).ready(function(){
 		
 	<!-- 	<div class="wrap_total"></div> -->
 		<div class="wrap_amount">
-			<div>주문 수량</div>
+			<div>주문 수량</div>&nbsp;&nbsp;
 			<div id="down">-</div>
-			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div> -->
+			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div>
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
 			<div id="up" width="10" height="10">+</div>
 		</div>
@@ -190,7 +186,7 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="wrap_totalPrice">
-			<div>총 상품 금액</div>
+			<div>총 상품 금액</div>&nbsp;&nbsp;
 			<div id="totalPrice"><%= itemPrice %></div>
 		</div>
 	
@@ -223,7 +219,7 @@ $(document).ready(function(){
 		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
 		width: 1300px;
 		height: 530px;
-		background: #6182D6;
+		/* background: #6182D6; */
 		display: flex; /*자식인 #itemImg와 itemContents 가운데정렬 위해 부모에 설정*/
 		align-items:center; /*flex와 이것까지가 세로기준 가운데 정렬 */
 		justify-content: center; /*flex와 이게 가로기준 가운데 정렬*/
@@ -234,7 +230,7 @@ $(document).ready(function(){
 		float: left;
 		width: 450px;
 		height: 480px;
-		background: orange;
+		/* background: orange; */
 		margin-right: 40px;
 		display: flex; /* 자식인 진짜 이미지 수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
 		justify-content: center; /*가로 중앙 정렬*/
@@ -244,7 +240,7 @@ $(document).ready(function(){
 	
 	#group{
 		float: left;
-		background: #B0981B;
+	/* 	background: #B0981B; */
 		width: 400px;
 		height: 30px;
 		margin-bottom: 10px;
@@ -254,13 +250,13 @@ $(document).ready(function(){
 		float: left;
 		width: 700px;
 		height: 480px;
-		background: green;
+/* 		background: green; */
 	}
 	
 	.forBlank{
 		width: 30px;
 		height: 30px;
-		background: white;
+	/* 	background: white; */
 	}
 	
 	.itemBasicInfo{
@@ -276,12 +272,12 @@ $(document).ready(function(){
 		float: left;
 		width: auto;
 		height: 200px;
-		background: red;
+	/* 	background: red; */
 		display: flex;
 	}
 	
 	.wrap_each_option{
-		background: grey;
+	/* 	background: grey; */
 		margin-left: 40px;
 	}
 	
