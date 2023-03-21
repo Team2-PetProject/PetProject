@@ -104,6 +104,7 @@ $(document).ready(function(){
 				},
 			dataType: "text",
 			success: function(data, status, xhr) {
+				console.log("성공");
 				alert("장바구니 넣기 성공");
 			},
 			error: function(xhr, status, error) {
