@@ -38,10 +38,7 @@ $(document).ready(function(){
 		amount += 1;
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/remotes/origin/hye
+
 		$("#Cart_Amount").val(amount);
 	}); //end 수량+
 	
@@ -51,12 +48,8 @@ $(document).ready(function(){
 		}
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
-<<<<<<< HEAD
+
 		$("#Cart_Amount").val(amount);
-=======
-		
-		$("#Cart_Amount").val(amount);
->>>>>>> refs/remotes/origin/hye
 	});//end 수량-
 	
 	
