@@ -43,7 +43,6 @@
 	 insert into cart (Cart_Code,Member_Code,Cart_Amount,Item_Code,Cart_Size,Cart_Color,Cart_Taste)
 	 values (cart_seq.nextval,#{Member_Code},#{Cart_Amount},#{Item_Code},#{Cart_Size, jdbcType=VARCHAR},
 	 #{Cart_Color,jdbcType=VARCHAR},#{Cart_Taste,jdbcType=VARCHAR})
-<<<<<<< HEAD
 	</insert>
 	
 	<insert id="cartAddselKey" parameterType="CartDTO" >
@@ -54,8 +53,6 @@
 	 	<selectKey keyProperty="Cart_Code" resultType="int" order="AFTER">
 	 		select cart_seq.currval from dual
 	 	</selectKey>
-=======
->>>>>>> refs/remotes/origin/hye
 	</insert>
 	
 	<select id="selectByCode" resultType="CartInfoDTO"  parameterType="int">
@@ -69,16 +66,6 @@
 	
 	</select>
 	
-	<select id="selectBymaxCart" resultType="CartDTO" parameterType="string">
-		select Cart_Code, Member_Code, Cart_Amount, Item_Code, Cart_Size, Cart_Color, Cart_Taste
-		from cart 
-<<<<<<< HEAD
-		where Cart_Code = (select MAX(Cart_Code) from cart where Member_Code=#{Member_Code}) 
-=======
-		where Cart_Code = (select MAX(Cart_Code) from cart where Member_Code=#{Member_Code})
->>>>>>> refs/remotes/origin/hye
-	
-	</select>
 
 	
 	<delete id="delByCode" parameterType="int">
