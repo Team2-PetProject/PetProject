@@ -88,6 +88,17 @@ $(document).ready(function(){
 			}
 		});//end each
 		
+		
+		//--
+		var arr = $(".option[value='0']");
+		console.log(arr);
+		
+		
+		
+		
+		
+		
+		
 		//데이터 넘기기
 		$("#myForm").attr("action", "cartListServlet");
 	});//end cartAdd

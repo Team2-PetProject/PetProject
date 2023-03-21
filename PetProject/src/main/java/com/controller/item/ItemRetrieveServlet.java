@@ -23,7 +23,7 @@ public class ItemRetrieveServlet extends HttpServlet {
 		
 		//ItemDTO iDTO = new ItemDTO("food02", "food", "연어어쩌고", null, 40000, "food02", "S/M/L", null, "mild/spicy");
 		
-		String item_code = "food02";
+		String item_code = "toy06";
 		System.out.println("상품 코드 : " + item_code);
 		
 		ItemService service = new ItemService();
