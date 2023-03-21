@@ -104,8 +104,8 @@ $(document).ready(function(){
 		})
 		
 		//데이터 넘기는거 안하고 비동기처리하기.
-	/*	$.ajax({
-			url: "CartListServlet",
+		$.ajax({
+			url: "CartServlet",
 			type: "post",
 			data: 
 				{
@@ -114,7 +114,7 @@ $(document).ready(function(){
 				Cart_Color : $("#Cart_Color").val();
 				Cart_Taste : $("#Cart_Taste").val();
 				Cart_Amount : $("#Cart_Amount").val();
-				}
+				},
 			dataType: "text",
 			success: function(data, status, xhr) {
 				alert("장바구니 넣기 성공");
@@ -123,7 +123,7 @@ $(document).ready(function(){
 				console.log(status);
 			}
 			
-		});//end ajax*/
+		});//end ajax
 		
 		
 		
