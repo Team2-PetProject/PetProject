@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderItemMapper">
+
 	
 	<select id="selByCode" resultType="OrderItemDTO" parameterType="int">
 		select OrderItem_Code,Item_Code,OrderInfo_Code,Member_Code,Order_Name,Cart_Amount,Item_Price,
@@ -11,6 +12,9 @@
 		where OrderInfo_Code=#{OrderInfo_Code}
 	
 	</select>
+	
+	
+	
 	<insert id="itemOrderDone" parameterType="OrderItemDTO">
 		<selectKey keyProperty="OrderInfo_Code" resultType="int" order="BEFORE">
 			select orderinfo_seq.currval from dual
@@ -20,6 +24,8 @@
 		values (orderItem_seq.nextval,#{Item_Code},#{OrderInfo_Code},#{Member_Code},#{Order_Name},
 		#{Cart_Amount},#{Item_Price},#{Item_Image},#{Item_Name},#{Cart_Size},#{Cart_Color},#{Cart_Taste})
 	</insert>
+	
+	
 	<insert id="orderItemAllDone" parameterType="HashMap">
 		<selectKey resultType="int" keyProperty="OrderInfo_Code" order="BEFORE">
 			select orderinfo_seq.currval from dual
@@ -34,9 +40,11 @@
 			#{OrderInfo_Code}, #{item.Item_Name} from dual
 		</foreach>) A
 	</insert>
+	
 	<select id="selAllByinfoCode" parameterType="int" resultType="OrderItemDTO">
 		select OrderItem_Code,Item_Code,OrderInfo_Code,Member_Code,Order_Name,Cart_Amount,Item_Price,
 		Item_Image,Item_Name,Cart_Size,Cart_Color,Cart_Taste from orderitem
 		where orderinfo_code = #{orderInfo_Code}
+
 	</select>
 </mapper>
