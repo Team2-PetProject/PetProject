@@ -31,6 +31,7 @@ public class OrderHistoryService {
 	public List<OrderHistoryDTO> getOredrDay(Map<String, String> orderDayMap) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		dao = new OrderHistoryDAO();
+		System.out.println(orderDayMap);
 		List<OrderHistoryDTO> list = null;
 		try {
 			list = dao.getOredrDay(session, orderDayMap);
@@ -54,6 +55,20 @@ public class OrderHistoryService {
 			session.close();
 		}
 		return list;
+	}
+
+	public int totalCount(String member_code) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		dao = new OrderHistoryDAO();
+		int totalCount = 0;
+		try {
+			totalCount = dao.totalCount(session, member_code);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return totalCount;
 	}
 
 

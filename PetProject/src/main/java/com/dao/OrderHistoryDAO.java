@@ -18,6 +18,7 @@ public class OrderHistoryDAO {
 
 
 	public List<OrderHistoryDTO> getOredrDay(SqlSession session, Map<String, String> orderDayMap) {
+		System.out.println(orderDayMap);
 		List<OrderHistoryDTO>list = session.selectList("OrderInfoMapper.getOredrDay",orderDayMap);		
 		return list;
 	}
@@ -27,6 +28,13 @@ public class OrderHistoryDAO {
 	public List<OrderHistoryDTO> getOredrItem(SqlSession session, Map<String, String> orderDayMap) {
 		List<OrderHistoryDTO>list = session.selectList("OrderInfoMapper.getOredrItem",orderDayMap);		
 		return list;
+	}
+
+
+
+	public int totalCount(SqlSession session, String member_code) {
+		int totalCount = session.selectOne("OrderInfoMapper.totalCount",member_code);
+		return totalCount;
 	}
 
 }

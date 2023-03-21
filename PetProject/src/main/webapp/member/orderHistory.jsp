@@ -13,6 +13,7 @@ List<OrderHistoryDTO> list = (List<OrderHistoryDTO>) request.getAttribute("Order
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	today = dateFormat(new Date());
 	yesterday=yesterDay();
@@ -41,36 +42,41 @@ function dateFormat(e) {
 }
 
 function yesterDay() {
-	var day=new Date();
-	var yesterday =new Date(day.setDate(day.getDate() - 1));
-	return dateFormat(yesterday);
-	
-}
+	   var day=new Date();
+	   day.setDate(day.getDate() - 1);
+	   return dateFormat(day);  
+	}
+
 function lastWeek() {
 	var day=new Date();
-	var lastweek=new Date(day.setDate(day.getDate()-7));
-	return dateFormat(lastweek);
+	day.setDate(day.getDate() - 7);
+	 return dateFormat(day);
 }
+
 function twoAgoWeek() {
 	var day=new Date();
-	var twoagoweek=new Date(day.setDate(day.getDate()-14));
-	return dateFormat(twoagoweek);
+	day.setDate(day.getDate() - 14);
+	return dateFormat(day);  
 }
+
 function lastMonth() {
 	var day=new Date();
-	var lastMonth=new Date(day.setMonth(day.getMonth()-1));
-	return dateFormat(lastMonth);
+	day.setMonth(day.getMonth() - 1);
+	return dateFormat(day);  
 }
+
 function sixAgoMonth() {
 	var day=new Date();
-	var sixagomonth=new Date(day.setMonth(day.getMonth()-6));
-	return dateFormat(sixagomonth);
+	day.setMonth(day.getMonth() - 6);
+	return dateFormat(day);  
 }
+
 function lastYear() {
 	var day = new Date();
-	var lastyear = new Date(day.setFullYear(day.getFullYear()-1));
-	return dateFormat(lastyear);
+	day.setFullYear(day.getFullYear() - 1);
+	return dateFormat(day);  
 	}
+
 function setDate(fromDate, toDate) {
 	var item_name = $("#itemSearch").val();
 	console.log($("#itemSearch").val());
