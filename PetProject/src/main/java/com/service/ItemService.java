@@ -25,10 +25,7 @@ public class ItemService {
 			session.close();
 		}
 		return dto;
-	}//end goodsRetrieve
+	}//end itemRetrieve
 	
 }//end class
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/hye
