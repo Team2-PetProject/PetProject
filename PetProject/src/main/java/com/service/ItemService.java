@@ -1,6 +1,8 @@
 package com.service;
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -26,5 +28,29 @@ public class ItemService {
 		}
 		return dto;
 	}//end goodsRetrieve
+
+	public List<ItemDTO> selectNew() {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		List<ItemDTO> list = null;
+		try {
+			list = dao.selectNew(session);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	public List<ItemDTO> selectBest(List<String> itemCodeList) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		List<ItemDTO> list = null;
+		try {
+			list = dao.selectBest(session, itemCodeList);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	
 	
 }//end class

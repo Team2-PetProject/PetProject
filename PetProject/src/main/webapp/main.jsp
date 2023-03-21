@@ -58,11 +58,7 @@ main {
 	</header>
 	<main>
 		<hr>
-		<jsp:include page="common/banner.jsp" flush="true"></jsp:include>
-		<hr>
-		<jsp:include page="goods/new.jsp" flush="true"></jsp:include>
-		<hr>
-		<jsp:include page="event/event.jsp" flush="true"></jsp:include>
+		<jsp:include page="goods/new.jsp" flush="true"></jsp:include>>
 		<hr>
 		<jsp:include page="goods/best.jsp" flush="true"></jsp:include>
 	</main>

@@ -50,4 +50,8 @@ public class OrderDAO {
 		return session.selectList("selAllByinfoCode", orderInfo_Code);
 	}
 
+	public List<String> selBest(SqlSession session) {
+		return session.selectList("selBest");
+	}
+
 }

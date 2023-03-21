@@ -39,4 +39,8 @@
 		Item_Image,Item_Name,Cart_Size,Cart_Color,Cart_Taste from orderitem
 		where orderinfo_code = #{orderInfo_Code}
 	</select>
+	<select id="selBest" resultType="String" >
+		select item_code from (select item_code, count(*) 
+		from orderitem group by item_code order by count(*) desc) where rownum &lt; 5
+	</select>
 </mapper>

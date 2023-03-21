@@ -111,5 +111,16 @@ public class OrderService {
 		}
 		return list;
 	}
+
+	public List<String> selectBest() {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		List<String> list = null;
+		try {
+			list = dao.selBest(session);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 	
 }

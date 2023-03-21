@@ -9,4 +9,13 @@
 		from item
 		where item_code = #{item_code}
 	</select>
+	<select id="selectNew" resultType="ItemDTO">
+		select * from item where rownum &lt; 5
+	</select>
+	<select id="selectBest" resultType="ItemDTO" parameterType="list">
+		select * from item where item_code in 
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</select>
 </mapper>
