@@ -52,5 +52,10 @@ public class CartDAO {
 		return dto;
 	}
 
+	public int insertItem(SqlSession session, CartDTO dto) {
+		int n = session.insert("insertItem", dto);
+		return n;
+	}
+
 
 }

@@ -78,4 +78,8 @@
 		delete from cart where Cart_Code=#{Cart_Code}
 	
 	</delete>
+	<insert id="insertItem" parameterType="CsrtDTO">
+		insert into cart values (cart_seq.nextval, #{Member_Code}, #{Cart_Amount},
+		 #{Item_Code}, #{Cart_Size}, #{Cart_Color}, #{Cart_Taste})
+	</insert>
 </mapper>

@@ -57,6 +57,8 @@ $(document).ready(function(){
 	//바로구매
 	$("#orderNow").on("click", function(event){
 		//유효성 검사
+		
+		var arr = $(".option[value='0']");
 		var n =0;
 		$.each($(".option"), function(i, e){
 			if($(this).val()==0){
@@ -68,6 +70,7 @@ $(document).ready(function(){
 				n ++;
 			}
 		});//end each
+		
 		
 		//데이터 넘기기
 		$("#myForm").attr("action", "CartOrderConfirmServlet");

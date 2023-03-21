@@ -116,5 +116,18 @@ public class CartService {
 		}
 		return cList;
 	}
+
+	public int insertItem(CartDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		int result =0 ;
+		try {
+			result = dao.insertItem(session, dto);
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
 	
 }
