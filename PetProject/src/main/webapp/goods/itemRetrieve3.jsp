@@ -133,7 +133,7 @@ $(document).ready(function(){
 			<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
 	<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
 		</div>
-		<img id="img" name="Item_Image" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
+		<img id="img" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
 	</div>
 	
 	<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
@@ -176,7 +176,7 @@ $(document).ready(function(){
 		<div class="wrap_amount">
 			<div>주문 수량</div>&nbsp;&nbsp;
 			<div id="down">-</div>
-			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div>
+			<div id="itemAmount" style="width:35px; height:10px; text-align:center;">1</div>
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
 			<div id="up" width="10" height="10">+</div>
 		</div>
