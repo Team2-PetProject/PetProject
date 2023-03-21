@@ -96,10 +96,10 @@ $(document).ready(function(){
 			type: "post",
 			data: 
 				{
-				Item_Code : $("#itemCode").val();
-				Cart_Size : $("#Cart_Size").val();
-				Cart_Color : $("#Cart_Color").val();
-				Cart_Taste : $("#Cart_Taste").val();
+				Item_Code : $("#itemCode").val();,
+				Cart_Size : $("#Cart_Size").val();,
+				Cart_Color : $("#Cart_Color").val();,
+				Cart_Taste : $("#Cart_Taste").val();,
 				Cart_Amount : $("#Cart_Amount").val();
 				},
 			dataType: "text",
