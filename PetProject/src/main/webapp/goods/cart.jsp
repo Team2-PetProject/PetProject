@@ -134,7 +134,6 @@
 		String itemCode = dto.getItem_Code();
 		String itemCategory = dto.getItem_Category();
 		String itemName = dto.getItem_Name();
-		String itemInfo = dto.getItem_Info();
 		int itemPrice = dto.getItem_Price();
 		String cartSize = dto.getCart_Size();
 		String cartColor = dto.getCart_Color();
@@ -151,16 +150,13 @@
 		</div>
 		<div class="col-md-5">
 			<h5><%=itemName%></h5>
-			<p><%=itemInfo%></p>
 			<%if(cartSize!=null||cartColor!=null||cartTaste!=null){ %>
 			옵션	
 			<%} %>		
 			<%if(cartSize != null){ %>
 			<select name="optionSize" class="option" id="size" data-code=<%=cartCode%>>
 			<%
-				
 					String[] arr = itemSize.split("/");
-				
 					for(int j=0;j<arr.length;j++){
 			%>
 							<option value="<%=arr[j]%>" <%if(cartSize.equals(arr[j])){%>selected<%} %>><%=arr[j]%></option>

@@ -19,8 +19,9 @@ public class CartInfoDTO {
 		// TODO Auto-generated constructor stub
 	}
 	public CartInfoDTO(int cart_Code, String member_Code, String cart_Amount, String cart_Size, String cart_Color,
-			String cart_Taste, String item_Code, String item_Category, String item_Name, int item_Price,
-			String item_Image, String item_Size, String item_Color, String item_Taste) {
+			String cart_Taste, String item_Code, String item_Category, String item_Name, 
+			int item_Price, String item_Image, String item_Size, String item_Color, String item_Taste) {
+
 		super();
 		Cart_Code = cart_Code;
 		Member_Code = member_Code;
@@ -126,8 +127,10 @@ public class CartInfoDTO {
 		return "CartInfoDTO [Cart_Code=" + Cart_Code + ", Member_Code=" + Member_Code + ", Cart_Amount=" + Cart_Amount
 				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste
 				+ ", Item_Code=" + Item_Code + ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name
-				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Size=" + Item_Size
-				+ ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
+
+				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image
+				+ ", Item_Size=" + Item_Size + ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
+
 	}
 	
 	

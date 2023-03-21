@@ -30,7 +30,7 @@ public class CartListServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//로그인 인증 절차 필요
+		//로그인 인증 절차 필요  
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 		String nextPage = "";
