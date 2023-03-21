@@ -77,7 +77,7 @@ $(document).ready(function(){
 	//장바구니
 	$("#cartAdd").on("click", function(){
 		//유효성 검사
-		/*
+		
 		var n =0;
 		$.each($(".option"), function(i, e){
 			if($(this).val()==0){
@@ -90,30 +90,35 @@ $(document).ready(function(){
 			}
 		});//end each
 		
-		*/
+		
 		//--
+		/*
 		$.each($(".option"), function(i, e) {
-			var arr[];
-			if($(this).val()==0){
-				arr.push(1);
-			}
-			if(arr.length==1){
+			var arr = [];
+			if(arr.length==0){
 				alert("미선택");
 				event.preventDefault();
+				arr.push("0");
 			}
+			//console.log(arr.length);
+			if($(this).val()==0){
+				arr.push("1");
+			} 
+			
 		})
+		*/
 		
 		//데이터 넘기는거 안하고 비동기처리하기.
 		$.ajax({
-			url: "CartServlet",
+			url: "CartListServlet",
 			type: "post",
 			data: 
 				{
-				Item_Code : $("#itemCode").val();
-				Cart_Size : $("#Cart_Size").val();
-				Cart_Color : $("#Cart_Color").val();
-				Cart_Taste : $("#Cart_Taste").val();
-				Cart_Amount : $("#Cart_Amount").val();
+				Item_Code : $("#itemCode").val(),
+				Cart_Size : $("#Cart_Size").val(),
+				Cart_Color : $("#Cart_Color").val(),
+				Cart_Taste : $("#Cart_Taste").val(),
+				Cart_Amount : $("#Cart_Amount").val()
 				},
 			dataType: "text",
 			success: function(data, status, xhr) {
