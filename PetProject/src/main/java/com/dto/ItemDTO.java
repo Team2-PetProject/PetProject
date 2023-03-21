@@ -76,14 +76,8 @@ public class ItemDTO {
 	@Override
 	public String toString() {
 		return "ItemDTO [Item_Code=" + Item_Code + ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name
-<<<<<<< HEAD
 				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Size=" + Item_Size
 				+ ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
-=======
-				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image
-				+ ", Item_Size=" + Item_Size + ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
->>>>>>> refs/remotes/origin/hye
 	}
 	
-	
-}
+}//end class
