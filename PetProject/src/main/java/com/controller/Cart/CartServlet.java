@@ -25,6 +25,7 @@ public class CartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();  
+		System.out.println(session);
 		MemberDTO login = (MemberDTO) session.getAttribute("login");
 		if(login != null) {
 			String memberCode = login.getMember_code();

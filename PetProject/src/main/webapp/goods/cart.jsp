@@ -134,7 +134,6 @@
 		String itemCode = dto.getItem_Code();
 		String itemCategory = dto.getItem_Category();
 		String itemName = dto.getItem_Name();
-		String itemInfo = dto.getItem_Info();
 		int itemPrice = dto.getItem_Price();
 		String cartSize = dto.getCart_Size();
 		String cartColor = dto.getCart_Color();

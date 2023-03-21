@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.dto.CartInfoDTO"%>
 <%@page import="org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation"%>
 
@@ -156,7 +157,6 @@
 	String Cart_Taste = cDTO.getCart_Taste();
 	String Item_Code = cDTO.getItem_Code();
 	String Item_Name = cDTO.getItem_Name();
-	String Item_Info = cDTO.getItem_Info();
 	int Item_Price = cDTO.getItem_Price();
 	String Item_Image = cDTO.getItem_Image();
 	
@@ -172,7 +172,7 @@
 	String m_email1= mDTO.getMember_email1();
 	String m_email2= mDTO.getMember_email2();
 	
-	
+	DecimalFormat df = new DecimalFormat("###,###");
 
 %>
 
@@ -188,8 +188,14 @@
 <input type="hidden" name="Cart_Color" value="<%= Cart_Color%>">
 <input type="hidden" name="Cart_Taste" value="<%= Cart_Taste%>">
 <input type="hidden" name="Cart_Amount" value="<%= Cart_Amount%>">
+<<<<<<< HEAD
 <input type="hidden" name="Item_Image" value="<%= Item_Image%>">
 <input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
+=======
+<input type="hidden" name="Item_Image" value="<%= Item_Image%>">
+<input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
+
+>>>>>>> refs/remotes/origin/hye
 <input type="hidden" name="Cart_Code" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
 <%
 	int delivery = 0;
@@ -228,7 +234,7 @@
 			<td class="td_default" width="300" style='padding-left: 30px'><%= Item_Name %>
 				<br> <font size="2" color="#665b5f">[옵션 : 옵션1(<%= Cart_Size %>) , 옵션2(<%=Cart_Color %>), 옵션3(<%=Cart_Taste %>)] </font>
 			</td>
-			<td class="td_default" align="center" width="110"><%= Item_Price %></td>
+			<td class="td_default" align="center" width="110"><%= df.format(Item_Price)  %></td>
 			<td class="td_default" align="center" width="90"><%= Cart_Amount %></td>
 
 		</tr>
@@ -242,19 +248,19 @@
 		<tr>
 			<td height="30" colspan="3"></td>
 			<td class="td_default" align="center">총 상품 금액 :</td>
-			<td class="td_default" align="center"><%= Item_Price * Cart_Amount %>원</td>
+			<td class="td_default" align="center"><%=  df.format(Item_Price * Cart_Amount)   %>원</td>
 		</tr>
 		<tr>
 			<td height="30" colspan="3"></td>
 			<td class="td_default" align="center">배송비 :</td>
 
-			<td class="td_default" align="center"><%= delivery %>원</td>
+			<td class="td_default" align="center"><%= df.format(delivery)  %>원</td>
 		
 		</tr>
 		<tr>
 			<td height="30" colspan="3"></td>
 			<td class="td_default" align="center">총 결제 금액 :</td>
-			<td class="td_default" align="center"><%= (Item_Price * Cart_Amount) + delivery %>원</td>
+			<td class="td_default" align="center"><%= df.format((Item_Price * Cart_Amount) + delivery)  %>원</td>
 		</tr>
 		<tr>
 			<td colspan="6">
