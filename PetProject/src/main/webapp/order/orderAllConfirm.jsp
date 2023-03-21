@@ -195,7 +195,6 @@ String m_email2= mDTO.getMember_email2();
 		String Cart_Taste = cDTO.getCart_Taste();
 		String Item_Code = cDTO.getItem_Code();
 		String Item_Name = cDTO.getItem_Name();
-		String Item_Info = cDTO.getItem_Info();
 		int Item_Price = cDTO.getItem_Price();
 		String Item_Image = cDTO.getItem_Image();
 		sum += Item_Price * Cart_Amount;
