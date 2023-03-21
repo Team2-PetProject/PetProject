@@ -94,7 +94,7 @@ $(document).ready(function(){
 			
 		});//end each
 		
-		if(n>=0){
+		if(n>0){
 		//데이터 넘기는거 안하고 비동기처리하기.
 		$.ajax({
 			url: "CartServlet",
