@@ -35,7 +35,7 @@ public class CartOrderConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/////////////////////
 //		HttpSession session = request.getSession();
 //		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		String nextPage = null;

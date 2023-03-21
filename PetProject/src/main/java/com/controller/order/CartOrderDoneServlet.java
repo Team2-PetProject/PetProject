@@ -23,6 +23,7 @@ import com.service.OrderService;
 public class CartOrderDoneServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		////////////////////////
 		request.setCharacterEncoding("UTF-8");
 //		HttpSession session = request.getSession();
 //		MemberDTO dto = (MemberDTO)session.getAttribute("login");
