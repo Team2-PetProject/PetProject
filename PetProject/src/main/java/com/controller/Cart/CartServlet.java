@@ -36,8 +36,6 @@ public class CartServlet extends HttpServlet {
 			CartDTO dto = new CartDTO(0, memberCode, CartAmount, itemCode, CartSize, CartColor, CartTaste);
 			CartService service = new CartService();
 			int n = service.insertItem(dto);
-			PrintWriter out = response.getWriter();
-			out.println("장바구니에 담았습니다.");
 		}else {
 			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
 			response.sendRedirect("LoginUIServlet");
