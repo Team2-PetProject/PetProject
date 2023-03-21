@@ -4,7 +4,6 @@ public class ItemDTO {
 	private String Item_Code;
 	private String Item_Category;
 	private String Item_Name;
-	private String Item_Info;
 	private int Item_Price;
 	private String Item_Image;
 	private String Item_Size;
