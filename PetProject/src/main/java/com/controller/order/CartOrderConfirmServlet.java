@@ -84,7 +84,7 @@ public class CartOrderConfirmServlet extends HttpServlet {
 //			nextPage = "LoginUIServlet";
 //			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 //		}
-		
+		    
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
 		
