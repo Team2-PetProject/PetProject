@@ -3,7 +3,6 @@ package com.dto;
 public class OrderItemDTO {
 	private int OrderItem_Code;
 	private String Item_Code;
-<<<<<<< HEAD
 	private int OrderInfo_Code;
 	private String Member_Code;
 	private String Order_Name;
@@ -59,63 +58,6 @@ public class OrderItemDTO {
 	}
 
 	public void setOrderInfo_Code(int orderInfo_Code) {
-=======
-	private String OrderInfo_Code;
-	private String Member_Code;
-	private String Order_Name;
-	private int Cart_Amount;
-	private int Item_Price;
-	private String Item_Image;
-	private String Item_Name;
-	private String Cart_Size;
-	private String Cart_Color;
-	private String Cart_Taste;
-	
-	public OrderItemDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public OrderItemDTO(int orderItem_Code, String item_Code, String orderInfo_Code, String member_Code,
-			String order_Name, int cart_Amount, int item_Price, String item_Image, String item_Name, String cart_Size,
-			String cart_Color, String cart_Taste) {
-		super();
-		OrderItem_Code = orderItem_Code;
-		Item_Code = item_Code;
-		OrderInfo_Code = orderInfo_Code;
-		Member_Code = member_Code;
-		Order_Name = order_Name;
-		Cart_Amount = cart_Amount;
-		Item_Price = item_Price;
-		Item_Image = item_Image;
-		Item_Name = item_Name;
-		Cart_Size = cart_Size;
-		Cart_Color = cart_Color;
-		Cart_Taste = cart_Taste;
-	}
-
-	public int getOrderItem_Code() {
-		return OrderItem_Code;
-	}
-
-	public void setOrderItem_Code(int orderItem_Code) {
-		OrderItem_Code = orderItem_Code;
-	}
-
-	public String getItem_Code() {
-		return Item_Code;
-	}
-
-	public void setItem_Code(String item_Code) {
-		Item_Code = item_Code;
-	}
-
-	public String getOrderInfo_Code() {
-		return OrderInfo_Code;
-	}
-
-	public void setOrderInfo_Code(String orderInfo_Code) {
->>>>>>> refs/remotes/origin/hye
 		OrderInfo_Code = orderInfo_Code;
 	}
 
@@ -198,10 +140,4 @@ public class OrderItemDTO {
 				+ Cart_Amount + ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image + ", Item_Name=" + Item_Name
 				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste + "]";
 	}
-	
-	
-<<<<<<< HEAD
 }
-=======
-}//end class
->>>>>>> refs/remotes/origin/hye

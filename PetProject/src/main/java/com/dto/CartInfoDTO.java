@@ -92,10 +92,6 @@ public class CartInfoDTO {
 	public void setItem_Name(String item_Name) {
 		Item_Name = item_Name;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/hye
 	public int getItem_Price() {
 		return Item_Price;
 	}
@@ -131,10 +127,6 @@ public class CartInfoDTO {
 		return "CartInfoDTO [Cart_Code=" + Cart_Code + ", Member_Code=" + Member_Code + ", Cart_Amount=" + Cart_Amount
 				+ ", Cart_Size=" + Cart_Size + ", Cart_Color=" + Cart_Color + ", Cart_Taste=" + Cart_Taste
 				+ ", Item_Code=" + Item_Code + ", Item_Category=" + Item_Category + ", Item_Name=" + Item_Name
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/hye
 				+ ", Item_Price=" + Item_Price + ", Item_Image=" + Item_Image
 				+ ", Item_Size=" + Item_Size + ", Item_Color=" + Item_Color + ", Item_Taste=" + Item_Taste + "]";
 

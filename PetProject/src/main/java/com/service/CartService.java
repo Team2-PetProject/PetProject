@@ -1,12 +1,9 @@
 package com.service;
 
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-=======
->>>>>>> refs/remotes/origin/hye
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -26,11 +23,7 @@ public class CartService {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-<<<<<<< HEAD
-			n= dao.cartAddselKey(session,cDTO);
-=======
 			n = dao.cartAdd(session, cDTO);
->>>>>>> refs/remotes/origin/hye
 			session.commit();
 		} finally {
 			session.close();
@@ -43,14 +36,8 @@ public class CartService {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		CartInfoDTO dto = null;
 		try {
-<<<<<<< HEAD
-			dto = dao.selectByCode(session,cart_code);
-//			dto = dao.selectByCode(session);
-		}finally {
-=======
 			dto = dao.selectByCode(session, cart_code);
 		} finally {
->>>>>>> refs/remotes/origin/hye
 			session.close();
 		}
 		return dto;
@@ -59,18 +46,12 @@ public class CartService {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		List<CartInfoDTO> list = null;
 		try {
-<<<<<<< HEAD
 			list = dao.cartList(session, member_code);
-=======
-			dto = dao.selectBymaxCart(session, member_Code);
->>>>>>> refs/remotes/origin/hye
 		} finally {
 			session.close();
 		}
 		return list;
 	}
-
-<<<<<<< HEAD
 	public int updateAmount(Map<String, Object> map) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
@@ -148,6 +129,3 @@ public class CartService {
 	}
 	
 }
-=======
-}// end class
->>>>>>> refs/remotes/origin/hye
