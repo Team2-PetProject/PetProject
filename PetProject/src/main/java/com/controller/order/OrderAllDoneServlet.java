@@ -1,20 +1,21 @@
-package com.controller.Order;
+package com.controller.order;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dto.CartInfoDTO;
+import com.dto.MemberDTO;
 import com.dto.OrderInfoDTO;
+import com.dto.OrderItemDTO;
 import com.service.CartService;
 import com.service.OrderService;
 
@@ -29,10 +30,10 @@ public class OrderAllDoneServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-//		HttpSession session = request.getSession();
-//		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-//		if(dto != null) {
-//			String memberCode = dto.getMember_code();
+		HttpSession session = request.getSession();
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		if(dto != null) {
+			String memberCode = dto.getMember_code();
 			String[] cartCode = request.getParameterValues("orderNum");
 			String orderName = request.getParameter("orderName");
 			String post = request.getParameter("post");
@@ -42,37 +43,29 @@ public class OrderAllDoneServlet extends HttpServlet {
 			String payMethod = request.getParameter("payMethod");
 			String delivery = request.getParameter("delivery");
 			
-			//주문번호 생성
-            //1. 4자리 난수 생성
-            Random random = new Random();
-            int createNum = 0;
-            String ranNum = "";
-            int letter = 4;
-            String resultNum="";
-
-            for (int i = 0; i < letter; i++) {
-                createNum = random.nextInt(10);
-                ranNum = Integer.toString(createNum);
-                resultNum += ranNum;
-            }
-
-            //2. 주문날짜
-            Date date = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("YYMMdd");
-
-            String OrderInfo_Code = format.format(date)+resultNum;
-
-			
-			OrderInfoDTO OrderInfoDTO = new OrderInfoDTO(OrderInfo_Code, "1", orderName, post, addr1, addr2, phone, payMethod, "", Integer.parseInt(delivery));
+			OrderInfoDTO OrderInfoDTO = new OrderInfoDTO(0, "1", orderName, post, addr1, addr2, phone, payMethod, "", Integer.parseInt(delivery));
 			
 			List<String> cList = Arrays.asList(cartCode);
 			CartService cService = new CartService();
 			List<CartInfoDTO> list = cService.OrderAll(cList);
 			OrderService oService = new OrderService();
-			int n = oService.orderAllDone(cList, list, OrderInfoDTO);
+			int n = oService.orderAllDone(memberCode, cList, list, OrderInfoDTO);
 			System.out.println(n);
 			
-//		}
+			OrderInfoDTO oDTO = oService.selByinfoCode(n);
+			System.out.println(oDTO);
+			List<OrderItemDTO> oList = oService.selAllByinfoCode(n);
+			for (OrderItemDTO orderItemDTO : oList) {
+				System.out.println(orderItemDTO);
+			}
+			RequestDispatcher dis = request.getRequestDispatcher("orderAllDone.jsp");
+			request.setAttribute("oinfoDTO", oDTO);
+			request.setAttribute("oitemList", oList);
+			dis.forward(request, response);
+		}else {
+			response.sendRedirect("LoginUIServlet");
+			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

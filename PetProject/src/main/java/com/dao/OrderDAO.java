@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -11,11 +12,13 @@ public class OrderDAO {
 
 	public int orderDone(SqlSession session, OrderInfoDTO oinfoDTO) {
 		int n = session.insert("OrderMapper.orderDone",oinfoDTO);
-		return n;
+//		System.out.println("dao n 값 "+ n);  //insert 갯수
+//		System.out.println("orderinfo insert 후 dao orderinfo_code: "+oinfoDTO.getOrderInfo_Code());
+		return oinfoDTO.getOrderInfo_Code();
 	}
 
 	public int itemOrderDone(SqlSession session, OrderItemDTO oitemDTO) {
-		System.out.println("dao : " + oitemDTO);
+//		System.out.println("dao : " + oitemDTO);
 		int n = session.insert("OrderMapper.itemOrderDone",oitemDTO);
 		return n;
 	}
@@ -24,12 +27,27 @@ public class OrderDAO {
 		int n = session.delete("CartMapper.delByCode",cart_Code);
 		return n;
 	}
-	public int orderAllDone(SqlSession session, OrderInfoDTO dto) {
-		return session.insert("orderAllDone", dto);
+	public int orderAllDone(SqlSession session, OrderInfoDTO oinfoDTO) {
+		int n = session.insert("OrderInfoMapper.orderDone", oinfoDTO);
+		return oinfoDTO.getOrderInfo_Code();
 	}
 
-	public int orderDone2(SqlSession session, HashMap<String, Object> map) {
+	public int orderItemAllDone(SqlSession session, HashMap<String, Object> map) {
 		return session.insert("orderItemAllDone", map);
+	}
+
+	public OrderInfoDTO selByinfoCode(SqlSession session, int orderInfo_Code) {
+		OrderInfoDTO dto = session.selectOne("selByinfoCode",orderInfo_Code);
+		return dto;
+	}
+
+	public OrderItemDTO selByCode(SqlSession session, int orderInfo_Code) {
+		OrderItemDTO dto = session.selectOne("selByCode",orderInfo_Code);
+		return dto;
+	}
+
+	public List<OrderItemDTO> selAllByinfoCode(SqlSession session, int orderInfo_Code) {
+		return session.selectList("selAllByinfoCode", orderInfo_Code);
 	}
 
 }

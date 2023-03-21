@@ -1,6 +1,6 @@
 package com.service;
 
-
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,11 +19,11 @@ public class CartService {
 		dao = new CartDAO();
 	}
 
-	public int cartAdd(CartDTO cDTO) {
+	public int cartAddselKey(CartDTO cDTO) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-			n= dao.cartAdd(session,cDTO);
+			n= dao.cartAddselKey(session,cDTO);
 			session.commit();
 		} finally {
 			session.close();
@@ -32,21 +32,12 @@ public class CartService {
 	}//end CartAdd
 
 	public CartInfoDTO selectByCode(int cart_code) {
+//	public CartInfoDTO selectByCode() {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		CartInfoDTO dto = null;
 		try {
 			dto = dao.selectByCode(session,cart_code);
-		}finally {
-			session.close();
-		}
-		return dto;
-	}
-
-	public CartDTO selectBymaxCart(String member_Code) {
-		SqlSession session = MySqlSessionFactory.getSqlSession();
-		CartDTO dto = null;
-		try {
-			dto = dao.selectBymaxCart(session,member_Code);
+//			dto = dao.selectByCode(session);
 		}finally {
 			session.close();
 		}
@@ -90,11 +81,11 @@ public class CartService {
 		return n;
 	}
 
-	public int delAll(List<String> list) {
+	public int delAll(HashMap<String, Object> map) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-			n = dao.delAll(session, list);
+			n = dao.delAll(session, map);
 			session.commit();
 		} finally {
 			session.close();
@@ -125,6 +116,5 @@ public class CartService {
 		}
 		return cList;
 	}
-
 	
 }

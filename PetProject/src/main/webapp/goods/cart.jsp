@@ -147,7 +147,7 @@
 		<div class="col-md-1 form-check">
 			<input class="form-check-input check" type="checkbox" 
 			id="check<%=memberCode%>" name = "check" value="<%=cartCode%>" style="vertical-align: middle"> 
-			<img src="images/items/<%=itemImage%>.png" class="rounded float-start" alt="..." width = "100px" height="100px">
+			<img src="images/기존items/<%=itemImage%>.png" class="rounded float-start" alt="..." width = "100px" height="100px">
 		</div>
 		<div class="col-md-5">
 			<h5><%=itemName%></h5>

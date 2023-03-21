@@ -7,19 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/QAServlet")
-public class QAServlet extends HttpServlet {
+@WebServlet("/orderConfirmServlet")
+public class orderConfirmServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String itemCode = request.getParameter("Item_Code");
-		String itemName = request.getParameter("Item_Name");
-		String itemPrice = request.getParameter("Item_Price");
-		System.out.println(itemCode + "\t" + itemName + "\t" + itemPrice);
-	}//doGet
+		
+		
+	}//end doGet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
-}//end servlet
+}//end Servlet

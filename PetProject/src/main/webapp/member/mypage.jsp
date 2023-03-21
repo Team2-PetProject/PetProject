@@ -1,63 +1,52 @@
 
-<%-- <%@page import="com.dto.MemberDTO"%>
+<%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-    	
- $("form").on("submit",function(event){		
-	 var member_code = $("#member_code").val();
-	 var member_passwd = $("#member_passwd").val();
-    		if(member_code.length==0){
-    			alert("userid 필수")
-    			$("#member_code").focus();
-    			event.preventDefault();
-    		}else if(member_passwd.length==0){
-    			alert("passwd 필수")
-    			$("#member_passwd").focus();
-    			event.preventDefault();
-    		}
-    	});
-//비번확인
- $("#passwd2").on("keyup",function(){
-		var member_passwd = $("#member_passwd").val();
-		var mesg = "비번 불일치";
-		if(member_passwd == $(this).val()){
-			mesg = "비번 일치";
-		}
-		$("#result2").text(mesg);
-	});
-	
-//이메일 선택
- $("#emailSelect").on("change",function(){
-		var email = $(this).val();
-		  $("#member_email2").val(email);
-	});
-	
- $("#member_code").on("keyup",function(event){	
-	 $.ajax({
-			type : "GET",
-			url : "MemberIdCheckServlet",
-			dataType : "text",
-			data : {
-				userid : $("#member_code").val()
-			},
-			success : function(responseData, status, xhr) {
-			    $("#result").text(responseData);
-			},
-			error : function(xhr, status, error) {
-				console.log("error");
+
+	$("#myForm").on("submit", function(event) {
+			var member_passwd = $("#member_passwd").val();
+			var member_passwd2 = $("#member_passwd2").val();
+			console.log(member_passwd);
+			if(member_passwd!= member_passwd2){
+				alert("비밀번호가 다릅니다.");
+				$("#member_passwd2").focus();
+				return false;
 			}
 		});
-});
- 
- });
+
+		//이메일 선택
+		$("#emailSelect").on("change", function() {
+			var email = $(this).val();
+			$("#member_email2").val(email);
+		});
+
+		$("#member_code").on("keyup", function(event) {
+			$.ajax({
+				type : "GET",
+				url : "MemberIdCheckServlet",
+				dataType : "text",
+				data : {
+					userid : $("#member_code").val()
+				},
+				success : function(responseData, status, xhr) {
+					$("#result").text(responseData);
+				},
+				error : function(xhr, status, error) {
+					console.log("error");
+				}
+			});
+		});
+		
+	});
 </script>    
 <%
    MemberDTO dto =(MemberDTO)session.getAttribute("login");
    String member_code = dto.getMember_code();
+   String member_passwd = dto.getMember_passwd();
    String member_name = dto.getMember_name();
    String member_post = dto.getMember_post();
    String member_addr1 = dto.getMember_addr1();
@@ -68,11 +57,13 @@
    String member_email1 = dto.getMember_email1();
    String member_email2 = dto.getMember_email2();
 %>
-<form action="MemberUpdateServlet" method="post">
+<form action="MemberUpdateServlet" method="post" id="myForm">
 <input type="hidden" value="<%= member_code %>" name="member_code" >
 *아이디: <%= member_code %><br>
 <br> 
-*이름:<%= member_name %>
+*이름:<%= member_name %><br>
+<b>비밀번호</b>&nbsp;<input type="text" name="member_passwd" id="member_passwd" value="<%=member_passwd%>"><br>
+<b>비밀번호 확인</b>&nbsp;<input type="text" name="member_passwd2" id="member_passwd2" value="<%=member_passwd%>">
 <br> 
 <input type="text" value="<%= member_post %>" name="member_post" id="sample4_postcode"  placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -92,8 +83,8 @@
 이메일:<input type="text" value="<%= member_email1 %>" name="member_email1" id="member_email1">@
        <input type="text" value="<%= member_email2 %>" name="member_email2" id="member_email2" placeholder="직접입력">
        <select  id="emailSelect">
-        <option value="daum.net">daum.net</option>
-        <option value="naver.com">naver.com</option>
+        <option value="daum.net" <% if("daum.net".equals(member_email2)){ %> selected<%} %>>daum.net</option>
+        <option value="naver.com" <% if("naver.com".equals(member_email2)){ %> selected<%} %>>naver.com</option>
        </select>
 <br>
 <input type="submit" value="수정">
@@ -151,4 +142,4 @@
             }
         }).open();
     }
-</script> --%>
+</script> 
