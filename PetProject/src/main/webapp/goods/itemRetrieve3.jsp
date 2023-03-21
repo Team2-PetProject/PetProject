@@ -18,10 +18,7 @@
 	String itemTaste = dto.getItem_Taste();
 
 %>
-<%
-	
-	
-%>
+
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -41,6 +38,10 @@ $(document).ready(function(){
 		amount += 1;
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/hye
 		$("#Cart_Amount").val(amount);
 	}); //end 수량+
 	
@@ -50,7 +51,12 @@ $(document).ready(function(){
 		}
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
+<<<<<<< HEAD
 		$("#Cart_Amount").val(amount);
+=======
+		
+		$("#Cart_Amount").val(amount);
+>>>>>>> refs/remotes/origin/hye
 	});//end 수량-
 	
 	
@@ -81,19 +87,70 @@ $(document).ready(function(){
 	//장바구니
 	$("#cartAdd").on("click", function(){
 		//유효성 검사
-		var n =0;
-		$.each($(".option"), function(i, e){
-			if($(this).val()==0){
-				//console.log("옵션 미선택");
+		var arr = $(".option:[value='0']");
+		for (let e of arr) {
+			console.log($(e).val());
+		}
+		return false;
+		//var n =arr.length;
+		/* $.each($(".option"), function(i, e){
+			if($(this).val()==0){ //
 				if(n == 0){
 					alert("상품 옵션을 선택해주세요");
 					event.preventDefault();
 				}
 				n ++;
 			}
+<<<<<<< HEAD
 			
 		});//end each
+=======
+		});// 
 		
+		
+		//--
+		/*
+		$.each($(".option"), function(i, e) {
+			var arr = [];
+			if(arr.length==0){
+				alert("미선택");
+				event.preventDefault();
+				arr.push("0");
+			}
+			//console.log(arr.length);
+			if($(this).val()==0){
+				arr.push("1");
+			} 
+			
+		})
+		*/
+		
+		//데이터 넘기는거 안하고 비동기처리하기.
+		if(n > 0){
+		$.ajax({
+			url: "CartListServlet",
+			type: "post",
+			data: 
+				{
+				Item_Code : $("#itemCode").val(),
+				Cart_Size : $("#Cart_Size").val(),
+				Cart_Color : $("#Cart_Color").val(),
+				Cart_Taste : $("#Cart_Taste").val(),
+				Cart_Amount : $("#Cart_Amount").val()
+				},
+			dataType: "text",
+			success: function(data, status, xhr) {
+				alert("장바구니 넣기 성공");
+			},
+			error: function(xhr, status, error) {
+				console.log(status);
+			}
+		});//end ajax
+		}
+		
+>>>>>>> refs/remotes/origin/hye
+		
+<<<<<<< HEAD
 		if(n>0){
 		//데이터 넘기는거 안하고 비동기처리하기.
 		$.ajax({
@@ -119,6 +176,12 @@ $(document).ready(function(){
 		});//end ajax
 		
 		}
+=======
+		//데이터 넘기기
+		//$("#myForm").attr("action", "CartServlet");
+		
+		
+>>>>>>> refs/remotes/origin/hye
 	});//end cartAdd
 	
 	
@@ -162,7 +225,7 @@ $(document).ready(function(){
 			<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
 	<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
 		</div>
-		<img id="img" name="Item_Image" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
+		<img id="img" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
 	</div>
 	
 	<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
@@ -186,7 +249,7 @@ $(document).ready(function(){
 			%>		<div class="wrap_each_option">
 						
 						<div>
-							<select class="option" name=<%=key[i]%> style="font-size:20px;">
+							<select class="option" id=<%=key[i] %> name=<%=key[i]%> style="font-size:20px;">
 								<option selected value="0">선택하세요</option>
 								<% for(int j=0; j<value.length; j++){ %>
 									<option><%= value[j] %></option>
@@ -203,9 +266,13 @@ $(document).ready(function(){
 		
 	<!-- 	<div class="wrap_total"></div> -->
 		<div class="wrap_amount">
-			<div>주문 수량</div>
+			<div>주문 수량</div>&nbsp;&nbsp;
 			<div id="down">-</div>
+<<<<<<< HEAD
 			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div> -->
+=======
+			<div id="itemAmount" style="width:35px; height:10px; text-align:center;">1</div>
+>>>>>>> refs/remotes/origin/hye
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
 			<div id="up" width="10" height="10">+</div>
 		</div>
@@ -215,7 +282,7 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="wrap_totalPrice">
-			<div>총 상품 금액</div>
+			<div>총 상품 금액</div>&nbsp;&nbsp;
 			<div id="totalPrice"><%= itemPrice %></div>
 		</div>
 	
@@ -234,7 +301,7 @@ $(document).ready(function(){
 
 <!-- 상품상세 이미지 -->
 <div id="itemDetail">
-	<img src="images/items_detail/<%=itemImage %>.png">
+	<img src="images/items_detail/<%= itemImage %>.png">
 </div>
 
 
@@ -248,7 +315,7 @@ $(document).ready(function(){
 		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
 		width: 1300px;
 		height: 530px;
-		background: #6182D6;
+		/* background: #6182D6; */
 		display: flex; /*자식인 #itemImg와 itemContents 가운데정렬 위해 부모에 설정*/
 		align-items:center; /*flex와 이것까지가 세로기준 가운데 정렬 */
 		justify-content: center; /*flex와 이게 가로기준 가운데 정렬*/
@@ -259,7 +326,7 @@ $(document).ready(function(){
 		float: left;
 		width: 450px;
 		height: 480px;
-		background: orange;
+		/* background: orange; */
 		margin-right: 40px;
 		display: flex; /* 자식인 진짜 이미지 수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
 		justify-content: center; /*가로 중앙 정렬*/
@@ -269,7 +336,7 @@ $(document).ready(function(){
 	
 	#group{
 		float: left;
-		background: #B0981B;
+	/* 	background: #B0981B; */
 		width: 400px;
 		height: 30px;
 		margin-bottom: 10px;
@@ -279,13 +346,13 @@ $(document).ready(function(){
 		float: left;
 		width: 700px;
 		height: 480px;
-		background: green;
+/* 		background: green; */
 	}
 	
 	.forBlank{
 		width: 30px;
 		height: 30px;
-		background: white;
+	/* 	background: white; */
 	}
 	
 	.itemBasicInfo{
@@ -301,12 +368,12 @@ $(document).ready(function(){
 		float: left;
 		width: auto;
 		height: 200px;
-		background: red;
+	/* 	background: red; */
 		display: flex;
 	}
 	
 	.wrap_each_option{
-		background: grey;
+	/* 	background: grey; */
 		margin-left: 40px;
 	}
 	

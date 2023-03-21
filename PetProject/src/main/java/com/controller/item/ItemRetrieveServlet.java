@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.config.MySqlSessionFactory;
 import com.dto.ItemDTO;
 import com.service.ItemService;
 
@@ -16,14 +19,24 @@ import com.service.ItemService;
 public class ItemRetrieveServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 
 
 		//String item_code = request.getParameter("item_code");
 		//System.out.println("상품 코드 : " + item_code);
 		String item_code = "food02";
+=======
+		//String item_code = request.getParameter("item_code");
+		
+		//ItemDTO iDTO = new ItemDTO("food02", "food", "연어어쩌고", null, 40000, "food02", "S/M/L", null, "mild/spicy");
+		
+		String item_code = "toy06";
+		System.out.println("상품 코드 : " + item_code);
+		
+>>>>>>> refs/remotes/origin/hye
 		ItemService service = new ItemService();
 		ItemDTO dto= service.itemRetrieve(item_code);
-		//System.out.println(dto);
+		System.out.println(dto);
 		
 		request.setAttribute("itemRetrieve", dto);
 		

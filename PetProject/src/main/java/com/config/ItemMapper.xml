@@ -3,10 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ItemMapper">
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/hye
 	<select id="itemRetrieve" resultType="ItemDTO" parameterType="String">
+<<<<<<< HEAD
 		select item_code, item_category, item_name, 
 			item_price, item_image, item_size, item_color, item_taste
+=======
+		select item_code, item_category, item_name, item_price, 
+				item_image, item_size, item_color, item_taste
+>>>>>>> refs/remotes/origin/hye
 		from item
 		where item_code = #{item_code}
 	</select>
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refs/remotes/origin/hye
 </mapper>
