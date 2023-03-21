@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.dto.OrderItemDTO"%>
 <%@page import="com.dto.OrderInfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,7 +26,8 @@ String Item_Name = oitemDTO.getItem_Name();
 String Cart_Size = oitemDTO.getCart_Size();
 String Cart_Color = oitemDTO.getCart_Color();
 String Cart_Taste = oitemDTO.getCart_Taste();
- 
+
+DecimalFormat df = new DecimalFormat("###,###");
 	
 %>
 <!DOCTYPE html>
@@ -87,13 +89,13 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 				<span><%= Item_Name %></span>
 			</td>
 			<td align="center" height="35">
-				<span><%= Item_Price %></span>원
+				<span><%= df.format(Item_Price) %></span>원
 			</td>
 			<td align="center" height="35">
 				<span><%= Cart_Amount %></span>
 			</td>
 			<td align="center" height="35">
-				<span><%= Item_Price * Cart_Amount  %></span>원
+				<span><%= df.format(Item_Price * Cart_Amount) %></span>원
 			</td>
 		</tr>
 		<tr>
@@ -107,7 +109,7 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 			</td>
 			
 			<td align="center" height="35">
-				<span><%= OrderInfo_Delivery %></span>원
+				<span><%=  df.format(OrderInfo_Delivery)  %></span>원
 			</td>
 		</tr>
 		<tr>
@@ -116,7 +118,7 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 			</td>
 			
 			<td align="center" height="35">
-				<span><%= (Item_Price * Cart_Amount) + OrderInfo_Delivery %></span>원
+				<span><%= df.format((Item_Price * Cart_Amount) + OrderInfo_Delivery)%></span>원
 			</td>
 		</tr>
 		<tr>
@@ -136,15 +138,15 @@ String Cart_Taste = oitemDTO.getCart_Taste();
 		</tr>
 		<tr>
 			<td height="35">총 상품금액</td>
-			<td height="35"><span><%= Item_Price * Cart_Amount  %></span>원</td>
+			<td height="35"><span><%=  df.format(Item_Price * Cart_Amount)  %></span>원</td>
 		</tr>
 		<tr>
 			<td height="35">총 배송비</td>
-			<td height="35"><span><%= OrderInfo_Delivery %></span>원</td>
+			<td height="35"><span><%= df.format(OrderInfo_Delivery)  %></span>원</td>
 		</tr>
 		<tr>
 			<td height="35">최종 결제금액</td>
-			<td height="35"><span><%= (Item_Price * Cart_Amount) + OrderInfo_Delivery %></span>원</td>
+			<td height="35"><span><%= df.format((Item_Price * Cart_Amount) + OrderInfo_Delivery)  %></span>원</td>
 		</tr>
 		<tr>
 			<td height="35">결제수단</td>
