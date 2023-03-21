@@ -30,6 +30,10 @@ public class CartOrderDoneServlet extends HttpServlet {
 //		if(dto!=null) {
 			//회원전용 처리 
 //			String Member_Code = dto.getMember_code();
+		
+		///merge위한 코드 수정
+		
+		
 			String Member_Code = request.getParameter("Member_Code");  //테스트 용
 			String orderName = request.getParameter("orderName");
 			String post = request.getParameter("post");
