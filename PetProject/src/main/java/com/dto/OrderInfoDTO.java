@@ -84,4 +84,19 @@ public class OrderInfoDTO {
 	public void setOrderInfo_OrderDay(String orderInfo_OrderDay) {
 		OrderInfo_OrderDay = orderInfo_OrderDay;
 	}
+	public int getOrderInfo_Delivery() {
+		return OrderInfo_Delivery;
+	}
+	public void setOrderInfo_Delivery(int orderInfo_Delivery) {
+		OrderInfo_Delivery = orderInfo_Delivery;
+	}
+	@Override
+	public String toString() {
+		return "OrderInfoDTO [OrderInfo_Code=" + OrderInfo_Code + ", Member_Code=" + Member_Code
+				+ ", OrderInfo_OrderName=" + OrderInfo_OrderName + ", OrderInfo_Post=" + OrderInfo_Post
+				+ ", OrderInfo_Addr1=" + OrderInfo_Addr1 + ", OrderInfo_Addr2=" + OrderInfo_Addr2 + ", OrderInfo_Phone="
+				+ OrderInfo_Phone + ", OrderInfo_PayMethod=" + OrderInfo_PayMethod + ", OrderInfo_OrderDay="
+				+ OrderInfo_OrderDay + ", OrderInfo_Delivery=" + OrderInfo_Delivery + "]";
+	}
+	 
 }
