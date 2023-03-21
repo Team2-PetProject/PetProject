@@ -19,6 +19,7 @@
 
 %>
 
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -76,6 +77,7 @@ $(document).ready(function(){
 	//장바구니
 	$("#cartAdd").on("click", function(){
 		//유효성 검사
+		/*
 		var n =0;
 		$.each($(".option"), function(i, e){
 			if($(this).val()==0){
@@ -88,19 +90,47 @@ $(document).ready(function(){
 			}
 		});//end each
 		
-		
+		*/
 		//--
-		var arr = $(".option[value='0']");
-		console.log(arr);
+		$.each($(".option"), function(i, e) {
+			var arr[];
+			if($(this).val()==0){
+				arr.push(1);
+			}
+			if(arr.length==1){
+				alert("미선택");
+				event.preventDefault();
+			}
+		})
 		
-		
-		
-		
+		//데이터 넘기는거 안하고 비동기처리하기.
+	/*	$.ajax({
+			url: "CartListServlet",
+			type: "post",
+			data: 
+				{
+				Item_Code : $("#itemCode").val();
+				Cart_Size : $("#Cart_Size").val();
+				Cart_Color : $("#Cart_Color").val();
+				Cart_Taste : $("#Cart_Taste").val();
+				Cart_Amount : $("#Cart_Amount").val();
+				}
+			dataType: "text",
+			success: function(data, status, xhr) {
+				alert("장바구니 넣기 성공");
+			},
+			error: function(xhr, status, error) {
+				console.log(status);
+			}
+			
+		});//end ajax*/
 		
 		
 		
 		//데이터 넘기기
-		$("#myForm").attr("action", "cartListServlet");
+		//$("#myForm").attr("action", "CartServlet");
+		
+		
 	});//end cartAdd
 	
 	
@@ -168,7 +198,7 @@ $(document).ready(function(){
 			%>		<div class="wrap_each_option">
 						
 						<div>
-							<select class="option" name=<%=key[i]%> style="font-size:20px;">
+							<select class="option" id=<%=key[i] %> name=<%=key[i]%> style="font-size:20px;">
 								<option selected value="0">선택하세요</option>
 								<% for(int j=0; j<value.length; j++){ %>
 									<option><%= value[j] %></option>
@@ -216,7 +246,7 @@ $(document).ready(function(){
 
 <!-- 상품상세 이미지 -->
 <div id="itemDetail">
-	<img src="images/items_detail/<%=itemImage %>.png">
+	<img src="images/items_detail/<%= itemImage %>.png">
 </div>
 
 
