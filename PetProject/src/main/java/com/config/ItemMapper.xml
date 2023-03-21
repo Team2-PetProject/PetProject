@@ -6,7 +6,7 @@
 
 
 	<select id="itemRetrieve" resultType="ItemDTO" parameterType="String">
-		select item_code, item_category, item_name, item_info,
+		select item_code, item_category, item_name, 
 			item_price, item_image, item_size, item_color, item_taste
 		from item
 		where item_code = #{item_code}
