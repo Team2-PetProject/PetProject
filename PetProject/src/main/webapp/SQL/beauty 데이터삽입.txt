@@ -1,0 +1,40 @@
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty01', 'beauty', '펫생각 네이키스 천연 저자극 애견 강아지샴푸 린스 300ml', 6900, 'beauty01');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('beauty02', 'beauty', '프롬한라 비건 펫샴푸바 강아지전용', 12800, 'beauty02', '한라산 조릿대'||CHR(47)||'제주 감귤'||CHR(47)||'제주 백년초');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('beauty03', 'beauty', '강아지 풋타올 발바닥 수건 극세사 2종', 4900, 'beauty03', '핑크'||CHR(47)||'블루');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty04', 'beauty', '웰스비 P.S.D 올인원 샴푸 500ml', 18500, 'beauty04');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('beauty05', 'beauty', '불리빌로우 Complete Animal Deshedding Kit', 50000, 'beauty05', '블랙'||CHR(47)||'핑크');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('beauty05', 'beauty', '불리빌로우 Complete Animal Deshedding Kit', 50000, 'beauty05', '블랙'||CHR(47)||'핑크');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('beauty06', 'beauty', 'LED 발톱 컷팅 가위', 7900, 'beauty06', '블루'||CHR(47)||'핑크');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty07', 'beauty', '퓨어프렌즈 펫 컨디셔너 80ml', 19800, 'beauty07');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty08', 'beauty', '퓨어프렌즈 강아지 보습제 발바닥밤 180ml', 19800, 'beauty08');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty09', 'beauty', '퓨어프렌즈 양면 8mm 초극세사 펫타올', 9000, 'beauty09');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('beauty10', 'beauty', '강아지 실리콘 브러쉬', 7100, 'beauty10', '그레이'||CHR(47)||'블루');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty11', 'beauty', '래핑찰리 수딩미스트 120ml', 16900, 'beauty11');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('beauty12', 'beauty', '페스룸 모이스처 미스트 150ml', 17900, 'beauty12');
+    
+COMMIT;
