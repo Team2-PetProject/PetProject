@@ -84,4 +84,5 @@ public class OrderInfoDTO {
 	public void setOrderInfo_OrderDay(String orderInfo_OrderDay) {
 		OrderInfo_OrderDay = orderInfo_OrderDay;
 	}
+	
 }
