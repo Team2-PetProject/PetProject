@@ -8,7 +8,7 @@ INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
     VALUES('toy02', 'toy', '강아지 잔디밭 노즈워크', 12500, 'toy02');
 
 INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
-    VALUES('toy03', 'toy', '강아지 장난감 공룡 라텍스', 900, 'toy03', 'DRAGON'||CHR(47)||'DINO'||CHR(47)||'STEGOSAURS'||CHR(47)||'T'||CHR(45)||'REX');
+    VALUES('toy03', 'toy', '강아지 장난감 공룡 라텍스', 9000, 'toy03', 'DRAGON'||CHR(47)||'DINO'||CHR(47)||'STEGOSAURS'||CHR(47)||'T'||CHR(45)||'REX');
 
 INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
     VALUES('toy04', 'toy', '강아지 장난감 린넨 청둥오리', 2990, 'toy04', '회색'||CHR(47)||'청록색'||CHR(47)||'갈색');
