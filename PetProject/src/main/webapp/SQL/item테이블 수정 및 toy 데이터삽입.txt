@@ -1,0 +1,40 @@
+ALTER TABLE ITEM MODIFY ITEM_COLOR VARCHAR2(150); --아이템 컬러 옵션 길이 변경
+ALTER TABLE ITEM MODIFY ITEM_SIZE VARCHAR2(150); --아이템 사이즈 옵션 길이 변경
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy01', 'toy', '바잇미X최고심 행운다람쥐 키링 장난감 노즈워크', 12900, 'toy01');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy02', 'toy', '강아지 잔디밭 노즈워크', 12500, 'toy02');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('toy03', 'toy', '강아지 장난감 공룡 라텍스', 900, 'toy03', 'DRAGON'||CHR(47)||'DINO'||CHR(47)||'STEGOSAURS'||CHR(47)||'T'||CHR(45)||'REX');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('toy04', 'toy', '강아지 장난감 린넨 청둥오리', 2990, 'toy04', '회색'||CHR(47)||'청록색'||CHR(47)||'갈색');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy05', 'toy', '강아지 장난감 바구니', 9900, 'toy05');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('toy06', 'toy', '강아지 장난감 공 큐 몬스터 탱탱볼', 4900, 'toy06', 'S'||CHR(47)||'L', 'RED'||CHR(47)||'GREEN'||CHR(47)||'ORANGE'||CHR(47)||'BLUE');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy07', 'toy', '강아지 장난감 노즈워크 계란', 13900, 'toy07');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy08', 'toy', '강아지 노즈워크 과일', 8900, 'toy08');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('toy09', 'toy', '포글 움직이는 장난감 포그리볼 강아지 노즈워크 분리불안', 34900, 'toy09', '앵그리포글'||CHR(47)||'헝그리포글');   
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy10', 'toy', '강아지 터그놀이 장난감 순면 당근 실타래', 2300, 'toy10');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
+    VALUES('toy11', 'toy', '바잇미 양배추 킁킁볼 노즈워크 장난감 삑삑 바스락', 14900, 'toy11');    
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('toy12', 'toy', '강아지 터그놀이 염색없는 순면목실 장난감 아띠지기', 4900, 'toy1', '손잡이 공 터그 토이'||CHR(47)||'꽈배기 터그 토이'); 
+
+COMMIT;
