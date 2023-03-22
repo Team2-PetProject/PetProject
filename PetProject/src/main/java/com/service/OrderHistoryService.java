@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -27,14 +28,13 @@ public class OrderHistoryService {
 		return list;
 	}
 
-	public List<OrderHistoryDTO> getOredrDay(int num) {
-		System.out.println("서비스접속");
+	public List<OrderHistoryDTO> getOredrDay(Map<String, String> orderDayMap) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		dao = new OrderHistoryDAO();
-		System.out.println(session);
+		System.out.println(orderDayMap);
 		List<OrderHistoryDTO> list = null;
 		try {
-			list = dao.getOredrDay(session, num);
+			list = dao.getOredrDay(session, orderDayMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -43,15 +43,12 @@ public class OrderHistoryService {
 		return list;
 	}
 
-	public List<OrderHistoryDTO> getOredrMonth(int num) {
-		System.out.println("서비스접속");
+	public List<OrderHistoryDTO> getOredrItem(Map<String, String> orderDayMap) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		dao = new OrderHistoryDAO();
-		System.out.println(session);
 		List<OrderHistoryDTO> list = null;
 		try {
-			System.out.println("service에서"+num);
-			list = dao.getOredrMonth(session, num);
+			list = dao.getOredrItem(session, orderDayMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -60,8 +57,19 @@ public class OrderHistoryService {
 		return list;
 	}
 
-	public List<OrderHistoryDTO> getOredrTerm(String string, String string2) {
-		// TODO Auto-generated method stub
-		return null;
+	public int totalCount(String member_code) {
+		SqlSession session = MySqlSessionFactory.getSqlSession();
+		dao = new OrderHistoryDAO();
+		int totalCount = 0;
+		try {
+			totalCount = dao.totalCount(session, member_code);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return totalCount;
 	}
+
+
 }

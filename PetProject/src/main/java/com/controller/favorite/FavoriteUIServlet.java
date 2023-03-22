@@ -54,10 +54,10 @@ public class FavoriteUIServlet extends HttpServlet {
 		for (Integer key : keySet2) {
 			System.out.println(key+":"+ tourMap.get(key));
 		}
-		request.setAttribute("item_Favorite", itemMap);	
-		request.setAttribute("tour_Favorite", tourMap);
-		RequestDispatcher dis=request.getRequestDispatcher(nextPage);
-		dis.forward(request, response);
+//		request.setAttribute("item_Favorite", itemMap);	
+//		request.setAttribute("tour_Favorite", tourMap);
+//		RequestDispatcher dis=request.getRequestDispatcher(nextPage);
+//		dis.forward(request, response);
 		
 //		}else {
 //			session.setAttribute("mesg", "로그인을 부탁드립니다.");

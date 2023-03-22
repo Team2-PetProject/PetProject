@@ -1,65 +1,57 @@
 package com.dto;
 
 public class TourDTO {
-	private int t_Num;
-	private String t_Name;
-	private String t_Image;
-	private String t_Info;
-	private String t_Fnum;
-	private String t_Day;
+	private int Tour_Code;
+	private String Tour_Name;
+	private String Tour_Image;
+	private String Tour_Info;
+	private String Tour_Day;
 	public TourDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TourDTO(int t_Num, String t_Name, String t_Image, String t_Info, String t_Fnum, String t_Day) {
+	public TourDTO(int tour_Code, String tour_Name, String tour_Image, String tour_Info, String tour_Day) {
 		super();
-		this.t_Num = t_Num;
-		this.t_Name = t_Name;
-		this.t_Image = t_Image;
-		this.t_Info = t_Info;
-		this.t_Fnum = t_Fnum;
-		this.t_Day = t_Day;
+		Tour_Code = tour_Code;
+		Tour_Name = tour_Name;
+		Tour_Image = tour_Image;
+		Tour_Info = tour_Info;
+		Tour_Day = tour_Day;
+	}
+	public int getTour_Code() {
+		return Tour_Code;
+	}
+	public void setTour_Code(int tour_Code) {
+		Tour_Code = tour_Code;
+	}
+	public String getTour_Name() {
+		return Tour_Name;
+	}
+	public void setTour_Name(String tour_Name) {
+		Tour_Name = tour_Name;
+	}
+	public String getTour_Image() {
+		return Tour_Image;
+	}
+	public void setTour_Image(String tour_Image) {
+		Tour_Image = tour_Image;
+	}
+	public String getTour_Info() {
+		return Tour_Info;
+	}
+	public void setTour_Info(String tour_Info) {
+		Tour_Info = tour_Info;
+	}
+	public String getTour_Day() {
+		return Tour_Day;
+	}
+	public void setTour_Day(String tour_Day) {
+		Tour_Day = tour_Day;
 	}
 	@Override
 	public String toString() {
-		return "TourDTO [t_Num=" + t_Num + ", t_Name=" + t_Name + ", t_Image=" + t_Image + ", t_Info=" + t_Info
-				+ ", t_Fnum=" + t_Fnum + ", t_Day=" + t_Day + "]";
-	}
-	public int getT_Num() {
-		return t_Num;
-	}
-	public void setT_Num(int t_Num) {
-		this.t_Num = t_Num;
-	}
-	public String getT_Name() {
-		return t_Name;
-	}
-	public void setT_Name(String t_Name) {
-		this.t_Name = t_Name;
-	}
-	public String getT_Image() {
-		return t_Image;
-	}
-	public void setT_Image(String t_Image) {
-		this.t_Image = t_Image;
-	}
-	public String getT_Info() {
-		return t_Info;
-	}
-	public void setT_Info(String t_Info) {
-		this.t_Info = t_Info;
-	}
-	public String getT_Fnum() {
-		return t_Fnum;
-	}
-	public void setT_Fnum(String t_Fnum) {
-		this.t_Fnum = t_Fnum;
-	}
-	public String getT_Day() {
-		return t_Day;
-	}
-	public void setT_Day(String t_Day) {
-		this.t_Day = t_Day;
+		return "TourDTO [Tour_Code=" + Tour_Code + ", Tour_Name=" + Tour_Name + ", Tour_Image=" + Tour_Image
+				+ ", Tour_Info=" + Tour_Info + ", Tour_Day=" + Tour_Day + "]";
 	}
 	
 }
