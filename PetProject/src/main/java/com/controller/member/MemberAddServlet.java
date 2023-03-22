@@ -42,7 +42,7 @@ public class MemberAddServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("memberAdd", "회원가입성공");
 		session.setMaxInactiveInterval(3600);
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("main");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

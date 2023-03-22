@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String nextPage=null;
 		if(dto!=null) {
-			nextPage = "main.jsp";
+			nextPage = "main";
 			session.setAttribute("login", dto);
 			session.setAttribute("mesg", dto.getMember_name()+"님 환영합니다.");
 		}else {

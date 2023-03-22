@@ -23,7 +23,7 @@ public class LogoutServlet extends HttpServlet {
 	
 	    HttpSession session = request.getSession();
 	    session.invalidate();
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("main");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

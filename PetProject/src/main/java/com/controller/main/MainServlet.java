@@ -1,4 +1,3 @@
-
 package com.controller.main;
 
 import java.io.IOException;
@@ -11,30 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.GoodsDTO;
-import com.service.GoodsService;
+import com.dto.ItemDTO;
+import com.dto.OrderItemDTO;
+import com.service.ItemService;
+import com.service.OrderService;
 
-/**
- * Servlet implementation class MainServlet
- */
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public MainServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GoodsService service = new GoodsService();
-		List<GoodsDTO> list = service.goodsList("");
-		request.setAttribute("goodsList", list);  
+		ItemService service = new ItemService();
+		List<ItemDTO> list = service.selectNew();
+		request.setAttribute("newList", list);
+		
+		OrderService oService = new OrderService();
+		List<String> itemCodeList = oService.selectBest();
+		List<ItemDTO> bestList = service.selectBest(itemCodeList);
+		request.setAttribute("bestList", bestList);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
-		dis.forward(request, response); 
+		dis.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 
 }
