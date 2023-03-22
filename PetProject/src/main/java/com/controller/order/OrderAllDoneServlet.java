@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.dto.CartInfoDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderInfoDTO;
+import com.dto.OrderItemDTO;
 import com.service.CartService;
 import com.service.OrderService;
 
@@ -49,6 +51,17 @@ public class OrderAllDoneServlet extends HttpServlet {
 			OrderService oService = new OrderService();
 			int n = oService.orderAllDone(memberCode, cList, list, OrderInfoDTO);
 			System.out.println(n);
+			
+			OrderInfoDTO oDTO = oService.selByinfoCode(n);
+			System.out.println(oDTO);
+			List<OrderItemDTO> oList = oService.selAllByinfoCode(n);
+			for (OrderItemDTO orderItemDTO : oList) {
+				System.out.println(orderItemDTO);
+			}
+			RequestDispatcher dis = request.getRequestDispatcher("orderAllDone.jsp");
+			request.setAttribute("oinfoDTO", oDTO);
+			request.setAttribute("oitemList", oList);
+			dis.forward(request, response);
 		}else {
 			response.sendRedirect("LoginUIServlet");
 			session.setAttribute("mesg", "로그인이 필요한 과정입니다.");
