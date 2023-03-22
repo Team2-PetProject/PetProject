@@ -1,0 +1,37 @@
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion01', 'fashion', '이지웨어 레인코트', 47000, 'fashion01', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL'||CHR(47)||'3XL', '그린'||CHR(47)||'옐로우'||CHR(47)||'베이지');
+    
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE)
+    VALUES('fashion02', 'fashion', '치즈 스카프', 8000, 'fashion02', 'S'||CHR(47)||'M'||CHR(47)||'L');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion03', 'fashion', '데일리 슬리브리스', 32000, 'fashion03', 'XL'||CHR(47)||'2XL'||CHR(47)||'3XL', '오렌지'||CHR(47)||'그린'||CHR(47)||'아이보리');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion04', 'fashion', '펫띵 눈사람 쿨조끼'||CHR(38)||'쿨스카프 세트', 31900, 'fashion04', '1호'||CHR(47)||'2호'||CHR(47)||'3호'||CHR(47)||'4호'||CHR(47)||'5호'||CHR(47)||'6호', '옐로우'||CHR(47)||'민트');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion05', 'fashion', '플로트 베이직 하프넥 골지 티셔츠', 13300, 'fashion05', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL', '베이지'||CHR(47)||'옐로우'||CHR(47)||'인디핑크'||CHR(47)||'버건디'||CHR(47)||'그린'||CHR(47)||'블루');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion06', 'fashion', '플로트 쿨썸머 나시', 19000, 'fashion06', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL', '블루'||CHR(47)||'오렌지'||CHR(47)||'네온 옐로우');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion07', 'fashion', '플로트 쿨스트라이프 나시', 19000, 'fashion07', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL', '핫핑크 블루'||CHR(47)||'민트 레드');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE)
+    VALUES('fashion08', 'fashion', '플로트 썸머레인보우 크롭 나시', 19000, 'fashion08', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion09', 'fashion', '플로트 릴렉스체크 강아지 셔츠', 29000, 'fashion09', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL', '민트'||CHR(47)||'베이지');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion10', 'fashion', '플로트 베이직 젤라또 강아지 티셔츠', 13000, 'fashion10', 'S'||CHR(47)||'M'||CHR(47)||'L'||CHR(47)||'XL'||CHR(47)||'2XL', '옐로우'||CHR(47)||'민트'||CHR(47)||'핑크'||CHR(47)||'스카이');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_COLOR)
+    VALUES('fashion11', 'fashion', '플로트 페이즐리 반다나 강아지 스카프', 6000, 'fashion11', '레드'||CHR(47)||'그린'||CHR(47)||'옐로우'||CHR(47)||'네이비');
+
+INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_SIZE, ITEM_COLOR)
+    VALUES('fashion12', 'fashion', '플로트 플러피후리스 동물모자', 8000, 'fashion12', 'S'||CHR(47)||'M', '곰'||CHR(47)||'토끼');
+    
+COMMIT;
