@@ -129,6 +129,7 @@ function cartAdd() {
 		dataType: "text",
 		success: function(data, status, xhr) {
 			alert("장바구니 넣기 성공");
+			console.log(status);
 		},
 		error: function(xhr, status, error) {
 			console.log(status);
