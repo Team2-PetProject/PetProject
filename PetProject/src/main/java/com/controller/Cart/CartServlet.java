@@ -29,11 +29,11 @@ public class CartServlet extends HttpServlet {
 		MemberDTO login = (MemberDTO) session.getAttribute("login");
 		if(login != null) {
 			String memberCode = login.getMember_code();
-			String itemCode = (String) request.getAttribute("Item_Code");
-			String CartSize = (String) request.getAttribute("Cart_Size");
-			String CartColor = (String) request.getAttribute("Cart_Color");
-			String CartTaste = (String) request.getAttribute("Cart_Taste");
-			String CartAmount = (String) request.getAttribute("Cart_Amount");
+			String itemCode = (String) request.getParameter("Item_Code");
+			String CartSize = (String) request.getParameter("Cart_Size");
+			String CartColor = (String) request.getParameter("Cart_Color");
+			String CartTaste = (String) request.getParameter("Cart_Taste");
+			String CartAmount = (String) request.getParameter("Cart_Amount");
 			CartDTO dto = new CartDTO(0, memberCode, CartAmount, itemCode, CartSize, CartColor, CartTaste);
 			CartService service = new CartService();
 			int n = service.insertItem(dto);
