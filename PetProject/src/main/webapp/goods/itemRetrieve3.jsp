@@ -16,6 +16,7 @@
 	String itemSize = dto.getItem_Size();
 	String itemColor = dto.getItem_Color();
 	String itemTaste = dto.getItem_Taste();
+
 %>
 
 
@@ -37,7 +38,7 @@ $(document).ready(function(){
 		amount += 1;
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
-		
+
 		$("#Cart_Amount").val(amount);
 	}); //end 수량+
 	
@@ -47,14 +48,16 @@ $(document).ready(function(){
 		}
 		$("#itemAmount").text(amount);
 		$("#totalPrice").text(price*amount);
-		
+
 		$("#Cart_Amount").val(amount);
 	});//end 수량-
 	
 	
 	//바로구매
 	$("#orderNow").on("click", function(event){
+		$("#Cart_Amount").val(amount);
 		//유효성 검사
+		var arr = $(".option[value='0']");
 		var n =0;
 		$.each($(".option"), function(i, e){
 			if($(this).val()==0){
@@ -67,6 +70,7 @@ $(document).ready(function(){
 			}
 		});//end each
 		
+		
 		//데이터 넘기기
 		$("#myForm").attr("action", "CartOrderConfirmServlet");
 		
@@ -75,22 +79,24 @@ $(document).ready(function(){
 	
 	//장바구니
 	$("#cartAdd").on("click", function(){
-		//유효성 검사
+		$("#Cart_Amount").val(amount);
+		
 		var opt = 0;
 		$(".option").each(function(i, e) {
 			if($(this).val()==0){
 				opt += 1;
 			}
 		});
-		
 		if(opt>0) {
 			alert("상품 옵션을 선택해 주세요.");
 			event.preventDefault();
 		}else if(opt==0) {
+			console.log("성공..");
 			cartAdd();
 		}
 			
 	});//end cartAdd
+	
 	
 	var itemCode = $("#itemCode").val();
 	var itemName = $("#itemName").text();
@@ -109,30 +115,33 @@ $(document).ready(function(){
 	});//end QA
 	
 	
+	function cartAdd() {
+		$.ajax({
+			url: "CartServlet",
+			type: "post",
+			data: 
+				{
+				Item_Code : $("#itemCode").val(),
+				Cart_Size : $("#Cart_Size").val(),
+				Cart_Color : $("#Cart_Color").val(),
+				Cart_Taste : $("#Cart_Taste").val(),
+				Cart_Amount : $("#Cart_Amount").val()
+				},
+			dataType: "text",
+			success: function(data, status, xhr) {
+				alert("장바구니 넣기 성공");
+				console.log(status);
+			},
+			error: function(xhr, status, error) {
+				console.log(status);
+			}
+		});//end ajax
+	}//end cartAdd()
+	
+	
 });//end doc
 
 
-function cartAdd() {
-	$.ajax({
-		url: "CartListServlet",
-		type: "post",
-		data: 
-			{
-			Item_Code : $("#itemCode").val(),
-			Cart_Size : $("#Cart_Size").val(),
-			Cart_Color : $("#Cart_Color").val(),
-			Cart_Taste : $("#Cart_Taste").val(),
-			Cart_Amount : $("#Cart_Amount").val()
-			},
-		dataType: "text",
-		success: function(data, status, xhr) {
-			alert("장바구니 넣기 성공");
-		},
-		error: function(xhr, status, error) {
-			console.log(status);
-		}
-	});//end ajax
-}//end cartAdd()
 
 </script>
 
@@ -195,7 +204,7 @@ function cartAdd() {
 		<div class="wrap_amount">
 			<div>주문 수량</div>&nbsp;&nbsp;
 			<div id="down">-</div>
-			<div id="itemAmount" style="width:35px; height:10px; text-align:center;">1</div>
+			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div> -->
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
 			<div id="up" width="10" height="10">+</div>
 		</div>
@@ -350,4 +359,3 @@ function cartAdd() {
 	}
 	
 </style>
-
