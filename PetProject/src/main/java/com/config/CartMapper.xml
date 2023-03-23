@@ -74,6 +74,6 @@
 	</delete>
 	<insert id="insertItem" parameterType="CartDTO">
 		insert into cart values (cart_seq.nextval, #{Member_Code}, #{Cart_Amount},
-		 #{Item_Code}, #{Cart_Size}, #{Cart_Color}, #{Cart_Taste})
+		 #{Item_Code}, #{Cart_Size, jdbcType=VARCHAR}, #{Cart_Color, jdbcType=VARCHAR}, #{Cart_Taste, jdbcType=VARCHAR})
 	</insert>
 </mapper>
