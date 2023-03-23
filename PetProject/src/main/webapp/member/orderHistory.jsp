@@ -362,6 +362,6 @@ function setDate(fromDate, toDate) {
 		<!--반복문 끝 -->
 	</table>
 	<hr>
-	<input type="button" value="연도추가" onclick="subYear()">
+<!-- 	<input type="button" value="연도추가" onclick="subYear()"> -->
 </body>
 </html>
