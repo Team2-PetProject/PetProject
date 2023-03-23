@@ -116,7 +116,7 @@ $(document).ready(function(){
 
 function cartAdd() {
 	$.ajax({
-		url: "CartListServlet",
+		url: "CartServlet",
 		type: "post",
 		data: 
 			{
@@ -130,6 +130,7 @@ function cartAdd() {
 		success: function(data, status, xhr) {
 			alert("장바구니 넣기 성공");
 			console.log(status);
+			console.log("tjd");
 		},
 		error: function(xhr, status, error) {
 			console.log(status);
