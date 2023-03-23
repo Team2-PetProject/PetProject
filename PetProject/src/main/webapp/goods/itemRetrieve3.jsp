@@ -26,20 +26,21 @@
 
 $(document).ready(function(){
 	
-	var price = parseInt($("#itemPrice").text());
 	var amount = parseInt($("#itemAmount").text());
 	
-	//금액 천단위 콤마, 화폐단위 표시
-	var kPrice = price.toLocaleString();
-	$("#totalPrice").text(kPrice+"원");
-
 	//수량 +/-, 총 금액 뿌리기
 	$("#up").on("click", function(){
 		amount += 1;
 		$("#itemAmount").text(amount);
-		$("#totalPrice").text(price*amount);
 
 		$("#Cart_Amount").val(amount);
+		
+		var tp = <%= itemPrice %>*amount; 
+		console.log(tp);
+		var totalPrice = tp.toLocaleString();
+		console.log(totalPrice);
+		$("#totalPrice").text(totalPrice+"원");
+		
 	}); //end 수량+
 	
 	$("#down").on("click", function(){
@@ -47,9 +48,14 @@ $(document).ready(function(){
 			amount -= 1;
 		}
 		$("#itemAmount").text(amount);
-		$("#totalPrice").text(price*amount);
-
 		$("#Cart_Amount").val(amount);
+		
+		var tp = <%= itemPrice %>*amount; 
+		console.log(tp);
+		var totalPrice = tp.toLocaleString();
+		console.log(totalPrice);
+		$("#totalPrice").text(totalPrice+"원");
+		
 	});//end 수량-
 	
 	
@@ -92,7 +98,6 @@ $(document).ready(function(){
 			
 	});//end cartAdd
 	
-	
 	var itemCode = $("#itemCode").val();
 	var itemName = $("#itemName").text();
 	
@@ -106,7 +111,6 @@ $(document).ready(function(){
 	$("#QA").on("click", function() {
 		console.log("상품문의 클릭");
 		location.href="QAServlet?Item_Code="+itemCode+"&Item_Name="+itemName+"&Item_Price="+price;
-		
 	});//end QA
 	
 	
@@ -150,17 +154,19 @@ $(document).ready(function(){
 	
 <div id="wrap_top"> <!-- 제일 밖, 가운데 정렬 위함 -->
 	<div id="wrap_image"> <!-- 상품 카테고리 & 이미지 -->
-		<div id="group">
+		<%-- <div id="group">
 			<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
 			<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
-	<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
-		</div>
-		<img id="img" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
+		</div> --%>
+		<img id="img" src="images/items/<%=itemImage %>.png" style="width:490px; height:490px;">
 	</div>
 	
 	<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
 		<div class="forBlank"></div>
-		<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
+		<div class="itemName_like">
+			<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
+			<div><img></div>
+		</div>
 		<div class="itemBasicInfo" id="itemPrice"><%= df.format(itemPrice) %>원</div>
 		
 		<div class="wrap_itemOption">
@@ -196,7 +202,7 @@ $(document).ready(function(){
 		
 	<!-- 	<div class="wrap_total"></div> -->
 		<div class="wrap_amount">
-			<div>주문 수량</div>&nbsp;&nbsp;
+			<div>주문 수량</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<div id="down">-</div>
 			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div>
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
@@ -208,8 +214,8 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="wrap_totalPrice">
-			<div>총 상품 금액</div>&nbsp;&nbsp;
-			<div id="totalPrice"><%= itemPrice %></div>
+			<div>총 상품 금액</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<div id="totalPrice"><%= df.format(itemPrice) %>원</div>
 		</div>
 	
 		<div class="forBlank"></div>
@@ -250,9 +256,9 @@ $(document).ready(function(){
 	
 	#wrap_image{
 		float: left;
-		width: 450px;
-		height: 480px;
-		/* background: orange; */
+		width: 500px;
+		height: 500px;
+		background: orange; 
 		margin-right: 40px;
 		display: flex; /* 자식인 진짜 이미지 수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
 		justify-content: center; /*가로 중앙 정렬*/
@@ -272,17 +278,17 @@ $(document).ready(function(){
 		float: left;
 		width: 700px;
 		height: 480px;
-/* 		background: green; */
+ 		background: green; 
 	}
 	
 	.forBlank{
 		width: 30px;
-		height: 30px;
+		height: 20px;
 	/* 	background: white; */
 	}
 	
 	.itemBasicInfo{
-		font-size: 40px;
+		font-size: 30px;
 		font-weight: 600; /*100~900. 400이 normal, 700이 bold*/
 	}
 	
