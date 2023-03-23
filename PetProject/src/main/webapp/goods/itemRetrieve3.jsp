@@ -89,6 +89,7 @@ $(document).ready(function(){
 			alert("상품 옵션을 선택해 주세요.");
 			event.preventDefault();
 		}else if(opt==0) {
+			console.log("성공..");
 			cartAdd();
 		}
 			
@@ -112,30 +113,33 @@ $(document).ready(function(){
 	});//end QA
 	
 	
+	function cartAdd() {
+		$.ajax({
+			url: "CartServlet",
+			type: "post",
+			data: 
+				{
+				Item_Code : $("#itemCode").val(),
+				Cart_Size : $("#Cart_Size").val(),
+				Cart_Color : $("#Cart_Color").val(),
+				Cart_Taste : $("#Cart_Taste").val(),
+				Cart_Amount : $("#Cart_Amount").val()
+				},
+			dataType: "text",
+			success: function(data, status, xhr) {
+				alert("장바구니 넣기 성공");
+				console.log(status);
+			},
+			error: function(xhr, status, error) {
+				console.log(status);
+			}
+		});//end ajax
+	}//end cartAdd()
+	
+	
 });//end doc
 
-function cartAdd() {
-	$.ajax({
-		url: "CartServlet",
-		type: "post",
-		data: 
-			{
-			Item_Code : $("#itemCode").val(),
-			Cart_Size : $("#Cart_Size").val(),
-			Cart_Color : $("#Cart_Color").val(),
-			Cart_Taste : $("#Cart_Taste").val(),
-			Cart_Amount : $("#Cart_Amount").val()
-			},
-		dataType: "text",
-		success: function(data, status, xhr) {
-			alert("장바구니 넣기 성공");
-			console.log(status);
-		},
-		error: function(xhr, status, error) {
-			console.log(status);
-		}
-	});//end ajax
-}//end cartAdd()
+
 
 </script>
 
