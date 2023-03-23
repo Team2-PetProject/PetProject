@@ -204,7 +204,7 @@ $(document).ready(function(){
 		<div class="wrap_amount">
 			<div>주문 수량</div>&nbsp;&nbsp;
 			<div id="down">-</div>
-			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div> -->
+			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div>
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
 			<div id="up" width="10" height="10">+</div>
 		</div>
