@@ -19,6 +19,7 @@
 
 %>
 
+<% DecimalFormat df = new DecimalFormat("###,###"); %>
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -30,7 +31,6 @@ $(document).ready(function(){
 	
 	//금액 천단위 콤마, 화폐단위 표시
 	var kPrice = price.toLocaleString();
-	$("#itemPrice").text(kPrice+"원");
 	$("#totalPrice").text(kPrice+"원");
 
 	//수량 +/-, 총 금액 뿌리기
@@ -56,23 +56,19 @@ $(document).ready(function(){
 	//바로구매
 	$("#orderNow").on("click", function(event){
 		$("#Cart_Amount").val(amount);
-		//유효성 검사
-		var arr = $(".option[value='0']");
-		var n =0;
-		$.each($(".option"), function(i, e){
+		
+		var opt = 0;
+		$(".option").each(function(i, e) {
 			if($(this).val()==0){
-				//console.log("옵션 미선택");
-				if(n == 0){
-					alert("상품 옵션을 선택해주세요");
-					event.preventDefault();
-				}
-				n ++;
+				opt += 1;
 			}
-		});//end each
-		
-		
-		//데이터 넘기기
-		$("#myForm").attr("action", "CartOrderConfirmServlet");
+		});
+		if(opt>0) {
+			alert("상품 옵션을 선택해 주세요.");
+			event.preventDefault();
+		}else if(opt==0) {
+			$("#myForm").attr("action", "CartOrderConfirmServlet");
+		}
 		
 	});//end orderNow
 	
@@ -91,7 +87,6 @@ $(document).ready(function(){
 			alert("상품 옵션을 선택해 주세요.");
 			event.preventDefault();
 		}else if(opt==0) {
-			console.log("성공..");
 			cartAdd();
 		}
 			
@@ -129,7 +124,7 @@ $(document).ready(function(){
 				},
 			dataType: "text",
 			success: function(data, status, xhr) {
-				alert("장바구니 넣기 성공");
+				alert("장바구니에 담았어요");
 				console.log(status);
 			},
 			error: function(xhr, status, error) {
@@ -140,7 +135,6 @@ $(document).ready(function(){
 	
 	
 });//end doc
-
 
 
 </script>
@@ -167,7 +161,7 @@ $(document).ready(function(){
 	<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
 		<div class="forBlank"></div>
 		<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
-		<div class="itemBasicInfo" id="itemPrice"><%=itemPrice %></div>
+		<div class="itemBasicInfo" id="itemPrice"><%= df.format(itemPrice) %>원</div>
 		
 		<div class="wrap_itemOption">
 		
@@ -242,11 +236,11 @@ $(document).ready(function(){
 <style type="text/css">
 
 	#wrap_top{
-		border: 1px solid #6182D6;
-		border-radius:2em;
+	/* 	border: 1px solid #6182D6;
+		border-radius:2em; */
 		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
-		width: 1300px;
-		height: 530px;
+		/* width: 1300px;
+		height: 530px; */
 		/* background: #6182D6; */
 		display: flex; /*자식인 #itemImg와 itemContents 가운데정렬 위해 부모에 설정*/
 		align-items:center; /*flex와 이것까지가 세로기준 가운데 정렬 */
@@ -314,18 +308,20 @@ $(document).ready(function(){
 		display: flex;
 	}
 	
-	
 	.wrap_totalPrice{
 		font-size: 20px;
 		display: flex;
 	}
 	
 	
+	#itemDetail{
+		width: 700px;
+		margin: auto;
+		margin-top:100px;
+	}
 	
 	
-	
-	
-	
+	/* 
 	.itemOptionList{
 		background-color:#3BA9AE;
 		display:flex;
@@ -350,12 +346,6 @@ $(document).ready(function(){
 		width:150px;
 		height: 20px;
 		margin-right:30px;
-	}
-	
-	#itemDetail{
-		width: 700px;
-		margin: auto;
-		margin-top:100px;
-	}
+	} */
 	
 </style>
