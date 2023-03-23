@@ -55,8 +55,8 @@ $(document).ready(function(){
 	
 	//바로구매
 	$("#orderNow").on("click", function(event){
+		$("#Cart_Amount").val(amount);
 		//유효성 검사
-		
 		var arr = $(".option[value='0']");
 		var n =0;
 		$.each($(".option"), function(i, e){
@@ -79,6 +79,8 @@ $(document).ready(function(){
 	
 	//장바구니
 	$("#cartAdd").on("click", function(){
+		$("#Cart_Amount").val(amount);
+		
 		var opt = 0;
 		$(".option").each(function(i, e) {
 			if($(this).val()==0){
