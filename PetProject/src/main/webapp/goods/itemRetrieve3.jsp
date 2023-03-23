@@ -79,77 +79,19 @@ $(document).ready(function(){
 	
 	//장바구니
 	$("#cartAdd").on("click", function(){
-		//유효성 검사
-		var arr = $(".option:[value='0']");
-		for (let e of arr) {
-			console.log($(e).val());
-		}
-		return false;
-		//var n =arr.length;
-		/* $.each($(".option"), function(i, e){
-			if($(this).val()==0){ //
-				if(n == 0){
-					alert("상품 옵션을 선택해주세요");
-					event.preventDefault();
-				}
-				n ++;
-			}
-
-			
-		});//end each
-
-		});// 
-		
-		
-		//--
-		/*
-		$.each($(".option"), function(i, e) {
-			var arr = [];
-			if(arr.length==0){
-				alert("미선택");
-				event.preventDefault();
-				arr.push("0");
-			}
-			//console.log(arr.length);
+		var opt = 0;
+		$(".option").each(function(i, e) {
 			if($(this).val()==0){
-				arr.push("1");
-			} 
-			
-		})
-		*/
-		
-
-		/*
-		//데이터 넘기는거 안하고 비동기처리하기.
-		$.ajax({
-			url: "CartServlet",
-			type: "post",
-			data: 
-				{
-				Item_Code : $("#itemCode").val(),
-				Cart_Size : $("#Cart_Size").val(),
-				Cart_Color : $("#Cart_Color").val(),
-				Cart_Taste : $("#Cart_Taste").val(),
-				Cart_Amount : $("#Cart_Amount").val()
-				},
-			dataType: "text",
-			success: function(data, status, xhr) {
-				console.log("성공");
-				alert("장바구니 넣기 성공");
-			},
-			error: function(xhr, status, error) {
-				console.log(status);
+				opt += 1;
 			}
+		});
+		if(opt>0) {
+			alert("상품 옵션을 선택해 주세요.");
+			event.preventDefault();
+		}else if(opt==0) {
+			cartAdd();
+		}
 			
-		});//end ajax
-		*/
-		
-
-		//데이터 넘기기
-		//$("#myForm").attr("action", "CartServlet");
-		
-		
-
 	});//end cartAdd
 	
 	
@@ -170,10 +112,29 @@ $(document).ready(function(){
 	});//end QA
 	
 	
-	//카트amount
-	
-	
 });//end doc
+
+function cartAdd() {
+	$.ajax({
+		url: "CartListServlet",
+		type: "post",
+		data: 
+			{
+			Item_Code : $("#itemCode").val(),
+			Cart_Size : $("#Cart_Size").val(),
+			Cart_Color : $("#Cart_Color").val(),
+			Cart_Taste : $("#Cart_Taste").val(),
+			Cart_Amount : $("#Cart_Amount").val()
+			},
+		dataType: "text",
+		success: function(data, status, xhr) {
+			alert("장바구니 넣기 성공");
+		},
+		error: function(xhr, status, error) {
+			console.log(status);
+		}
+	});//end ajax
+}//end cartAdd()
 
 </script>
 
