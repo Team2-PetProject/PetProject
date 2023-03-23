@@ -7,8 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
 import com.dao.CartDAO;
+import com.dao.DeliveryInfoDAO;
 import com.dao.OrderDAO;
 import com.dto.CartInfoDTO;
+import com.dto.DeliveryInfoDTO;
 import com.dto.OrderInfoDTO;
 import com.dto.OrderItemDTO;
 
@@ -69,11 +71,12 @@ public class OrderService {
 		return n;
 	}//end orderDone
 
-	public int orderAllDone(String memberCode, List<String> cList, List<CartInfoDTO> list, OrderInfoDTO orderInfoDTO) {
+	public int orderAllDone(String memberCode, List<String> cList, List<CartInfoDTO> list, OrderInfoDTO orderInfoDTO, DeliveryInfoDTO dDTO) {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int result = 0;
 		int result2 = 0;
 		int result3 = 0;
+		int result4 =0;
 		try {
 			result = dao.orderAllDone(session, orderInfoDTO);
 			System.out.println("orderInfo insert : " + result);
@@ -90,6 +93,11 @@ public class OrderService {
 			map2.put("list", cList);
 			result3 = cDAO.delAll(session, map2);
 			System.out.println("Cart delete : " + result3);
+			
+			DeliveryInfoDAO dao = new DeliveryInfoDAO();
+			result4 = dao.insertInfo(session, dDTO);
+			System.out.println("Delivery insert : " + result4);
+			
 			session.commit();
 		} catch (Exception e) {
 			session.rollback();

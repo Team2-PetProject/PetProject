@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dto.CartInfoDTO;
+import com.dto.DeliveryInfoDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderInfoDTO;
 import com.dto.OrderItemDTO;
@@ -49,7 +50,8 @@ public class OrderAllDoneServlet extends HttpServlet {
 			CartService cService = new CartService();
 			List<CartInfoDTO> list = cService.OrderAll(cList);
 			OrderService oService = new OrderService();
-			int n = oService.orderAllDone(memberCode, cList, list, OrderInfoDTO);
+			DeliveryInfoDTO dDTO = new DeliveryInfoDTO(0, "배송전", "ACompany", "12345", "2022-03-21", "2022-03-22", 0);
+			int n = oService.orderAllDone(memberCode, cList, list, OrderInfoDTO, dDTO);
 			System.out.println(n);
 			
 			OrderInfoDTO oDTO = oService.selByinfoCode(n);
