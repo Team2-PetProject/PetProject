@@ -92,7 +92,6 @@ $(document).ready(function(){
 			
 	});//end cartAdd
 	
-	
 	var itemCode = $("#itemCode").val();
 	var itemName = $("#itemName").text();
 	
