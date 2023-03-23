@@ -110,9 +110,6 @@ $(document).ready(function(){
 	});//end QA
 	
 	
-	//카트amount
-	
-	
 });//end doc
 
 
