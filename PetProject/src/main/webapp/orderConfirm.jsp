@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="com.dto.MemberDTO"%>
 <%@page import="com.dto.CartDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,17 +8,6 @@
 <meta charset="UTF-8">
 <title>Kkosunnae</title>
 
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Kkosunnae</title>
-
->>>>>>> refs/remotes/origin/hye
 <style type="text/css">
 html, body {
 	height: 100%;
