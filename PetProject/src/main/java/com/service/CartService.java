@@ -120,6 +120,7 @@ public class CartService {
 		int result =0 ;
 		try {
 			result = dao.insertItem(session, dto);
+			session.commit();
 		} catch (Exception e) {
 			session.rollback();
 		} finally {

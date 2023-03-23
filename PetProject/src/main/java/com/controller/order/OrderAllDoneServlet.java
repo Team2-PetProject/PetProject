@@ -42,7 +42,7 @@ public class OrderAllDoneServlet extends HttpServlet {
 			String addr2 = request.getParameter("addr2");
 			String phone = request.getParameter("phone");
 			String payMethod = request.getParameter("payMethod");
-			String delivery = request.getParameter("delivery");
+			String delivery = request.getParameter("delivery");  
 			
 			OrderInfoDTO OrderInfoDTO = new OrderInfoDTO(0, "1", orderName, post, addr1, addr2, phone, payMethod, "", Integer.parseInt(delivery));
 			
