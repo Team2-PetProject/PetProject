@@ -15,13 +15,16 @@ List<OrderHistoryDTO> list = (List<OrderHistoryDTO>) request.getAttribute("Order
 <script type="text/javascript">
 
 $(document).ready(function(){
-	today = dateFormat(new Date());
-	yesterday=yesterDay();
-	lastweek=lastWeek();
-	twoagoweek=twoAgoWeek();
-	lastmonth=lastMonth();
-	sixagomonth=sixAgoMonth();
-	lastyear=lastYear();
+	
+	Today = dateFormat(new Date());
+	Yesterday = getYesterday();
+	LastWeek = getLastWeek();
+	TwoAgoWeek = getTwoAgoWeek();
+	LastMonth = getLastMonth();
+	SixAgoMonth = getSixAgoMonth();
+	LastYear = getLastYear();
+		
+	
 	/* day 를 지역변수를 두면 day를 두고 두고 변경해 나간다. 그러면 계속 new Date를 해줘야한다.
 	그러면 길어 보이니 그냥 매번 new Date하자
 	*/
@@ -31,9 +34,11 @@ $(document).ready(function(){
 	console.log(lastmonth) //20230217
 	console.log(sixagomonth) //20220917
 	console.log(lastyear); //20220317 */
+	
+	showWindowSearch();
 	$("form").on("submit", setDate);
 })
-function dateFormat(e) {
+function dateFormat(e) { 
 	var day=e;
 	return day.getFullYear()+((day.getMonth()+1)>9? (day.getMonth()+1).toString():"0"+(day.getMonth()+1))
 	+(day.getDate()>9? day.getDate().toString():"0"+day.getDate().toString());
@@ -41,37 +46,37 @@ function dateFormat(e) {
 	
 }
 
-function yesterDay() {
-	   var day=new Date();
+function getYesterday() {
+	   var day = new Date();
 	   day.setDate(day.getDate() - 1);
 	   return dateFormat(day);  
 	}
 
-function lastWeek() {
-	var day=new Date();
+function getLastWeek() {
+	var day = new Date();
 	day.setDate(day.getDate() - 7);
 	 return dateFormat(day);
 }
 
-function twoAgoWeek() {
-	var day=new Date();
+function getTwoAgoWeek() {
+	var day = new Date();
 	day.setDate(day.getDate() - 14);
 	return dateFormat(day);  
 }
 
-function lastMonth() {
-	var day=new Date();
+function getLastMonth() {
+	var day = new Date();
 	day.setMonth(day.getMonth() - 1);
 	return dateFormat(day);  
 }
 
-function sixAgoMonth() {
-	var day=new Date();
+function getSixAgoMonth() {
+	var day = new Date();
 	day.setMonth(day.getMonth() - 6);
 	return dateFormat(day);  
 }
 
-function lastYear() {
+function getLastYear() {
 	var day = new Date();
 	day.setFullYear(day.getFullYear() - 1);
 	return dateFormat(day);  
@@ -80,15 +85,15 @@ function lastYear() {
 function setDate(fromDate, toDate) {
 	var item_name = $("#itemSearch").val();
 	console.log($("#itemSearch").val());
-	if (toDate==null) {
+	if (toDate == null) {
 		var fromYear = $("#from_year").val();
 		var fromMonth = $("#from_month").val();
 		var fromDay = $("#from_day").val();
 		var startDay = fromYear + fromMonth + fromDay
 		
-		var toYear=$("#to_year").val();
-		var toMonth=$("#to_month").val();
-		var toDay=$("#to_day").val();
+		var toYear = $("#to_year").val();
+		var toMonth = $("#to_month").val();
+		var toDay = $("#to_day").val();
 		var endDay = toYear + toMonth + toDay
 		
 	/* 	console.log("item_name==null fromYear" + fromYear)
@@ -100,6 +105,7 @@ function setDate(fromDate, toDate) {
 		console.log("item_name==null startDay" + startDay)
 		console.log("item_name==null startDay" + endDay)
 		console.log("item_name==null item_name" + item_name)  */
+		
 		$("#orderInfo").append("<input type='hidden' name='startDay' value = " + startDay + ">");
 		
 		$("#orderInfo").append("<input type='hidden' name='endDay' value = " + endDay + ">");
@@ -117,6 +123,71 @@ function setDate(fromDate, toDate) {
  	
 }
 
+
+	function showWindowSearch() { // 연도 추가하는 함수 
+		
+ 		var schedule = Today.substring(4, 8)
+		//var schedule = "0323"; 
+		var nowYear = Today.substring(0, 4)  
+		/*substring 바로 +1 하면문자열취급  */
+		var newYear = parseInt(nowYear)+1
+		
+		
+		
+	
+		
+		if (schedule==1231) {
+		const targetDate = new Date(newYear + '-01-01')
+		const now = new Date();
+		const showTime = targetDate.getTime() - now.getTime();
+		setTimeout(subYear, showTime);	
+		} 
+/* 		if (schedule!="0322") { //테스트용
+			console.log(schedule); // 0323
+			const targetDate = new Date(newYear + '-03-23')
+			console.log("targetDate: " + targetDate)
+			//targetDate: Sat Mar 23 2024 09:00:00 GMT+0900 (한국 표준시)
+			const now = new Date();
+			//const showTime = targetDate.getTime() - now.getTime();
+			const showTime = 1000;
+			
+			console.log("showTime : " + showTime)
+			//showTime : 31582313263
+			//showTime : 31581916858
+			setTimeout(subYear, showTime);	
+		} */
+	}  
+	
+
+	function subYear() { //셀렉문에 년도 추가하는 함수 
+		
+		const newYear = parseInt(Today.substring(0, 4))+1
+		
+
+	 	
+		$("#from_year").append(" <option value= '"+ newYear + "'>" + newYear + "</option>");
+		//이방식은 내가 평상시 사용하는 코드 잘 추가가 됨
+		
+		//$("#to_year").append(`<option value="${newYear}">${newYear}</option>`);
+		//이게 되야하는데 안됨
+		
+	 	$("#to_year").append($('<option>',
+			{
+			value : newYear,
+			text : newYear
+			
+			}	
+			));   
+		
+		//이방법은 jquery 사용하니 별로 추천을 못함 그런데 기존 방식도 제이쿼리이다.
+		//key는 안되고 text로 해야함.
+	
+		//리터럴 이용 방식 이때는 탭 위에있는 백틱키를 사용한다. 그래야 리터럴안에 값을 인식해준다. 아니면
+		// ${newYear} 이렇게 출력된다.
+		//인덱트는 가능한 적게 사용하는 것이 좋다. 그러면 인덴트는 무엇인가? 인덱트는 인덱스다. 
+		//현재 안먹힘. 공백이 먹힘 // 배틱이 제일 최신 방법임. node.js 사용
+	}
+	
 </script>
 </head>
 <body>
@@ -144,6 +215,7 @@ function setDate(fromDate, toDate) {
 						<option value="2021">2021</option>
 						<option value="2022">2022</option>
 						<option value="2023" selected="selected">2023</option>
+						<!--Today 가지고와서 자동 지정.  -->
 				</select>년 
 				<!--달선택  --> 
 				<select  id="from_month">
@@ -201,7 +273,8 @@ function setDate(fromDate, toDate) {
 						<option value="2021">2021</option>
 						<option value="2022">2022</option>
 						<option value="2023" selected="selected">2023</option>
-				</select>년 <!--달선택  --> <select  id="to_month">
+				</select>년 <!--달선택  --> 
+				<select  id="to_month">
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -214,7 +287,8 @@ function setDate(fromDate, toDate) {
 						<option value="10">10</option>
 						<option value="11">11</option>
 						<option value="12">12</option>
-				</select>월 <!--날선택  --> <select  id="to_day">
+				</select>월 <!--날선택  --> 
+				<select  id="to_day">
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -287,5 +361,7 @@ function setDate(fromDate, toDate) {
 		</tr>
 		<!--반복문 끝 -->
 	</table>
+	<hr>
+	<input type="button" value="연도추가" onclick="subYear()">
 </body>
 </html>
