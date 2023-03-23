@@ -7,7 +7,7 @@ INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE)
     VALUES('food01', 'food', '더마독 슬리밍 강아지 다이어트 건강사료 2kg', '33000', 'food01');
     
 INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
-    VALUES('food02', 'food', '피니키 사료 하이포알러제닉 가수분해 2.5kg', '265000', 'food02', '연어/소고기/양고기/오리고기');
+    VALUES('food02', 'food', '피니키 사료 하이포알러제닉 가수분해 2.5kg', '265000', 'food02', '연어'||CHR(47)||'소고기'||CHR(47)||'양고기'||CHR(47)||'오리고기');
     
 INSERT INTO ITEM(ITEM_CODE, ITEM_CATEGORY, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TASTE)
     VALUES('food03', 'food', '펠리쿠치나 반습식 소프트 강아지 사료 3kg', '45000', 'food03', '연어/소고기/오리고기');
