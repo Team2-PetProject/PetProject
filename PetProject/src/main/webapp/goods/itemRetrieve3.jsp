@@ -19,27 +19,28 @@
 
 %>
 
+<% DecimalFormat df = new DecimalFormat("###,###"); %>
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
 	
-	var price = parseInt($("#itemPrice").text());
 	var amount = parseInt($("#itemAmount").text());
 	
-	//금액 천단위 콤마, 화폐단위 표시
-	var kPrice = price.toLocaleString();
-	$("#itemPrice").text(kPrice+"원");
-	$("#totalPrice").text(kPrice+"원");
-
 	//수량 +/-, 총 금액 뿌리기
 	$("#up").on("click", function(){
 		amount += 1;
 		$("#itemAmount").text(amount);
-		$("#totalPrice").text(price*amount);
 
 		$("#Cart_Amount").val(amount);
+		
+		var tp = <%= itemPrice %>*amount; 
+		console.log(tp);
+		var totalPrice = tp.toLocaleString();
+		console.log(totalPrice);
+		$("#totalPrice").text(totalPrice+"원");
+		
 	}); //end 수량+
 	
 	$("#down").on("click", function(){
@@ -47,32 +48,33 @@ $(document).ready(function(){
 			amount -= 1;
 		}
 		$("#itemAmount").text(amount);
-		$("#totalPrice").text(price*amount);
-
 		$("#Cart_Amount").val(amount);
+		
+		var tp = <%= itemPrice %>*amount; 
+		console.log(tp);
+		var totalPrice = tp.toLocaleString();
+		console.log(totalPrice);
+		$("#totalPrice").text(totalPrice+"원");
+		
 	});//end 수량-
 	
 	
 	//바로구매
 	$("#orderNow").on("click", function(event){
 		$("#Cart_Amount").val(amount);
-		//유효성 검사
-		var arr = $(".option[value='0']");
-		var n =0;
-		$.each($(".option"), function(i, e){
+		
+		var opt = 0;
+		$(".option").each(function(i, e) {
 			if($(this).val()==0){
-				//console.log("옵션 미선택");
-				if(n == 0){
-					alert("상품 옵션을 선택해주세요");
-					event.preventDefault();
-				}
-				n ++;
+				opt += 1;
 			}
-		});//end each
-		
-		
-		//데이터 넘기기
-		$("#myForm").attr("action", "CartOrderConfirmServlet");
+		});
+		if(opt>0) {
+			alert("상품 옵션을 선택해 주세요.");
+			event.preventDefault();
+		}else if(opt==0) {
+			$("#myForm").attr("action", "CartOrderConfirmServlet");
+		}
 		
 	});//end orderNow
 	
@@ -91,12 +93,10 @@ $(document).ready(function(){
 			alert("상품 옵션을 선택해 주세요.");
 			event.preventDefault();
 		}else if(opt==0) {
-			console.log("성공..");
 			cartAdd();
 		}
 			
 	});//end cartAdd
-	
 	
 	var itemCode = $("#itemCode").val();
 	var itemName = $("#itemName").text();
@@ -111,7 +111,6 @@ $(document).ready(function(){
 	$("#QA").on("click", function() {
 		console.log("상품문의 클릭");
 		location.href="QAServlet?Item_Code="+itemCode+"&Item_Name="+itemName+"&Item_Price="+price;
-		
 	});//end QA
 	
 	
@@ -129,7 +128,7 @@ $(document).ready(function(){
 				},
 			dataType: "text",
 			success: function(data, status, xhr) {
-				alert("장바구니 넣기 성공");
+				alert("장바구니에 담았어요");
 				console.log(status);
 			},
 			error: function(xhr, status, error) {
@@ -140,7 +139,6 @@ $(document).ready(function(){
 	
 	
 });//end doc
-
 
 
 </script>
@@ -156,18 +154,20 @@ $(document).ready(function(){
 	
 <div id="wrap_top"> <!-- 제일 밖, 가운데 정렬 위함 -->
 	<div id="wrap_image"> <!-- 상품 카테고리 & 이미지 -->
-		<div id="group">
+		<%-- <div id="group">
 			<div style="float:left; "><a href="#">Home(상품)&nbsp;>&nbsp;&nbsp;</a></div>
 			<div style="float:left; "><a href="itemListServlet?Item_Category=<%=itemCategory%>"><%=itemCategory %></a></div>
-	<%-- 		<div style="float:left; flex-direction:row;"><%=itemCategory %></div> --%>
-		</div>
-		<img id="img" src="images/items/<%=itemImage %>.png" style="float:left; width:400px; height:400px;">
+		</div> --%>
+		<img id="img" src="images/items/<%=itemImage %>.png" style="width:490px; height:490px;">
 	</div>
 	
 	<div id="wrap_conts"> <!-- 상품 컨텐츠 -->
 		<div class="forBlank"></div>
-		<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
-		<div class="itemBasicInfo" id="itemPrice"><%=itemPrice %></div>
+		<div class="itemName_like">
+			<div class="itemBasicInfo" id="itemName" name="Item_Name"><%=itemName %></div>
+			<div><img></div>
+		</div>
+		<div class="itemBasicInfo" id="itemPrice"><%= df.format(itemPrice) %>원</div>
 		
 		<div class="wrap_itemOption">
 		
@@ -202,9 +202,9 @@ $(document).ready(function(){
 		
 	<!-- 	<div class="wrap_total"></div> -->
 		<div class="wrap_amount">
-			<div>주문 수량</div>&nbsp;&nbsp;
+			<div>주문 수량</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<div id="down">-</div>
-			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div> -->
+			<div id="itemAmount" name="Cart_Amount" style="width:35px; height:10px; text-align:center;">1</div>
 			<input type="hidden" id="Cart_Amount" name="Cart_Amount" value="1">
 			<div id="up" width="10" height="10">+</div>
 		</div>
@@ -214,8 +214,8 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="wrap_totalPrice">
-			<div>총 상품 금액</div>&nbsp;&nbsp;
-			<div id="totalPrice"><%= itemPrice %></div>
+			<div>총 상품 금액</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<div id="totalPrice"><%= df.format(itemPrice) %>원</div>
 		</div>
 	
 		<div class="forBlank"></div>
@@ -242,11 +242,11 @@ $(document).ready(function(){
 <style type="text/css">
 
 	#wrap_top{
-		border: 1px solid #6182D6;
-		border-radius:2em;
+	/* 	border: 1px solid #6182D6;
+		border-radius:2em; */
 		margin: auto; /*이것만 해줘도 브라우저 가로기준 가운데 정렬됨 */
-		width: 1300px;
-		height: 530px;
+		/* width: 1300px;
+		height: 530px; */
 		/* background: #6182D6; */
 		display: flex; /*자식인 #itemImg와 itemContents 가운데정렬 위해 부모에 설정*/
 		align-items:center; /*flex와 이것까지가 세로기준 가운데 정렬 */
@@ -256,9 +256,9 @@ $(document).ready(function(){
 	
 	#wrap_image{
 		float: left;
-		width: 450px;
-		height: 480px;
-		/* background: orange; */
+		width: 500px;
+		height: 500px;
+		background: orange; 
 		margin-right: 40px;
 		display: flex; /* 자식인 진짜 이미지 수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
 		justify-content: center; /*가로 중앙 정렬*/
@@ -278,17 +278,17 @@ $(document).ready(function(){
 		float: left;
 		width: 700px;
 		height: 480px;
-/* 		background: green; */
+ 		background: green; 
 	}
 	
 	.forBlank{
 		width: 30px;
-		height: 30px;
+		height: 20px;
 	/* 	background: white; */
 	}
 	
 	.itemBasicInfo{
-		font-size: 40px;
+		font-size: 30px;
 		font-weight: 600; /*100~900. 400이 normal, 700이 bold*/
 	}
 	
@@ -314,18 +314,20 @@ $(document).ready(function(){
 		display: flex;
 	}
 	
-	
 	.wrap_totalPrice{
 		font-size: 20px;
 		display: flex;
 	}
 	
 	
+	#itemDetail{
+		width: 700px;
+		margin: auto;
+		margin-top:100px;
+	}
 	
 	
-	
-	
-	
+	/* 
 	.itemOptionList{
 		background-color:#3BA9AE;
 		display:flex;
@@ -350,12 +352,6 @@ $(document).ready(function(){
 		width:150px;
 		height: 20px;
 		margin-right:30px;
-	}
-	
-	#itemDetail{
-		width: 700px;
-		margin: auto;
-		margin-top:100px;
-	}
+	} */
 	
 </style>
