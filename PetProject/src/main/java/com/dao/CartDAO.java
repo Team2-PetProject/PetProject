@@ -36,6 +36,7 @@ public class CartDAO {
 	}
 
 	public int cartAdd(SqlSession session, CartDTO cDTO) {
+//		int n = session.insert("CartMapper.cartAdd",cDTO);
 		int n = session.insert("CartMapper.cartAdd",cDTO);
 		return n;
 	}

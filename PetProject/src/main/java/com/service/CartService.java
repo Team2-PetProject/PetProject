@@ -23,7 +23,7 @@ public class CartService {
 		SqlSession session = MySqlSessionFactory.getSqlSession();
 		int n = 0;
 		try {
-			n = dao.cartAdd(session, cDTO);
+			n = dao.cartAddselKey(session, cDTO);
 			session.commit();
 		} finally {
 			session.close();

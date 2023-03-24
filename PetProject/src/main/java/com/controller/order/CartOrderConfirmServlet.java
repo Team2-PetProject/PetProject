@@ -64,14 +64,14 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			CartService cService = new CartService();
 //			System.out.println("등록전 Cart_Code 값: "+cDTO.getCart_Code());  
 			int n = cService.cartAddselKey(cDTO);  //상세페이지 주문 =>  카트 저장  //select key 이용 cart_code 얻기
-		
+			System.out.println("cartAdd " + n);
 //			System.out.println("등록 후 Cart_Code 값: "+cDTO.getCart_Code() +"n값 : " +n);  
 			System.out.println("db에서 꺼내온 cartcode들어있는 cDTO: "+cDTO);
 			
 //			CartInfoDTO cinfoDTO = cService.selectByCode(cDTO.getCart_Code());
 			CartInfoDTO cinfoDTO = cService.selectByCode(n);   //n = cDTO.getCart_Code()
 //			System.out.println("CartInfoDTO  : "+cinfoDTO);
-			
+			System.out.println("cinfoDTO : " + cinfoDTO);
 			MemberService mService = new MemberService();
 			MemberDTO mDTO = mService.mypage(Member_Code);
 			

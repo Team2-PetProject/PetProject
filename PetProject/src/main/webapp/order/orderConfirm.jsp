@@ -143,11 +143,10 @@
 		
 	});//end ready
 </script>
-
 <%
-	CartInfoDTO cDTO = (CartInfoDTO)request.getAttribute("cinfoDTO");
-	
 
+	CartInfoDTO cDTO = (CartInfoDTO) request.getAttribute("cinfoDTO");
+	
 
 	int Cart_Code = cDTO.getCart_Code();
 	String Member_Code = cDTO.getMember_Code();
