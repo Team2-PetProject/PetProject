@@ -41,4 +41,9 @@ public class MemberDAO {
 	public MemberDTO selectOne(SqlSession session, String memberCode) {
 		return session.selectOne("selectOne", memberCode);
 	}
+	
+	public int pwUpdate(SqlSession session, HashMap<String, String> map) {
+		int n = session.update("pwUpdate",map);
+		return n;
+	}
 }

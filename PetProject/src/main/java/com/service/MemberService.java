@@ -104,4 +104,18 @@ public class MemberService {
 			}
 			return dto;
 		}
+	  
+	  public int pwUpdate(HashMap<String, String> map) {
+			SqlSession session = MySqlSessionFactory.getSqlSession();
+			int n = 0;
+			try {
+				MemberDAO dao = new MemberDAO();
+				n= dao.pwUpdate(session,map);
+				session.commit();
+			} finally {
+				session.close();
+			}
+			
+			return n;
+		}
 }//end class

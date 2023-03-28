@@ -56,4 +56,10 @@
       from member
       where member_code = #{member_code}
 	</select>
+	
+	<update id="pwUpdate" parameterType="hashmap">
+		update member
+		set Member_passwd = #{Member_passwd}
+		where Member_code = #{Member_code}
+	</update>
 </mapper>

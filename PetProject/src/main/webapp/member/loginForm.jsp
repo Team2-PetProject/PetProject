@@ -10,6 +10,17 @@
 <%
   }
 %>
+<%
+   String pwUdmesg = (String)session.getAttribute("pwUdmesg");
+  if(pwUdmesg!=null){
+%>    
+   <script>
+     alert('<%=pwUdmesg %>');
+   </script>
+<%
+	session.removeAttribute("pwUdmesg");
+  }
+%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -27,6 +38,10 @@
     	    			event.preventDefault();
     	    		}
     	    	});
+    	 
+    	 $("#pwSearch").on("click",function(){
+    		 location.href = "PwSearchUIServlet";
+    	 });//end click
    });
 </script>    
 <form action="LoginServlet" method="get">
@@ -34,4 +49,8 @@
 비밀번호<input type="text" name="member_passwd" id="member_passwd"><br> 
 <input type="submit" value="로그인">
 <input type="button" value="아이디찾기" onClick="location.href='MemberIdSearchUIServlet'">
+
 </form>
+<button id="pwSearch">비밀번호찾기</button>
+
+
