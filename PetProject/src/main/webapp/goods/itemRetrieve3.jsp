@@ -258,7 +258,7 @@ $(document).ready(function(){
 		float: left;
 		width: 500px;
 		height: 500px;
-		background: orange; 
+	/*	background: orange; */
 		margin-right: 40px;
 		display: flex; /* 자식인 진짜 이미지 수직, 수평방향의 중앙 설정위해 부모 div에 설정*/
 		justify-content: center; /*가로 중앙 정렬*/
@@ -278,7 +278,7 @@ $(document).ready(function(){
 		float: left;
 		width: 700px;
 		height: 480px;
- 		background: green; 
+ 	/*	background: green; */
 	}
 	
 	.forBlank{
