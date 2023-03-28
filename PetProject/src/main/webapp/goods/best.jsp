@@ -34,7 +34,7 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="#"> <!-- 이미지 링크 -->
+							<a href="ItemRetrieveServlet?item_code=<%=itemCode%>"> <!-- 이미지 링크 -->
 								<img src="images/items/<%=itemImage%>.png" border="0" align="center" width="200">
 							</a>
 						</td>

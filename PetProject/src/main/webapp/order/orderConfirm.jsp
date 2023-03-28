@@ -187,14 +187,8 @@
 <input type="hidden" name="Cart_Color" value="<%= Cart_Color%>">
 <input type="hidden" name="Cart_Taste" value="<%= Cart_Taste%>">
 <input type="hidden" name="Cart_Amount" value="<%= Cart_Amount%>">
-<<<<<<< HEAD
 <input type="hidden" name="Item_Image" value="<%= Item_Image%>">
 <input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
-=======
-<input type="hidden" name="Item_Image" value="<%= Item_Image%>">
-<input type="hidden" name="phone" id="phone" value=""><!-- phone1,2,3 합치기 -->
-
->>>>>>> refs/remotes/origin/hye
 <input type="hidden" name="Cart_Code" value="<%= Cart_Code%>"><!-- cart 번호 : cart에서 삭제 시 사용 -->
 <%
 	int delivery = 0;
